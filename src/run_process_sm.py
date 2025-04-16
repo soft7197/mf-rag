@@ -228,7 +228,7 @@ def evaluate(bug_id_bug_info_tuple):
     try:
         with open(f"{output_dir}/{project}/{bug_id}.json", "r") as file:
             patch_data = json.load(file)
-        with open("/home/selab/Desktop/MF-dlt/resources/defects4j_sm.json", "r") as file:
+        with open("----", "r") as file:
             data = json.load(file)
     except Exception as e:
         logging.error(f"Error loading JSON data for {bug_id}: {e}")
@@ -417,8 +417,8 @@ def feedback_process(bug_id_bug_info_tuple):
     bug_id, bug_info = bug_id_bug_info_tuple
     project, bug_num = bug_id.split('-')
 
-    checkout_dir = "/home/selab/Desktop/MF-dlt/output_sm/checkouts"
-    output_dir = "/home/selab/Desktop/MF-dlt/output_sm/results"  # Ensure this is defined
+    checkout_dir = "-----"
+    output_dir = "----"  # Ensure this is defined
 
     try:
         logging.info(f"Checking out buggy project: {bug_id}")
