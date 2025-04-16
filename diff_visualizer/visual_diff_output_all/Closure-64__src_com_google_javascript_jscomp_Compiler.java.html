@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to181__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-64 - Buggy: src/com/google/javascript/jscomp/Compiler.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-64 - Fixed: src/com/google/javascript/jscomp/Compiler.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to181__0"></td><td class="diff_header" id="from181_1429">1429</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to181_1429">1429</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1430">1430</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;LanguageMode&nbsp;is&nbsp;ECMASCRIPT5_STRICT,&nbsp;only&nbsp;print&nbsp;'use&nbsp;strict'</td><td class="diff_next"></td><td class="diff_header" id="to181_1430">1430</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;LanguageMode&nbsp;is&nbsp;ECMASCRIPT5_STRICT,&nbsp;only&nbsp;print&nbsp;'use&nbsp;strict'</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1431">1431</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;for&nbsp;the&nbsp;first&nbsp;input&nbsp;file</td><td class="diff_next"></td><td class="diff_header" id="to181_1431">1431</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;for&nbsp;the&nbsp;first&nbsp;input&nbsp;file</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to181__1">n</a></td><td class="diff_header" id="from181_1432">1432</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;code&nbsp;=&nbsp;toSource(root,&nbsp;sourceMap);</td><td class="diff_next"><a href="#difflib_chg_to181__1">n</a></td><td class="diff_header" id="to181_1432">1432</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;code&nbsp;=&nbsp;toSource(root,&nbsp;sourceMap<span class="diff_add">,&nbsp;inputSeqNum&nbsp;==&nbsp;0</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1433">1433</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!code.isEmpty())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to181_1433">1433</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!code.isEmpty())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1434">1434</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cb.append(code);</td><td class="diff_next"></td><td class="diff_header" id="to181_1434">1434</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cb.append(code);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1435">1435</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to181_1435">1435</td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to181__1"></td><td class="diff_header" id="from181_1458">1458</td><td nowrap="nowrap">&nbsp;&nbsp;@Override</td><td class="diff_next"></td><td class="diff_header" id="to181_1458">1458</td><td nowrap="nowrap">&nbsp;&nbsp;@Override</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1459">1459</td><td nowrap="nowrap">&nbsp;&nbsp;String&nbsp;toSource(Node&nbsp;n)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to181_1459">1459</td><td nowrap="nowrap">&nbsp;&nbsp;String&nbsp;toSource(Node&nbsp;n)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1460">1460</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;initCompilerOptionsIfTesting();</td><td class="diff_next"></td><td class="diff_header" id="to181_1460">1460</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;initCompilerOptionsIfTesting();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to181__2">n</a></td><td class="diff_header" id="from181_1461">1461</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;toSource(n,&nbsp;null);</td><td class="diff_next"><a href="#difflib_chg_to181__2">n</a></td><td class="diff_header" id="to181_1461">1461</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;toSource(n,&nbsp;null<span class="diff_add">,&nbsp;true</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1462">1462</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to181_1462">1462</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1463">1463</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to181_1463">1463</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to181__2"></td><td class="diff_header" id="from181_1464">1464</td><td nowrap="nowrap">&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to181_1464">1464</td><td nowrap="nowrap">&nbsp;&nbsp;/**</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1465">1465</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;Generates&nbsp;JavaScript&nbsp;source&nbsp;code&nbsp;for&nbsp;an&nbsp;AST.</td><td class="diff_next"></td><td class="diff_header" id="to181_1465">1465</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;Generates&nbsp;JavaScript&nbsp;source&nbsp;code&nbsp;for&nbsp;an&nbsp;AST.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1466">1466</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to181_1466">1466</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to181__3">n</a></td><td class="diff_header" id="from181_1467">1467</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;String&nbsp;toSource(Node&nbsp;n,&nbsp;SourceMap&nbsp;sourceMap)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to181__3">n</a></td><td class="diff_header" id="to181_1467">1467</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;String&nbsp;toSource(Node&nbsp;n,&nbsp;SourceMap&nbsp;sourceMap<span class="diff_add">,&nbsp;boolean&nbsp;firstOutput</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1468">1468</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;CodePrinter.Builder&nbsp;builder&nbsp;=&nbsp;new&nbsp;CodePrinter.Builder(n);</td><td class="diff_next"></td><td class="diff_header" id="to181_1468">1468</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;CodePrinter.Builder&nbsp;builder&nbsp;=&nbsp;new&nbsp;CodePrinter.Builder(n);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1469">1469</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setPrettyPrint(options.prettyPrint);</td><td class="diff_next"></td><td class="diff_header" id="to181_1469">1469</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setPrettyPrint(options.prettyPrint);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to181__3"></td><td class="diff_header" id="from181_1470">1470</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setLineBreak(options.lineBreak);</td><td class="diff_next"></td><td class="diff_header" id="to181_1470">1470</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setLineBreak(options.lineBreak);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1471">1471</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setSourceMap(sourceMap);</td><td class="diff_next"></td><td class="diff_header" id="to181_1471">1471</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setSourceMap(sourceMap);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1472">1472</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setSourceMapDetailLevel(options.sourceMapDetailLevel);</td><td class="diff_next"></td><td class="diff_header" id="to181_1472">1472</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setSourceMapDetailLevel(options.sourceMapDetailLevel);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to181__top">t</a></td><td class="diff_header" id="from181_1473">1473</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setTagAsStrict(</td><td class="diff_next"><a href="#difflib_chg_to181__top">t</a></td><td class="diff_header" id="to181_1473">1473</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setTagAsStrict(<span class="diff_add">firstOutput&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1474">1474</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options.getLanguageOut()&nbsp;==&nbsp;LanguageMode.ECMASCRIPT5_STRICT);</td><td class="diff_next"></td><td class="diff_header" id="to181_1474">1474</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options.getLanguageOut()&nbsp;==&nbsp;LanguageMode.ECMASCRIPT5_STRICT);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1475">1475</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setLineLengthThreshold(options.lineLengthThreshold);</td><td class="diff_next"></td><td class="diff_header" id="to181_1475">1475</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;builder.setLineLengthThreshold(options.lineLengthThreshold);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from181_1476">1476</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to181_1476">1476</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+{
+    "JacksonDatabind-99": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// !!! TODO: missing supertypes\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    return sb.toString();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testCanonicalNames()\n\n    {\n\n        TypeFactory tf = TypeFactory.defaultInstance();\n\n        JavaType t = tf.constructType(java.util.Calendar.class);\n\n        String can = t.toCanonical();\n\n        assertEquals(\"java.util.Calendar\", can);\n\n        assertEquals(t, tf.constructFromCanonical(can));\n\n\n\n        // Generic maps and collections will default to Object.class if type-erased\n\n        t = tf.constructType(java.util.ArrayList.class);\n\n        can = t.toCanonical();\n\n        assertEquals(\"java.util.ArrayList<java.lang.Object>\", can);\n\n        assertEquals(t, tf.constructFromCanonical(can));\n\n\n\n        t = tf.constructType(java.util.TreeMap.class);\n\n        can = t.toCanonical();\n\n        assertEquals(\"java.util.TreeMap<java.lang.Object,java.lang.Object>\", can);\n\n        assertEquals(t, tf.constructFromCanonical(can));\n\n\n\n        // And then EnumMap (actual use case for us)\n\n        t = tf.constructMapType(EnumMap.class, EnumForCanonical.class, String.class);\n\n        can = t.toCanonical();\n\n        assertEquals(\"java.util.EnumMap<com.fasterxml.jackson.databind.type.TestTypeFactory$EnumForCanonical,java.lang.String>\",\n\n                can);\n\n        assertEquals(t, tf.constructFromCanonical(can));\n\n\n\n        // [databind#2109]: also ReferenceTypes\n\n        t = tf.constructType(new TypeReference<AtomicReference<Long>>() { });\n\n        can = t.toCanonical();\n\n        assertEquals(\"java.util.concurrent.atomic.AtomicReference<java.lang.Long>\",\n\n                can);\n\n        assertEquals(t, tf.constructFromCanonical(can));\n\n\n\n        // [databind#1941]: allow \"raw\" types too\n\n        t = tf.constructFromCanonical(\"java.util.List\");\n\n        assertEquals(List.class, t.getRawClass());\n\n        assertEquals(CollectionType.class, t.getClass());\n\n        // 01-Mar-2018, tatu: not 100% should we expect type parameters here...\n\n        //    But currently we do NOT get any\n\n        /*\n\n        assertEquals(1, t.containedTypeCount());\n\n        assertEquals(Object.class, t.containedType(0).getRawClass());\n\n        */\n\n        assertEquals(Object.class, t.getContentType().getRawClass());\n\n        can = t.toCanonical();\n\n        assertEquals(\"java.util.List<java.lang.Object>\", can);\n\n        assertEquals(t, tf.constructFromCanonical(can));\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...rence<java.lang.Long[>]> but was:<...rence<java.lang.Long[]>\n\tat com.fasterxml.jackson.databind.type.TestTypeFactory.testCanonicalNames(TestTypeFactory.java:238)  assertEquals(\"java.util.concurrent.atomic.AtomicReference<java.lang.Long>\",                can);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n// !!! TODO: missing supertypes\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>'); // Add the missing closing angle bracket\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    if (_referencedType != null) {\n        sb.append('<');\n        sb.append(_referencedType.toCanonical());\n        sb.append('>');\n    }\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n// !!! TODO: missing supertypes\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>'); // Add the missing closing angle bracket\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    if (_referencedType != null) {\n        sb.append('<');\n        sb.append(_referencedType.toCanonical());\n        sb.append('>');\n    }\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>');\n    return sb.toString();\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\n// !!! TODO: missing supertypes\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    sb.append('<');\n    sb.append(_referencedType.toCanonical());\n    sb.append('>'); // Add the missing closing angle bracket\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprotected String buildCanonicalName()\n{\n    StringBuilder sb = new StringBuilder();\n    sb.append(_class.getName());\n    if (_referencedType != null) {\n        sb.append('<');\n        sb.append(_referencedType.toCanonical());\n        sb.append('>');\n    }\n    return sb.toString();\n}\n"
+                ]
+            ]
+        }
+    }
+}

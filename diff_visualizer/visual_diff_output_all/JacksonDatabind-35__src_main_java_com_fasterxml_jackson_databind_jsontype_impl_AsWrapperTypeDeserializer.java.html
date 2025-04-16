@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to369__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-35 - Buggy: src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-35 - Fixed: src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to369__0"></td><td class="diff_header" id="from369_86">86</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to369_86">86</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_87">87</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to369_87">87</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;first,&nbsp;sanity&nbsp;checks</td><td class="diff_next"></td><td class="diff_header" id="to369_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;first,&nbsp;sanity&nbsp;checks</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to369__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to369__1">n</a></td><td class="diff_header" id="to369_89">89</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t&nbsp;=&nbsp;p.getCurrentToken();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_sub">p.ge</span>t<span class="diff_chg">CurrentToken()&nbsp;!</span>=&nbsp;JsonToken.START_OBJECT)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to369_90">90</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t<span class="diff_chg">&nbsp;</span>=<span class="diff_add">=</span>&nbsp;JsonToken.START_OBJECT)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_90">90</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.wrongTokenException(p,&nbsp;JsonToken.START_OBJECT,</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_91">91</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"need&nbsp;JSON&nbsp;Object&nbsp;to&nbsp;contain&nbsp;As.WRAPPER_OBJECT&nbsp;type&nbsp;informat</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ion&nbsp;for&nbsp;class&nbsp;"+baseTypeName());</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_92">92</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;should&nbsp;always&nbsp;get&nbsp;field&nbsp;name,&nbsp;but&nbsp;just&nbsp;in&nbsp;case...</td><td class="diff_next"></td><td class="diff_header" id="to369_91">91</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;should&nbsp;always&nbsp;get&nbsp;field&nbsp;name,&nbsp;but&nbsp;just&nbsp;in&nbsp;case...</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.nextToken()&nbsp;!=&nbsp;JsonToken.FIELD_NAME)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to369_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.nextToken()&nbsp;!=&nbsp;JsonToken.FIELD_NAME)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.wrongTokenException(p,&nbsp;JsonToken.FIELD_NAME,</td><td class="diff_next"></td><td class="diff_header" id="to369_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.wrongTokenException(p,&nbsp;JsonToken.FIELD_NAME,</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to369__1"></td><td class="diff_header" id="from369_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"need&nbsp;JSON&nbsp;String&nbsp;that&nbsp;contains&nbsp;type&nbsp;id&nbsp;(for&nbsp;subtype&nbsp;of&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to369_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"need&nbsp;JSON&nbsp;String&nbsp;that&nbsp;contains&nbsp;type&nbsp;id&nbsp;(for&nbsp;subtype&nbsp;of&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"+baseTypeName()+")");</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"+baseTypeName()+")");</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to369_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to369__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to369__top">t</a></td><td class="diff_header" id="to369_96">96</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(t&nbsp;!=&nbsp;JsonToken.FIELD_NAME)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to369_97">97</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.wrongTokenException(p,&nbsp;JsonToken.START_OBJECT,</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to369_98">98</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"need&nbsp;JSON&nbsp;Object&nbsp;to&nbsp;contain&nbsp;As.WRAPPER_OBJECT&nbsp;type&nbsp;informat</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ion&nbsp;for&nbsp;class&nbsp;"+baseTypeName());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to369_99">99</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;String&nbsp;typeId&nbsp;=&nbsp;p.getText();</td><td class="diff_next"></td><td class="diff_header" id="to369_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;String&nbsp;typeId&nbsp;=&nbsp;p.getText();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonDeserializer&lt;Object&gt;&nbsp;deser&nbsp;=&nbsp;_findDeserializer(ctxt,&nbsp;typeId);</td><td class="diff_next"></td><td class="diff_header" id="to369_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonDeserializer&lt;Object&gt;&nbsp;deser&nbsp;=&nbsp;_findDeserializer(ctxt,&nbsp;typeId);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from369_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.nextToken();</td><td class="diff_next"></td><td class="diff_header" id="to369_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.nextToken();</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

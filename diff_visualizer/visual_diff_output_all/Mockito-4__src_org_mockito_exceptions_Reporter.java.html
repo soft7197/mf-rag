@@ -1,0 +1,78 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to704__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-4 - Buggy: src/org/mockito/exceptions/Reporter.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-4 - Fixed: src/org/mockito/exceptions/Reporter.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to704__0"></td><td class="diff_header" id="from704_421">421</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;NoInteractionsWanted(join(</td><td class="diff_next"></td><td class="diff_header" id="to704_421">421</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;NoInteractionsWanted(join(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_422">422</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"No&nbsp;interactions&nbsp;wanted&nbsp;here:",</td><td class="diff_next"></td><td class="diff_header" id="to704_422">422</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"No&nbsp;interactions&nbsp;wanted&nbsp;here:",</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_423">423</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;LocationImpl(),</td><td class="diff_next"></td><td class="diff_header" id="to704_423">423</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;LocationImpl(),</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to704__1">n</a></td><td class="diff_header" id="from704_424">424</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"But&nbsp;found&nbsp;this&nbsp;interaction&nbsp;on&nbsp;mock&nbsp;'"&nbsp;+&nbsp;undesired.getMock()&nbsp;+&nbsp;"</td><td class="diff_next"><a href="#difflib_chg_to704__1">n</a></td><td class="diff_header" id="to704_424">424</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"But&nbsp;found&nbsp;this&nbsp;interaction&nbsp;on&nbsp;mock&nbsp;'"&nbsp;+&nbsp;<span class="diff_add">safelyGetMockName(</span>undes</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">':",</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ired.getMock()<span class="diff_add">)</span>&nbsp;+&nbsp;"':",</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_425">425</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undesired.getLocation(),</td><td class="diff_next"></td><td class="diff_header" id="to704_425">425</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undesired.getLocation(),</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_426">426</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scenario</td><td class="diff_next"></td><td class="diff_header" id="to704_426">426</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scenario</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_427">427</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));</td><td class="diff_next"></td><td class="diff_header" id="to704_427">427</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to704__1"></td><td class="diff_header" id="from704_431">431</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;VerificationInOrderFailure(join(</td><td class="diff_next"></td><td class="diff_header" id="to704_431">431</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;VerificationInOrderFailure(join(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_432">432</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"No&nbsp;interactions&nbsp;wanted&nbsp;here:",</td><td class="diff_next"></td><td class="diff_header" id="to704_432">432</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"No&nbsp;interactions&nbsp;wanted&nbsp;here:",</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_433">433</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;LocationImpl(),</td><td class="diff_next"></td><td class="diff_header" id="to704_433">433</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;LocationImpl(),</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to704__2">n</a></td><td class="diff_header" id="from704_434">434</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"But&nbsp;found&nbsp;this&nbsp;interaction&nbsp;on&nbsp;mock&nbsp;'"&nbsp;+&nbsp;undesired.getMock()&nbsp;+&nbsp;"</td><td class="diff_next"><a href="#difflib_chg_to704__2">n</a></td><td class="diff_header" id="to704_434">434</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"But&nbsp;found&nbsp;this&nbsp;interaction&nbsp;on&nbsp;mock&nbsp;'"&nbsp;+&nbsp;<span class="diff_add">safelyGetMockName(</span>undes</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">':",</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ired.getMock()<span class="diff_add">)</span>&nbsp;+&nbsp;"':",</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_435">435</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undesired.getLocation()</td><td class="diff_next"></td><td class="diff_header" id="to704_435">435</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undesired.getLocation()</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_436">436</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));</td><td class="diff_next"></td><td class="diff_header" id="to704_436">436</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_437">437</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to704_437">437</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to704__2"></td><td class="diff_header" id="from704_674">674</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to704_674">674</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_675">675</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to704_675">675</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_676">676</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;exceptionCauseMessageIfAvailable(Exception&nbsp;details)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to704_676">676</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;exceptionCauseMessageIfAvailable(Exception&nbsp;details)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to704__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to704__top">t</a></td><td class="diff_header" id="to704_677">677</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(details.getCause()&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to704_678">678</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;details.getMessage();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to704_679">679</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_677">677</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;details.getCause().getMessage();</td><td class="diff_next"></td><td class="diff_header" id="to704_680">680</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;details.getCause().getMessage();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_678">678</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to704_681">681</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from704_679">679</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to704_682">682</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

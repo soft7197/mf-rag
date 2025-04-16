@@ -1,0 +1,74 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to628__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-6 - Buggy: src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-6 - Fixed: src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to628__0"></td><td class="diff_header" id="from628_211">211</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to628_211">211</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_212">212</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to628_212">212</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_213">213</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PointValuePair&nbsp;current&nbsp;=&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to628_213">213</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PointValuePair&nbsp;current&nbsp;=&nbsp;null;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to628__1"><a href="#difflib_chg_to628__1">n</a></td><td class="diff_header" id="from628_214">214</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;iter&nbsp;=&nbsp;0;</span></td><td class="diff_next"><a href="#difflib_chg_to628__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_215">215</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;maxEval&nbsp;=&nbsp;getMaxEvaluations();</td><td class="diff_next"></td><td class="diff_header" id="to628_214">214</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;maxEval&nbsp;=&nbsp;getMaxEvaluations();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to628_215">215</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to628__2">n</a></td><td class="diff_header" id="from628_217">217</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++iter;</span></td><td class="diff_next"><a href="#difflib_chg_to628__2">n</a></td><td class="diff_header" id="to628_216">216</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incrementIterationCount();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_218">218</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to628_217">217</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;objective&nbsp;=&nbsp;computeObjectiveValue(point);</td><td class="diff_next"></td><td class="diff_header" id="to628_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;objective&nbsp;=&nbsp;computeObjectiveValue(point);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to628__2"></td><td class="diff_header" id="from628_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PointValuePair&nbsp;previous&nbsp;=&nbsp;current;</td><td class="diff_next"></td><td class="diff_header" id="to628_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PointValuePair&nbsp;previous&nbsp;=&nbsp;current;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;new&nbsp;PointValuePair(point,&nbsp;objective);</td><td class="diff_next"></td><td class="diff_header" id="to628_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;new&nbsp;PointValuePair(point,&nbsp;objective);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_222">222</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(previous&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to628_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(previous&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to628__3">n</a></td><td class="diff_header" id="from628_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(checker.converged(<span class="diff_chg">i</span>ter,&nbsp;previous,&nbsp;current))&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to628__3">n</a></td><td class="diff_header" id="to628_222">222</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(checker.converged(<span class="diff_chg">getI</span>ter<span class="diff_add">ations()</span>,&nbsp;previous,&nbsp;current))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;have&nbsp;found&nbsp;an&nbsp;optimum.</td><td class="diff_next"></td><td class="diff_header" id="to628_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;have&nbsp;found&nbsp;an&nbsp;optimum.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_225">225</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;current;</td><td class="diff_next"></td><td class="diff_header" id="to628_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;current;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_226">226</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to628_225">225</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to628__3"></td><td class="diff_header" id="from628_274">274</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;steepestDescent&nbsp;=&nbsp;newSteepestDescent;</td><td class="diff_next"></td><td class="diff_header" id="to628_273">273</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;steepestDescent&nbsp;=&nbsp;newSteepestDescent;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_275">275</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to628_274">274</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_276">276</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Compute&nbsp;conjugate&nbsp;search&nbsp;direction.</td><td class="diff_next"></td><td class="diff_header" id="to628_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Compute&nbsp;conjugate&nbsp;search&nbsp;direction.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to628__top">t</a></td><td class="diff_header" id="from628_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_chg">i</span>ter&nbsp;%&nbsp;n&nbsp;==&nbsp;0&nbsp;||</td><td class="diff_next"><a href="#difflib_chg_to628__top">t</a></td><td class="diff_header" id="to628_276">276</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_chg">getI</span>ter<span class="diff_add">ations()</span>&nbsp;%&nbsp;n&nbsp;==&nbsp;0&nbsp;||</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beta&nbsp;&lt;&nbsp;0)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to628_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beta&nbsp;&lt;&nbsp;0)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Break&nbsp;conjugation:&nbsp;reset&nbsp;search&nbsp;direction.</td><td class="diff_next"></td><td class="diff_header" id="to628_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Break&nbsp;conjugation:&nbsp;reset&nbsp;search&nbsp;direction.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from628_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;searchDirection&nbsp;=&nbsp;steepestDescent.clone();</td><td class="diff_next"></td><td class="diff_header" id="to628_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;searchDirection&nbsp;=&nbsp;steepestDescent.clone();</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

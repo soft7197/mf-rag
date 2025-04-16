@@ -1,0 +1,74 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to109__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-145 - Buggy: src/com/google/javascript/jscomp/CodeGenerator.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-145 - Fixed: src/com/google/javascript/jscomp/CodeGenerator.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to109__0"></td><td class="diff_header" id="from109_706">706</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;labels).</td><td class="diff_next"></td><td class="diff_header" id="to109_706">706</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;labels).</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_707">707</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to109_707">707</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_708">708</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;boolean&nbsp;isOneExactlyFunctionOrDo(Node&nbsp;n)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to109_708">708</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;boolean&nbsp;isOneExactlyFunctionOrDo(Node&nbsp;n)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to109__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to109__1">n</a></td><td class="diff_header" id="to109_709">709</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.getType()&nbsp;==&nbsp;Token.LABEL)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_710">710</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;labeledStatement&nbsp;=&nbsp;n.getLastChild();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_711">711</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(labeledStatement.getType()&nbsp;!=&nbsp;Token.BLOCK)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_712">712</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isOneExactlyFunctionOrDo(labeledStatement);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_713">713</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to109__1"></td><td class="diff_header" id="from109_709">709</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;For&nbsp;labels&nbsp;with&nbsp;block&nbsp;children,&nbsp;we&nbsp;need&nbsp;to&nbsp;ensure&nbsp;that&nbsp;a</td><td class="diff_next"></td><td class="diff_header" id="to109_714">714</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;For&nbsp;labels&nbsp;with&nbsp;block&nbsp;children,&nbsp;we&nbsp;need&nbsp;to&nbsp;ensure&nbsp;that&nbsp;a</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_710">710</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;labeled&nbsp;FUNCTION&nbsp;or&nbsp;DO&nbsp;isn't&nbsp;generated&nbsp;when&nbsp;extraneous&nbsp;BLOCKs&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to109_715">715</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;labeled&nbsp;FUNCTION&nbsp;or&nbsp;DO&nbsp;isn't&nbsp;generated&nbsp;when&nbsp;extraneous&nbsp;BLOCKs&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_711">711</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;are&nbsp;skipped.&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to109_716">716</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;are&nbsp;skipped.&nbsp;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to109__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to109__2">n</a></td><td class="diff_header" id="to109_717">717</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(getNonEmptyChildCount(n,&nbsp;2)&nbsp;==&nbsp;1)&nbsp;{&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_718">718</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isOneExactlyFunctionOrDo(getFirstNonEmptyChild(n));</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to109__2"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_719">719</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_712">712</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Either&nbsp;a&nbsp;empty&nbsp;statement&nbsp;or&nbsp;an&nbsp;block&nbsp;with&nbsp;more&nbsp;than&nbsp;one&nbsp;child,</td><td class="diff_next"></td><td class="diff_header" id="to109_720">720</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Either&nbsp;a&nbsp;empty&nbsp;statement&nbsp;or&nbsp;an&nbsp;block&nbsp;with&nbsp;more&nbsp;than&nbsp;one&nbsp;child,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_713">713</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;way&nbsp;it&nbsp;isn't&nbsp;a&nbsp;FUNCTION&nbsp;or&nbsp;DO.</td><td class="diff_next"></td><td class="diff_header" id="to109_721">721</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;way&nbsp;it&nbsp;isn't&nbsp;a&nbsp;FUNCTION&nbsp;or&nbsp;DO.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to109__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to109__3">n</a></td><td class="diff_header" id="to109_722">722</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_723">723</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to109__3"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_724">724</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_725">725</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_714">714</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(n.getType()&nbsp;==&nbsp;Token.FUNCTION&nbsp;||&nbsp;n.getType()&nbsp;==&nbsp;Token.DO);</td><td class="diff_next"></td><td class="diff_header" id="to109_726">726</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(n.getType()&nbsp;==&nbsp;Token.FUNCTION&nbsp;||&nbsp;n.getType()&nbsp;==&nbsp;Token.DO);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to109__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to109__top">t</a></td><td class="diff_header" id="to109_727">727</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_715">715</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to109_728">728</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_716">716</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to109_729">729</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from109_717">717</td><td nowrap="nowrap">&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to109_730">730</td><td nowrap="nowrap">&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

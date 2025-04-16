@@ -1,0 +1,77 @@
+{
+    "Jsoup-43": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element.equals(search))\n            return i;\n    }\n    return null;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testElementSiblingIndexSameContent() {\n\n        Document doc = Jsoup.parse(\"<div><p>One</p>...<p>One</p>...<p>One</p>\");\n\n        Elements ps = doc.select(\"p\");\n\n        assertTrue(0 == ps.get(0).elementSiblingIndex());\n\n        assertTrue(1 == ps.get(1).elementSiblingIndex());\n\n        assertTrue(2 == ps.get(2).elementSiblingIndex());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.jsoup.nodes.ElementTest.testElementSiblingIndexSameContent(ElementTest.java:156)  assertTrue(1 == ps.get(1).elementSiblingIndex());\n \n#Test method 2:\n```java\n    @Test public void testGetSiblingsWithDuplicateContent() {\n\n        Document doc = Jsoup.parse(\"<div><p>Hello<p id=1>there<p>this<p>this<p>is<p>an<p id=last>element</div>\");\n\n        Element p = doc.getElementById(\"1\");\n\n        assertEquals(\"there\", p.text());\n\n        assertEquals(\"Hello\", p.previousElementSibling().text());\n\n        assertEquals(\"this\", p.nextElementSibling().text());\n\n        assertEquals(\"this\", p.nextElementSibling().nextElementSibling().text());\n\n        assertEquals(\"is\", p.nextElementSibling().nextElementSibling().nextElementSibling().text());\n\n        assertEquals(\"Hello\", p.firstElementSibling().text());\n\n        assertEquals(\"element\", p.lastElementSibling().text());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<[]is> but was:<[th]is>\n\tat org.jsoup.nodes.ElementTest.testGetSiblingsWithDuplicateContent(ElementTest.java:127)  assertEquals(\"is\", p.nextElementSibling().nextElementSibling().nextElementSibling().text());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Gets the index of the given element in the list\n* @return the index of the element in the list, or -1 if not found\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality for Element objects\n            return i;\n    }\n    return -1; // Return -1 if the element is not found\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality to match the exact element\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality check\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search)\n            return index;\n        index++;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search) {\n            return index;\n        }\n        index++;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality instead of equals()\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search) // use reference equality instead of equals\n            return index;\n        index++;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality check\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Changed from equals to reference comparison\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element.equals(search))\n            return index;\n        index++;\n    }\n    return null;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* Gets the index of the given element in the list\n* @return the index of the element in the list, or -1 if not found\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality for Element objects\n            return i;\n    }\n    return -1; // Return -1 if the element is not found\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality to match the exact element\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality check\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search)\n            return index;\n        index++;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search) {\n            return index;\n        }\n        index++;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality instead of equals()\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search) // use reference equality instead of equals\n            return index;\n        index++;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality check\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Changed from equals to reference comparison\n            return i;\n    }\n    return null;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    for (int i = 0; i < elements.size(); i++) {\n        E element = elements.get(i);\n        if (element == search) // Use reference equality to match the exact element\n            return i;\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the last element sibling of this element\n* @return the last sibling that is an element (aka the parent's last element child)\n*/\nprivate static <E extends Element> Integer indexInList(Element search, List<E> elements) {\n    Validate.notNull(search);\n    Validate.notNull(elements);\n\n    int index = 0;\n    for (E element : elements) {\n        if (element == search)\n            return index;\n        index++;\n    }\n    return null;\n}\n"
+                ]
+            ]
+        }
+    }
+}

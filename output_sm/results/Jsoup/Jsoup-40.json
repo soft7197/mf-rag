@@ -1,0 +1,83 @@
+{
+    "Jsoup-40": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    Validate.notEmpty(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void constructorValidationOkWithBlankName() {\n\n        DocumentType fail = new DocumentType(\"\",\"\", \"\", \"\");\n\n    }\n\n```\n#Error message: java.lang.IllegalArgumentException: String must not be empty\n\tat org.jsoup.helper.Validate.notEmpty(Validate.java:92)  throw new IllegalArgumentException(\"String must not be empty\");\n\tat org.jsoup.nodes.DocumentType.<init>(DocumentType.java:22)  Validate.notEmpty(name);\n\tat org.jsoup.nodes.DocumentTypeTest.constructorValidationOkWithBlankName(DocumentTypeTest.java:15)  DocumentType fail = new DocumentType(\"\",\"\", \"\", \"\");\n \n#Test method 2:\n```java\n    @Test public void handlesInvalidDoctypes() {\n\n        // would previously throw invalid name exception on empty doctype\n\n        Document doc = Jsoup.parse(\"<!DOCTYPE>\");\n\n        assertEquals(\n\n                \"<!DOCTYPE> <html> <head></head> <body></body> </html>\",\n\n                StringUtil.normaliseWhitespace(doc.outerHtml()));\n\n\n\n        doc = Jsoup.parse(\"<!DOCTYPE><html><p>Foo</p></html>\");\n\n        assertEquals(\n\n                \"<!DOCTYPE> <html> <head></head> <body> <p>Foo</p> </body> </html>\",\n\n                StringUtil.normaliseWhitespace(doc.outerHtml()));\n\n\n\n        doc = Jsoup.parse(\"<!DOCTYPE \\u0000>\");\n\n        assertEquals(\n\n                \"<!DOCTYPE \ufffd> <html> <head></head> <body></body> </html>\",\n\n                StringUtil.normaliseWhitespace(doc.outerHtml()));\n\n    }\n\n```\n#Error message: java.lang.IllegalArgumentException: String must not be empty\n\tat org.jsoup.helper.Validate.notEmpty(Validate.java:92)  throw new IllegalArgumentException(\"String must not be empty\");\n\tat org.jsoup.nodes.DocumentType.<init>(DocumentType.java:22)  Validate.notEmpty(name);\n\tat org.jsoup.parser.HtmlTreeBuilder.process(HtmlTreeBuilder.java:111)  return this.state.process(token, this);\n\tat org.jsoup.parser.TreeBuilder.runParser(TreeBuilder.java:48)  process(token);\n\tat org.jsoup.parser.TreeBuilder.parse(TreeBuilder.java:41)  runParser();\n\tat org.jsoup.parser.HtmlTreeBuilder.parse(HtmlTreeBuilder.java:54)  return super.parse(input, baseUri, errors);\n\tat org.jsoup.parser.Parser.parse(Parser.java:90)  return treeBuilder.parse(html, baseUri, ParseErrorList.noTracking());\n\tat org.jsoup.Jsoup.parse(Jsoup.java:58)  return Parser.parse(html, \"\");\n\tat org.jsoup.parser.HtmlParserTest.handlesInvalidDoctypes(HtmlParserTest.java:812)  Document doc = Jsoup.parse(\"<!DOCTYPE>\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow empty names, but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow name to be empty, but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Validate.notEmpty(name); // Removed the validation to allow empty names\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow empty name, but not null\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    \n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow name to be empty but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    \n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    \n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow empty names, but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow name to be empty, but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Validate.notEmpty(name); // Removed the validation to allow empty names\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow empty name, but not null\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    \n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow name to be empty but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    \n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    \n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Allow empty names, but not null\n    Validate.notNull(name);\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    if (name == null) {\n        throw new IllegalArgumentException(\"Name must not be null\");\n    }\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ],
+                [
+                    "\n/**\n* Create a new doctype element.\n* @param name the doctype's name\n* @param publicId the doctype's public ID\n* @param systemId the doctype's system ID\n* @param baseUri the doctype's base URI\n*/\npublic DocumentType(String name, String publicId, String systemId, String baseUri) {\n    super(baseUri);\n\n    // Validate.notEmpty(name); // Removed the validation to allow empty names\n    attr(\"name\", name);\n    attr(\"publicId\", publicId);\n    attr(\"systemId\", systemId);\n}\n"
+                ]
+            ]
+        }
+    }
+}

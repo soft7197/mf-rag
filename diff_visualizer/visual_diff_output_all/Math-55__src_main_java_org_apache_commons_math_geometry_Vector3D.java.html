@@ -1,0 +1,90 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to620__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-55 - Buggy: src/main/java/org/apache/commons/math/geometry/Vector3D.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-55 - Fixed: src/main/java/org/apache/commons/math/geometry/Vector3D.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to620__0"></td><td class="diff_header" id="from620_456">456</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to620_456">456</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_457">457</td><td nowrap="nowrap">&nbsp;&nbsp;public&nbsp;static&nbsp;Vector3D&nbsp;crossProduct(final&nbsp;Vector3D&nbsp;v1,&nbsp;final&nbsp;Vector3D&nbsp;v2)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to620_457">457</td><td nowrap="nowrap">&nbsp;&nbsp;public&nbsp;static&nbsp;Vector3D&nbsp;crossProduct(final&nbsp;Vector3D&nbsp;v1,&nbsp;final&nbsp;Vector3D&nbsp;v2)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_458">458</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_458">458</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to620__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to620__1">n</a></td><td class="diff_header" id="to620_459">459</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;n1&nbsp;=&nbsp;v1.getNormSq();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_460">460</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;n2&nbsp;=&nbsp;v2.getNormSq();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_461">461</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((n1&nbsp;*&nbsp;n2)&nbsp;&lt;&nbsp;MathUtils.SAFE_MIN)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_462">462</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;ZERO;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_463">463</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to620__1"></td><td class="diff_header" id="from620_459">459</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_464">464</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_460">460</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;rescale&nbsp;both&nbsp;vectors&nbsp;without&nbsp;losing&nbsp;precision,</td><td class="diff_next"></td><td class="diff_header" id="to620_465">465</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;rescale&nbsp;both&nbsp;vectors&nbsp;without&nbsp;losing&nbsp;precision,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_461">461</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;to&nbsp;ensure&nbsp;their&nbsp;norm&nbsp;are&nbsp;the&nbsp;same&nbsp;order&nbsp;of&nbsp;magnitude</td><td class="diff_next"></td><td class="diff_header" id="to620_466">466</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;to&nbsp;ensure&nbsp;their&nbsp;norm&nbsp;are&nbsp;the&nbsp;same&nbsp;order&nbsp;of&nbsp;magnitude</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to620__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to620__2">n</a></td><td class="diff_header" id="to620_467">467</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;deltaExp&nbsp;=&nbsp;(FastMath.getExponent(n1)&nbsp;-&nbsp;FastMath.getExponent(n2))</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;/&nbsp;4;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_468">468</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;x1&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.scalb(v1.x,&nbsp;-deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_469">469</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;y1&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.scalb(v1.y,&nbsp;-deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_470">470</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;z1&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.scalb(v1.z,&nbsp;-deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_471">471</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;x2&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.scalb(v2.x,&nbsp;&nbsp;deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_472">472</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;y2&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.scalb(v2.y,&nbsp;&nbsp;deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_473">473</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;z2&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.scalb(v2.z,&nbsp;&nbsp;deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_462">462</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_474">474</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_463">463</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;reduce&nbsp;cancellation&nbsp;errors&nbsp;by&nbsp;preconditioning,</td><td class="diff_next"></td><td class="diff_header" id="to620_475">475</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;reduce&nbsp;cancellation&nbsp;errors&nbsp;by&nbsp;preconditioning,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_464">464</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;replace&nbsp;v1&nbsp;by&nbsp;v3&nbsp;=&nbsp;v1&nbsp;-&nbsp;rho&nbsp;v2&nbsp;with&nbsp;rho&nbsp;chosen&nbsp;in&nbsp;order&nbsp;to&nbsp;compute</td><td class="diff_next"></td><td class="diff_header" id="to620_476">476</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;replace&nbsp;v1&nbsp;by&nbsp;v3&nbsp;=&nbsp;v1&nbsp;-&nbsp;rho&nbsp;v2&nbsp;with&nbsp;rho&nbsp;chosen&nbsp;in&nbsp;order&nbsp;to&nbsp;compute</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to620__2"></td><td class="diff_header" id="from620_467">467</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;available&nbsp;at&nbsp;http://www.cs.berkeley.edu/~wkahan/MathH110/Cross.pdf</td><td class="diff_next"></td><td class="diff_header" id="to620_479">479</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;available&nbsp;at&nbsp;http://www.cs.berkeley.edu/~wkahan/MathH110/Cross.pdf</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_468">468</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_480">480</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_469">469</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;compute&nbsp;rho&nbsp;as&nbsp;an&nbsp;8&nbsp;bits&nbsp;approximation&nbsp;of&nbsp;v1.v2&nbsp;/&nbsp;v2.v2</td><td class="diff_next"></td><td class="diff_header" id="to620_481">481</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;compute&nbsp;rho&nbsp;as&nbsp;an&nbsp;8&nbsp;bits&nbsp;approximation&nbsp;of&nbsp;v1.v2&nbsp;/&nbsp;v2.v2</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to620__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to620__3">n</a></td><td class="diff_header" id="to620_482">482</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;ratio&nbsp;=&nbsp;(x1&nbsp;*&nbsp;x2&nbsp;+&nbsp;y1&nbsp;*&nbsp;y2&nbsp;+&nbsp;z1&nbsp;*&nbsp;z2)&nbsp;/&nbsp;FastMath.scalb(n2,&nbsp;2&nbsp;</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to620__3"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">*&nbsp;deltaExp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_483">483</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;rho&nbsp;&nbsp;&nbsp;=&nbsp;FastMath.rint(256&nbsp;*&nbsp;ratio)&nbsp;/&nbsp;256;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_470">470</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_484">484</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to620__4">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to620__4">n</a></td><td class="diff_header" id="to620_485">485</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;x3&nbsp;=&nbsp;x1&nbsp;-&nbsp;rho&nbsp;*&nbsp;x2;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_486">486</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;y3&nbsp;=&nbsp;y1&nbsp;-&nbsp;rho&nbsp;*&nbsp;y2;</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to620__4"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_487">487</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;z3&nbsp;=&nbsp;z1&nbsp;-&nbsp;rho&nbsp;*&nbsp;z2;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_471">471</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_488">488</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_472">472</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;compute&nbsp;cross&nbsp;product&nbsp;from&nbsp;v3&nbsp;and&nbsp;v2&nbsp;instead&nbsp;of&nbsp;v1&nbsp;and&nbsp;v2</td><td class="diff_next"></td><td class="diff_header" id="to620_489">489</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;compute&nbsp;cross&nbsp;product&nbsp;from&nbsp;v3&nbsp;and&nbsp;v2&nbsp;instead&nbsp;of&nbsp;v1&nbsp;and&nbsp;v2</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to620__top">t</a></td><td class="diff_header" id="from620_473">473</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Vector3D(v1.y&nbsp;*&nbsp;v2.z&nbsp;-&nbsp;v1.z&nbsp;*&nbsp;v2.y,&nbsp;v1.z&nbsp;*&nbsp;v2.x&nbsp;-&nbsp;v1.x&nbsp;*&nbsp;v2.z,&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to620__top">t</a></td><td class="diff_header" id="to620_490">490</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Vector3D(y3&nbsp;*&nbsp;z2&nbsp;-&nbsp;z3&nbsp;*&nbsp;y2,&nbsp;z3&nbsp;*&nbsp;x2&nbsp;-&nbsp;x3&nbsp;*&nbsp;z2,&nbsp;x3&nbsp;*&nbsp;y2&nbsp;-&nbsp;y3&nbsp;*&nbsp;x</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">v1.x&nbsp;*&nbsp;v2.y&nbsp;-&nbsp;v1.y&nbsp;*&nbsp;v2.x);</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">2);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_474">474</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_491">491</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_475">475</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to620_492">492</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from620_476">476</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to620_493">493</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+{
+    "Jsoup-51": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testSupportsNonAsciiTags() {\n\n        String body = \"<\u9032\u6357\u63a8\u79fb\u30b0\u30e9\u30d5>Yes</\u9032\u6357\u63a8\u79fb\u30b0\u30e9\u30d5>\";\n\n        Document doc = Jsoup.parse(body);\n\n        Elements els = doc.select(\"\u9032\u6357\u63a8\u79fb\u30b0\u30e9\u30d5\");\n\n        assertEquals(\"Yes\", els.text());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<[Yes]> but was:<[]>\n\tat org.jsoup.parser.HtmlParserTest.testSupportsNonAsciiTags(HtmlParserTest.java:891)  assertEquals(\"Yes\", els.text());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n// '\\t', '\\n', '\\r', '\\f', ' ', '/', '>', nullChar\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return Character.isLetter(c);\n}\n"
+                ],
+                [
+                    "\nboolean matchesLetter() {\n    if (isEmpty())\n        return false;\n    char c = input[pos];\n    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || Character.isLetter(c);\n}\n"
+                ]
+            ]
+        }
+    }
+}

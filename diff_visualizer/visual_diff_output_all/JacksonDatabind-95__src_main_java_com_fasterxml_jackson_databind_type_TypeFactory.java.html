@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to420__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-95 - Buggy: src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-95 - Fixed: src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to420__0"></td><td class="diff_header" id="from420_352">352</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;also:&nbsp;if&nbsp;we&nbsp;start&nbsp;from&nbsp;untyped,&nbsp;not&nbsp;much&nbsp;to&nbsp;save</td><td class="diff_next"></td><td class="diff_header" id="to420_352">352</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;also:&nbsp;if&nbsp;we&nbsp;start&nbsp;from&nbsp;untyped,&nbsp;not&nbsp;much&nbsp;to&nbsp;save</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_353">353</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do&nbsp;{&nbsp;//&nbsp;bogus&nbsp;loop&nbsp;to&nbsp;be&nbsp;able&nbsp;to&nbsp;break</td><td class="diff_next"></td><td class="diff_header" id="to420_353">353</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do&nbsp;{&nbsp;//&nbsp;bogus&nbsp;loop&nbsp;to&nbsp;be&nbsp;able&nbsp;to&nbsp;break</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_354">354</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(rawBase&nbsp;==&nbsp;Object.class)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to420_354">354</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(rawBase&nbsp;==&nbsp;Object.class)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to420__1">n</a></td><td class="diff_header" id="from420_355">355</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newType&nbsp;=&nbsp;_fromClass(null,&nbsp;subclass,&nbsp;T<span class="diff_chg">ype</span>B<span class="diff_chg">indings.emptyBindings(</span></td><td class="diff_next"><a href="#difflib_chg_to420__1">n</a></td><td class="diff_header" id="to420_355">355</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newType&nbsp;=&nbsp;_fromClass(null,&nbsp;subclass,&nbsp;<span class="diff_add">EMP</span>T<span class="diff_chg">Y_</span>B<span class="diff_chg">INDINGS</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">)</span>);</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td><td class="diff_next"></td><td class="diff_header" id="to420_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_357">357</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to420_357">357</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_358">358</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!rawBase.isAssignableFrom(subclass))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to420_358">358</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!rawBase.isAssignableFrom(subclass))&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to420__1"></td><td class="diff_header" id="from420_363">363</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to420_363">363</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_364">364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;(1)&nbsp;Original&nbsp;target&nbsp;type&nbsp;has&nbsp;no&nbsp;generics&nbsp;--&nbsp;just&nbsp;resolve&nbsp;subtype</td><td class="diff_next"></td><td class="diff_header" id="to420_364">364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;(1)&nbsp;Original&nbsp;target&nbsp;type&nbsp;has&nbsp;no&nbsp;generics&nbsp;--&nbsp;just&nbsp;resolve&nbsp;subtype</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_365">365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(baseType.getBindings().isEmpty())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to420_365">365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(baseType.getBindings().isEmpty())&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to420__2">n</a></td><td class="diff_header" id="from420_366">366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newType&nbsp;=&nbsp;_fromClass(null,&nbsp;subclass,&nbsp;T<span class="diff_chg">ype</span>B<span class="diff_chg">indings.emptyBindings(</span></td><td class="diff_next"><a href="#difflib_chg_to420__2">n</a></td><td class="diff_header" id="to420_366">366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newType&nbsp;=&nbsp;_fromClass(null,&nbsp;subclass,&nbsp;<span class="diff_add">EMP</span>T<span class="diff_chg">Y_</span>B<span class="diff_chg">INDINGS</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">)</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_367">367</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td><td class="diff_next"></td><td class="diff_header" id="to420_367">367</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to420_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;(2)&nbsp;A&nbsp;small&nbsp;set&nbsp;of&nbsp;"well-known"&nbsp;List/Map&nbsp;subtypes&nbsp;where&nbsp;can&nbsp;take&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to420_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;(2)&nbsp;A&nbsp;small&nbsp;set&nbsp;of&nbsp;"well-known"&nbsp;List/Map&nbsp;subtypes&nbsp;where&nbsp;can&nbsp;take&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;short-cut</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;short-cut</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to420__2"></td><td class="diff_header" id="from420_893">893</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;len&nbsp;=&nbsp;parameterClasses.length;</td><td class="diff_next"></td><td class="diff_header" id="to420_893">893</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;len&nbsp;=&nbsp;parameterClasses.length;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_894">894</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaType[]&nbsp;pt&nbsp;=&nbsp;new&nbsp;JavaType[len];</td><td class="diff_next"></td><td class="diff_header" id="to420_894">894</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaType[]&nbsp;pt&nbsp;=&nbsp;new&nbsp;JavaType[len];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_895">895</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;len;&nbsp;++i)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to420_895">895</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;len;&nbsp;++i)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to420__top">t</a></td><td class="diff_header" id="from420_896">896</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt[i]&nbsp;=&nbsp;_fromClass(null,&nbsp;parameterClasses[i],&nbsp;<span class="diff_chg">null</span>);</td><td class="diff_next"><a href="#difflib_chg_to420__top">t</a></td><td class="diff_header" id="to420_896">896</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pt[i]&nbsp;=&nbsp;_fromClass(null,&nbsp;parameterClasses[i],&nbsp;<span class="diff_chg">EMPTY_BINDINGS</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_897">897</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to420_897">897</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_898">898</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;constructParametricType(parametrized,&nbsp;pt);</td><td class="diff_next"></td><td class="diff_header" id="to420_898">898</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;constructParametricType(parametrized,&nbsp;pt);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from420_899">899</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to420_899">899</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

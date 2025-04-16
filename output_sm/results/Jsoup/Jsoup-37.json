@@ -1,0 +1,77 @@
+{
+    "Jsoup-37": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Retrieves the element's inner HTML. E.g. on a {@code <div>} with one empty {@code <p>}, would return\n* {@code <p></p>}. (Whereas {@link #outerHtml()} would return {@code <div><p></p></div>}.)\n*\n* @return String of HTML.\n* @see #outerHtml()\n*/\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString().trim();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testNotPretty() {\n\n        Document doc = Jsoup.parse(\"<div>   \\n<p>Hello\\n there\\n</p></div>\");\n\n        doc.outputSettings().prettyPrint(false);\n\n        assertEquals(\"<html><head></head><body><div>   \\n<p>Hello\\n there\\n</p></div></body></html>\", doc.html());\n\n\n\n        Element div = doc.select(\"div\").first();\n\n        assertEquals(\"   \\n<p>Hello\\n there\\n</p>\", div.html());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<[   \n]<p>Hello\n there\n</p>> but was:<[]<p>Hello\n there\n</p>>\n\tat org.jsoup.nodes.ElementTest.testNotPretty(ElementTest.java:247)  assertEquals(\"   \\n<p>Hello\\n there\\n</p>\", div.html());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes()) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node node : childNodes()) {\n        node.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes()) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node node : childNodes()) {\n        node.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes()) {\n        if (child instanceof TextNode) {\n            accum.append(((TextNode) child).getWholeText());\n        } else if (child instanceof Element) {\n            ((Element) child).outerHtml(accum);\n        }\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    for (Node child : childNodes) {\n        child.outerHtml(accum);\n    }\n    return accum.toString();\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Retrieves the element's inner HTML. E.g. on a {@code <div>} with one empty {@code <p>}, would return\n* {@code <p></p>}. (Whereas {@link #outerHtml()} would return {@code <div><p></p></div>}.)\n*\n* @return String of HTML.\n* @see #outerHtml()\n*/\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString().trim();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testNotPretty() {\n\n        Document doc = Jsoup.parse(\"<div>   \\n<p>Hello\\n there\\n</p></div>\");\n\n        doc.outputSettings().prettyPrint(false);\n\n        assertEquals(\"<html><head></head><body><div>   \\n<p>Hello\\n there\\n</p></div></body></html>\", doc.html());\n\n\n\n        Element div = doc.select(\"div\").first();\n\n        assertEquals(\"   \\n<p>Hello\\n there\\n</p>\", div.html());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<[   \n]<p>Hello\n there\n</p>> but was:<[]<p>Hello\n there\n</p>>\n\tat org.jsoup.nodes.ElementTest.testNotPretty(ElementTest.java:247)  assertEquals(\"   \\n<p>Hello\\n there\\n</p>\", div.html());\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic String ownText() { StringBuilder sb = new StringBuilder(); ownText(sb); return sb.toString().trim(); }\n```\n\n            \n```java\npublic String outerHtml() { StringBuilder accum = new StringBuilder(128); outerHtml(accum); return accum.toString(); }\n```\n\n            \n```java\npublic Set<Entry<String, String>> entrySet() { return new EntrySet(); }\n```\n\n            \n```java\npublic static Parser xmlParser() { return new Parser(new XmlTreeBuilder()); }\n```\n\n            \n```java\npublic String toString() { return String.format(\\\":prev%s\\\", evaluator); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString(); // removed the trim() call\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString(); // Removing the .trim() call\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();  // Removed trim() to preserve whitespace\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ],
+                [
+                    "\npublic String html() {\n    StringBuilder accum = new StringBuilder();\n    html(accum);\n    return accum.toString();\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

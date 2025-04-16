@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to471__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-62 - Buggy: src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-62 - Fixed: src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to471__0"></td><td class="diff_header" id="from471_761">761</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to471_761">761</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from471_762">762</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to471_762">762</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from471_763">763</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;anyOtherEndTag(Token&nbsp;t,&nbsp;HtmlTreeBuilder&nbsp;tb)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to471_763">763</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;anyOtherEndTag(Token&nbsp;t,&nbsp;HtmlTreeBuilder&nbsp;tb)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to471__top">t</a></td><td class="diff_header" id="from471_764">764</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;t.asEndTag().normalName();</span></td><td class="diff_next"><a href="#difflib_chg_to471__top">t</a></td><td class="diff_header" id="to471_764">764</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;t.asEndTag().name();&nbsp;//&nbsp;matches&nbsp;with&nbsp;case&nbsp;sensitivity&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">if&nbsp;enabled</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from471_765">765</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;Element&gt;&nbsp;stack&nbsp;=&nbsp;tb.getStack();</td><td class="diff_next"></td><td class="diff_header" id="to471_765">765</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;Element&gt;&nbsp;stack&nbsp;=&nbsp;tb.getStack();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from471_766">766</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;pos&nbsp;=&nbsp;stack.size()&nbsp;-1;&nbsp;pos&nbsp;&gt;=&nbsp;0;&nbsp;pos--)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to471_766">766</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;pos&nbsp;=&nbsp;stack.size()&nbsp;-1;&nbsp;pos&nbsp;&gt;=&nbsp;0;&nbsp;pos--)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from471_767">767</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;node&nbsp;=&nbsp;stack.get(pos);</td><td class="diff_next"></td><td class="diff_header" id="to471_767">767</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;node&nbsp;=&nbsp;stack.get(pos);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to100__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-138 - Buggy: src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-138 - Fixed: src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to100__0"></td><td class="diff_header" id="from100_205">205</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;param&nbsp;=&nbsp;condition.getLastChild();</td><td class="diff_next"></td><td class="diff_header" id="to100_205">205</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;param&nbsp;=&nbsp;condition.getLastChild();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(callee.getType()&nbsp;==&nbsp;GETPROP&nbsp;&amp;&amp;&nbsp;param.isQualifiedName())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to100_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(callee.getType()&nbsp;==&nbsp;GETPROP&nbsp;&amp;&amp;&nbsp;param.isQualifiedName())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;paramType&nbsp;=&nbsp;&nbsp;getTypeIfRefinable(param,&nbsp;blindScope);</td><td class="diff_next"></td><td class="diff_header" id="to100_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;paramType&nbsp;=&nbsp;&nbsp;getTypeIfRefinable(param,&nbsp;blindScope);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to100__1">n</a></td><td class="diff_header" id="from100_208">208</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(paramType&nbsp;!=&nbsp;null)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to100__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_209">209</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;left&nbsp;=&nbsp;callee.getFirstChild();</td><td class="diff_next"></td><td class="diff_header" id="to100_208">208</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;left&nbsp;=&nbsp;callee.getFirstChild();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_210">210</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;right&nbsp;=&nbsp;callee.getLastChild();</td><td class="diff_next"></td><td class="diff_header" id="to100_209">209</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;right&nbsp;=&nbsp;callee.getLastChild();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_211">211</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(left.getType()&nbsp;==&nbsp;NAME&nbsp;&amp;&amp;&nbsp;"goog".equals(left.getString())&nbsp;&amp;&amp;</td><td class="diff_next"></td><td class="diff_header" id="to100_210">210</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(left.getType()&nbsp;==&nbsp;NAME&nbsp;&amp;&amp;&nbsp;"goog".equals(left.getString())&nbsp;&amp;&amp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to100__1"></td><td class="diff_header" id="from100_215">215</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(restricter&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to100_214">214</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(restricter&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;restrictParameter(param,&nbsp;paramType,&nbsp;blindScope,&nbsp;restricter,</td><td class="diff_next"></td><td class="diff_header" id="to100_215">215</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;restrictParameter(param,&nbsp;paramType,&nbsp;blindScope,&nbsp;restricter,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_217">217</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outcome);</td><td class="diff_next"></td><td class="diff_header" id="to100_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outcome);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to100__top">t</a></td><td class="diff_header" id="from100_218">218</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"><a href="#difflib_chg_to100__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to100_217">217</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to100_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from100_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to100_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

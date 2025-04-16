@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to311__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonCore-15 - Buggy: src/main/java/com/fasterxml/jackson/core/filter/FilteringParserDelegate.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonCore-15 - Fixed: src/main/java/com/fasterxml/jackson/core/filter/FilteringParserDelegate.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Check&nbsp;for&nbsp;_allowMultipleMatches&nbsp;-&nbsp;false&nbsp;and&nbsp;atleast&nbsp;there&nbsp;is&nbsp;one&nbsp;token</td><td class="diff_next"></td><td class="diff_header" id="to311_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Check&nbsp;for&nbsp;_allowMultipleMatches&nbsp;-&nbsp;false&nbsp;and&nbsp;atleast&nbsp;there&nbsp;is&nbsp;one&nbsp;token</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;-&nbsp;which&nbsp;is&nbsp;_currToken</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;-&nbsp;which&nbsp;is&nbsp;_currToken</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to311__0"></td><td class="diff_header" id="from311_225">225</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;check&nbsp;for&nbsp;no&nbsp;buffered&nbsp;context&nbsp;_exposedContext&nbsp;-&nbsp;null</td><td class="diff_next"></td><td class="diff_header" id="to311_225">225</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;check&nbsp;for&nbsp;no&nbsp;buffered&nbsp;context&nbsp;_exposedContext&nbsp;-&nbsp;null</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_226">226</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If&nbsp;all&nbsp;the&nbsp;conditions&nbsp;matches&nbsp;then&nbsp;check&nbsp;for&nbsp;scalar&nbsp;/&nbsp;non-scalar&nbsp;prope</td><td class="diff_next"></td><td class="diff_header" id="to311_226">226</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If&nbsp;all&nbsp;the&nbsp;conditions&nbsp;matches&nbsp;then&nbsp;check&nbsp;for&nbsp;scalar&nbsp;/&nbsp;non-scalar&nbsp;prope</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rty</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rty</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to311__1"><a href="#difflib_chg_to311__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to311__1">n</a></td><td class="diff_header" id="to311_227">227</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!_allowMultipleMatches&nbsp;&amp;&amp;&nbsp;_currToken&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;_exposedContext&nbsp;==&nbsp;nu</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ll){</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_227">227</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;not&nbsp;scalar&nbsp;and&nbsp;ended&nbsp;successfully,&nbsp;then&nbsp;return&nbsp;null</td><td class="diff_next"></td><td class="diff_header" id="to311_228">228</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;not&nbsp;scalar&nbsp;and&nbsp;ended&nbsp;successfully,&nbsp;then&nbsp;return&nbsp;null</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to311__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to311__2">n</a></td><td class="diff_header" id="to311_229">229</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((_currToken.isStructEnd()&nbsp;&nbsp;&amp;&amp;&nbsp;_headContext.isStartHandled())&nbsp;){</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_230">230</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(_currToken&nbsp;=&nbsp;null);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_231">231</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to311__2"></td><td class="diff_header" id="from311_228">228</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//else&nbsp;if&nbsp;scalar,&nbsp;and&nbsp;scalar&nbsp;not&nbsp;present&nbsp;in&nbsp;obj/array&nbsp;and&nbsp;!includePa</td><td class="diff_next"></td><td class="diff_header" id="to311_232">232</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//else&nbsp;if&nbsp;scalar,&nbsp;and&nbsp;scalar&nbsp;not&nbsp;present&nbsp;in&nbsp;obj/array&nbsp;and&nbsp;!includePa</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">th&nbsp;and&nbsp;INCLUDE_ALL&nbsp;matched&nbsp;once</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">th&nbsp;and&nbsp;INCLUDE_ALL&nbsp;matched&nbsp;once</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_229">229</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;return&nbsp;null&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to311_233">233</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;return&nbsp;null&nbsp;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to311__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to311__top">t</a></td><td class="diff_header" id="to311_234">234</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(_currToken.isScalarValue()&nbsp;&amp;&amp;&nbsp;!_headContext.isStartHandled()</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;&amp;&amp;&nbsp;!_includePath&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_235">235</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;_itemFilter&nbsp;==&nbsp;TokenFilter.INCLUDE_ALL)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_236">236</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(_currToken&nbsp;=&nbsp;null);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_237">237</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_238">238</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_230">230</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Anything&nbsp;buffered?</td><td class="diff_next"></td><td class="diff_header" id="to311_239">239</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Anything&nbsp;buffered?</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_231">231</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenFilterContext&nbsp;ctxt&nbsp;=&nbsp;_exposedContext;</td><td class="diff_next"></td><td class="diff_header" id="to311_240">240</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenFilterContext&nbsp;ctxt&nbsp;=&nbsp;_exposedContext;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from311_232">232</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to311_241">241</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

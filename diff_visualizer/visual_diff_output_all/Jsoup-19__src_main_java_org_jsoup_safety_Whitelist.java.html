@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to436__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-19 - Buggy: src/main/java/org/jsoup/safety/Whitelist.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-19 - Fixed: src/main/java/org/jsoup/safety/Whitelist.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from436_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;try&nbsp;to&nbsp;resolve&nbsp;relative&nbsp;urls&nbsp;to&nbsp;abs,&nbsp;and&nbsp;optionally&nbsp;update&nbsp;the&nbsp;attrib</td><td class="diff_next"></td><td class="diff_header" id="to436_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;try&nbsp;to&nbsp;resolve&nbsp;relative&nbsp;urls&nbsp;to&nbsp;abs,&nbsp;and&nbsp;optionally&nbsp;update&nbsp;the&nbsp;attrib</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to436__0"></td><td class="diff_header">></td><td nowrap="nowrap">ute&nbsp;so&nbsp;output&nbsp;html&nbsp;has&nbsp;abs.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ute&nbsp;so&nbsp;output&nbsp;html&nbsp;has&nbsp;abs.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from436_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;rels&nbsp;without&nbsp;a&nbsp;baseuri&nbsp;get&nbsp;removed</td><td class="diff_next"></td><td class="diff_header" id="to436_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;rels&nbsp;without&nbsp;a&nbsp;baseuri&nbsp;get&nbsp;removed</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from436_341">341</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;value&nbsp;=&nbsp;el.absUrl(attr.getKey());</td><td class="diff_next"></td><td class="diff_header" id="to436_341">341</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;value&nbsp;=&nbsp;el.absUrl(attr.getKey());</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to436__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to436__top">t</a></td><td class="diff_header" id="to436_342">342</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(value.length()&nbsp;==&nbsp;0)</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to436_343">343</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;attr.getValue();&nbsp;//&nbsp;if&nbsp;it&nbsp;could&nbsp;not&nbsp;be&nbsp;made&nbsp;abs,&nbsp;run&nbsp;as-is&nbsp;t</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">o&nbsp;allow&nbsp;custom&nbsp;unknown&nbsp;protocols</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from436_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!preserveRelativeLinks)</td><td class="diff_next"></td><td class="diff_header" id="to436_344">344</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!preserveRelativeLinks)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from436_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attr.setValue(value);</td><td class="diff_next"></td><td class="diff_header" id="to436_345">345</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attr.setValue(value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from436_344">344</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to436_346">346</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

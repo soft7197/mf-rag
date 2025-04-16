@@ -1,0 +1,50 @@
+{
+    "Lang-38": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Formats a <code>Calendar</code> object into the\n* supplied <code>StringBuffer</code>.</p>\n*\n* @param calendar  the calendar to format\n* @param buf  the buffer to format into\n* @return the specified string buffer\n*/\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n    }\n    return applyRules(calendar, buf);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testLang538() {\n\n        final String dateTime = \"2009-10-16T16:42:16.000Z\";\n\n\n\n        // more commonly constructed with: cal = new GregorianCalendar(2009, 9, 16, 8, 42, 16)\n\n        // for the unit test to work in any time zone, constructing with GMT-8 rather than default locale time zone\n\n        GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone(\"GMT-8\"));\n\n        cal.clear();\n\n        cal.set(2009, 9, 16, 8, 42, 16);\n\n\n\n        FastDateFormat format = FastDateFormat.getInstance(\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", TimeZone.getTimeZone(\"GMT\"));\n\n        assertEquals(\"dateTime\", dateTime, format.format(cal));\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: dateTime expected:<2009-10-16T[16]:42:16.000Z> but was:<2009-10-16T[08]:42:16.000Z>\n\tat org.apache.commons.lang3.time.FastDateFormatTest.testLang538(FastDateFormatTest.java:349)  assertEquals(\"dateTime\", dateTime, format.format(cal));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        calendar.getTime(); // Force recalculation of internal fields\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        calendar.getTime(); // force re-calculation of internal time fields\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    Calendar clonedCalendar = (Calendar) calendar.clone();\n    if (mTimeZoneForced) {\n        clonedCalendar.setTimeZone(mTimeZone);\n    }\n    return applyRules(clonedCalendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        calendar.getTime(); // Ensure the time is recalculated in the new time zone\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        calendar.getTime(); // Force recalculation of internal fields after timezone change\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        calendar.getTime(); // Force recalculation of internal fields\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    Calendar cal = (Calendar) calendar.clone();\n    if (mTimeZoneForced) {\n        cal.setTimeZone(mTimeZone);\n    }\n    cal.setTimeInMillis(calendar.getTimeInMillis());\n    return applyRules(cal, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    Calendar tempCal;\n    if (mTimeZoneForced) {\n        tempCal = (Calendar) calendar.clone();\n        tempCal.setTimeZone(mTimeZone);\n    } else {\n        tempCal = calendar;\n    }\n    return applyRules(tempCal, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        calendar.getTimeInMillis(); // Force recalculation of the calendar fields\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ],
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    if (mTimeZoneForced) {\n        calendar = (Calendar) calendar.clone();\n        calendar.setTimeZone(mTimeZone);\n        \n        // Adjust the calendar time in case of time zone change\n        calendar.getTimeInMillis();\n    }\n    return applyRules(calendar, buf);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    Calendar cal = (Calendar) calendar.clone();\n    if (mTimeZoneForced) {\n        cal.setTimeZone(mTimeZone);\n    }\n    cal.setTimeInMillis(calendar.getTimeInMillis());\n    return applyRules(cal, buf);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic StringBuffer format(Calendar calendar, StringBuffer buf) {\n    Calendar cal = (Calendar) calendar.clone();\n    if (mTimeZoneForced) {\n        cal.setTimeZone(mTimeZone);\n    }\n    cal.setTimeInMillis(calendar.getTimeInMillis());\n    return applyRules(cal, buf);\n}\n"
+                ]
+            ]
+        }
+    }
+}

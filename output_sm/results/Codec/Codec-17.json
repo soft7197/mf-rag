@@ -1,0 +1,80 @@
+{
+    "Codec-17": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Constructs a new <code>String</code> by decoding the specified array of bytes using the ISO-8859-1 charset.\n*\n* @param bytes\n*            The bytes to be decoded into characters, may be <code>null</code>\n* @return A new <code>String</code> decoded from the specified array of bytes using the ISO-8859-1 charset, or\n*         <code>null</code> if the input byte array was <code>null</code>.\n* @throws NullPointerException\n*             Thrown if {@link Charsets#ISO_8859_1} is not initialized, which should never happen since it is\n*             required by the Java platform specification.\n* @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException\n*/\npublic static String newStringIso8859_1(final byte[] bytes) {\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testNewStringNullInput_CODEC229() {\n\n        Assert.assertNull(StringUtils.newStringUtf8(null));\n\n        Assert.assertNull(StringUtils.newStringIso8859_1(null));\n\n        Assert.assertNull(StringUtils.newStringUsAscii(null));\n\n        Assert.assertNull(StringUtils.newStringUtf16(null));\n\n        Assert.assertNull(StringUtils.newStringUtf16Be(null));\n\n        Assert.assertNull(StringUtils.newStringUtf16Le(null));\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.codec.binary.StringUtils.newStringIso8859_1(StringUtils.java:339)  return new String(bytes, Charsets.ISO_8859_1);\n\tat org.apache.commons.codec.binary.StringUtilsTest.testNewStringNullInput_CODEC229(StringUtilsTest.java:151)  Assert.assertNull(StringUtils.newStringIso8859_1(null));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, java.nio.charset.StandardCharsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, java.nio.charset.StandardCharsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, java.nio.charset.StandardCharsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, java.nio.charset.StandardCharsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, Charsets.ISO_8859_1);\n}\n"
+                ],
+                [
+                    "\npublic static String newStringIso8859_1(final byte[] bytes) {\n    if (bytes == null) {\n        return null;\n    }\n    return new String(bytes, java.nio.charset.StandardCharsets.ISO_8859_1);\n}\n"
+                ]
+            ]
+        }
+    }
+}

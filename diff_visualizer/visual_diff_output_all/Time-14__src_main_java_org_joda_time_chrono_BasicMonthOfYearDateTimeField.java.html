@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to715__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-14 - Buggy: src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-14 - Fixed: src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to715__0"></td><td class="diff_header" id="from715_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(valueToAdd&nbsp;==&nbsp;0)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to715_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(valueToAdd&nbsp;==&nbsp;0)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from715_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;values;</td><td class="diff_next"></td><td class="diff_header" id="to715_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;values;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from715_208">208</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to715_208">208</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to715__1"><a href="#difflib_chg_to715__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to715__1">n</a></td><td class="diff_header" id="to715_209">209</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(partial.size()&nbsp;&gt;&nbsp;0&nbsp;&amp;&amp;&nbsp;partial.getFieldType(0).equals(DateTimeFieldTy</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">pe.monthOfYear())&nbsp;&amp;&amp;&nbsp;fieldIndex&nbsp;==&nbsp;0)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from715_209">209</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;month&nbsp;is&nbsp;largest&nbsp;field&nbsp;and&nbsp;being&nbsp;added&nbsp;to,&nbsp;such&nbsp;as&nbsp;month-day</td><td class="diff_next"></td><td class="diff_header" id="to715_210">210</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;month&nbsp;is&nbsp;largest&nbsp;field&nbsp;and&nbsp;being&nbsp;added&nbsp;to,&nbsp;such&nbsp;as&nbsp;month-day</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to715__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to715__top">t</a></td><td class="diff_header" id="to715_211">211</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;curMonth0&nbsp;=&nbsp;partial.getValue(0)&nbsp;-&nbsp;1;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to715_212">212</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;newMonth&nbsp;=&nbsp;((curMonth0&nbsp;+&nbsp;(valueToAdd&nbsp;%&nbsp;12)&nbsp;+&nbsp;12)&nbsp;%&nbsp;12)&nbsp;+&nbsp;1;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to715_213">213</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;set(partial,&nbsp;0,&nbsp;values,&nbsp;newMonth);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to715_214">214</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from715_210">210</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(DateTimeUtils.isContiguous(partial))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to715_215">215</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(DateTimeUtils.isContiguous(partial))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from715_211">211</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;instant&nbsp;=&nbsp;0L;</td><td class="diff_next"></td><td class="diff_header" id="to715_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;instant&nbsp;=&nbsp;0L;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from715_212">212</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0,&nbsp;isize&nbsp;=&nbsp;partial.size();&nbsp;i&nbsp;&lt;&nbsp;isize;&nbsp;i++)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to715_217">217</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0,&nbsp;isize&nbsp;=&nbsp;partial.size();&nbsp;i&nbsp;&lt;&nbsp;isize;&nbsp;i++)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

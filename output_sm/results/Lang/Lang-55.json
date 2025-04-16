@@ -1,0 +1,80 @@
+{
+    "Lang-55": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Stop the stopwatch.</p>\n*\n* <p>This method ends a new timing session, allowing the time to be retrieved.</p>\n*\n* @throws IllegalStateException if the StopWatch is not running.\n*/\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n        stopTime = System.currentTimeMillis();\n    this.runningState = STATE_STOPPED;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testLang315() {\n\n        StopWatch watch = new StopWatch();\n\n        watch.start();\n\n            try {Thread.sleep(200);} catch (InterruptedException ex) {}\n\n        watch.suspend();\n\n        long suspendTime = watch.getTime();\n\n            try {Thread.sleep(200);} catch (InterruptedException ex) {}\n\n        watch.stop();\n\n        long totalTime = watch.getTime();\n\n        assertTrue( suspendTime == totalTime );\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.apache.commons.lang.time.StopWatchTest.testLang315(StopWatchTest.java:120)  assertTrue( suspendTime == totalTime );\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic void stop() {\n    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running. \");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ],
+                [
+                    "\npublic void stop() {\n    if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {\n        throw new IllegalStateException(\"Stopwatch is not running.\");\n    }\n    if (this.runningState == STATE_RUNNING) {\n        stopTime = System.currentTimeMillis();\n    }\n    this.runningState = STATE_STOPPED;\n}\n"
+                ]
+            ]
+        }
+    }
+}

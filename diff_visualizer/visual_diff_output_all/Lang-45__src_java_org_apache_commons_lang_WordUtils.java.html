@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to541__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-45 - Buggy: src/java/org/apache/commons/lang/WordUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-45 - Fixed: src/java/org/apache/commons/lang/WordUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to541__0"></td><td class="diff_header" id="from541_613">613</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to541_613">613</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from541_614">614</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;the&nbsp;lower&nbsp;value&nbsp;is&nbsp;greater&nbsp;than&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string,</td><td class="diff_next"></td><td class="diff_header" id="to541_614">614</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;the&nbsp;lower&nbsp;value&nbsp;is&nbsp;greater&nbsp;than&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from541_615">615</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;set&nbsp;to&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string</td><td class="diff_next"></td><td class="diff_header" id="to541_615">615</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;set&nbsp;to&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to541__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to541__top">t</a></td><td class="diff_header" id="to541_616">616</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(lower&nbsp;&gt;&nbsp;str.length())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to541_617">617</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lower&nbsp;=&nbsp;str.length();&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to541_618">618</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from541_616">616</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;the&nbsp;upper&nbsp;value&nbsp;is&nbsp;-1&nbsp;(i.e.&nbsp;no&nbsp;limit)&nbsp;or&nbsp;is&nbsp;greater</td><td class="diff_next"></td><td class="diff_header" id="to541_619">619</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;the&nbsp;upper&nbsp;value&nbsp;is&nbsp;-1&nbsp;(i.e.&nbsp;no&nbsp;limit)&nbsp;or&nbsp;is&nbsp;greater</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from541_617">617</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;than&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string,&nbsp;set&nbsp;to&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string</td><td class="diff_next"></td><td class="diff_header" id="to541_620">620</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;than&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string,&nbsp;set&nbsp;to&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;string</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from541_618">618</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(upper&nbsp;==&nbsp;-1&nbsp;||&nbsp;upper&nbsp;&gt;&nbsp;str.length())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to541_621">621</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(upper&nbsp;==&nbsp;-1&nbsp;||&nbsp;upper&nbsp;&gt;&nbsp;str.length())&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

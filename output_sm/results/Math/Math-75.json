@@ -1,0 +1,71 @@
+{
+    "Math-75": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns the percentage of values that are equal to v\n* (as a proportion between 0 and 1).\n* <p>\n* Returns <code>Double.NaN</code> if no values have been added.</p>\n*\n* @param v the value to lookup\n* @return the proportion of values equal to v\n* @deprecated replaced by {@link #getPct(Comparable)} as of 2.0\n*/\npublic double getPct(Object v) {\n    return getCumPct((Comparable<?>) v);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testPcts() {\n\n        f.addValue(oneL);\n\n        f.addValue(twoL);\n\n        f.addValue(oneI);\n\n        f.addValue(twoI);\n\n        f.addValue(threeL);\n\n        f.addValue(threeL);\n\n        f.addValue(3);\n\n        f.addValue(threeI);\n\n        assertEquals(\"one pct\",0.25,f.getPct(1),tolerance);\n\n        assertEquals(\"two pct\",0.25,f.getPct(Long.valueOf(2)),tolerance);\n\n        assertEquals(\"three pct\",0.5,f.getPct(threeL),tolerance);\n\n        // MATH-329\n\n        assertEquals(\"three (Object) pct\",0.5,f.getPct((Object) (Integer.valueOf(3))),tolerance);\n\n        assertEquals(\"five pct\",0,f.getPct(5),tolerance);\n\n        assertEquals(\"foo pct\",0,f.getPct(\"foo\"),tolerance);\n\n        assertEquals(\"one cum pct\",0.25,f.getCumPct(1),tolerance);\n\n        assertEquals(\"two cum pct\",0.50,f.getCumPct(Long.valueOf(2)),tolerance);\n\n        assertEquals(\"Integer argument\",0.50,f.getCumPct(Integer.valueOf(2)),tolerance);\n\n        assertEquals(\"three cum pct\",1.0,f.getCumPct(threeL),tolerance);\n\n        assertEquals(\"five cum pct\",1.0,f.getCumPct(5),tolerance);\n\n        assertEquals(\"zero cum pct\",0.0,f.getCumPct(0),tolerance);\n\n        assertEquals(\"foo cum pct\",0,f.getCumPct(\"foo\"),tolerance);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: three (Object) pct expected:<0.5> but was:<1.0>\n\tat org.apache.commons.math.stat.FrequencyTest.testPcts(FrequencyTest.java:148)  assertEquals(\"three (Object) pct\",0.5,f.getPct((Object) (Integer.valueOf(3))),tolerance);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic double getPct(Object v) {\n    if (valuesAdded == 0) {\n        return Double.NaN;\n    }\n    double count = getCount((Comparable<?>) v);\n    return count / valuesAdded;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return sum == 0 ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    if (v == null) {\n        return Double.NaN;\n    }\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return (sum == 0) ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = freq.getCount(v);\n    long sumFreq = freq.getSumFreq();\n    if (sumFreq == 0) {\n        return Double.NaN;\n    }\n    return (double) count / (double) sumFreq;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long totalCount = getSumFreq();\n    if (totalCount == 0) {\n        return Double.NaN;\n    }\n    return (double) count / totalCount;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = freqTable.getCount(v);\n    long total = freqTable.getSumFreq();\n    if (total == 0) {\n        return Double.NaN;\n    }\n    return (double) count / total;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    if (v == null) {\n        return Double.NaN;\n    }\n    long count = frequency.getCount(v);\n    long sumFreq = frequency.getSumFreq();\n    return sumFreq == 0 ? Double.NaN : (double) count / (double) sumFreq;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return sum == 0 ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    if (getCount() == 0) {\n        return Double.NaN;\n    }\n    return (double) getCount(v) / getCount();\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long total = getSumFreq();\n    if (total == 0) {\n        return Double.NaN;\n    }\n    return (double) count / total;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return sum == 0 ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    if (v == null) {\n        return Double.NaN;\n    }\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return (sum == 0) ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long totalCount = getSumFreq();\n    if (totalCount == 0) {\n        return Double.NaN;\n    }\n    return (double) count / totalCount;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return sum == 0 ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long total = getSumFreq();\n    if (total == 0) {\n        return Double.NaN;\n    }\n    return (double) count / total;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return sum == 0 ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    if (v == null) {\n        return Double.NaN;\n    }\n    long count = getCount((Comparable<?>) v);\n    long sum = getSumFreq();\n    return (sum == 0) ? Double.NaN : (double) count / (double) sum;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long totalCount = getSumFreq();\n    if (totalCount == 0) {\n        return Double.NaN;\n    }\n    return (double) count / totalCount;\n}\n"
+                ],
+                [
+                    "\npublic double getPct(Object v) {\n    long count = getCount((Comparable<?>) v);\n    long total = getSumFreq();\n    if (total == 0) {\n        return Double.NaN;\n    }\n    return (double) count / total;\n}\n"
+                ]
+            ]
+        }
+    }
+}

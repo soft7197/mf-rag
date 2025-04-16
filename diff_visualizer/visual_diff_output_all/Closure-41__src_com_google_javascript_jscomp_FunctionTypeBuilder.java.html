@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to157__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-41 - Buggy: src/com/google/javascript/jscomp/FunctionTypeBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-41 - Fixed: src/com/google/javascript/jscomp/FunctionTypeBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to157__0"></td><td class="diff_header" id="from157_289">289</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to157_289">289</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_290">290</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_290">290</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_291">291</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Clone&nbsp;any&nbsp;remaining&nbsp;params&nbsp;that&nbsp;aren't&nbsp;in&nbsp;the&nbsp;function&nbsp;literal.</td><td class="diff_next"></td><td class="diff_header" id="to157_291">291</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Clone&nbsp;any&nbsp;remaining&nbsp;params&nbsp;that&nbsp;aren't&nbsp;in&nbsp;the&nbsp;function&nbsp;literal.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to157__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to157__1">n</a></td><td class="diff_header" id="to157_292">292</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(oldParams.hasNext())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_293">293</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paramBuilder.newParameterFromNode(oldParams.next());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_294">294</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_292">292</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_295">295</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_293">293</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parametersNode&nbsp;=&nbsp;paramBuilder.build();</td><td class="diff_next"></td><td class="diff_header" id="to157_296">296</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parametersNode&nbsp;=&nbsp;paramBuilder.build();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_294">294</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to157_297">297</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to157__1"></td><td class="diff_header" id="from157_480">480</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to157_483">483</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_481">481</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_484">484</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_482">482</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Copy&nbsp;over&nbsp;any&nbsp;old&nbsp;parameters&nbsp;that&nbsp;aren't&nbsp;in&nbsp;the&nbsp;param&nbsp;list.</td><td class="diff_next"></td><td class="diff_header" id="to157_485">485</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Copy&nbsp;over&nbsp;any&nbsp;old&nbsp;parameters&nbsp;that&nbsp;aren't&nbsp;in&nbsp;the&nbsp;param&nbsp;list.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to157__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to157__top">t</a></td><td class="diff_header" id="to157_486">486</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isVarArgs)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_487">487</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(oldParameterType&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;!isVarArgs)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_488">488</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;builder.newParameterFromNode(oldParameterType);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_489">489</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldParameterType&nbsp;=&nbsp;oldParameterType.getNext();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_490">490</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_491">491</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_483">483</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to157_492">492</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_484">484</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(templateTypeName&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;!foundTemplateType)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to157_493">493</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(templateTypeName&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;!foundTemplateType)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from157_485">485</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reportError(TEMPLATE_TYPE_EXPECTED,&nbsp;fnName);</td><td class="diff_next"></td><td class="diff_header" id="to157_494">494</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reportError(TEMPLATE_TYPE_EXPECTED,&nbsp;fnName);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

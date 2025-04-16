@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to714__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-13 - Buggy: src/main/java/org/joda/time/format/PeriodFormatterBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-13 - Fixed: src/main/java/org/joda/time/format/PeriodFormatterBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1095">1095</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;&gt;=&nbsp;SECONDS_MILLIS)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to714_1095">1095</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;&gt;=&nbsp;SECONDS_MILLIS)&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to714__0"></td><td class="diff_header" id="from714_1096">1096</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;valueLong&nbsp;contains&nbsp;the&nbsp;seconds&nbsp;and&nbsp;millis&nbsp;fields</td><td class="diff_next"></td><td class="diff_header" id="to714_1096">1096</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;valueLong&nbsp;contains&nbsp;the&nbsp;seconds&nbsp;and&nbsp;millis&nbsp;fields</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1097">1097</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;minimum&nbsp;output&nbsp;is&nbsp;0.000,&nbsp;which&nbsp;is&nbsp;4&nbsp;or&nbsp;5&nbsp;digits&nbsp;with&nbsp;a&nbsp;ne</td><td class="diff_next"></td><td class="diff_header" id="to714_1097">1097</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;minimum&nbsp;output&nbsp;is&nbsp;0.000,&nbsp;which&nbsp;is&nbsp;4&nbsp;or&nbsp;5&nbsp;digits&nbsp;with&nbsp;a&nbsp;ne</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">gative</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">gative</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to714__1">n</a></td><td class="diff_header" id="from714_1098">1098</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;Math.max(sum,&nbsp;4);</span></td><td class="diff_next"><a href="#difflib_chg_to714__1">n</a></td><td class="diff_header" id="to714_1098">1098</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;(valueLong&nbsp;&lt;&nbsp;0&nbsp;?&nbsp;Math.max(sum,&nbsp;5)&nbsp;:&nbsp;Math.max(sum,&nbsp;4));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1099">1099</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;plus&nbsp;one&nbsp;for&nbsp;the&nbsp;decimal&nbsp;point</td><td class="diff_next"></td><td class="diff_header" id="to714_1099">1099</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;plus&nbsp;one&nbsp;for&nbsp;the&nbsp;decimal&nbsp;point</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1100">1100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum++;</td><td class="diff_next"></td><td class="diff_header" id="to714_1100">1100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum++;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1101">1101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;==&nbsp;SECONDS_OPTIONAL_MILLIS&nbsp;&amp;&amp;</td><td class="diff_next"></td><td class="diff_header" id="to714_1101">1101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;==&nbsp;SECONDS_OPTIONAL_MILLIS&nbsp;&amp;&amp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to714__1"></td><td class="diff_header" id="from714_1130">1130</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iPrefix&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to714_1130">1130</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iPrefix&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1131">1131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iPrefix.printTo(buf,&nbsp;value);</td><td class="diff_next"></td><td class="diff_header" id="to714_1131">1131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iPrefix.printTo(buf,&nbsp;value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1132">1132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to714_1132">1132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to714__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to714__2">n</a></td><td class="diff_header" id="to714_1133">1133</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;bufLen&nbsp;=&nbsp;buf.length();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1133">1133</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;minDigits&nbsp;=&nbsp;iMinPrintedDigits;</td><td class="diff_next"></td><td class="diff_header" id="to714_1134">1134</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;minDigits&nbsp;=&nbsp;iMinPrintedDigits;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1134">1134</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(minDigits&nbsp;&lt;=&nbsp;1)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to714_1135">1135</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(minDigits&nbsp;&lt;=&nbsp;1)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1135">1135</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FormatUtils.appendUnpaddedInteger(buf,&nbsp;value);</td><td class="diff_next"></td><td class="diff_header" id="to714_1136">1136</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FormatUtils.appendUnpaddedInteger(buf,&nbsp;value);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1139">1139</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;&gt;=&nbsp;SECONDS_MILLIS)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to714_1140">1140</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;&gt;=&nbsp;SECONDS_MILLIS)&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to714__2"></td><td class="diff_header" id="from714_1140">1140</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;dp&nbsp;=&nbsp;(int)&nbsp;(Math.abs(valueLong)&nbsp;%&nbsp;DateTimeConstants.MILLIS_P</td><td class="diff_next"></td><td class="diff_header" id="to714_1141">1141</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;dp&nbsp;=&nbsp;(int)&nbsp;(Math.abs(valueLong)&nbsp;%&nbsp;DateTimeConstants.MILLIS_P</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ER_SECOND);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ER_SECOND);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1141">1141</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;==&nbsp;SECONDS_MILLIS&nbsp;||&nbsp;dp&nbsp;&gt;&nbsp;0)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to714_1142">1142</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iFieldType&nbsp;==&nbsp;SECONDS_MILLIS&nbsp;||&nbsp;dp&nbsp;&gt;&nbsp;0)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to714__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to714__top">t</a></td><td class="diff_header" id="to714_1143">1143</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(valueLong&nbsp;&lt;&nbsp;0&nbsp;&amp;&amp;&nbsp;valueLong&nbsp;&gt;&nbsp;-DateTimeConstants.MILLIS_P</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ER_SECOND)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to714_1144">1144</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buf.insert(bufLen,&nbsp;'-');</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to714_1145">1145</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1142">1142</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buf.append('.');</td><td class="diff_next"></td><td class="diff_header" id="to714_1146">1146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buf.append('.');</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1143">1143</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FormatUtils.appendPaddedInteger(buf,&nbsp;dp,&nbsp;3);</td><td class="diff_next"></td><td class="diff_header" id="to714_1147">1147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FormatUtils.appendPaddedInteger(buf,&nbsp;dp,&nbsp;3);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from714_1144">1144</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to714_1148">1148</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

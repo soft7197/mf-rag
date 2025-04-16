@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to284__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Csv-15 - Buggy: src/main/java/org/apache/commons/csv/CSVFormat.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Csv-15 - Fixed: src/main/java/org/apache/commons/csv/CSVFormat.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to284__0"></td><td class="diff_header" id="from284_1186">1186</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to284_1186">1186</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1187">1187</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;c&nbsp;=&nbsp;value.charAt(pos);</td><td class="diff_next"></td><td class="diff_header" id="to284_1187">1187</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;c&nbsp;=&nbsp;value.charAt(pos);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1188">1188</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to284_1188">1188</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to284__top">t</a></td><td class="diff_header" id="from284_1189">1189</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(newRecord&nbsp;&amp;&amp;&nbsp;(c&nbsp;&lt;&nbsp;0x20&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;0x21&nbsp;&amp;&amp;&nbsp;c&nbsp;&lt;&nbsp;0x23&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;0x2B&nbsp;&amp;</span></td><td class="diff_next"><a href="#difflib_chg_to284__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&amp;&nbsp;c&nbsp;&lt;&nbsp;0x2D&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;0x7E))&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1190">1190</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quote&nbsp;=&nbsp;true;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1191">1191</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_sub">&nbsp;}&nbsp;else</span>&nbsp;if&nbsp;(c&nbsp;&lt;=&nbsp;COMMENT)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to284_1189">1189</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c&nbsp;&lt;=&nbsp;COMMENT)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1192">1192</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Some&nbsp;other&nbsp;chars&nbsp;at&nbsp;the&nbsp;start&nbsp;of&nbsp;a&nbsp;value&nbsp;caused&nbsp;the&nbsp;parse</td><td class="diff_next"></td><td class="diff_header" id="to284_1190">1190</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Some&nbsp;other&nbsp;chars&nbsp;at&nbsp;the&nbsp;start&nbsp;of&nbsp;a&nbsp;value&nbsp;caused&nbsp;the&nbsp;parse</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;to&nbsp;fail,&nbsp;so&nbsp;for&nbsp;now</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;to&nbsp;fail,&nbsp;so&nbsp;for&nbsp;now</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1193">1193</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;encapsulate&nbsp;if&nbsp;we&nbsp;start&nbsp;in&nbsp;anything&nbsp;less&nbsp;than&nbsp;'#'.&nbsp;We&nbsp;are</td><td class="diff_next"></td><td class="diff_header" id="to284_1191">1191</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;encapsulate&nbsp;if&nbsp;we&nbsp;start&nbsp;in&nbsp;anything&nbsp;less&nbsp;than&nbsp;'#'.&nbsp;We&nbsp;are</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;being&nbsp;conservative</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;being&nbsp;conservative</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from284_1194">1194</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;by&nbsp;including&nbsp;the&nbsp;default&nbsp;comment&nbsp;char&nbsp;too.</td><td class="diff_next"></td><td class="diff_header" id="to284_1192">1192</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;by&nbsp;including&nbsp;the&nbsp;default&nbsp;comment&nbsp;char&nbsp;too.</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

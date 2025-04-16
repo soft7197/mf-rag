@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to395__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-61 - Buggy: src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-61 - Fixed: src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_71">71</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_idType&nbsp;==&nbsp;JsonTypeInfo.Id.NONE)&nbsp;{&nbsp;return&nbsp;null;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to395_71">71</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_idType&nbsp;==&nbsp;JsonTypeInfo.Id.NONE)&nbsp;{&nbsp;return&nbsp;null;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to395__0"></td><td class="diff_header" id="from395_72">72</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;03-Oct-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#1395]&nbsp;better&nbsp;prevent&nbsp;use&nbsp;for&nbsp;prim</td><td class="diff_next"></td><td class="diff_header" id="to395_72">72</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;03-Oct-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#1395]&nbsp;better&nbsp;prevent&nbsp;use&nbsp;for&nbsp;prim</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">itives,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">itives,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_73">73</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;regardless&nbsp;of&nbsp;setting</td><td class="diff_next"></td><td class="diff_header" id="to395_73">73</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;regardless&nbsp;of&nbsp;setting</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to395__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to395__1">n</a></td><td class="diff_header" id="to395_74">74</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(baseType.isPrimitive())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to395_75">75</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to395_76">76</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_74">74</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeIdResolver&nbsp;idRes&nbsp;=&nbsp;idResolver(config,&nbsp;baseType,&nbsp;subtypes,&nbsp;true,&nbsp;fals</td><td class="diff_next"></td><td class="diff_header" id="to395_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeIdResolver&nbsp;idRes&nbsp;=&nbsp;idResolver(config,&nbsp;baseType,&nbsp;subtypes,&nbsp;true,&nbsp;fals</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_75">75</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(_includeAs)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to395_78">78</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(_includeAs)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;WRAPPER_ARRAY:</td><td class="diff_next"></td><td class="diff_header" id="to395_79">79</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;WRAPPER_ARRAY:</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_idType&nbsp;==&nbsp;JsonTypeInfo.Id.NONE)&nbsp;{&nbsp;return&nbsp;null;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to395_104">104</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_idType&nbsp;==&nbsp;JsonTypeInfo.Id.NONE)&nbsp;{&nbsp;return&nbsp;null;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to395__1"></td><td class="diff_header" id="from395_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;03-Oct-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#1395]&nbsp;better&nbsp;prevent&nbsp;use&nbsp;for&nbsp;prim</td><td class="diff_next"></td><td class="diff_header" id="to395_105">105</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;03-Oct-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#1395]&nbsp;better&nbsp;prevent&nbsp;use&nbsp;for&nbsp;prim</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">itives,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">itives,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_103">103</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;regardless&nbsp;of&nbsp;setting</td><td class="diff_next"></td><td class="diff_header" id="to395_106">106</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;regardless&nbsp;of&nbsp;setting</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to395__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to395__top">t</a></td><td class="diff_header" id="to395_107">107</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(baseType.isPrimitive())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to395_108">108</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to395_109">109</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_104">104</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to395_110">110</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_105">105</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeIdResolver&nbsp;idRes&nbsp;=&nbsp;idResolver(config,&nbsp;baseType,&nbsp;subtypes,&nbsp;false,&nbsp;tru</td><td class="diff_next"></td><td class="diff_header" id="to395_111">111</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeIdResolver&nbsp;idRes&nbsp;=&nbsp;idResolver(config,&nbsp;baseType,&nbsp;subtypes,&nbsp;false,&nbsp;tru</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from395_106">106</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to395_112">112</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

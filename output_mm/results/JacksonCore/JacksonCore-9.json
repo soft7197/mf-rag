@@ -1,0 +1,486 @@
+{
+    "JacksonCore-9": {
+        "function_num": 6,
+        "functions": [
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/base/ParserMinimalBase.java",
+                "start_loc": 387,
+                "end_loc": 393,
+                "buggy_function": "    @Override\n    public String getValueAsString() throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            return getText();\n        }\n        return getValueAsString(null);\n    }\n",
+                "fixed_function": "    @Override\n    public String getValueAsString() throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            return getText();\n        }\n        if (_currToken == JsonToken.FIELD_NAME) {\n            return getCurrentName();\n        }\n        return getValueAsString(null);\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { return getText(); } return getValueAsString(null); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { return getText(); } return getValueAsString(null); }"
+                    ],
+                    [
+                        0.9789272546768188,
+                        "@Override public String toString() { StringBuilder sb = new StringBuilder(64); appendDesc(sb); return sb.toString(); }"
+                    ],
+                    [
+                        0.9789272546768188,
+                        "@Override public String toString() { StringBuilder sb = new StringBuilder(64); appendDesc(sb); return sb.toString(); }"
+                    ],
+                    [
+                        0.9778068661689758,
+                        "@Override public Writer decorate(IOContext ctxt, Writer w) throws IOException { w.write(\\\"567\\\"); w.flush(); return new StringWriter(); }"
+                    ],
+                    [
+                        0.9752249717712402,
+                        "@Override public boolean isExpectedStartArrayToken() { return _currToken == JsonToken.START_ARRAY; }"
+                    ],
+                    [
+                        0.9747769236564636,
+                        "@Override public int getValueAsInt() throws IOException, JsonParseException { return delegate.getValueAsInt(); }"
+                    ],
+                    [
+                        0.9747475385665894,
+                        "@Override public String getValueAsString() throws IOException, JsonParseException { return delegate.getValueAsString(); }"
+                    ],
+                    [
+                        0.9746118783950806,
+                        "@Override public BigInteger getBigIntegerValue() throws IOException, JsonParseException { return delegate.getBigIntegerValue(); }"
+                    ],
+                    [
+                        0.9741669297218323,
+                        "@Override public void writeRaw(SerializableString text) throws IOException, JsonGenerationException { byte[] raw = text.asUnquotedUTF8(); if (raw.length > 0) { _writeBytes(raw); } }"
+                    ],
+                    [
+                        0.9737876653671265,
+                        "@Override public NumberType getNumberType() throws IOException, JsonParseException { return delegate.getNumberType(); }"
+                    ],
+                    [
+                        0.9737061262130737,
+                        "@Override public boolean isExpectedStartObjectToken() { return _currToken == JsonToken.START_OBJECT; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/base/ParserMinimalBase.java",
+                "start_loc": 395,
+                "end_loc": 404,
+                "buggy_function": "    @Override\n    public String getValueAsString(String defaultValue) throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            return getText();\n        }\n        if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) {\n            return defaultValue;\n        }\n        return getText();\n    }\n",
+                "fixed_function": "    @Override\n    public String getValueAsString(String defaultValue) throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            return getText();\n        }\n        if (_currToken == JsonToken.FIELD_NAME) {\n            return getCurrentName();\n        }\n        if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) {\n            return defaultValue;\n        }\n        return getText();\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "@Override public String getValueAsString(String defaultValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { return getText(); } if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) { return defaultValue; } return getText(); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "@Override public String getValueAsString(String defaultValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { return getText(); } if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) { return defaultValue; } return getText(); }"
+                    ],
+                    [
+                        0.9820804595947266,
+                        "@Override public JsonLocation getCurrentLocation() { int col = _inputPtr - _currInputRowStart + 1; return new JsonLocation(_ioContext.getSourceReference(), _currInputProcessed + _inputPtr, -1L, _currInputRow, col); }"
+                    ],
+                    [
+                        0.9811255931854248,
+                        "@Override public JsonLocation getCurrentLocation() { int col = _inputPtr - _currInputRowStart + 1; return new JsonLocation(_ioContext.getSourceReference(), -1L, _currInputProcessed + _inputPtr, _currInputRow, col); }"
+                    ],
+                    [
+                        0.9805150628089905,
+                        "@Override public double getDoubleValue() throws IOException { if ((_numTypesValid & NR_DOUBLE) == 0) { if (_numTypesValid == NR_UNKNOWN) { _parseNumericValue(NR_DOUBLE); } if ((_numTypesValid & NR_DOUBLE) == 0) { convertNumberToDouble(); } } return _numberDouble; }"
+                    ],
+                    [
+                        0.974986732006073,
+                        "@Override public void writeEndArray(JsonGenerator gen, int nrOfValues) throws IOException { if (!_arrayIndenter.isInline()) { --_nesting; } if (nrOfValues > 0) { _arrayIndenter.writeIndentation(gen, _nesting); } else { gen.writeRaw(' '); } gen.writeRaw(']'); }"
+                    ],
+                    [
+                        0.9720742702484131,
+                        "@Override public int releaseBuffered(OutputStream out) throws IOException { int count = _inputEnd - _inputPtr; if (count < 1) { return 0; } int origPtr = _inputPtr; out.write(_inputBuffer, origPtr, count); return count; }"
+                    ],
+                    [
+                        0.9711059331893921,
+                        "@Override public void writeIndentation(JsonGenerator jg, int level) throws IOException { jg.writeRaw(eol); if (level > 0) { level *= charsPerLevel; while (level > indents.length) { jg.writeRaw(indents, 0, indents.length); level -= indents.length; } jg.writeRaw(indents, 0, level); } }"
+                    ],
+                    [
+                        0.9706225395202637,
+                        "@Override public int hashCode() { int hash = (_sourceRef == null) ? 1 : _sourceRef.hashCode(); hash ^= _lineNr; hash += _columnNr; hash ^= (int) _totalChars; hash += (int) _totalBytes; return hash; }"
+                    ],
+                    [
+                        0.9692177176475525,
+                        "@Override protected void _releaseBuffers() throws IOException { super._releaseBuffers(); _symbols.release(); if (_bufferRecyclable) { char[] buf = _inputBuffer; if (buf != null) { _inputBuffer = null; _ioContext.releaseTokenBuffer(buf); } } }"
+                    ],
+                    [
+                        0.9687498807907104,
+                        "@Override public void writeRaw(char[] text, int offset, int len) throws IOException { if (len < SHORT_WRITE) { int room = _outputEnd - _outputTail; if (len > room) { _flushBuffer(); } System.arraycopy(text, offset, _outputBuffer, _outputTail, len); _outputTail += len; return; } _flushBuffer(); _writer.write(text, offset, len); }"
+                    ],
+                    [
+                        0.9684528112411499,
+                        "@Override public int read() throws IOException { if (_b != null) { int c = _b[_ptr++] & 0xFF; if (_ptr >= _end) { _free(); } return c; } return _in.read(); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "com.fasterxml.jackson.core.json.TestJsonParser::testGetValueAsTextBytes",
+                    "com.fasterxml.jackson.core.json.TestJsonParser::testGetValueAsTextChars"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    @Override\n    public String getValueAsString(String defaultValue) throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            return getText();\n        }\n        if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) {\n            return defaultValue;\n        }\n        return getText();\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetValueAsTextBytes() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, true, false);\n        _testGetValueAsText(f, true, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextBytes(TestJsonParser.java:518)  _testGetValueAsText(f, true, false);\n \n#Test method 2:\n```java\n    public void testGetValueAsTextChars() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, false, false);\n        _testGetValueAsText(f, false, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextChars(TestJsonParser.java:525)  _testGetValueAsText(f, false, false);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || \n        _currToken == JsonToken.VALUE_NUMBER_INT || \n        _currToken == JsonToken.VALUE_NUMBER_FLOAT || \n        _currToken == JsonToken.VALUE_TRUE || \n        _currToken == JsonToken.VALUE_FALSE) {\n        return getText();\n    }\n    if (_currToken == null || _currToken == JsonToken.VALUE_NULL) {\n        return defaultValue;\n    }\n    return getText();\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || _currToken.isScalarValue()) {\n        return getText();\n    }\n    if (_currToken == null || _currToken == JsonToken.VALUE_NULL) {\n        return defaultValue;\n    }\n    return getText();\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || _currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || _currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || \n        (_currToken != null && _currToken.isScalarValue() && _currToken != JsonToken.VALUE_NULL)) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || _currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        return getText();\n    }\n    if (_currToken == null || _currToken == JsonToken.VALUE_NULL) {\n        return defaultValue;\n    }\n    if (_currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n"
+                        ],
+                        "evaluation_done": true
+                    },
+                    "2": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    @Override\n    public String getValueAsString(String defaultValue) throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            return getText();\n        }\n        if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) {\n            return defaultValue;\n        }\n        return getText();\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetValueAsTextBytes() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, true, false);\n        _testGetValueAsText(f, true, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextBytes(TestJsonParser.java:518)  _testGetValueAsText(f, true, false);\n \n#Test method 2:\n```java\n    public void testGetValueAsTextChars() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, false, false);\n        _testGetValueAsText(f, false, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextChars(TestJsonParser.java:525)  _testGetValueAsText(f, false, false);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\n@Override public JsonLocation getCurrentLocation() { int col = _inputPtr - _currInputRowStart + 1; return new JsonLocation(_ioContext.getSourceReference(), _currInputProcessed + _inputPtr, -1L, _currInputRow, col); }\n```\n\n            \n```java\n@Override public JsonLocation getCurrentLocation() { int col = _inputPtr - _currInputRowStart + 1; return new JsonLocation(_ioContext.getSourceReference(), -1L, _currInputProcessed + _inputPtr, _currInputRow, col); }\n```\n\n            \n```java\n@Override public double getDoubleValue() throws IOException { if ((_numTypesValid & NR_DOUBLE) == 0) { if (_numTypesValid == NR_UNKNOWN) { _parseNumericValue(NR_DOUBLE); } if ((_numTypesValid & NR_DOUBLE) == 0) { convertNumberToDouble(); } } return _numberDouble; }\n```\n\n            \n```java\n@Override public void writeEndArray(JsonGenerator gen, int nrOfValues) throws IOException { if (!_arrayIndenter.isInline()) { --_nesting; } if (nrOfValues > 0) { _arrayIndenter.writeIndentation(gen, _nesting); } else { gen.writeRaw(' '); } gen.writeRaw(']'); }\n```\n\n            \n```java\n@Override public int releaseBuffered(OutputStream out) throws IOException { int count = _inputEnd - _inputPtr; if (count < 1) { return 0; } int origPtr = _inputPtr; out.write(_inputBuffer, origPtr, count); return count; }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        return getText();\n    }\n    if (_currToken == null || _currToken == JsonToken.VALUE_NULL) {\n        return defaultValue;\n    }\n    if (_currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || _currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || (_currToken != null && _currToken.isScalarValue())) {\n        return getText();\n    }\n    return defaultValue;\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING || \n        _currToken == JsonToken.VALUE_NUMBER_INT || \n        _currToken == JsonToken.VALUE_NUMBER_FLOAT || \n        _currToken == JsonToken.VALUE_TRUE || \n        _currToken == JsonToken.VALUE_FALSE) {\n        return getText();\n    }\n    if (_currToken == null || _currToken == JsonToken.VALUE_NULL || !_currToken.isScalarValue()) {\n        return defaultValue;\n    }\n    return getText();\n}\n",
+                            "\n@Override\npublic String getValueAsString(String defaultValue) throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        return getText();\n    }\n    if (_currToken == null || _currToken == JsonToken.VALUE_NULL) {\n        return defaultValue;\n    }\n    if (_currToken.isScalarValue()) {\n        return getText();\n    }\n    return defaultValue;\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java",
+                "start_loc": 243,
+                "end_loc": 254,
+                "buggy_function": "    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                "fixed_function": "    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken == JsonToken.FIELD_NAME) {\n            return getCurrentName();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                "comment": "    // @since 2.1\n",
+                "normalized_body": [
+                    "@Override public final String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        0.9999999403953552,
+                        "@Override public final String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9952451586723328,
+                        "@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9951375126838684,
+                        "@Override public final String getText() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return _getText2(t); }"
+                    ],
+                    [
+                        0.9904203414916992,
+                        "@Override public final String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.9894225001335144,
+                        "@Override public long getValueAsLong() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getLongValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getLongValue(); } return getValueAsLong(0L); }"
+                    ],
+                    [
+                        0.9891397953033447,
+                        "@Override public String getText() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return _getText2(_currToken); }"
+                    ],
+                    [
+                        0.987673282623291,
+                        "@Override public int getValueAsInt() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getIntValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getIntValue(); } return getValueAsInt(0); }"
+                    ],
+                    [
+                        0.9871546626091003,
+                        "@Override public int getIntValue() throws IOException { if ((_numTypesValid & NR_INT) == 0) { if (_numTypesValid == NR_UNKNOWN) { return _parseIntValue(); } if ((_numTypesValid & NR_INT) == 0) { convertNumberToInt(); } } return _numberInt; }"
+                    ],
+                    [
+                        0.9859534502029419,
+                        "@Override public String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.9842300415039062,
+                        "@Override public long getLongValue() throws IOException { if ((_numTypesValid & NR_LONG) == 0) { if (_numTypesValid == NR_UNKNOWN) { _parseNumericValue(NR_LONG); } if ((_numTypesValid & NR_LONG) == 0) { convertNumberToLong(); } } return _numberLong; }"
+                    ],
+                    [
+                        0.9838006496429443,
+                        "@Override public String getCurrentName() throws IOException { if (_currToken == JsonToken.START_OBJECT || _currToken == JsonToken.START_ARRAY) { JsonReadContext parent = _parsingContext.getParent(); return parent.getCurrentName(); } return _parsingContext.getCurrentName(); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "com.fasterxml.jackson.core.json.TestJsonParser::testGetValueAsTextChars"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    // @since 2.1\n\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetValueAsTextChars() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, false, false);\n        _testGetValueAsText(f, false, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextChars(TestJsonParser.java:525)  _testGetValueAsText(f, false, false);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            _finishString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    if (_currToken != null && _currToken.isScalarValue()) {\n        return getText();\n    }\n    return super.getValueAsString(null);\n}\n",
+                            "\n    // @since 2.1\n\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return (_currToken != null) ? _currToken.asString() : null;\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        // Replace `null` with an empty string as a default value\n        return super.getValueAsString(\"\");\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null && _currToken.isScalarValue()) {\n            return getText();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        // Fix: Return empty string if current token is not a string\n        return (_currToken == null || _currToken == JsonToken.VALUE_NULL) ? null : _currToken.asString();\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null && _currToken.isScalarValue()) {\n            return getText();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null && _currToken.isScalarValue()) {\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    },
+                    "2": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    // @since 2.1\n\n    @Override\n    public final String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetValueAsTextChars() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, false, false);\n        _testGetValueAsText(f, false, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextChars(TestJsonParser.java:525)  _testGetValueAsText(f, false, false);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\n@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }\n```\n\n            \n```java\n@Override public final String getText() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return _getText2(t); }\n```\n\n            \n```java\n@Override public final String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }\n```\n\n            \n```java\n@Override public long getValueAsLong() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getLongValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getLongValue(); } return getValueAsLong(0L); }\n```\n\n            \n```java\n@Override public String getText() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return _getText2(_currToken); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // return the completed string\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\"); // provide default value as empty string\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Complete and return the string\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Adjusted to return result of _finishAndReturnString\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\"); // Provide an empty string as default value\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Correct method to call\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(null);\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Use the method that finishes and returns the string\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Corrected\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Instead of _finishString(), use _finishAndReturnString()\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(null);\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Returning the finished string\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(null);\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString();\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n@Override\npublic final String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // Ensure the string is finished and returned\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\"); // Use empty string as the default value instead of null\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java",
+                "start_loc": 257,
+                "end_loc": 267,
+                "buggy_function": "    @Override\n    public final String getValueAsString(String defValue) throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(defValue);\n    }\n",
+                "fixed_function": "    @Override\n    public final String getValueAsString(String defValue) throws IOException {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken == JsonToken.FIELD_NAME) {\n            return getCurrentName();\n        }\n        return super.getValueAsString(defValue);\n    }\n",
+                "comment": "    // @since 2.1\n",
+                "normalized_body": [
+                    "@Override public final String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "@Override public final String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.9915484189987183,
+                        "@Override public int getValueAsInt() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getIntValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getIntValue(); } return getValueAsInt(0); }"
+                    ],
+                    [
+                        0.9905197024345398,
+                        "@Override public final String getText() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return _getText2(t); }"
+                    ],
+                    [
+                        0.9904203414916992,
+                        "@Override public final String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9848551154136658,
+                        "@Override public Lf2SpacesIndenter withLinefeed(String lf) { if (lf.equals(getEol())) { return this; } return new Lf2SpacesIndenter(lf); }"
+                    ],
+                    [
+                        0.9844464659690857,
+                        "public JsonWriteContext createChildArrayContext() { JsonWriteContext ctxt = _child; if (ctxt == null) { _child = ctxt = new JsonWriteContext(TYPE_ARRAY, this, (_dups == null) ? null : _dups.child()); return ctxt; } return ctxt.reset(TYPE_ARRAY); }"
+                    ],
+                    [
+                        0.9837087988853455,
+                        "@Override public long getValueAsLong() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getLongValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getLongValue(); } return getValueAsLong(0L); }"
+                    ],
+                    [
+                        0.9834351539611816,
+                        "@Override public JsonParser disable(Feature f) { _features &= ~f.getMask(); if (f == Feature.STRICT_DUPLICATE_DETECTION) { _parsingContext = _parsingContext.withDupDetector(null); } return this; }"
+                    ],
+                    [
+                        0.9824023842811584,
+                        "@Override public boolean equals(Object o) { if (o == this) return true; if (o == null || o.getClass() != getClass()) return false; Name other = (Name) o; return _first.equals(other._first) && _last.equals(other._last); }"
+                    ],
+                    [
+                        0.9821544885635376,
+                        "@Override public long getLongValue() throws IOException { if ((_numTypesValid & NR_LONG) == 0) { if (_numTypesValid == NR_UNKNOWN) { _parseNumericValue(NR_LONG); } if ((_numTypesValid & NR_LONG) == 0) { convertNumberToLong(); } } return _numberLong; }"
+                    ],
+                    [
+                        0.9819746017456055,
+                        "public JsonWriteContext createChildObjectContext() { JsonWriteContext ctxt = _child; if (ctxt == null) { _child = ctxt = new JsonWriteContext(TYPE_OBJECT, this, (_dups == null) ? null : _dups.child()); return ctxt; } return ctxt.reset(TYPE_OBJECT); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java",
+                "start_loc": 295,
+                "end_loc": 306,
+                "buggy_function": "    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                "fixed_function": "    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken == JsonToken.FIELD_NAME) {\n            return getCurrentName();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                "comment": "    // @since 2.1\n",
+                "normalized_body": [
+                    "@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.000000238418579,
+                        "@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9952451586723328,
+                        "@Override public final String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9950947761535645,
+                        "@Override public String getText() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return _getText2(_currToken); }"
+                    ],
+                    [
+                        0.9926727414131165,
+                        "@Override public String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.9899120926856995,
+                        "@Override public final String getText() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return _getText2(t); }"
+                    ],
+                    [
+                        0.989637017250061,
+                        "@Override public long getValueAsLong() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getLongValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getLongValue(); } return getValueAsLong(0L); }"
+                    ],
+                    [
+                        0.9853058457374573,
+                        "@Override public int getIntValue() throws IOException { if ((_numTypesValid & NR_INT) == 0) { if (_numTypesValid == NR_UNKNOWN) { return _parseIntValue(); } if ((_numTypesValid & NR_INT) == 0) { convertNumberToInt(); } } return _numberInt; }"
+                    ],
+                    [
+                        0.98135906457901,
+                        "@Override public long getLongValue() throws IOException { if ((_numTypesValid & NR_LONG) == 0) { if (_numTypesValid == NR_UNKNOWN) { _parseNumericValue(NR_LONG); } if ((_numTypesValid & NR_LONG) == 0) { convertNumberToLong(); } } return _numberLong; }"
+                    ],
+                    [
+                        0.9810470342636108,
+                        "@Override public String getCurrentName() throws IOException { if (_currToken == JsonToken.START_OBJECT || _currToken == JsonToken.START_ARRAY) { JsonReadContext parent = _parsingContext.getParent(); return parent.getCurrentName(); } return _parsingContext.getCurrentName(); }"
+                    ],
+                    [
+                        0.9806292653083801,
+                        "@Override public final String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.97763991355896,
+                        "@Override public int getValueAsInt() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getIntValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getIntValue(); } return getValueAsInt(0); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "com.fasterxml.jackson.core.json.TestJsonParser::testGetValueAsTextBytes"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetValueAsTextBytes() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, true, false);\n        _testGetValueAsText(f, true, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextBytes(TestJsonParser.java:518)  _testGetValueAsText(f, true, false);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return super.getValueAsString(_currToken.asString());\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null && _currToken.isScalarValue()) {\n            return getText();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null && _currToken.isScalarValue()) {\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null && _currToken.isScalarValue()) {\n            return getText();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        } else if (_currToken != null) {\n            return _currToken.asString();\n        }\n        return super.getValueAsString(null);\n    }\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken != null && _currToken.isScalarValue()) {\n            return getText();\n        }\n        return super.getValueAsString(null);\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    },
+                    "2": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    // @since 2.1\n\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(null);\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetValueAsTextBytes() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, true, false);\n        _testGetValueAsText(f, true, true);\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextBytes(TestJsonParser.java:518)  _testGetValueAsText(f, true, false);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\n@Override public final String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }\n```\n\n            \n```java\n@Override public String getText() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return _getText2(_currToken); }\n```\n\n            \n```java\n@Override public String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }\n```\n\n            \n```java\n@Override public final String getText() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return _getText2(t); }\n```\n\n            \n```java\n@Override public long getValueAsLong() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getLongValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getLongValue(); } return getValueAsLong(0L); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\"); // provide default value of empty string\n}\n",
+                            "\n@Override\npublic String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\"); // Provide a default non-null value\n}\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(\"\");\n    }\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                _finishString(); // Correct method to handle incomplete string\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(\"\"); // Provide a default value instead of null\n    }\n",
+                            "\n@Override\npublic String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n@Override\npublic String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n    @Override\n    public String getValueAsString() throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(\"\");\n    }\n",
+                            "\n@Override\npublic String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\");\n}\n",
+                            "\n@Override\npublic String getValueAsString() throws IOException\n{\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            _finishString();\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(null);\n}\n",
+                            "\n@Override\npublic String getValueAsString() throws IOException {\n    if (_currToken == JsonToken.VALUE_STRING) {\n        if (_tokenIncomplete) {\n            _tokenIncomplete = false;\n            return _finishAndReturnString(); // only strings can be incomplete\n        }\n        return _textBuffer.contentsAsString();\n    }\n    return super.getValueAsString(\"\"); // Provide a default value to avoid null\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java",
+                "start_loc": 309,
+                "end_loc": 320,
+                "buggy_function": "    @Override\n    public String getValueAsString(String defValue) throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        return super.getValueAsString(defValue);\n    }\n",
+                "fixed_function": "    @Override\n    public String getValueAsString(String defValue) throws IOException\n    {\n        if (_currToken == JsonToken.VALUE_STRING) {\n            if (_tokenIncomplete) {\n                _tokenIncomplete = false;\n                return _finishAndReturnString(); // only strings can be incomplete\n            }\n            return _textBuffer.contentsAsString();\n        }\n        if (_currToken == JsonToken.FIELD_NAME) {\n            return getCurrentName();\n        }\n        return super.getValueAsString(defValue);\n    }\n",
+                "comment": "    // @since 2.1\n",
+                "normalized_body": [
+                    "@Override public String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "@Override public String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.9926726222038269,
+                        "@Override public String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9910489320755005,
+                        "@Override public String getText() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; return _finishAndReturnString(); } return _textBuffer.contentsAsString(); } return _getText2(_currToken); }"
+                    ],
+                    [
+                        0.9859533309936523,
+                        "@Override public final String getValueAsString() throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(null); }"
+                    ],
+                    [
+                        0.9858797788619995,
+                        "@Override public long getValueAsLong() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_NUMBER_INT) { return getLongValue(); } if (t == JsonToken.VALUE_NUMBER_FLOAT) { return getLongValue(); } return getValueAsLong(0L); }"
+                    ],
+                    [
+                        0.98127681016922,
+                        "@Override public final String getText() throws IOException { JsonToken t = _currToken; if (t == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return _getText2(t); }"
+                    ],
+                    [
+                        0.9790027737617493,
+                        "@Override public final String getValueAsString(String defValue) throws IOException { if (_currToken == JsonToken.VALUE_STRING) { if (_tokenIncomplete) { _tokenIncomplete = false; _finishString(); } return _textBuffer.contentsAsString(); } return super.getValueAsString(defValue); }"
+                    ],
+                    [
+                        0.977637767791748,
+                        "@Override public int getIntValue() throws IOException { if ((_numTypesValid & NR_INT) == 0) { if (_numTypesValid == NR_UNKNOWN) { return _parseIntValue(); } if ((_numTypesValid & NR_INT) == 0) { convertNumberToInt(); } } return _numberInt; }"
+                    ],
+                    [
+                        0.9764482975006104,
+                        "@Override public long getLongValue() throws IOException { if ((_numTypesValid & NR_LONG) == 0) { if (_numTypesValid == NR_UNKNOWN) { _parseNumericValue(NR_LONG); } if ((_numTypesValid & NR_LONG) == 0) { convertNumberToLong(); } } return _numberLong; }"
+                    ],
+                    [
+                        0.9759196043014526,
+                        "@Override public String getCurrentName() throws IOException { if (_currToken == JsonToken.START_OBJECT || _currToken == JsonToken.START_ARRAY) { JsonReadContext parent = _parsingContext.getParent(); return parent.getCurrentName(); } return _parsingContext.getCurrentName(); }"
+                    ],
+                    [
+                        0.9755812287330627,
+                        "@Override public byte nextByte() throws IOException { if (_ptr >= _bufferedEnd) { if (!hasMoreBytes()) { throw new EOFException(\\\"Failed auto-detect: could not read more than \\\" + _ptr + \\\" bytes (max buffer size: \\\" + _buffer.length + \\\")\\\"); } } return _buffer[_ptr++]; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true
+            }
+        ],
+        "trigger_test": {
+            "com.fasterxml.jackson.core.json.TestJsonParser::testGetValueAsTextBytes": {
+                "path": "src/test/java/com/fasterxml/jackson/core/json/TestJsonParser.java",
+                "function_name": "testGetValueAsTextBytes",
+                "src": "    public void testGetValueAsTextBytes() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, true, false);\n        _testGetValueAsText(f, true, true);\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextBytes(TestJsonParser.java:518)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextBytes(TestJsonParser.java:518)  _testGetValueAsText(f, true, false);"
+            },
+            "com.fasterxml.jackson.core.json.TestJsonParser::testGetValueAsTextChars": {
+                "path": "src/test/java/com/fasterxml/jackson/core/json/TestJsonParser.java",
+                "function_name": "testGetValueAsTextChars",
+                "src": "    public void testGetValueAsTextChars() throws Exception\n    {\n        JsonFactory f = new JsonFactory();\n        _testGetValueAsText(f, false, false);\n        _testGetValueAsText(f, false, true);\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextChars(TestJsonParser.java:525)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<a> but was:<null>\n\tat com.fasterxml.jackson.core.json.TestJsonParser._testGetValueAsText(TestJsonParser.java:546)  assertEquals(\"a\", p.getValueAsString());\n\tat com.fasterxml.jackson.core.json.TestJsonParser.testGetValueAsTextChars(TestJsonParser.java:525)  _testGetValueAsText(f, false, false);"
+            }
+        },
+        "evaluation_done": true,
+        "context_generation_done": true,
+        "evaluation_done2": true
+    }
+}

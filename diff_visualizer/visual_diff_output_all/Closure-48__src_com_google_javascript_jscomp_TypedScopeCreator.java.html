@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to163__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-48 - Buggy: src/com/google/javascript/jscomp/TypedScopeCreator.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-48 - Fixed: src/com/google/javascript/jscomp/TypedScopeCreator.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to163__0"></td><td class="diff_header" id="from163_1518">1518</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;FunctionTypeBuilder.isFunctionTypeDeclaration(info));</td><td class="diff_next"></td><td class="diff_header" id="to163_1518">1518</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;FunctionTypeBuilder.isFunctionTypeDeclaration(info));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1519">1519</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to163_1519">1519</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to163__1"></td><td class="diff_header" id="from163_1520">1520</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to163_1520">1520</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to163__1">n</a></td><td class="diff_header" id="from163_1521">1521</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inferred)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to163__1">n</a></td><td class="diff_header" id="to163_1521">1521</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inferred&nbsp;&amp;&amp;&nbsp;rhsValue&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;rhsValue.isFunction())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1522">1522</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Determining&nbsp;declaration&nbsp;for&nbsp;#2</td><td class="diff_next"></td><td class="diff_header" id="to163_1522">1522</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Determining&nbsp;declaration&nbsp;for&nbsp;#2</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to163__top">t</a></td><td class="diff_header" id="from163_1523">1523</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inferred&nbsp;=&nbsp;!(rhsValue&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span></td><td class="diff_next"><a href="#difflib_chg_to163__top">t</a></td><td class="diff_header" id="to163_1523">1523</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(info&nbsp;!=&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1524">1524</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhsValue.isFunction()&nbsp;&amp;&amp;</span></td><td class="diff_next"></td><td class="diff_header" id="to163_1524">1524</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inferred&nbsp;=&nbsp;false;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1525">1525</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(info&nbsp;!=&nbsp;null&nbsp;||&nbsp;!scope.isDeclared(qName,&nbsp;false)));</span></td><td class="diff_next"></td><td class="diff_header" id="to163_1525">1525</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(!scope.isDeclared(qName,&nbsp;false)&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to163_1526">1526</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.isUnscopedQualifiedName())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to163_1527">1527</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inferred&nbsp;=&nbsp;false;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to163_1528">1528</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1526">1526</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to163_1529">1529</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1527">1527</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to163_1530">1530</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from163_1528">1528</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!inferred)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to163_1531">1531</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!inferred)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

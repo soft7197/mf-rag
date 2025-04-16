@@ -1,0 +1,74 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to453__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-44 - Buggy: src/main/java/org/jsoup/parser/TreeBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-44 - Fixed: src/main/java/org/jsoup/parser/TreeBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to453__0"></td><td class="diff_header" id="from453_58">58</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;abstract&nbsp;boolean&nbsp;process(Token&nbsp;token);</td><td class="diff_next"></td><td class="diff_header" id="to453_58">58</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;abstract&nbsp;boolean&nbsp;process(Token&nbsp;token);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_59">59</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_59">59</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_60">60</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;boolean&nbsp;processStartTag(String&nbsp;name)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to453_60">60</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;boolean&nbsp;processStartTag(String&nbsp;name)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to453__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to453__1">n</a></td><td class="diff_header" id="to453_61">61</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(currentToken&nbsp;==&nbsp;start)&nbsp;{&nbsp;//&nbsp;don't&nbsp;recycle&nbsp;an&nbsp;in-use&nbsp;token</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_62">62</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(new&nbsp;Token.StartTag().name(name));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_63">63</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_61">61</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(start.reset().name(name));</td><td class="diff_next"></td><td class="diff_header" id="to453_64">64</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(start.reset().name(name));</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to453__1"></td><td class="diff_header" id="from453_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to453_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_63">63</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_66">66</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_64">64</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;boolean&nbsp;processStartTag(String&nbsp;name,&nbsp;Attributes&nbsp;attrs)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to453_67">67</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;boolean&nbsp;processStartTag(String&nbsp;name,&nbsp;Attributes&nbsp;attrs)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to453__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to453__2">n</a></td><td class="diff_header" id="to453_68">68</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(currentToken&nbsp;==&nbsp;start)&nbsp;{&nbsp;//&nbsp;don't&nbsp;recycle&nbsp;an&nbsp;in-use&nbsp;token</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_69">69</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(new&nbsp;Token.StartTag().nameAttr(name,&nbsp;attrs));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_70">70</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start.reset();</td><td class="diff_next"></td><td class="diff_header" id="to453_71">71</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start.reset();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_66">66</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start.nameAttr(name,&nbsp;attrs);</td><td class="diff_next"></td><td class="diff_header" id="to453_72">72</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start.nameAttr(name,&nbsp;attrs);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_67">67</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(start);</td><td class="diff_next"></td><td class="diff_header" id="to453_73">73</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(start);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to453__2"></td><td class="diff_header" id="from453_68">68</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to453_74">74</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_69">69</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_75">75</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_70">70</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;boolean&nbsp;processEndTag(String&nbsp;name)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to453_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;boolean&nbsp;processEndTag(String&nbsp;name)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to453__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to453__top">t</a></td><td class="diff_header" id="to453_77">77</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(currentToken&nbsp;==&nbsp;end)&nbsp;{&nbsp;//&nbsp;don't&nbsp;recycle&nbsp;an&nbsp;in-use&nbsp;token</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_78">78</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(new&nbsp;Token.EndTag().name(name));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_79">79</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_71">71</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(end.reset().name(name));</td><td class="diff_next"></td><td class="diff_header" id="to453_80">80</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;process(end.reset().name(name));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_72">72</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to453_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from453_73">73</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to453_82">82</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

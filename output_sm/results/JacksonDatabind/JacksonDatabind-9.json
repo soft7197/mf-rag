@@ -1,0 +1,81 @@
+{
+    "JacksonDatabind-9": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Specialized serializer that can be used as the generic key\n* serializer, when serializing {@link java.util.Map}s to JSON\n* Objects.\n*/\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testClassKey() throws IOException\n\n    {\n\n        Map<Class<?>,Integer> map = new LinkedHashMap<Class<?>,Integer>();\n\n        map.put(String.class, 2);\n\n        String json = MAPPER.writeValueAsString(map);\n\n        assertEquals(aposToQuotes(\"{'java.lang.String':2}\"), json);\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<{\"[]java.lang.String\":2}> but was:<{\"[class ]java.lang.String\":2}>\n\tat com.fasterxml.jackson.databind.ser.TestMapSerialization.testClassKey(TestMapSerialization.java:256)  assertEquals(aposToQuotes(\"{'java.lang.String':2}\"), json);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class<?>) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ],
+                [
+                    "\npublic void serialize(Object value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n    String str;\n    \n    if (value instanceof Date) {\n        provider.defaultSerializeDateKey((Date) value, jgen);\n        return;\n    } else if (value instanceof Class) {\n        str = ((Class<?>) value).getName();\n    } else {\n        str = value.toString();\n    }\n    jgen.writeFieldName(str);\n}\n"
+                ]
+            ]
+        }
+    }
+}

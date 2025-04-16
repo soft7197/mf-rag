@@ -1,0 +1,75 @@
+{
+    "Math-70": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Construct a solver.\n*\n*/\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(min, max);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testMath369() throws Exception {\n\n        UnivariateRealFunction f = new SinFunction();\n\n        UnivariateRealSolver solver = new BisectionSolver();\n\n        assertEquals(Math.PI, solver.solve(f, 3.0, 3.2, 3.1), solver.getAbsoluteAccuracy());\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.math.analysis.solvers.BisectionSolver.solve(BisectionSolver.java:88)  fmin = f.value(min);\n\tat org.apache.commons.math.analysis.solvers.BisectionSolver.solve(BisectionSolver.java:66)  return solve(f, min, max);\n\tat org.apache.commons.math.analysis.solvers.BisectionSolver.solve(BisectionSolver.java:72)  return solve(min, max);\n\tat org.apache.commons.math.analysis.solvers.BisectionSolverTest.testMath369(BisectionSolverTest.java:101)  assertEquals(Math.PI, solver.solve(f, 3.0, 3.2, 3.1), solver.getAbsoluteAccuracy());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Construct a solver.\n*\n*/\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ],
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic double solve(final UnivariateRealFunction f, double min, double max, double initial)\n    throws MaxIterationsExceededException, FunctionEvaluationException {\n    return solve(f, min, max);\n}\n"
+                ]
+            ]
+        }
+    }
+}

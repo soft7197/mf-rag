@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to177__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-6 - Buggy: src/com/google/javascript/jscomp/TypeValidator.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-6 - Fixed: src/com/google/javascript/jscomp/TypeValidator.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to177__0"></td><td class="diff_header" id="from177_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;leftType,&nbsp;Node&nbsp;owner,&nbsp;String&nbsp;propName)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to177_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;leftType,&nbsp;Node&nbsp;owner,&nbsp;String&nbsp;propName)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_364">364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;The&nbsp;NoType&nbsp;check&nbsp;is&nbsp;a&nbsp;hack&nbsp;to&nbsp;make&nbsp;typedefs&nbsp;work&nbsp;OK.</td><td class="diff_next"></td><td class="diff_header" id="to177_364">364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;The&nbsp;NoType&nbsp;check&nbsp;is&nbsp;a&nbsp;hack&nbsp;to&nbsp;make&nbsp;typedefs&nbsp;work&nbsp;OK.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_365">365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!leftType.isNoType()&nbsp;&amp;&amp;&nbsp;!rightType.canAssignTo(leftType))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to177_365">365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!leftType.isNoType()&nbsp;&amp;&amp;&nbsp;!rightType.canAssignTo(leftType))&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to177__1">n</a></td><td class="diff_header" id="from177_366">366</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((leftType.isConstructor()&nbsp;||&nbsp;leftType.isEnumType())&nbsp;&amp;&amp;&nbsp;(rightType.isCo</span></td><td class="diff_next"><a href="#difflib_chg_to177__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nstructor()&nbsp;||&nbsp;rightType.isEnumType()))&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_367">367</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registerMismatch(rightType,&nbsp;leftType,&nbsp;null);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_368">368</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Do&nbsp;not&nbsp;type-check&nbsp;interface&nbsp;methods,&nbsp;because&nbsp;we&nbsp;expect&nbsp;that</td><td class="diff_next"></td><td class="diff_header" id="to177_366">366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Do&nbsp;not&nbsp;type-check&nbsp;interface&nbsp;methods,&nbsp;because&nbsp;we&nbsp;expect&nbsp;that</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_370">370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;they&nbsp;will&nbsp;have&nbsp;dummy&nbsp;implementations&nbsp;that&nbsp;do&nbsp;not&nbsp;match&nbsp;the&nbsp;type</td><td class="diff_next"></td><td class="diff_header" id="to177_367">367</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;they&nbsp;will&nbsp;have&nbsp;dummy&nbsp;implementations&nbsp;that&nbsp;do&nbsp;not&nbsp;match&nbsp;the&nbsp;type</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_371">371</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;annotations.</td><td class="diff_next"></td><td class="diff_header" id="to177_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;annotations.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to177__1"></td><td class="diff_header" id="from177_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"assignment&nbsp;to&nbsp;property&nbsp;"&nbsp;+&nbsp;propName&nbsp;+&nbsp;"&nbsp;of&nbsp;"&nbsp;+</td><td class="diff_next"></td><td class="diff_header" id="to177_379">379</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"assignment&nbsp;to&nbsp;property&nbsp;"&nbsp;+&nbsp;propName&nbsp;+&nbsp;"&nbsp;of&nbsp;"&nbsp;+</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getReadableJSTypeName(owner,&nbsp;true),</td><td class="diff_next"></td><td class="diff_header" id="to177_380">380</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getReadableJSTypeName(owner,&nbsp;true),</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_384">384</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rightType,&nbsp;leftType);</td><td class="diff_next"></td><td class="diff_header" id="to177_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rightType,&nbsp;leftType);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to177__2">n</a></td><td class="diff_header" id="from177_385">385</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"><a href="#difflib_chg_to177__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_386">386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to177_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_387">387</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to177_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_388">388</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to177_384">384</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to177__2"></td><td class="diff_header" id="from177_402">402</td><td nowrap="nowrap">&nbsp;&nbsp;boolean&nbsp;expectCanAssignTo(NodeTraversal&nbsp;t,&nbsp;Node&nbsp;n,&nbsp;JSType&nbsp;rightType,</td><td class="diff_next"></td><td class="diff_header" id="to177_398">398</td><td nowrap="nowrap">&nbsp;&nbsp;boolean&nbsp;expectCanAssignTo(NodeTraversal&nbsp;t,&nbsp;Node&nbsp;n,&nbsp;JSType&nbsp;rightType,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_403">403</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;leftType,&nbsp;String&nbsp;msg)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to177_399">399</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;leftType,&nbsp;String&nbsp;msg)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_404">404</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!rightType.canAssignTo(leftType))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to177_400">400</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!rightType.canAssignTo(leftType))&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to177__3">n</a></td><td class="diff_header" id="from177_405">405</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((leftType.isConstructor()&nbsp;||&nbsp;leftType.isEnumType())&nbsp;&amp;&amp;&nbsp;(rightType.isCo</span></td><td class="diff_next"><a href="#difflib_chg_to177__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nstructor()&nbsp;||&nbsp;rightType.isEnumType()))&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to177__3"></td><td class="diff_header" id="from177_406">406</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registerMismatch(rightType,&nbsp;leftType,&nbsp;null);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_407">407</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_408">408</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mismatch(t,&nbsp;n,&nbsp;msg,&nbsp;rightType,&nbsp;leftType);</td><td class="diff_next"></td><td class="diff_header" id="to177_401">401</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mismatch(t,&nbsp;n,&nbsp;msg,&nbsp;rightType,&nbsp;leftType);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to177__top">t</a></td><td class="diff_header" id="from177_409">409</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"><a href="#difflib_chg_to177__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_410">410</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to177_402">402</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_411">411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to177_403">403</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from177_412">412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to177_404">404</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to518__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-20 - Buggy: src/main/java/org/apache/commons/lang3/StringUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-20 - Fixed: src/main/java/org/apache/commons/lang3/StringUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to518__0"></td><td class="diff_header" id="from518_3295">3295</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;EMPTY;</td><td class="diff_next"></td><td class="diff_header" id="to518_3295">3295</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;EMPTY;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3296">3296</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to518_3296">3296</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3297">3297</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to518_3297">3297</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to518__1">n</a></td><td class="diff_header" id="from518_3298">3298</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringBuilder&nbsp;buf&nbsp;=&nbsp;new&nbsp;StringBuilder((array[startIndex]&nbsp;==&nbsp;null&nbsp;?&nbsp;16&nbsp;:&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to518__1">n</a></td><td class="diff_header" id="to518_3298">3298</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringBuilder&nbsp;buf&nbsp;=&nbsp;new&nbsp;StringBuilder(noOfItems&nbsp;*&nbsp;16);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">array[startIndex].toString().length())&nbsp;+&nbsp;1);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3299">3299</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to518_3299">3299</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3300">3300</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;startIndex;&nbsp;i&nbsp;&lt;&nbsp;endIndex;&nbsp;i++)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to518_3300">3300</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;startIndex;&nbsp;i&nbsp;&lt;&nbsp;endIndex;&nbsp;i++)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3301">3301</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(i&nbsp;&gt;&nbsp;startIndex)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to518_3301">3301</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(i&nbsp;&gt;&nbsp;startIndex)&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to518__1"></td><td class="diff_header" id="from518_3380">3380</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;EMPTY;</td><td class="diff_next"></td><td class="diff_header" id="to518_3380">3380</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;EMPTY;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3381">3381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to518_3381">3381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3382">3382</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to518_3382">3382</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to518__top">t</a></td><td class="diff_header" id="from518_3383">3383</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringBuilder&nbsp;buf&nbsp;=&nbsp;new&nbsp;StringBuilder((array[startIndex]&nbsp;==&nbsp;null&nbsp;?&nbsp;16&nbsp;:&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to518__top">t</a></td><td class="diff_header" id="to518_3383">3383</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringBuilder&nbsp;buf&nbsp;=&nbsp;new&nbsp;StringBuilder(noOfItems&nbsp;*&nbsp;16);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">array[startIndex].toString().length())&nbsp;+&nbsp;separator.length());</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3384">3384</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to518_3384">3384</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3385">3385</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;startIndex;&nbsp;i&nbsp;&lt;&nbsp;endIndex;&nbsp;i++)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to518_3385">3385</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;startIndex;&nbsp;i&nbsp;&lt;&nbsp;endIndex;&nbsp;i++)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from518_3386">3386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(i&nbsp;&gt;&nbsp;startIndex)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to518_3386">3386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(i&nbsp;&gt;&nbsp;startIndex)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to80__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-117 - Buggy: src/com/google/javascript/jscomp/TypeValidator.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-117 - Fixed: src/com/google/javascript/jscomp/TypeValidator.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to80__0"></td><td class="diff_header" id="from80_722">722</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;an&nbsp;Object&nbsp;type,&nbsp;if&nbsp;possible.</td><td class="diff_next"></td><td class="diff_header" id="to80_722">722</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;an&nbsp;Object&nbsp;type,&nbsp;if&nbsp;possible.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_723">723</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to80_723">723</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_724">724</td><td nowrap="nowrap">&nbsp;&nbsp;String&nbsp;getReadableJSTypeName(Node&nbsp;n,&nbsp;boolean&nbsp;dereference)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to80_724">724</td><td nowrap="nowrap">&nbsp;&nbsp;String&nbsp;getReadableJSTypeName(Node&nbsp;n,&nbsp;boolean&nbsp;dereference)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to80__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to80__1">n</a></td><td class="diff_header" id="to80_725">725</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;type&nbsp;=&nbsp;getJSType(n);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_726">726</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(dereference)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_727">727</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectType&nbsp;dereferenced&nbsp;=&nbsp;type.dereference();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_728">728</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(dereferenced&nbsp;!=&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_729">729</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;dereferenced;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_730">730</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to80__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_731">731</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_725">725</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_732">732</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_726">726</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;The&nbsp;best&nbsp;type&nbsp;name&nbsp;is&nbsp;the&nbsp;actual&nbsp;type&nbsp;name.</td><td class="diff_next"></td><td class="diff_header" id="to80_733">733</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;The&nbsp;best&nbsp;type&nbsp;name&nbsp;is&nbsp;the&nbsp;actual&nbsp;type&nbsp;name.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to80__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to80__2">n</a></td><td class="diff_header" id="to80_734">734</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(type.isFunctionPrototypeType()&nbsp;||</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_735">735</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(type.toObjectType()&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_736">736</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type.toObjectType().getConstructor()&nbsp;!=&nbsp;null))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_737">737</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type.toString();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_738">738</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_727">727</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_739">739</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_728">728</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;we're&nbsp;analyzing&nbsp;a&nbsp;GETPROP,&nbsp;the&nbsp;property&nbsp;may&nbsp;be&nbsp;inherited&nbsp;by&nbsp;the</td><td class="diff_next"></td><td class="diff_header" id="to80_740">740</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;we're&nbsp;analyzing&nbsp;a&nbsp;GETPROP,&nbsp;the&nbsp;property&nbsp;may&nbsp;be&nbsp;inherited&nbsp;by&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_729">729</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;prototype&nbsp;chain.&nbsp;So&nbsp;climb&nbsp;the&nbsp;prototype&nbsp;chain&nbsp;and&nbsp;find&nbsp;out&nbsp;where</td><td class="diff_next"></td><td class="diff_header" id="to80_741">741</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;prototype&nbsp;chain.&nbsp;So&nbsp;climb&nbsp;the&nbsp;prototype&nbsp;chain&nbsp;and&nbsp;find&nbsp;out&nbsp;where</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to80__2"></td><td class="diff_header" id="from80_753">753</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to80_765">765</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_754">754</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to80_766">766</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_755">755</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to80_767">767</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to80__top">t</a></td><td class="diff_header" id="from80_756">756</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;type&nbsp;=&nbsp;getJSType(n);</span></td><td class="diff_next"><a href="#difflib_chg_to80__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_757">757</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(dereference)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_758">758</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectType&nbsp;dereferenced&nbsp;=&nbsp;type.dereference();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_759">759</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(dereferenced&nbsp;!=&nbsp;null)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_760">760</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;dereferenced;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_761">761</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_762">762</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_763">763</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(type.isFunctionPrototypeType()&nbsp;||</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_764">764</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(type.toObjectType()&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_765">765</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type.toObjectType().getConstructor()&nbsp;!=&nbsp;null))&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_766">766</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type.toString();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_767">767</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_768">768</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;qualifiedName&nbsp;=&nbsp;n.getQualifiedName();</td><td class="diff_next"></td><td class="diff_header" id="to80_768">768</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;qualifiedName&nbsp;=&nbsp;n.getQualifiedName();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_769">769</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(qualifiedName&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to80_769">769</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(qualifiedName&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from80_770">770</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;qualifiedName;</td><td class="diff_next"></td><td class="diff_header" id="to80_770">770</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;qualifiedName;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

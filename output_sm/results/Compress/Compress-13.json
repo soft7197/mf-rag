@@ -1,0 +1,77 @@
+{
+    "Compress-13": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void winzipBackSlashWorkaround() throws Exception {\n\n        URL zip = getClass().getResource(\"/test-winzip.zip\");\n\n        ZipArchiveInputStream in = null;\n\n        try {\n\n            in = new ZipArchiveInputStream(new FileInputStream(new File(new URI(zip.toString()))));\n\n            ZipArchiveEntry zae = in.getNextZipEntry();\n\n            zae = in.getNextZipEntry();\n\n            zae = in.getNextZipEntry();\n\n            assertEquals(\"\\u00e4/\", zae.getName());\n\n        } finally {\n\n            if (in != null) {\n\n                in.close();\n\n            }\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<\u00e4[/]> but was:<\u00e4[\\]>\n\tat org.apache.commons.compress.archivers.zip.ZipArchiveInputStreamTest.winzipBackSlashWorkaround(ZipArchiveInputStreamTest.java:43)  assertEquals(\"\\u00e4/\", zae.getName());\n \n#Test method 2:\n```java\n    public void testWinzipBackSlashWorkaround() throws Exception {\n\n        URL zip = getClass().getResource(\"/test-winzip.zip\");\n\n        File archive = new File(new URI(zip.toString()));\n\n        zf = new ZipFile(archive);\n\n        assertNull(zf.getEntry(\"\\u00e4\\\\\\u00fc.txt\"));\n\n        assertNotNull(zf.getEntry(\"\\u00e4/\\u00fc.txt\"));\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected: <null> but was: \u00e4\\\u00fc.txt\n\tat org.apache.commons.compress.archivers.zip.ZipFileTest.testWinzipBackSlashWorkaround(ZipFileTest.java:149)  assertNull(zf.getEntry(\"\\u00e4\\\\\\u00fc.txt\"));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry, replacing backslashes with forward slashes.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        this.name = name.replace('\\\\', '/');\n    } else {\n        this.name = null;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry, replacing backslashes with forward slashes.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        this.name = name.replace('\\\\', '/');\n    } else {\n        this.name = null;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        name = name.replace('\\\\', '/');\n    }\n    this.name = name;\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        this.name = name.replace('\\\\', '/');\n    } else {\n        this.name = null;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry, replacing backslashes with forward slashes.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry, replacing backslashes with forward slashes.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        this.name = name.replace('\\\\', '/');\n    } else {\n        this.name = null;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry, replacing backslashes with forward slashes.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        this.name = name.replace('\\\\', '/');\n    } else {\n        this.name = null;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        name = name.replace('\\\\', '/');\n    }\n    this.name = name;\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    if (name != null) {\n        this.name = name.replace('\\\\', '/');\n    } else {\n        this.name = null;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ],
+                [
+                    "\n/**\n* Set the name of the entry, replacing backslashes with forward slashes.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* Set the name of the entry.\n* @param name the name to use\n*/\nprotected void setName(String name) {\n    this.name = name.replace('\\\\', '/');\n}\n"
+                ]
+            ]
+        }
+    }
+}

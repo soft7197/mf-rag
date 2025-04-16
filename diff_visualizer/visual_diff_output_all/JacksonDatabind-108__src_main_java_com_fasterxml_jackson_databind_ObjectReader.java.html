@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to335__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-108 - Buggy: src/main/java/com/fasterxml/jackson/databind/ObjectReader.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-108 - Fixed: src/main/java/com/fasterxml/jackson/databind/ObjectReader.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to335__0"></td><td class="diff_header" id="from335_1166">1166</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@SuppressWarnings("unchecked")</td><td class="diff_next"></td><td class="diff_header" id="to335_1166">1166</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@SuppressWarnings("unchecked")</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1167">1167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@Override</td><td class="diff_next"></td><td class="diff_header" id="to335_1167">1167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@Override</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1168">1168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&lt;T&nbsp;extends&nbsp;TreeNode&gt;&nbsp;T&nbsp;readTree(JsonParser&nbsp;p)&nbsp;throws&nbsp;IOException&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to335_1168">1168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&lt;T&nbsp;extends&nbsp;TreeNode&gt;&nbsp;T&nbsp;readTree(JsonParser&nbsp;p)&nbsp;throws&nbsp;IOException&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to335__1">n</a></td><td class="diff_header" id="from335_1169">1169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(T)&nbsp;_bindAsTree(p);</td><td class="diff_next"><a href="#difflib_chg_to335__1">n</a></td><td class="diff_header" id="to335_1169">1169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(T)&nbsp;_bindAsTree<span class="diff_add">OrNull</span>(p);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1170">1170</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to335_1170">1170</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1171">1171</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1171">1171</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1172">1172</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@Override</td><td class="diff_next"></td><td class="diff_header" id="to335_1172">1172</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@Override</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to335__1"></td><td class="diff_header" id="from335_1704">1704</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Same&nbsp;as&nbsp;{@link&nbsp;#_bindAsTree}&nbsp;except&nbsp;end-of-input&nbsp;is&nbsp;reported&nbsp;by&nbsp;returning</td><td class="diff_next"></td><td class="diff_header" id="to335_1704">1704</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Same&nbsp;as&nbsp;{@link&nbsp;#_bindAsTree}&nbsp;except&nbsp;end-of-input&nbsp;is&nbsp;reported&nbsp;by&nbsp;returning</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1705">1705</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@code&nbsp;null},&nbsp;not&nbsp;"missing&nbsp;node"</td><td class="diff_next"></td><td class="diff_header" id="to335_1705">1705</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@code&nbsp;null},&nbsp;not&nbsp;"missing&nbsp;node"</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1706">1706</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to335_1706">1706</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to335__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to335__top">t</a></td><td class="diff_header" id="to335_1707">1707</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;final&nbsp;JsonNode&nbsp;_bindAsTreeOrNull(JsonParser&nbsp;p)&nbsp;throws&nbsp;IOException</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1708">1708</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1709">1709</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_config.initialize(p);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1710">1710</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_schema&nbsp;!=&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1711">1711</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.setSchema(_schema);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1712">1712</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1713">1713</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t&nbsp;=&nbsp;p.getCurrentToken();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1714">1714</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1715">1715</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;p.nextToken();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1716">1716</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1717">1717</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1718">1718</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1719">1719</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1720">1720</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;JsonNode&nbsp;resultNode;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1721">1721</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1722">1722</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultNode&nbsp;=&nbsp;_config.getNodeFactory().nullNode();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1723">1723</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1724">1724</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;DeserializationContext&nbsp;ctxt&nbsp;=&nbsp;createDeserializationContext(p);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1725">1725</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;JsonDeserializer&lt;Object&gt;&nbsp;deser&nbsp;=&nbsp;_findTreeDeserializer(ctxt);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1726">1726</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_unwrapRoot)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1727">1727</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultNode&nbsp;=&nbsp;(JsonNode)&nbsp;_unwrapAndDeserialize(p,&nbsp;ctxt,&nbsp;JSON_NODE</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">_TYPE,&nbsp;deser);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1728">1728</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1729">1729</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultNode&nbsp;=&nbsp;(JsonNode)&nbsp;deser.deserialize(p,&nbsp;ctxt);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1730">1730</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_config.isEnabled(DeserializationFeature.FAIL_ON_TRAILING_TO</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">KENS))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1731">1731</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_verifyNoTrailingTokens(p,&nbsp;ctxt,&nbsp;JSON_NODE_TYPE);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1732">1732</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1733">1733</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1734">1734</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1735">1735</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;resultNode;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to335_1736">1736</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1707">1707</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to335_1737">1737</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1708">1708</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to335_1738">1738</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from335_1709">1709</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@since&nbsp;2.1</td><td class="diff_next"></td><td class="diff_header" id="to335_1739">1739</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@since&nbsp;2.1</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

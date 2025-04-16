@@ -1,0 +1,86 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to137__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-21 - Buggy: src/com/google/javascript/jscomp/CheckSideEffects.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-21 - Fixed: src/com/google/javascript/jscomp/CheckSideEffects.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to137__0"></td><td class="diff_header" id="from137_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Do&nbsp;not&nbsp;try&nbsp;to&nbsp;remove&nbsp;a&nbsp;block&nbsp;or&nbsp;an&nbsp;expr&nbsp;result.&nbsp;We&nbsp;already&nbsp;handle</td><td class="diff_next"></td><td class="diff_header" id="to137_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Do&nbsp;not&nbsp;try&nbsp;to&nbsp;remove&nbsp;a&nbsp;block&nbsp;or&nbsp;an&nbsp;expr&nbsp;result.&nbsp;We&nbsp;already&nbsp;handle</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;these&nbsp;cases&nbsp;when&nbsp;we&nbsp;visit&nbsp;the&nbsp;child,&nbsp;and&nbsp;the&nbsp;peephole&nbsp;passes&nbsp;will</td><td class="diff_next"></td><td class="diff_header" id="to137_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;these&nbsp;cases&nbsp;when&nbsp;we&nbsp;visit&nbsp;the&nbsp;child,&nbsp;and&nbsp;the&nbsp;peephole&nbsp;passes&nbsp;will</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;fix&nbsp;up&nbsp;the&nbsp;tree&nbsp;in&nbsp;more&nbsp;clever&nbsp;ways&nbsp;when&nbsp;these&nbsp;are&nbsp;removed.</td><td class="diff_next"></td><td class="diff_header" id="to137_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;fix&nbsp;up&nbsp;the&nbsp;tree&nbsp;in&nbsp;more&nbsp;clever&nbsp;ways&nbsp;when&nbsp;these&nbsp;are&nbsp;removed.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to137__1">n</a></td><td class="diff_header" id="from137_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.isExprResult())&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to137__1">n</a></td><td class="diff_header" id="to137_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.isExprResult()<span class="diff_add">&nbsp;||&nbsp;n.isBlock(</span>)<span class="diff_add">)</span>&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</td><td class="diff_next"></td><td class="diff_header" id="to137_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_103">103</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to137_103">103</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_104">104</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to137_104">104</td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to137__1"></td><td class="diff_header" id="from137_110">110</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to137_110">110</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_111">111</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isResultUsed&nbsp;=&nbsp;NodeUtil.isExpressionResultUsed(n);</td><td class="diff_next"></td><td class="diff_header" id="to137_111">111</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isResultUsed&nbsp;=&nbsp;NodeUtil.isExpressionResultUsed(n);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_112">112</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isSimpleOp&nbsp;=&nbsp;NodeUtil.isSimpleOperatorType(n.getType());</td><td class="diff_next"></td><td class="diff_header" id="to137_112">112</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isSimpleOp&nbsp;=&nbsp;NodeUtil.isSimpleOperatorType(n.getType());</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to137__top">t</a></td><td class="diff_header" id="from137_113">113</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(parent.getType()&nbsp;==&nbsp;Token.COMMA)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to137__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_114">114</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isResultUsed<span class="diff_chg">)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header" id="to137_113">113</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_add">!</span>isResultUsed<span class="diff_chg">&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_115">115</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_116">116</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_117">117</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n&nbsp;==&nbsp;parent.getLastChild())&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_118">118</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Node&nbsp;an&nbsp;:&nbsp;parent.getAncestors())&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_119">119</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;ancestorType&nbsp;=&nbsp;an.getType();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_120">120</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ancestorType&nbsp;==&nbsp;Token.COMMA)&nbsp;continue;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_121">121</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ancestorType&nbsp;!=&nbsp;Token.EXPR_RESULT&nbsp;&amp;&amp;&nbsp;ancestorType&nbsp;!=&nbsp;Token.BLOCK)&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">return;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_122">122</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;break;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_123">123</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_124">124</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_125">125</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(parent.getType()&nbsp;!=&nbsp;Token.EXPR_RESULT&nbsp;&amp;&amp;&nbsp;parent.getType()&nbsp;!=&nbsp;Toke</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">n.BLOCK)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_126">126</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!&nbsp;(parent.getType()&nbsp;==&nbsp;Token.FOR&nbsp;&amp;&amp;&nbsp;parent.getChildCount()&nbsp;==&nbsp;4&nbsp;&amp;&amp;&nbsp;(n&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">==&nbsp;parent.getFirstChild()&nbsp;||&nbsp;n&nbsp;==&nbsp;parent.getFirstChild().getNext().getNext())))&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_127">127</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_128">128</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_129">129</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_130">130</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_131">131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(isSimpleOp&nbsp;||&nbsp;!NodeUtil.mayHaveSideEffects(n,&nbsp;t.getCompiler())))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to137_114">114</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(isSimpleOp&nbsp;||&nbsp;!NodeUtil.mayHaveSideEffects(n,&nbsp;t.getCompiler())))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_132">132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;msg&nbsp;=&nbsp;"This&nbsp;code&nbsp;lacks&nbsp;side-effects.&nbsp;Is&nbsp;there&nbsp;a&nbsp;bug?";</td><td class="diff_next"></td><td class="diff_header" id="to137_115">115</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;msg&nbsp;=&nbsp;"This&nbsp;code&nbsp;lacks&nbsp;side-effects.&nbsp;Is&nbsp;there&nbsp;a&nbsp;bug?";</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from137_133">133</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.isString())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to137_116">116</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.isString())&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

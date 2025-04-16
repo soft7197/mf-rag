@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to438__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-20 - Buggy: src/main/java/org/jsoup/helper/DataUtil.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-20 - Fixed: src/main/java/org/jsoup/helper/DataUtil.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from438_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;there&nbsp;are&nbsp;times&nbsp;where&nbsp;there&nbsp;is&nbsp;a&nbsp;spurious&nbsp;byte-order-mark&nbsp;at&nbsp;the&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to438_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;there&nbsp;are&nbsp;times&nbsp;where&nbsp;there&nbsp;is&nbsp;a&nbsp;spurious&nbsp;byte-order-mark&nbsp;at&nbsp;the&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">start&nbsp;of&nbsp;the&nbsp;text.&nbsp;Shouldn't&nbsp;be&nbsp;present</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">start&nbsp;of&nbsp;the&nbsp;text.&nbsp;Shouldn't&nbsp;be&nbsp;present</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to438__0"></td><td class="diff_header" id="from438_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;utf-8.&nbsp;If&nbsp;after&nbsp;decoding,&nbsp;there&nbsp;is&nbsp;a&nbsp;BOM,&nbsp;strip&nbsp;it;&nbsp;otherwise&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to438_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;utf-8.&nbsp;If&nbsp;after&nbsp;decoding,&nbsp;there&nbsp;is&nbsp;a&nbsp;BOM,&nbsp;strip&nbsp;it;&nbsp;otherwise&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">will&nbsp;cause&nbsp;the&nbsp;parser&nbsp;to&nbsp;go&nbsp;straight</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">will&nbsp;cause&nbsp;the&nbsp;parser&nbsp;to&nbsp;go&nbsp;straight</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from438_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;into&nbsp;head&nbsp;mode</td><td class="diff_next"></td><td class="diff_header" id="to438_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;into&nbsp;head&nbsp;mode</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to438__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to438__top">t</a></td><td class="diff_header" id="to438_98">98</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(docData.charAt(0)&nbsp;==&nbsp;65279)</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to438_99">99</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docData&nbsp;=&nbsp;docData.substring(1);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from438_98">98</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to438_100">100</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from438_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc&nbsp;=&nbsp;parser.parseInput(docData,&nbsp;baseUri);</td><td class="diff_next"></td><td class="diff_header" id="to438_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc&nbsp;=&nbsp;parser.parseInput(docData,&nbsp;baseUri);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from438_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc.outputSettings().charset(charsetName);</td><td class="diff_next"></td><td class="diff_header" id="to438_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc.outputSettings().charset(charsetName);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

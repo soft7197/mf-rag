@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to300__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-18 - Buggy: gson/src/main/java/com/google/gson/internal/$Gson$Types.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-18 - Fixed: gson/src/main/java/com/google/gson/internal/$Gson$Types.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from300_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;supertype&nbsp;a&nbsp;superclass&nbsp;of,&nbsp;or&nbsp;interface&nbsp;implemented&nbsp;by,&nbsp;this.</td><td class="diff_next"></td><td class="diff_header" id="to300_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;supertype&nbsp;a&nbsp;superclass&nbsp;of,&nbsp;or&nbsp;interface&nbsp;implemented&nbsp;by,&nbsp;this.</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to300__0"></td><td class="diff_header" id="from300_276">276</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to300_276">276</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from300_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;static&nbsp;Type&nbsp;getSupertype(Type&nbsp;context,&nbsp;Class&lt;?&gt;&nbsp;contextRawType,&nbsp;Class&lt;?&gt;&nbsp;super</td><td class="diff_next"></td><td class="diff_header" id="to300_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;static&nbsp;Type&nbsp;getSupertype(Type&nbsp;context,&nbsp;Class&lt;?&gt;&nbsp;contextRawType,&nbsp;Class&lt;?&gt;&nbsp;super</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">type)&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">type)&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to300__1"><a href="#difflib_chg_to300__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to300__1">n</a></td><td class="diff_header" id="to300_278">278</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(context&nbsp;instanceof&nbsp;WildcardType)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from300_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;wildcards&nbsp;are&nbsp;useless&nbsp;for&nbsp;resolving&nbsp;supertypes.&nbsp;As&nbsp;the&nbsp;upper&nbsp;bound&nbsp;has&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to300_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;wildcards&nbsp;are&nbsp;useless&nbsp;for&nbsp;resolving&nbsp;supertypes.&nbsp;As&nbsp;the&nbsp;upper&nbsp;bound&nbsp;has&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">the&nbsp;same&nbsp;raw&nbsp;type,&nbsp;use&nbsp;it&nbsp;instead</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">the&nbsp;same&nbsp;raw&nbsp;type,&nbsp;use&nbsp;it&nbsp;instead</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to300__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to300__top">t</a></td><td class="diff_header" id="to300_280">280</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context&nbsp;=&nbsp;((WildcardType)context).getUpperBounds()[0];</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to300_281">281</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from300_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;checkArgument(supertype.isAssignableFrom(contextRawType));</td><td class="diff_next"></td><td class="diff_header" id="to300_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;checkArgument(supertype.isAssignableFrom(contextRawType));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from300_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;resolve(context,&nbsp;contextRawType,</td><td class="diff_next"></td><td class="diff_header" id="to300_283">283</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;resolve(context,&nbsp;contextRawType,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from300_281">281</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Gson$Types.getGenericSupertype(context,&nbsp;contextRawType,&nbsp;supertype));</td><td class="diff_next"></td><td class="diff_header" id="to300_284">284</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Gson$Types.getGenericSupertype(context,&nbsp;contextRawType,&nbsp;supertype));</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

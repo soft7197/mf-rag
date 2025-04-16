@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to724__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-22 - Buggy: src/main/java/org/joda/time/base/BasePeriod.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-22 - Fixed: src/main/java/org/joda/time/base/BasePeriod.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to724__0"></td><td class="diff_header" id="from724_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;duration&nbsp;&nbsp;the&nbsp;duration,&nbsp;in&nbsp;milliseconds</td><td class="diff_next"></td><td class="diff_header" id="to724_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;duration&nbsp;&nbsp;the&nbsp;duration,&nbsp;in&nbsp;milliseconds</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from724_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to724_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to724__1"></td><td class="diff_header" id="from724_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;BasePeriod(long&nbsp;duration)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to724_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;BasePeriod(long&nbsp;duration)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to724__1">n</a></td><td class="diff_header" id="from724_222">222</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this(duration,&nbsp;null,&nbsp;null);</span></td><td class="diff_next"><a href="#difflib_chg_to724__1">n</a></td><td class="diff_header" id="to724_222">222</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from724_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;bug&nbsp;[3264409]</td><td class="diff_next"></td><td class="diff_header" id="to724_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;bug&nbsp;[3264409]</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to724__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to724__top">t</a></td><td class="diff_header" id="to724_224">224</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iType&nbsp;=&nbsp;PeriodType.time();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to724_225">225</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;values&nbsp;=&nbsp;ISOChronology.getInstanceUTC().get(this,&nbsp;duration);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to724_226">226</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iType&nbsp;=&nbsp;PeriodType.standard();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to724_227">227</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iValues&nbsp;=&nbsp;new&nbsp;int[8];</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to724_228">228</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.arraycopy(values,&nbsp;0,&nbsp;iValues,&nbsp;4,&nbsp;4);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from724_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to724_229">229</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from724_225">225</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to724_230">230</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from724_226">226</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to724_231">231</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to437__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-2 - Buggy: src/main/java/org/jsoup/parser/Parser.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-2 - Fixed: src/main/java/org/jsoup/parser/Parser.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to437__0"></td><td class="diff_header" id="from437_145">145</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(tag.isData())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to437_145">145</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(tag.isData())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from437_146">146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;data&nbsp;=&nbsp;tq.chompTo("&lt;/"&nbsp;+&nbsp;tagName);</td><td class="diff_next"></td><td class="diff_header" id="to437_146">146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;data&nbsp;=&nbsp;tq.chompTo("&lt;/"&nbsp;+&nbsp;tagName);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from437_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tq.chompTo("&gt;");</td><td class="diff_next"></td><td class="diff_header" id="to437_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tq.chompTo("&gt;");</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to437__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to437__top">t</a></td><td class="diff_header" id="to437_148">148</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popStackToClose(tag);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from437_148">148</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to437_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from437_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;dataNode;</td><td class="diff_next"></td><td class="diff_header" id="to437_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;dataNode;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from437_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(tag.equals(titleTag)&nbsp;||&nbsp;tag.equals(textareaTag))&nbsp;//&nbsp;want&nbsp;to&nbsp;show</td><td class="diff_next"></td><td class="diff_header" id="to437_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(tag.equals(titleTag)&nbsp;||&nbsp;tag.equals(textareaTag))&nbsp;//&nbsp;want&nbsp;to&nbsp;show</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;as&nbsp;text,&nbsp;but&nbsp;not&nbsp;contain&nbsp;inside&nbsp;tags&nbsp;(so&nbsp;not&nbsp;a&nbsp;data&nbsp;tag?)</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;as&nbsp;text,&nbsp;but&nbsp;not&nbsp;contain&nbsp;inside&nbsp;tags&nbsp;(so&nbsp;not&nbsp;a&nbsp;data&nbsp;tag?)</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

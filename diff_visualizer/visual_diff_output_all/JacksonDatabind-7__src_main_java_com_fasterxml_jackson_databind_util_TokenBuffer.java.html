@@ -1,0 +1,76 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to402__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-7 - Buggy: src/main/java/com/fasterxml/jackson/databind/util/TokenBuffer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-7 - Fixed: src/main/java/com/fasterxml/jackson/databind/util/TokenBuffer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_402">402</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to402_402">402</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to402__0"></td><td class="diff_header" id="from402_403">403</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;TokenBuffer&nbsp;deserialize(JsonParser&nbsp;jp,&nbsp;DeserializationContext&nbsp;ctxt)&nbsp;t</td><td class="diff_next"></td><td class="diff_header" id="to402_403">403</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;TokenBuffer&nbsp;deserialize(JsonParser&nbsp;jp,&nbsp;DeserializationContext&nbsp;ctxt)&nbsp;t</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">hrows&nbsp;IOException</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">hrows&nbsp;IOException</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to402__1"></td><td class="diff_header" id="from402_404">404</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to402_404">404</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to402__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to402__1">n</a></td><td class="diff_header" id="to402_405">405</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(jp.getCurrentTokenId()&nbsp;!=&nbsp;JsonToken.FIELD_NAME.id())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_405">405</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyCurrentStructure(jp);</td><td class="diff_next"></td><td class="diff_header" id="to402_406">406</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyCurrentStructure(jp);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to402__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to402__2">n</a></td><td class="diff_header" id="to402_407">407</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_408">408</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_406">406</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;28-Oct-2014,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;#592,&nbsp;need&nbsp;to&nbsp;support&nbsp;a&nbsp;special&nbsp;case&nbsp;of&nbsp;sta</td><td class="diff_next"></td><td class="diff_header" id="to402_409">409</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;28-Oct-2014,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;#592,&nbsp;need&nbsp;to&nbsp;support&nbsp;a&nbsp;special&nbsp;case&nbsp;of&nbsp;sta</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rting&nbsp;from</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rting&nbsp;from</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_407">407</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;FIELD_NAME,&nbsp;which&nbsp;is&nbsp;taken&nbsp;to&nbsp;mean&nbsp;that&nbsp;we&nbsp;are&nbsp;missing&nbsp;START_OBJEC</td><td class="diff_next"></td><td class="diff_header" id="to402_410">410</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;FIELD_NAME,&nbsp;which&nbsp;is&nbsp;taken&nbsp;to&nbsp;mean&nbsp;that&nbsp;we&nbsp;are&nbsp;missing&nbsp;START_OBJEC</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to402__2"></td><td class="diff_header">></td><td nowrap="nowrap">T,&nbsp;but&nbsp;need</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">T,&nbsp;but&nbsp;need</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_408">408</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;assume&nbsp;one&nbsp;did&nbsp;exist.</td><td class="diff_next"></td><td class="diff_header" id="to402_411">411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;assume&nbsp;one&nbsp;did&nbsp;exist.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_409">409</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to402_412">412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to402__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to402__top">t</a></td><td class="diff_header" id="to402_413">413</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_414">414</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeStartObject();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_415">415</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_416">416</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyCurrentStructure(jp);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_417">417</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;while&nbsp;((t&nbsp;=&nbsp;jp.nextToken())&nbsp;==&nbsp;JsonToken.FIELD_NAME);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_418">418</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;!=&nbsp;JsonToken.END_OBJECT)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_419">419</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.mappingException("Expected&nbsp;END_OBJECT&nbsp;after&nbsp;copying&nbsp;conte</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">nts&nbsp;of&nbsp;a&nbsp;JsonParser&nbsp;into&nbsp;TokenBuffer,&nbsp;got&nbsp;"+t);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_420">420</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to402_421">421</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeEndObject();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_410">410</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to402_422">422</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_411">411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to402_423">423</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from402_412">412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to402_424">424</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

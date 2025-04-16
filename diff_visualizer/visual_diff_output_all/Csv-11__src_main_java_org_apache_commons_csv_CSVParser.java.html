@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to282__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Csv-11 - Buggy: src/main/java/org/apache/commons/csv/CSVParser.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Csv-11 - Fixed: src/main/java/org/apache/commons/csv/CSVParser.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to282__0"></td><td class="diff_header" id="from282_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;headerRecord.length;&nbsp;i++)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to282_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;headerRecord.length;&nbsp;i++)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from282_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;String&nbsp;header&nbsp;=&nbsp;headerRecord[i];</td><td class="diff_next"></td><td class="diff_header" id="to282_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;String&nbsp;header&nbsp;=&nbsp;headerRecord[i];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from282_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;containsHeader&nbsp;=&nbsp;hdrMap.containsKey(header);</td><td class="diff_next"></td><td class="diff_header" id="to282_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;containsHeader&nbsp;=&nbsp;hdrMap.containsKey(header);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to282__top">t</a></td><td class="diff_header" id="from282_384">384</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;emptyHeader&nbsp;=&nbsp;header.trim().isEmpty();</td><td class="diff_next"><a href="#difflib_chg_to282__top">t</a></td><td class="diff_header" id="to282_384">384</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;emptyHeader&nbsp;=<span class="diff_add">&nbsp;header&nbsp;==&nbsp;null&nbsp;||</span>&nbsp;header.trim().</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">isEmpty();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from282_385">385</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(containsHeader&nbsp;&amp;&amp;&nbsp;(!emptyHeader&nbsp;||&nbsp;(emptyHeader&nbsp;&amp;&amp;&nbsp;!this</td><td class="diff_next"></td><td class="diff_header" id="to282_385">385</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(containsHeader&nbsp;&amp;&amp;&nbsp;(!emptyHeader&nbsp;||&nbsp;(emptyHeader&nbsp;&amp;&amp;&nbsp;!this</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.format.getIgnoreEmptyHeaders())))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.format.getIgnoreEmptyHeaders())))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from282_386">386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("The&nbsp;header&nbsp;contains&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to282_386">386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("The&nbsp;header&nbsp;contains&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;duplicate&nbsp;name:&nbsp;\""&nbsp;+&nbsp;header&nbsp;+</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;duplicate&nbsp;name:&nbsp;\""&nbsp;+&nbsp;header&nbsp;+</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from282_387">387</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"\"&nbsp;in&nbsp;"&nbsp;+&nbsp;Arrays.toString(headerRecord));</td><td class="diff_next"></td><td class="diff_header" id="to282_387">387</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"\"&nbsp;in&nbsp;"&nbsp;+&nbsp;Arrays.toString(headerRecord));</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

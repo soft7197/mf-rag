@@ -1,0 +1,62 @@
+{
+    "Jsoup-70": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Gets the text owned by this element only; does not get the combined text of all children.\n* <p>\n* For example, given HTML {@code <p>Hello <b>there</b> now!</p>}, {@code p.ownText()} returns {@code \"Hello now!\"},\n* whereas {@code p.text()} returns {@code \"Hello there now!\"}.\n* Note that the text within the {@code b} element is not returned, as it is not a direct child of the {@code p} element.\n*\n* @return unencoded text, or empty string if none.\n* @see #text()\n* @see #textNodes()\n*/\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n            if (el.tag.preserveWhitespace())\n                return true;\n            else\n                return el.parent() != null && el.parent().tag.preserveWhitespace();\n    }\n    return false;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testKeepsPreTextAtDepth() {\n\n        String h = \"<pre><code><span><b>code\\n\\ncode</b></span></code></pre>\";\n\n        Document doc = Jsoup.parse(h);\n\n        assertEquals(\"code\\n\\ncode\", doc.text());\n\n        assertEquals(\"<pre><code><span><b>code\\n\\ncode</b></span></code></pre>\", doc.body().html());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<code[\n\n]code> but was:<code[ ]code>\n\tat org.jsoup.nodes.ElementTest.testKeepsPreTextAtDepth(ElementTest.java:110)  assertEquals(\"code\\n\\ncode\", doc.text());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    int depth = 0;\n    while (node != null && node instanceof Element && depth < 6) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        node = el.parent();\n        depth++;\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    for (int i = 0; i < 6 && node != null; i++) {\n        if (node instanceof Element) {\n            Element el = (Element) node;\n            if (el.tag.preserveWhitespace())\n                return true;\n        }\n        node = node.parent();\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n        int depth = 0;\n        while (depth < 5 && el != null) {\n            if (el.tag.preserveWhitespace()) {\n                return true;\n            }\n            el = el.parent();\n            depth++;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n        int depth = 0;\n        while (el != null && depth < 6) {\n            if (el.tag.preserveWhitespace())\n                return true;\n            el = el.parent();\n            depth++;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    int maxDepth = 5;\n    int currentDepth = 0;\n    while (node != null && currentDepth < maxDepth) {\n        if (node instanceof Element) {\n            Element el = (Element) node;\n            if (el.tag.preserveWhitespace()) {\n                return true;\n            }\n        }\n        node = node.parent();\n        currentDepth++;\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n        int level = 0;\n        while (el != null && level < 5) {\n            if (el.tag.preserveWhitespace())\n                return true;\n            el = el.parent();\n            level++;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    int depth = 0;\n    while (node != null && node instanceof Element && depth < 6) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        node = el.parent();\n        depth++;\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        else {\n            Node parent = el.parent();\n            for (int i = 0; i < 5 && parent instanceof Element; i++) {\n                if (((Element) parent).tag.preserveWhitespace())\n                    return true;\n                parent = parent.parent();\n            }\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    int maxDepth = 5;\n    int depth = 0;\n    while (node != null && node instanceof Element && depth < maxDepth) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        node = el.parent();\n        depth++;\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    int depth = 0;\n    while (node != null && node instanceof Element && depth < 6) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        node = el.parent();\n        depth++;\n    }\n    return false;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    int depth = 0;\n    while (node != null && node instanceof Element && depth < 6) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        node = el.parent();\n        depth++;\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    for (int i = 0; i < 6 && node != null; i++) {\n        if (node instanceof Element) {\n            Element el = (Element) node;\n            if (el.tag.preserveWhitespace())\n                return true;\n        }\n        node = node.parent();\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n        int depth = 0;\n        while (el != null && depth < 6) {\n            if (el.tag.preserveWhitespace())\n                return true;\n            el = el.parent();\n            depth++;\n        }\n    }\n    return false;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    int depth = 0;\n    while (node != null && node instanceof Element && depth < 6) {\n        Element el = (Element) node;\n        if (el.tag.preserveWhitespace())\n            return true;\n        node = el.parent();\n        depth++;\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    for (int i = 0; i < 6 && node != null; i++) {\n        if (node instanceof Element) {\n            Element el = (Element) node;\n            if (el.tag.preserveWhitespace())\n                return true;\n        }\n        node = node.parent();\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\nstatic boolean preserveWhitespace(Node node) {\n    // looks only at this element and five levels up, to prevent recursion & needless stack searches\n    if (node != null && node instanceof Element) {\n        Element el = (Element) node;\n        int depth = 0;\n        while (el != null && depth < 6) {\n            if (el.tag.preserveWhitespace())\n                return true;\n            el = el.parent();\n            depth++;\n        }\n    }\n    return false;\n}\n"
+                ]
+            ]
+        }
+    }
+}

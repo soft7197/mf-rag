@@ -1,0 +1,90 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to590__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-28 - Buggy: src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-28 - Fixed: src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_116">116</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;there's&nbsp;a&nbsp;degeneracy&nbsp;as&nbsp;indicated&nbsp;by&nbsp;a&nbsp;tie&nbsp;in&nbsp;the&nbsp;minimum&nbsp;ratio&nbsp;t</td><td class="diff_next"></td><td class="diff_header" id="to590_116">116</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;there's&nbsp;a&nbsp;degeneracy&nbsp;as&nbsp;indicated&nbsp;by&nbsp;a&nbsp;tie&nbsp;in&nbsp;the&nbsp;minimum&nbsp;ratio&nbsp;t</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">est</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">est</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to590__0"></td><td class="diff_header" id="from590_117">117</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to590_117">117</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_118">118</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1.&nbsp;check&nbsp;if&nbsp;there's&nbsp;an&nbsp;artificial&nbsp;variable&nbsp;that&nbsp;can&nbsp;be&nbsp;forced&nbsp;out</td><td class="diff_next"></td><td class="diff_header" id="to590_118">118</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1.&nbsp;check&nbsp;if&nbsp;there's&nbsp;an&nbsp;artificial&nbsp;variable&nbsp;that&nbsp;can&nbsp;be&nbsp;forced&nbsp;out</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;of&nbsp;the&nbsp;basis</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;of&nbsp;the&nbsp;basis</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to590__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to590__1">n</a></td><td class="diff_header" id="to590_119">119</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(tableau.getNumArtificialVariables()&nbsp;&gt;&nbsp;0)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_119">119</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Integer&nbsp;row&nbsp;:&nbsp;minRatioPositions)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to590_120">120</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Integer&nbsp;row&nbsp;:&nbsp;minRatioPositions)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_120">120</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;tableau.getNumArtificialVariables();&nbsp;i++</td><td class="diff_next"></td><td class="diff_header" id="to590_121">121</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;tableau.getNumArtificialVariables();&nbsp;i++</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">)&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_121">121</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;column&nbsp;=&nbsp;i&nbsp;+&nbsp;tableau.getArtificialVariableOffset();</td><td class="diff_next"></td><td class="diff_header" id="to590_122">122</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;column&nbsp;=&nbsp;i&nbsp;+&nbsp;tableau.getArtificialVariableOffset();</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to590__1"></td><td class="diff_header" id="from590_125">125</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_126">126</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_126">126</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_127">127</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_127">127</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_128">128</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to590__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to590__2">n</a></td><td class="diff_header" id="to590_129">129</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_128">128</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to590_130">130</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_129">129</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2.&nbsp;apply&nbsp;Bland's&nbsp;rule&nbsp;to&nbsp;prevent&nbsp;cycling:</td><td class="diff_next"></td><td class="diff_header" id="to590_131">131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2.&nbsp;apply&nbsp;Bland's&nbsp;rule&nbsp;to&nbsp;prevent&nbsp;cycling:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_130">130</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;take&nbsp;the&nbsp;row&nbsp;for&nbsp;which&nbsp;the&nbsp;corresponding&nbsp;basic&nbsp;variable&nbsp;has&nbsp;th</td><td class="diff_next"></td><td class="diff_header" id="to590_132">132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;take&nbsp;the&nbsp;row&nbsp;for&nbsp;which&nbsp;the&nbsp;corresponding&nbsp;basic&nbsp;variable&nbsp;has&nbsp;th</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;smallest&nbsp;index</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;smallest&nbsp;index</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_135">135</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Additional&nbsp;heuristic:&nbsp;if&nbsp;we&nbsp;did&nbsp;not&nbsp;get&nbsp;a&nbsp;solution&nbsp;after&nbsp;half&nbsp;of&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to590_137">137</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Additional&nbsp;heuristic:&nbsp;if&nbsp;we&nbsp;did&nbsp;not&nbsp;get&nbsp;a&nbsp;solution&nbsp;after&nbsp;half&nbsp;of&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">maxIterations</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">maxIterations</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_136">136</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;revert&nbsp;to&nbsp;the&nbsp;simple&nbsp;case&nbsp;of&nbsp;just&nbsp;returning</td><td class="diff_next"></td><td class="diff_header" id="to590_138">138</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;revert&nbsp;to&nbsp;the&nbsp;simple&nbsp;case&nbsp;of&nbsp;just&nbsp;returning</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to590__2"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;the&nbsp;top-most&nbsp;row</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;the&nbsp;top-most&nbsp;row</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_137">137</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;This&nbsp;heuristic&nbsp;is&nbsp;based&nbsp;on&nbsp;empirical&nbsp;data&nbsp;gathered&nbsp;while&nbsp;investig</td><td class="diff_next"></td><td class="diff_header" id="to590_139">139</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;This&nbsp;heuristic&nbsp;is&nbsp;based&nbsp;on&nbsp;empirical&nbsp;data&nbsp;gathered&nbsp;while&nbsp;investig</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ating&nbsp;MATH-828.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ating&nbsp;MATH-828.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to590__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to590__3">n</a></td><td class="diff_header" id="to590_140">140</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(getIterations()&nbsp;&lt;&nbsp;getMaxIterations()&nbsp;/&nbsp;2)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_138">138</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;minRow&nbsp;=&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to590_141">141</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;minRow&nbsp;=&nbsp;null;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_139">139</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;minIndex&nbsp;=&nbsp;tableau.getWidth();</td><td class="diff_next"></td><td class="diff_header" id="to590_142">142</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;minIndex&nbsp;=&nbsp;tableau.getWidth();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_140">140</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Integer&nbsp;row&nbsp;:&nbsp;minRatioPositions)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to590_143">143</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Integer&nbsp;row&nbsp;:&nbsp;minRatioPositions)&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to590__3"></td><td class="diff_header" id="from590_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;minRow;</td><td class="diff_next"></td><td class="diff_header" id="to590_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;minRow;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to590__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to590__top">t</a></td><td class="diff_header" id="to590_155">155</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;minRatioPositions.get(0);</td><td class="diff_next"></td><td class="diff_header" id="to590_157">157</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;minRatioPositions.get(0);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from590_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to590_158">158</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

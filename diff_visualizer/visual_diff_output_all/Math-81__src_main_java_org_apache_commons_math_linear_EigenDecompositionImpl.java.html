@@ -1,0 +1,76 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to657__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-81 - Buggy: src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-81 - Fixed: src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to657__0"></td><td class="diff_header" id="from657_600">600</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerSpectra&nbsp;=&nbsp;Math.min(lowerSpectra,&nbsp;lower);</td><td class="diff_next"></td><td class="diff_header" id="to657_600">600</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerSpectra&nbsp;=&nbsp;Math.min(lowerSpectra,&nbsp;lower);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_601">601</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;upper&nbsp;=&nbsp;dCurrent&nbsp;+&nbsp;eCurrent;</td><td class="diff_next"></td><td class="diff_header" id="to657_601">601</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;upper&nbsp;=&nbsp;dCurrent&nbsp;+&nbsp;eCurrent;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_602">602</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;work[upperStart&nbsp;+&nbsp;m&nbsp;-&nbsp;1]&nbsp;=&nbsp;upper;</td><td class="diff_next"></td><td class="diff_header" id="to657_602">602</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;work[upperStart&nbsp;+&nbsp;m&nbsp;-&nbsp;1]&nbsp;=&nbsp;upper;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to657__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to657__1">n</a></td><td class="diff_header" id="to657_603">603</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSpectra&nbsp;=&nbsp;Math.max(upperSpectra,&nbsp;upper);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_603">603</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minPivot&nbsp;=&nbsp;MathUtils.SAFE_MIN&nbsp;*&nbsp;Math.max(1.0,&nbsp;eMax&nbsp;*&nbsp;eMax);</td><td class="diff_next"></td><td class="diff_header" id="to657_604">604</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minPivot&nbsp;=&nbsp;MathUtils.SAFE_MIN&nbsp;*&nbsp;Math.max(1.0,&nbsp;eMax&nbsp;*&nbsp;eMax);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_604">604</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to657_605">605</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_605">605</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to657_606">606</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to657__1"></td><td class="diff_header" id="from657_902">902</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diagMax&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;work[4&nbsp;*&nbsp;i0];</td><td class="diff_next"></td><td class="diff_header" id="to657_903">903</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diagMax&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;work[4&nbsp;*&nbsp;i0];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_903">903</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offDiagMin&nbsp;=&nbsp;work[4&nbsp;*&nbsp;i0&nbsp;+&nbsp;2];</td><td class="diff_next"></td><td class="diff_header" id="to657_904">904</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offDiagMin&nbsp;=&nbsp;work[4&nbsp;*&nbsp;i0&nbsp;+&nbsp;2];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_904">904</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;previousEMin&nbsp;=&nbsp;work[4&nbsp;*&nbsp;i0&nbsp;+&nbsp;3];</td><td class="diff_next"></td><td class="diff_header" id="to657_905">905</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;previousEMin&nbsp;=&nbsp;work[4&nbsp;*&nbsp;i0&nbsp;+&nbsp;3];</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to657__2">n</a></td><td class="diff_header" id="from657_905">905</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;4&nbsp;*&nbsp;i0;&nbsp;i&nbsp;&lt;&nbsp;4&nbsp;*&nbsp;n0&nbsp;-&nbsp;1<span class="diff_chg">1</span>;&nbsp;i&nbsp;+=&nbsp;4)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to657__2">n</a></td><td class="diff_header" id="to657_906">906</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;4&nbsp;*&nbsp;i0;&nbsp;i&nbsp;&lt;&nbsp;4&nbsp;*&nbsp;n0&nbsp;-&nbsp;1<span class="diff_chg">6</span>;&nbsp;i&nbsp;+=&nbsp;4)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_906">906</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((work[i&nbsp;+&nbsp;3]&nbsp;&lt;=&nbsp;TOLERANCE_2&nbsp;*&nbsp;work[i])&nbsp;<span class="diff_chg">&amp;&amp;</span></td><td class="diff_next"></td><td class="diff_header" id="to657_907">907</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((work[i&nbsp;+&nbsp;3]&nbsp;&lt;=&nbsp;TOLERANCE_2&nbsp;*&nbsp;work[i])&nbsp;<span class="diff_chg">||</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_907">907</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(work[i&nbsp;+&nbsp;2]&nbsp;&lt;=&nbsp;TOLERANCE_2&nbsp;*&nbsp;sigma))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to657_908">908</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(work[i&nbsp;+&nbsp;2]&nbsp;&lt;=&nbsp;TOLERANCE_2&nbsp;*&nbsp;sigma))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_908">908</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;insert&nbsp;a&nbsp;split</td><td class="diff_next"></td><td class="diff_header" id="to657_909">909</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;insert&nbsp;a&nbsp;split</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_909">909</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;work[i&nbsp;+&nbsp;2]&nbsp;&nbsp;=&nbsp;-sigma;</td><td class="diff_next"></td><td class="diff_header" id="to657_910">910</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;work[i&nbsp;+&nbsp;2]&nbsp;&nbsp;=&nbsp;-sigma;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to657__2"></td><td class="diff_header" id="from657_1540">1540</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;a2&nbsp;=&nbsp;(work[np&nbsp;-&nbsp;8]&nbsp;/&nbsp;b2)&nbsp;*&nbsp;(1&nbsp;+&nbsp;work[np&nbsp;-&nbsp;4]&nbsp;/&nbsp;b1);</td><td class="diff_next"></td><td class="diff_header" id="to657_1541">1541</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;a2&nbsp;=&nbsp;(work[np&nbsp;-&nbsp;8]&nbsp;/&nbsp;b2)&nbsp;*&nbsp;(1&nbsp;+&nbsp;work[np&nbsp;-&nbsp;4]&nbsp;/&nbsp;b1);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_1541">1541</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to657_1542">1542</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_1542">1542</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;approximate&nbsp;contribution&nbsp;to&nbsp;norm&nbsp;squared&nbsp;from&nbsp;i&nbsp;&lt;&nbsp;nn-2.</td><td class="diff_next"></td><td class="diff_header" id="to657_1543">1543</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;approximate&nbsp;contribution&nbsp;to&nbsp;norm&nbsp;squared&nbsp;from&nbsp;i&nbsp;&lt;&nbsp;nn-2.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to657__top">t</a></td><td class="diff_header" id="from657_1543">1543</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(end&nbsp;-&nbsp;start&nbsp;&gt;&nbsp;<span class="diff_chg">2</span>)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to657__top">t</a></td><td class="diff_header" id="to657_1544">1544</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(end&nbsp;-&nbsp;start&nbsp;&gt;&nbsp;<span class="diff_chg">3</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_1544">1544</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b2&nbsp;=&nbsp;work[nn&nbsp;-&nbsp;13]&nbsp;/&nbsp;work[nn&nbsp;-&nbsp;15];</td><td class="diff_next"></td><td class="diff_header" id="to657_1545">1545</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b2&nbsp;=&nbsp;work[nn&nbsp;-&nbsp;13]&nbsp;/&nbsp;work[nn&nbsp;-&nbsp;15];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_1545">1545</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a2&nbsp;=&nbsp;a2&nbsp;+&nbsp;b2;</td><td class="diff_next"></td><td class="diff_header" id="to657_1546">1546</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a2&nbsp;=&nbsp;a2&nbsp;+&nbsp;b2;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from657_1546">1546</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i4&nbsp;=&nbsp;nn&nbsp;-&nbsp;17;&nbsp;i4&nbsp;&gt;=&nbsp;4&nbsp;*&nbsp;start&nbsp;+&nbsp;2&nbsp;+&nbsp;pingPong;&nbsp;i4&nbsp;-=</td><td class="diff_next"></td><td class="diff_header" id="to657_1547">1547</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i4&nbsp;=&nbsp;nn&nbsp;-&nbsp;17;&nbsp;i4&nbsp;&gt;=&nbsp;4&nbsp;*&nbsp;start&nbsp;+&nbsp;2&nbsp;+&nbsp;pingPong;&nbsp;i4&nbsp;-=</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;4)&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;4)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

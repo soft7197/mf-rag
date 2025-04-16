@@ -1,0 +1,68 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to507__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JxPath-6 - Buggy: src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JxPath-6 - Fixed: src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to507__0"></td><td class="diff_header" id="from507_54">54</td><td nowrap="nowrap">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(l&nbsp;==&nbsp;null&nbsp;?&nbsp;"null"&nbsp;:&nbsp;l.getClass().getName())&nbsp;+&nbsp;"&nbsp;"&nbsp;+</td><td class="diff_next"></td><td class="diff_header" id="to507_54">54</td><td nowrap="nowrap">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(l&nbsp;==&nbsp;null&nbsp;?&nbsp;"null"&nbsp;:&nbsp;l.getClass().getName())&nbsp;+&nbsp;"&nbsp;"&nbsp;+</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_55">55</td><td nowrap="nowrap">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(r&nbsp;==&nbsp;null&nbsp;?&nbsp;"null"&nbsp;:&nbsp;r.getClass().getName()));</td><td class="diff_next"></td><td class="diff_header" id="to507_55">55</td><td nowrap="nowrap">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(r&nbsp;==&nbsp;null&nbsp;?&nbsp;"null"&nbsp;:&nbsp;r.getClass().getName()));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_56">56</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_56">56</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to507__1">n</a></td><td class="diff_header" id="from507_57">57</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(l&nbsp;instanceof&nbsp;InitialContext<span class="diff_sub">&nbsp;||&nbsp;l&nbsp;instanceof&nbsp;SelfContext</span>)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to507__1">n</a></td><td class="diff_header" id="to507_57">57</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(l&nbsp;instanceof&nbsp;InitialContext)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_58">58</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((EvalContext)&nbsp;l).reset();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_59">59</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_60">60</td><td nowrap="nowrap"><span class="diff_add">&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_61">61</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(l&nbsp;instanceof&nbsp;SelfContext)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to507__1"></td><td class="diff_header" id="from507_58">58</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l&nbsp;=&nbsp;((EvalContext)&nbsp;l).getSingleNodePointer();</td><td class="diff_next"></td><td class="diff_header" id="to507_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l&nbsp;=&nbsp;((EvalContext)&nbsp;l).getSingleNodePointer();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_59">59</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to507_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_60">60</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_64">64</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to507__top">t</a></td><td class="diff_header" id="from507_61">61</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(r&nbsp;instanceof&nbsp;InitialContext<span class="diff_sub">&nbsp;||&nbsp;r&nbsp;instanceof&nbsp;SelfContext</span>)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to507__top">t</a></td><td class="diff_header" id="to507_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(r&nbsp;instanceof&nbsp;InitialContext)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_66">66</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((EvalContext)&nbsp;r).reset();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_67">67</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_68">68</td><td nowrap="nowrap"><span class="diff_add">&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_69">69</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(r&nbsp;instanceof&nbsp;SelfContext)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;=&nbsp;((EvalContext)&nbsp;r).getSingleNodePointer();</td><td class="diff_next"></td><td class="diff_header" id="to507_70">70</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;=&nbsp;((EvalContext)&nbsp;r).getSingleNodePointer();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to507_71">71</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from507_64">64</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to507_72">72</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to304__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-6 - Buggy: gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-6 - Fixed: gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from304_64">64</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException(</td><td class="diff_next"></td><td class="diff_header" id="to304_64">64</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException(</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to304__0"></td><td class="diff_header" id="from304_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"@JsonAdapter&nbsp;value&nbsp;must&nbsp;be&nbsp;TypeAdapter&nbsp;or&nbsp;TypeAdapterFactory&nbsp;referenc</td><td class="diff_next"></td><td class="diff_header" id="to304_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"@JsonAdapter&nbsp;value&nbsp;must&nbsp;be&nbsp;TypeAdapter&nbsp;or&nbsp;TypeAdapterFactory&nbsp;referenc</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e.");</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e.");</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to304__1"></td><td class="diff_header" id="from304_66">66</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to304_66">66</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to304__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to304__1">n</a></td><td class="diff_header" id="to304_67">67</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(typeAdapter&nbsp;!=&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from304_67">67</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeAdapter&nbsp;=&nbsp;typeAdapter.nullSafe();</td><td class="diff_next"></td><td class="diff_header" id="to304_68">68</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeAdapter&nbsp;=&nbsp;typeAdapter.nullSafe();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to304__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to304__top">t</a></td><td class="diff_header" id="to304_69">69</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from304_68">68</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;typeAdapter;</td><td class="diff_next"></td><td class="diff_header" id="to304_70">70</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;typeAdapter;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from304_69">69</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to304_71">71</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from304_70">70</td><td nowrap="nowrap">}</td><td class="diff_next"></td><td class="diff_header" id="to304_72">72</td><td nowrap="nowrap">}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to564__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-1 - Buggy: src/main/java/org/apache/commons/math3/fraction/Fraction.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-1 - Fixed: src/main/java/org/apache/commons/math3/fraction/Fraction.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from564_212">212</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((FastMath.abs(p2)&nbsp;&gt;&nbsp;overflow)&nbsp;||&nbsp;(FastMath.abs(q2)&nbsp;&gt;&nbsp;overflow))&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to564_212">212</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((FastMath.abs(p2)&nbsp;&gt;&nbsp;overflow)&nbsp;||&nbsp;(FastMath.abs(q2)&nbsp;&gt;&nbsp;overflow))&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from564_213">213</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;maxDenominator&nbsp;mode,&nbsp;if&nbsp;the&nbsp;last&nbsp;fraction&nbsp;was&nbsp;very&nbsp;close&nbsp;t</td><td class="diff_next"></td><td class="diff_header" id="to564_213">213</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;maxDenominator&nbsp;mode,&nbsp;if&nbsp;the&nbsp;last&nbsp;fraction&nbsp;was&nbsp;very&nbsp;close&nbsp;t</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to564__0"></td><td class="diff_header">></td><td nowrap="nowrap">o&nbsp;the&nbsp;actual&nbsp;value</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">o&nbsp;the&nbsp;actual&nbsp;value</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from564_214">214</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;q2&nbsp;may&nbsp;overflow&nbsp;in&nbsp;the&nbsp;next&nbsp;iteration;&nbsp;in&nbsp;this&nbsp;case&nbsp;return&nbsp;th</td><td class="diff_next"></td><td class="diff_header" id="to564_214">214</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;q2&nbsp;may&nbsp;overflow&nbsp;in&nbsp;the&nbsp;next&nbsp;iteration;&nbsp;in&nbsp;this&nbsp;case&nbsp;return&nbsp;th</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;last&nbsp;one.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;last&nbsp;one.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to564__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to564__top">t</a></td><td class="diff_header" id="to564_215">215</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(epsilon&nbsp;==&nbsp;0.0&nbsp;&amp;&amp;&nbsp;FastMath.abs(q1)&nbsp;&lt;&nbsp;maxDenominator)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to564_216">216</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to564_217">217</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from564_215">215</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;FractionConversionException(value,&nbsp;p2,&nbsp;q2);</td><td class="diff_next"></td><td class="diff_header" id="to564_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;FractionConversionException(value,&nbsp;p2,&nbsp;q2);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from564_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to564_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from564_217">217</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to564_220">220</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

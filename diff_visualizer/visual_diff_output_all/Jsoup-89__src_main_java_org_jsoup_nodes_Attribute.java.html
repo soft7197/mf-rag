@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to489__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-89 - Buggy: src/main/java/org/jsoup/nodes/Attribute.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-89 - Fixed: src/main/java/org/jsoup/nodes/Attribute.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to489__0"></td><td class="diff_header" id="from489_85">85</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;val&nbsp;the&nbsp;new&nbsp;attribute&nbsp;value;&nbsp;must&nbsp;not&nbsp;be&nbsp;null</td><td class="diff_next"></td><td class="diff_header" id="to489_85">85</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;val&nbsp;the&nbsp;new&nbsp;attribute&nbsp;value;&nbsp;must&nbsp;not&nbsp;be&nbsp;null</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from489_86">86</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to489_86">86</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to489__1"></td><td class="diff_header" id="from489_87">87</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;setValue(String&nbsp;val)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to489_87">87</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;setValue(String&nbsp;val)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to489__1">n</a></td><td class="diff_header" id="from489_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;oldVal&nbsp;=&nbsp;<span class="diff_sub">parent.get(</span>this.<span class="diff_chg">key)</span>;</td><td class="diff_next"><a href="#difflib_chg_to489__1">n</a></td><td class="diff_header" id="to489_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;oldVal&nbsp;=&nbsp;this.<span class="diff_chg">val</span>;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from489_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(parent&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to489_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(parent&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to489__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to489__top">t</a></td><td class="diff_header" id="to489_90">90</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldVal&nbsp;=&nbsp;parent.get(this.key);&nbsp;//&nbsp;trust&nbsp;the&nbsp;container&nbsp;more</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from489_90">90</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i&nbsp;=&nbsp;parent.indexOfKey(this.key);</td><td class="diff_next"></td><td class="diff_header" id="to489_91">91</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i&nbsp;=&nbsp;parent.indexOfKey(this.key);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from489_91">91</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(i&nbsp;!=&nbsp;Attributes.NotFound)</td><td class="diff_next"></td><td class="diff_header" id="to489_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(i&nbsp;!=&nbsp;Attributes.NotFound)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from489_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent.vals[i]&nbsp;=&nbsp;val;</td><td class="diff_next"></td><td class="diff_header" id="to489_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent.vals[i]&nbsp;=&nbsp;val;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

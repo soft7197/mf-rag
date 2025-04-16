@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to481__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-80 - Buggy: src/main/java/org/jsoup/parser/XmlTreeBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-80 - Fixed: src/main/java/org/jsoup/parser/XmlTreeBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;data&nbsp;=&nbsp;comment.getData();</td><td class="diff_next"></td><td class="diff_header" id="to481_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;data&nbsp;=&nbsp;comment.getData();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(data.length()&nbsp;&gt;&nbsp;1&nbsp;&amp;&amp;&nbsp;(data.startsWith("!")&nbsp;||&nbsp;data.startsWith("?</td><td class="diff_next"></td><td class="diff_header" id="to481_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(data.length()&nbsp;&gt;&nbsp;1&nbsp;&amp;&amp;&nbsp;(data.startsWith("!")&nbsp;||&nbsp;data.startsWith("?</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to481__0"></td><td class="diff_header">></td><td nowrap="nowrap">")))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">")))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_90">90</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Document&nbsp;doc&nbsp;=&nbsp;Jsoup.parse("&lt;"&nbsp;+&nbsp;data.substring(1,&nbsp;data.length()</td><td class="diff_next"></td><td class="diff_header" id="to481_90">90</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Document&nbsp;doc&nbsp;=&nbsp;Jsoup.parse("&lt;"&nbsp;+&nbsp;data.substring(1,&nbsp;data.length()</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;-1)&nbsp;+&nbsp;"&gt;",&nbsp;baseUri,&nbsp;Parser.xmlParser());</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;-1)&nbsp;+&nbsp;"&gt;",&nbsp;baseUri,&nbsp;Parser.xmlParser());</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to481__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to481__1">n</a></td><td class="diff_header" id="to481_91">91</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(doc.childNodeSize()&nbsp;&gt;&nbsp;0)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_91">91</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;el&nbsp;=&nbsp;doc.child(0);</td><td class="diff_next"></td><td class="diff_header" id="to481_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;el&nbsp;=&nbsp;doc.child(0);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to481__1"></td><td class="diff_header" id="from481_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert&nbsp;=&nbsp;new&nbsp;XmlDeclaration(settings.normalizeTag(el.tagName</td><td class="diff_next"></td><td class="diff_header" id="to481_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert&nbsp;=&nbsp;new&nbsp;XmlDeclaration(settings.normalizeTag(el.tagName</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">()),&nbsp;data.startsWith("!"));</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">()),&nbsp;data.startsWith("!"));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert.attributes().addAll(el.attributes());</td><td class="diff_next"></td><td class="diff_header" id="to481_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert.attributes().addAll(el.attributes());</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to481__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to481__top">t</a></td><td class="diff_header" id="to481_95">95</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;//&nbsp;else,&nbsp;we&nbsp;couldn't&nbsp;parse&nbsp;it&nbsp;as&nbsp;a&nbsp;decl,&nbsp;so&nbsp;leave&nbsp;as&nbsp;a&nbsp;comment</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to481_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to481_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from481_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insertNode(insert);</td><td class="diff_next"></td><td class="diff_header" id="to481_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insertNode(insert);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

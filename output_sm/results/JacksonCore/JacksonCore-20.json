@@ -1,0 +1,83 @@
+{
+    "JacksonCore-20": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    // 01-Sep-2016, tatu: As per [core#318], handle small number of cases\n    throw new JsonGenerationException(\"No native support for writing embedded objects\",\n            this);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testBinaryAsEmbeddedObject() throws Exception\n\n    {\n\n        JsonGenerator g;\n\n\n\n        StringWriter sw = new StringWriter();\n\n        g = JSON_F.createGenerator(sw);\n\n        g.writeEmbeddedObject(WIKIPEDIA_BASE64_AS_BYTES);\n\n        g.close();\n\n        assertEquals(quote(WIKIPEDIA_BASE64_ENCODED), sw.toString());\n\n\n\n        ByteArrayOutputStream bytes =  new ByteArrayOutputStream(100);\n\n        g = JSON_F.createGenerator(bytes);\n\n        g.writeEmbeddedObject(WIKIPEDIA_BASE64_AS_BYTES);\n\n        g.close();\n\n        assertEquals(quote(WIKIPEDIA_BASE64_ENCODED), bytes.toString(\"UTF-8\"));\n\n    }\n\n```\n#Error message: com.fasterxml.jackson.core.JsonGenerationException: No native support for writing embedded objects\n\tat com.fasterxml.jackson.core.JsonGenerator.writeEmbeddedObject(JsonGenerator.java:1330)  throw new JsonGenerationException(\"No native support for writing embedded objects\",                this);\n\tat com.fasterxml.jackson.core.base64.Base64GenerationTest.testBinaryAsEmbeddedObject(Base64GenerationTest.java:100)  g.writeEmbeddedObject(WIKIPEDIA_BASE64_AS_BYTES);\n \n#Test method 2:\n```java\n    public void testAsEmbedded() throws Exception\n\n    {\n\n        JsonGenerator g;\n\n\n\n        StringWriter sw = new StringWriter();\n\n        g = JSON_F.createGenerator(sw);\n\n        g.writeEmbeddedObject(null);\n\n        g.close();\n\n        assertEquals(\"null\", sw.toString());\n\n\n\n        ByteArrayOutputStream bytes =  new ByteArrayOutputStream(100);\n\n        g = JSON_F.createGenerator(bytes);\n\n        g.writeEmbeddedObject(null);\n\n        g.close();\n\n        assertEquals(\"null\", bytes.toString(\"UTF-8\"));\n\n\n\n        // also, for fun, try illegal unknown thingy\n\n\n\n        try {\n\n            g = JSON_F.createGenerator(bytes);\n\n            // try writing a Class object\n\n            g.writeEmbeddedObject(getClass());\n\n            fail(\"Expected an exception\");\n\n            g.close(); // never gets here\n\n        } catch (JsonGenerationException e) {\n\n            verifyException(e, \"No native support for\");\n\n        }\n\n    }\n\n```\n#Error message: com.fasterxml.jackson.core.JsonGenerationException: No native support for writing embedded objects\n\tat com.fasterxml.jackson.core.JsonGenerator.writeEmbeddedObject(JsonGenerator.java:1330)  throw new JsonGenerationException(\"No native support for writing embedded objects\",                this);\n\tat com.fasterxml.jackson.core.main.TestGeneratorMisc.testAsEmbedded(TestGeneratorMisc.java:243)  g.writeEmbeddedObject(null);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeString(\"null\");\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    \n    if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n        return;\n    }\n    \n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    \n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    \n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\",\n                this);\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    \n    if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n        return;\n    }\n    \n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    \n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    \n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\",\n                this);\n    }\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n    }\n}\n"
+                ],
+                [
+                    "\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    \n    if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n        return;\n    }\n    \n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n        return;\n    }\n    if (object instanceof byte[]) {\n        writeBinary((byte[]) object);\n        return;\n    }\n    throw new JsonGenerationException(\"No native support for writing embedded objects\", this);\n}\n"
+                ],
+                [
+                    "\n/**\n* Method that can be called on backends that support passing opaque datatypes of\n* non-JSON formats\n*\n* @since 2.8\n*/\npublic void writeEmbeddedObject(Object object) throws IOException {\n    if (object == null) {\n        writeNull();\n    } else if (object instanceof byte[]) {\n        byte[] data = (byte[]) object;\n        writeBinary(data);\n    } else {\n        throw new JsonGenerationException(\"No native support for writing embedded objects\",\n                this);\n    }\n}\n"
+                ]
+            ]
+        }
+    }
+}

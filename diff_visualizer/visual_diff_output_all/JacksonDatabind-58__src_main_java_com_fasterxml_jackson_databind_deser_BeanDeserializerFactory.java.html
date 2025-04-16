@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to391__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-58 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-58 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_712">712</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[databind#877]:&nbsp;explicitly&nbsp;prevent&nbsp;forced&nbsp;access&nbsp;to&nbsp;`cause`&nbsp;of&nbsp;`T</td><td class="diff_next"></td><td class="diff_header" id="to391_712">712</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[databind#877]:&nbsp;explicitly&nbsp;prevent&nbsp;forced&nbsp;access&nbsp;to&nbsp;`cause`&nbsp;of&nbsp;`T</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to391__0"></td><td class="diff_header">></td><td nowrap="nowrap">hrowable`;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">hrowable`;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_713">713</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;never&nbsp;needed&nbsp;and&nbsp;attempts&nbsp;may&nbsp;cause&nbsp;problems&nbsp;on&nbsp;some&nbsp;platforms.</td><td class="diff_next"></td><td class="diff_header" id="to391_713">713</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;never&nbsp;needed&nbsp;and&nbsp;attempts&nbsp;may&nbsp;cause&nbsp;problems&nbsp;on&nbsp;some&nbsp;platforms.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_714">714</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;!!!&nbsp;NOTE:&nbsp;should&nbsp;be&nbsp;handled&nbsp;better&nbsp;for&nbsp;2.8&nbsp;and&nbsp;later</td><td class="diff_next"></td><td class="diff_header" id="to391_714">714</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;!!!&nbsp;NOTE:&nbsp;should&nbsp;be&nbsp;handled&nbsp;better&nbsp;for&nbsp;2.8&nbsp;and&nbsp;later</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to391__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to391__1">n</a></td><td class="diff_header" id="to391_715">715</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((mutator&nbsp;instanceof&nbsp;AnnotatedField)</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to391_716">716</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;"cause".equals(mutator.getName()))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to391_717">717</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to391__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to391_718">718</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_715">715</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutator.fixAccess(ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_A</td><td class="diff_next"></td><td class="diff_header" id="to391_719">719</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutator.fixAccess(ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_A</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">CCESS_MODIFIERS));</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">CCESS_MODIFIERS));</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to391__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to391__top">t</a></td><td class="diff_header" id="to391_720">720</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_716">716</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to391_721">721</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_717">717</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;note:&nbsp;this&nbsp;works&nbsp;since&nbsp;we&nbsp;know&nbsp;there's&nbsp;exactly&nbsp;one&nbsp;argument&nbsp;for&nbsp;metho</td><td class="diff_next"></td><td class="diff_header" id="to391_722">722</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;note:&nbsp;this&nbsp;works&nbsp;since&nbsp;we&nbsp;know&nbsp;there's&nbsp;exactly&nbsp;one&nbsp;argument&nbsp;for&nbsp;metho</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ds</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ds</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from391_718">718</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeanProperty.Std&nbsp;property&nbsp;=&nbsp;new&nbsp;BeanProperty.Std(propDef.getFullName(),</td><td class="diff_next"></td><td class="diff_header" id="to391_723">723</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeanProperty.Std&nbsp;property&nbsp;=&nbsp;new&nbsp;BeanProperty.Std(propDef.getFullName(),</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

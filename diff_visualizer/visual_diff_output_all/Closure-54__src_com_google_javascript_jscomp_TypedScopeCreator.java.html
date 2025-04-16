@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to171__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-54 - Buggy: src/com/google/javascript/jscomp/TypedScopeCreator.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-54 - Fixed: src/com/google/javascript/jscomp/TypedScopeCreator.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to171__0"></td><td class="diff_header" id="from171_1410">1410</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;they&nbsp;are&nbsp;responsible&nbsp;for&nbsp;making&nbsp;sure&nbsp;that&nbsp;the&nbsp;object&nbsp;literal's</td><td class="diff_next"></td><td class="diff_header" id="to171_1410">1410</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;they&nbsp;are&nbsp;responsible&nbsp;for&nbsp;making&nbsp;sure&nbsp;that&nbsp;the&nbsp;object&nbsp;literal's</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from171_1411">1411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;implicit&nbsp;prototype&nbsp;is&nbsp;set&nbsp;up&nbsp;appropriately.&nbsp;We&nbsp;just&nbsp;obey</td><td class="diff_next"></td><td class="diff_header" id="to171_1411">1411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;implicit&nbsp;prototype&nbsp;is&nbsp;set&nbsp;up&nbsp;appropriately.&nbsp;We&nbsp;just&nbsp;obey</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from171_1412">1412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;@extends&nbsp;tag.</td><td class="diff_next"></td><td class="diff_header" id="to171_1412">1412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;@extends&nbsp;tag.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to171__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to171__top">t</a></td><td class="diff_header" id="to171_1413">1413</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectType&nbsp;qVarType&nbsp;=&nbsp;ObjectType.cast(qVar.getType());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to171_1414">1414</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(qVarType&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to171_1415">1415</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhsValue&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to171_1416">1416</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhsValue.getType()&nbsp;==&nbsp;Token.OBJECTLIT)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to171_1417">1417</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeRegistry.resetImplicitPrototype(</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to171_1418">1418</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhsValue.getJSType(),&nbsp;qVarType.getImplicitPrototype());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from171_1413">1413</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!qVar.isTypeInferred())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to171_1419">1419</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_add">&nbsp;}&nbsp;else</span>&nbsp;if&nbsp;(!qVar.isTypeInferred())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from171_1414">1414</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;the&nbsp;programmer&nbsp;has&nbsp;declared&nbsp;that&nbsp;F&nbsp;inherits&nbsp;from&nbsp;Super,</td><td class="diff_next"></td><td class="diff_header" id="to171_1420">1420</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;the&nbsp;programmer&nbsp;has&nbsp;declared&nbsp;that&nbsp;F&nbsp;inherits&nbsp;from&nbsp;Super,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from171_1415">1415</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;they&nbsp;assign&nbsp;F.prototype&nbsp;to&nbsp;some&nbsp;arbitrary&nbsp;expression,</td><td class="diff_next"></td><td class="diff_header" id="to171_1421">1421</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;they&nbsp;assign&nbsp;F.prototype&nbsp;to&nbsp;some&nbsp;arbitrary&nbsp;expression,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from171_1416">1416</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;there's&nbsp;not&nbsp;much&nbsp;we&nbsp;can&nbsp;do.&nbsp;We&nbsp;just&nbsp;ignore&nbsp;the&nbsp;expression,</td><td class="diff_next"></td><td class="diff_header" id="to171_1422">1422</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;there's&nbsp;not&nbsp;much&nbsp;we&nbsp;can&nbsp;do.&nbsp;We&nbsp;just&nbsp;ignore&nbsp;the&nbsp;expression,</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

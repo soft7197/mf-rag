@@ -1,0 +1,65 @@
+{
+    "Cli-37": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, 2));\n\n    // remove leading \"-\" and \"=value\"\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldParseShortOptionWithoutValue() throws Exception {\n\n        String[] twoShortOptions = new String[]{\"-t1\", \"-last\"};\n\n\n\n        final CommandLine commandLine = parser.parse(options, twoShortOptions);\n\n\n\n        assertTrue(commandLine.hasOption(\"t1\"));\n\n        assertNotEquals(\"Second option has been used as value for first option\", \"-last\", commandLine.getOptionValue(\"t1\"));\n\n        assertTrue(\"Second option has not been detected\", commandLine.hasOption(\"last\"));\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Second option has been used as value for first option. Actual: -last\n\tat org.apache.commons.cli.bug.BugCLI265Test.shouldParseShortOptionWithoutValue(BugCLI265Test.java:52)  assertNotEquals(\"Second option has been used as value for first option\", \"-last\", commandLine.getOptionValue(\"t1\"));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, 2)) && !token.substring(1).contains(\"=\");\n}\n"
+                ],
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.indexOf('=') > 0 ? token.indexOf('=') : token.length()));\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, 1 + (Character.isLetter(token.charAt(1)) ? 1 : 2)));\n}\n"
+                ],
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.length()).split(\"=\")[0]);\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && !token.startsWith(\"--\") && token.length() >= 2 && options.hasShortOption(token.substring(1, 2));\n}\n"
+                ],
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.length()).split(\"=\")[0]);\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token) {\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && !token.startsWith(\"--\") && token.length() >= 2 && options.hasShortOption(token.substring(1, 2));\n\n    // remove leading \"-\" and \"=value\"\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.length() - (token.contains(\"=\") ? token.indexOf('=') : token.length())));\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.indexOf(\"=\") > 0 ? token.indexOf(\"=\") : token.length()));\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, 2))\n            && !token.substring(1).contains(\"-\");\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.indexOf('=') > 0 ? token.indexOf('=') : token.length()));\n}\n"
+                ],
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.length()).split(\"=\")[0]);\n}\n"
+                ],
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.length()).split(\"=\")[0]);\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.indexOf(\"=\") > 0 ? token.indexOf(\"=\") : token.length()));\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.indexOf('=') > 0 ? token.indexOf('=') : token.length()));\n}\n"
+                ],
+                [
+                    "\n/**\n* Tells if the token looks like a short option.\n*\n* @param token\n*/\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.length()).split(\"=\")[0]);\n}\n"
+                ],
+                [
+                    "\nprivate boolean isShortOption(String token)\n{\n    // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)\n    return token.startsWith(\"-\") && token.length() >= 2 && options.hasShortOption(token.substring(1, token.indexOf(\"=\") > 0 ? token.indexOf(\"=\") : token.length()));\n}\n"
+                ]
+            ]
+        }
+    }
+}

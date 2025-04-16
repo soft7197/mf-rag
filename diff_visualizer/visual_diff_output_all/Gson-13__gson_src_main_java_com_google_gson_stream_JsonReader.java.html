@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to295__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-13 - Buggy: gson/src/main/java/com/google/gson/stream/JsonReader.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-13 - Fixed: gson/src/main/java/com/google/gson/stream/JsonReader.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from295_728">728</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to295_728">728</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to295__0"></td><td class="diff_header" id="from295_729">729</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to295_729">729</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from295_730">730</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We've&nbsp;read&nbsp;a&nbsp;complete&nbsp;number.&nbsp;Decide&nbsp;if&nbsp;it's&nbsp;a&nbsp;PEEKED_LONG&nbsp;or&nbsp;a&nbsp;PEEKED_NU</td><td class="diff_next"></td><td class="diff_header" id="to295_730">730</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We've&nbsp;read&nbsp;a&nbsp;complete&nbsp;number.&nbsp;Decide&nbsp;if&nbsp;it's&nbsp;a&nbsp;PEEKED_LONG&nbsp;or&nbsp;a&nbsp;PEEKED_NU</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">MBER.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">MBER.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to295__top">t</a></td><td class="diff_header" id="from295_731">731</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(last&nbsp;==&nbsp;NUMBER_CHAR_DIGIT&nbsp;&amp;&amp;&nbsp;fitsInLong&nbsp;&amp;&amp;&nbsp;(value&nbsp;!=&nbsp;Long.MIN_VALUE&nbsp;||&nbsp;n</td><td class="diff_next"><a href="#difflib_chg_to295__top">t</a></td><td class="diff_header" id="to295_731">731</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(last&nbsp;==&nbsp;NUMBER_CHAR_DIGIT&nbsp;&amp;&amp;&nbsp;fitsInLong&nbsp;&amp;&amp;&nbsp;(value&nbsp;!=&nbsp;Long.MIN_VALUE&nbsp;||&nbsp;<span class="diff_add">n</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">egative))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">egative)&nbsp;&amp;&amp;&nbsp;(value!=0&nbsp;||&nbsp;false==</span>negative))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from295_732">732</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedLong&nbsp;=&nbsp;negative&nbsp;?&nbsp;value&nbsp;:&nbsp;-value;</td><td class="diff_next"></td><td class="diff_header" id="to295_732">732</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedLong&nbsp;=&nbsp;negative&nbsp;?&nbsp;value&nbsp;:&nbsp;-value;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from295_733">733</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;+=&nbsp;i;</td><td class="diff_next"></td><td class="diff_header" id="to295_733">733</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;+=&nbsp;i;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from295_734">734</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_LONG;</td><td class="diff_next"></td><td class="diff_header" id="to295_734">734</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_LONG;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

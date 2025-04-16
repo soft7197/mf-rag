@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to140__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-24 - Buggy: src/com/google/javascript/jscomp/ScopedAliases.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-24 - Fixed: src/com/google/javascript/jscomp/ScopedAliases.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to140__0"></td><td class="diff_header" id="from140_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;n&nbsp;=&nbsp;v.getNode();</td><td class="diff_next"></td><td class="diff_header" id="to140_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;n&nbsp;=&nbsp;v.getNode();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_276">276</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;type&nbsp;=&nbsp;n.getType();</td><td class="diff_next"></td><td class="diff_header" id="to140_276">276</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;type&nbsp;=&nbsp;n.getType();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;parent&nbsp;=&nbsp;n.getParent();</td><td class="diff_next"></td><td class="diff_header" id="to140_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;parent&nbsp;=&nbsp;n.getParent();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to140__1">n</a></td><td class="diff_header" id="from140_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(parent.isVar()<span class="diff_chg">)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to140__1">n</a></td><td class="diff_header" id="to140_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(parent.isVar()<span class="diff_chg">&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">if&nbsp;(</span>n.hasChildren()&nbsp;&amp;&amp;&nbsp;n.getFirstChild().isQualifiedName())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to140_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">&nbsp;&nbsp;</span>n.hasChildren()&nbsp;&amp;&amp;&nbsp;n.getFirstChild().isQualifiedName())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;n.getString();</td><td class="diff_next"></td><td class="diff_header" id="to140_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;n.getString();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_281">281</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Var&nbsp;aliasVar&nbsp;=&nbsp;scope.getVar(name);</td><td class="diff_next"></td><td class="diff_header" id="to140_281">281</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Var&nbsp;aliasVar&nbsp;=&nbsp;scope.getVar(name);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aliases.put(name,&nbsp;aliasVar);</td><td class="diff_next"></td><td class="diff_header" id="to140_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aliases.put(name,&nbsp;aliasVar);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to140__1"></td><td class="diff_header" id="from140_284">284</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;qualifiedName&nbsp;=</td><td class="diff_next"></td><td class="diff_header" id="to140_284">284</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;qualifiedName&nbsp;=</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_285">285</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aliasVar.getInitialValue().getQualifiedName();</td><td class="diff_next"></td><td class="diff_header" id="to140_285">285</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aliasVar.getInitialValue().getQualifiedName();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_286">286</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transformation.addAlias(name,&nbsp;qualifiedName);</td><td class="diff_next"></td><td class="diff_header" id="to140_286">286</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transformation.addAlias(name,&nbsp;qualifiedName);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to140__2"><a href="#difflib_chg_to140__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to140__2">n</a></td><td class="diff_header" id="to140_287">287</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(v.isBleedingFunction())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_287">287</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Bleeding&nbsp;functions&nbsp;already&nbsp;get&nbsp;a&nbsp;BAD_PARAMETERS&nbsp;error,&nbsp;so&nbsp;just</td><td class="diff_next"></td><td class="diff_header" id="to140_288">288</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Bleeding&nbsp;functions&nbsp;already&nbsp;get&nbsp;a&nbsp;BAD_PARAMETERS&nbsp;error,&nbsp;so&nbsp;just</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_288">288</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;do&nbsp;nothing.</td><td class="diff_next"></td><td class="diff_header" id="to140_289">289</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;do&nbsp;nothing.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to140__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to140__3">n</a></td><td class="diff_header" id="to140_290">290</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(parent.getType()&nbsp;==&nbsp;Token.LP)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_289">289</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Parameters&nbsp;of&nbsp;the&nbsp;scope&nbsp;function&nbsp;also&nbsp;get&nbsp;a&nbsp;BAD_PARAMETERS</td><td class="diff_next"></td><td class="diff_header" id="to140_291">291</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Parameters&nbsp;of&nbsp;the&nbsp;scope&nbsp;function&nbsp;also&nbsp;get&nbsp;a&nbsp;BAD_PARAMETERS</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_290">290</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;error.</td><td class="diff_next"></td><td class="diff_header" id="to140_292">292</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;error.</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to140__3"></td><td class="diff_header" id="from140_291">291</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to140_293">293</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_292">292</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO(robbyw):&nbsp;Support&nbsp;using&nbsp;locals&nbsp;for&nbsp;private&nbsp;variables.</td><td class="diff_next"></td><td class="diff_header" id="to140_294">294</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO(robbyw):&nbsp;Support&nbsp;using&nbsp;locals&nbsp;for&nbsp;private&nbsp;variables.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_293">293</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report(t,&nbsp;n,&nbsp;GOOG_SCOPE_NON_ALIAS_LOCAL,&nbsp;n.getString());</td><td class="diff_next"></td><td class="diff_header" id="to140_295">295</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report(t,&nbsp;n,&nbsp;GOOG_SCOPE_NON_ALIAS_LOCAL,&nbsp;n.getString());</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to140__top">t</a></td><td class="diff_header" id="from140_294">294</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"><a href="#difflib_chg_to140__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_295">295</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to140_296">296</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_296">296</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to140_297">297</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from140_297">297</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to140_298">298</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

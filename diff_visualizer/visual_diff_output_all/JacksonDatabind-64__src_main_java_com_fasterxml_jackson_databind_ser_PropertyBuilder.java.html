@@ -1,0 +1,80 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to398__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-64 - Buggy: src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-64 - Fixed: src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;whereas&nbsp;for&nbsp;global&nbsp;defaults&nbsp;OR&nbsp;per-property&nbsp;overrides,&nbsp;we&nbsp;have</td><td class="diff_next"></td><td class="diff_header" id="to398_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;whereas&nbsp;for&nbsp;global&nbsp;defaults&nbsp;OR&nbsp;per-property&nbsp;overrides,&nbsp;we&nbsp;have</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;more</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;more</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to398__0"></td><td class="diff_header" id="from398_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;definition.&nbsp;Sigh.</td><td class="diff_next"></td><td class="diff_header" id="to398_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;definition.&nbsp;Sigh.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;First:&nbsp;case&nbsp;of&nbsp;class/type&nbsp;specifying&nbsp;it;&nbsp;try&nbsp;to&nbsp;find&nbsp;POJO&nbsp;propert</td><td class="diff_next"></td><td class="diff_header" id="to398_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;First:&nbsp;case&nbsp;of&nbsp;class/type&nbsp;specifying&nbsp;it;&nbsp;try&nbsp;to&nbsp;find&nbsp;POJO&nbsp;propert</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;defaults</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;defaults</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to398__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to398__1">n</a></td><td class="diff_header" id="to398_152">152</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;defaultBean;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_152">152</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to398_153">153</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;16-Oct-2016,&nbsp;tatu:&nbsp;Note:&nbsp;if&nbsp;we&nbsp;can&nbsp;not&nbsp;for&nbsp;some&nbsp;reason&nbsp;create&nbsp;"de</td><td class="diff_next"></td><td class="diff_header" id="to398_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;16-Oct-2016,&nbsp;tatu:&nbsp;Note:&nbsp;if&nbsp;we&nbsp;can&nbsp;not&nbsp;for&nbsp;some&nbsp;reason&nbsp;create&nbsp;"de</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">fault&nbsp;instance",</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">fault&nbsp;instance",</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;revert&nbsp;logic&nbsp;to&nbsp;the&nbsp;case&nbsp;of&nbsp;general/per-property&nbsp;handling,&nbsp;so&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to398_155">155</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;revert&nbsp;logic&nbsp;to&nbsp;the&nbsp;case&nbsp;of&nbsp;general/per-property&nbsp;handling,&nbsp;so&nbsp;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to398__1"></td><td class="diff_header">></td><td nowrap="nowrap">both</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">both</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_155">155</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;type-default&nbsp;AND&nbsp;null&nbsp;are&nbsp;to&nbsp;be&nbsp;excluded.</td><td class="diff_next"></td><td class="diff_header" id="to398_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;type-default&nbsp;AND&nbsp;null&nbsp;are&nbsp;to&nbsp;be&nbsp;excluded.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(as&nbsp;per&nbsp;[databind#1417]</td><td class="diff_next"></td><td class="diff_header" id="to398_157">157</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(as&nbsp;per&nbsp;[databind#1417]</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to398__2">n</a></td><td class="diff_header" id="from398_157">157</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_useRealPropertyDefaults)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to398__2">n</a></td><td class="diff_header" id="to398_158">158</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_useRealPropertyDefaults&nbsp;&amp;&amp;&nbsp;(defaultBean&nbsp;=&nbsp;getDefaultBean())&nbsp;!=&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_158">158</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;07-Sep-2016,&nbsp;tatu:&nbsp;may&nbsp;also&nbsp;need&nbsp;to&nbsp;front-load&nbsp;access&nbsp;forcing</td><td class="diff_next"></td><td class="diff_header" id="to398_159">159</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;07-Sep-2016,&nbsp;tatu:&nbsp;may&nbsp;also&nbsp;need&nbsp;to&nbsp;front-load&nbsp;access&nbsp;forcing</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;now</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;now</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_159">159</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(prov.isEnabled(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS))</td><td class="diff_next"></td><td class="diff_header" id="to398_160">160</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(prov.isEnabled(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS))</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to398__2"></td><td class="diff_header" id="from398_160">160</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;am.fixAccess(_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC</td><td class="diff_next"></td><td class="diff_header" id="to398_161">161</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;am.fixAccess(_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">_ACCESS_MODIFIERS));</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">_ACCESS_MODIFIERS));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_161">161</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to398_162">162</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to398__top">t</a></td><td class="diff_header" id="from398_162">162</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;getPropertyDefaultValue(propDef.getName(),&nbsp;am,</span></td><td class="diff_next"><a href="#difflib_chg_to398__top">t</a></td><td class="diff_header" id="to398_163">163</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;actualType);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to398_164">164</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;am.getValue(defaultBean);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to398_165">165</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(Exception&nbsp;e)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to398_166">166</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_throwWrapped(e,&nbsp;propDef.getName(),&nbsp;defaultBean);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to398_167">167</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_163">163</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to398_168">168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;getDefaultValue(actualType);</td><td class="diff_next"></td><td class="diff_header" id="to398_169">169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;getDefaultValue(actualType);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from398_165">165</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suppressNulls&nbsp;=&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to398_170">170</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suppressNulls&nbsp;=&nbsp;true;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

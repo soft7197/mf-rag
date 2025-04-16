@@ -1,0 +1,150 @@
+{
+    "JacksonDatabind-41": {
+        "function_num": 2,
+        "functions": [
+            {
+                "path": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+                "start_loc": 600,
+                "end_loc": 603,
+                "buggy_function": "    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return constructType(type, constructType(contextClass));\n    }\n",
+                "fixed_function": "    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        TypeBindings bindings = (contextClass == null)\n                ? TypeBindings.emptyBindings() : constructType(contextClass).getBindings();\n        return _fromAny(null, type, bindings);\n    }\n",
+                "comment": "    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n",
+                "normalized_body": [
+                    "@Deprecated public JavaType constructType(Type type, Class<?> contextClass) { return constructType(type, constructType(contextClass)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "@Deprecated public JavaType constructType(Type type, Class<?> contextClass) { return constructType(type, constructType(contextClass)); }"
+                    ],
+                    [
+                        0.9864727258682251,
+                        "@Deprecated public ObjectReader withType(JavaType valueType) { return forType(valueType); }"
+                    ],
+                    [
+                        0.9824172854423523,
+                        "@Deprecated public ObjectWriter withType(TypeReference<?> rootType) { return forType(rootType); }"
+                    ],
+                    [
+                        0.9800307154655457,
+                        "@Deprecated public ObjectWriter withType(Class<?> rootType) { return forType(rootType); }"
+                    ],
+                    [
+                        0.9793354272842407,
+                        "@Deprecated public final JavaType getType(TypeBindings bogus) { return getType(); }"
+                    ],
+                    [
+                        0.9781700372695923,
+                        "@Deprecated @Override public JavaType typeFromId(String id) { return typeFromId(null, id); }"
+                    ],
+                    [
+                        0.9777514934539795,
+                        "@Deprecated @Override public JavaType typeFromId(String id) { return _typeFromId(id); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "com.fasterxml.jackson.databind.interop.DeprecatedTypeHandling1102Test::testDeprecatedTypeResolution"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return constructType(type, constructType(contextClass));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testDeprecatedTypeResolution() throws Exception\n    {\n        TypeFactory tf = MAPPER.getTypeFactory();\n\n        // first, with real (if irrelevant) context\n        JavaType t = tf.constructType(Point.class, getClass());\n        assertEquals(Point.class, t.getRawClass());\n\n        // and then missing context\n        JavaType t2 = tf.constructType(Point.class, (Class<?>) null);\n        assertEquals(Point.class, t2.getRawClass());\n\n        JavaType ctxt = tf.constructType(getClass());\n        JavaType t3 = tf.constructType(Point.class, ctxt);\n        assertEquals(Point.class, t3.getRawClass());\n    }\n```\n#Error message: java.lang.IllegalArgumentException: Unrecognized Type: [null]\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1109)  throw new IllegalArgumentException(\"Unrecognized Type: \"+((type == null) ? \"[null]\" : type.toString()));\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeFactory.java:566)  return _fromAny(null, type, EMPTY_BINDINGS);\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeFactory.java:602)  return constructType(type, constructType(contextClass));\n\tat com.fasterxml.jackson.databind.interop.DeprecatedTypeHandling1102Test.testDeprecatedTypeResolution(DeprecatedTypeHandling1102Test.java:102)  JavaType t2 = tf.constructType(Point.class, (Class<?>) null);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return constructType(type, contextClass != null ? constructType(contextClass) : null);\n    }\n\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return constructType(type, contextClass == null ? null : constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return contextClass == null ? constructType(type) : constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        JavaType contextJavaType = (contextClass == null) ? null : constructType(contextClass);\n        return constructType(type, contextJavaType);\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return (contextClass == null) ? constructType(type) : constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n",
+                            "\n/**\n * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n */\n@Deprecated\npublic JavaType constructType(Type type, Class<?> contextClass) {\n    if (type == null) {\n        throw new IllegalArgumentException(\"Type cannot be null\");\n    }\n    if (contextClass == null) {\n        return constructType(type);\n    }\n    return constructType(type, constructType(contextClass));\n}\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return contextClass == null ? constructType(type) : constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return (contextClass == null) ? constructType(type) : constructType(type, constructType(contextClass));\n    }\n",
+                            "\n/**\n * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n */\n@Deprecated\npublic JavaType constructType(Type type, Class<?> contextClass) {\n    if (type == null) {\n        throw new IllegalArgumentException(\"Type cannot be null\");\n    }\n    if (contextClass == null) {\n        return constructType(type);\n    }\n    return constructType(type, constructType(contextClass));\n}\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return contextClass == null ? constructType(type) : constructType(type, constructType(contextClass));\n    }\n",
+                            "\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return (contextClass == null) ? constructType(type) : constructType(type, constructType(contextClass));\n    }\n",
+                            "\n/**\n * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n */\n@Deprecated\npublic JavaType constructType(Type type, Class<?> contextClass) {\n    if (type == null) {\n        throw new IllegalArgumentException(\"Type cannot be null\");\n    }\n    if (contextClass == null) {\n        return constructType(type);\n    }\n    return constructType(type, constructType(contextClass));\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+                "start_loc": 608,
+                "end_loc": 611,
+                "buggy_function": "    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                "fixed_function": "    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        TypeBindings bindings = (contextType == null)\n                ? TypeBindings.emptyBindings() : contextType.getBindings();\n        return _fromAny(null, type, bindings);\n    }\n",
+                "comment": "    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n",
+                "normalized_body": [
+                    "@Deprecated public JavaType constructType(Type type, JavaType contextType) { return _fromAny(null, type, contextType.getBindings()); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "@Deprecated public JavaType constructType(Type type, JavaType contextType) { return _fromAny(null, type, contextType.getBindings()); }"
+                    ],
+                    [
+                        0.9866083860397339,
+                        "@Deprecated public ObjectReader reader(JavaType type) { return _newReader(getDeserializationConfig(), type, null, null, _injectableValues); }"
+                    ],
+                    [
+                        0.9818702936172485,
+                        "@Override public JavaType resolveType(Type type) { return _typeFactory.constructType(type, _bindings); }"
+                    ],
+                    [
+                        0.9818702936172485,
+                        "@Override public JavaType resolveType(Type type) { return _typeFactory.constructType(type, _bindings); }"
+                    ],
+                    [
+                        0.9813278913497925,
+                        "@Override public JavaType typeFromId(DatabindContext context, String id) { return _typeFromId(id, context.getTypeFactory()); }"
+                    ],
+                    [
+                        0.9802387952804565,
+                        "@Override public JsonNode getSchema(SerializerProvider provider, Type typeHint) { return createSchemaNode(_schemaType, true); }"
+                    ],
+                    [
+                        0.9781262278556824,
+                        "@Override public final BinaryNode binaryNode(byte[] data, int offset, int length) { return _nodeFactory.binaryNode(data, offset, length); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        return constructType(type, constructType(contextClass));\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    /**\n     * @deprecated Since 2.7 (accidentally removed in 2.7.0; added back in 2.7.1)\n     */\n\n    @Deprecated\n    public JavaType constructType(Type type, Class<?> contextClass) {\n        if (contextClass == null) {\n            return constructType(type);\n        }\n        return constructType(type, constructType(contextClass));\n    }\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        return _fromAny(null, type, contextType.getBindings());\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, TypeBindings.emptyBindings());\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, TypeFactory.defaultInstance().constructType(type).getBindings());\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, TypeBindings.emptyBindings());\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, null);\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return constructType(type);\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, null);\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, TypeBindings.emptyBindings());\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, TypeBindings.emptyBindings());\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return _fromAny(null, type, TypeBindings.emptyBindings());\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n",
+                            "\n    @Deprecated\n    public JavaType constructType(Type type, JavaType contextType) {\n        if (contextType == null) {\n            return constructType(type);\n        }\n        return _fromAny(null, type, contextType.getBindings());\n    }\n"
+                        ]
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "com.fasterxml.jackson.databind.interop.DeprecatedTypeHandling1102Test::testDeprecatedTypeResolution": {
+                "path": "src/test/java/com/fasterxml/jackson/databind/interop/DeprecatedTypeHandling1102Test.java",
+                "function_name": "testDeprecatedTypeResolution",
+                "src": "    public void testDeprecatedTypeResolution() throws Exception\n    {\n        TypeFactory tf = MAPPER.getTypeFactory();\n\n        // first, with real (if irrelevant) context\n        JavaType t = tf.constructType(Point.class, getClass());\n        assertEquals(Point.class, t.getRawClass());\n\n        // and then missing context\n        JavaType t2 = tf.constructType(Point.class, (Class<?>) null);\n        assertEquals(Point.class, t2.getRawClass());\n\n        JavaType ctxt = tf.constructType(getClass());\n        JavaType t3 = tf.constructType(Point.class, ctxt);\n        assertEquals(Point.class, t3.getRawClass());\n    }",
+                "error_msg": "java.lang.IllegalArgumentException: Unrecognized Type: [null]\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1109)\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeFactory.java:566)\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeFactory.java:602)\n\tat com.fasterxml.jackson.databind.interop.DeprecatedTypeHandling1102Test.testDeprecatedTypeResolution(DeprecatedTypeHandling1102Test.java:102)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "java.lang.IllegalArgumentException: Unrecognized Type: [null]\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1109)  throw new IllegalArgumentException(\"Unrecognized Type: \"+((type == null) ? \"[null]\" : type.toString()));\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeFactory.java:566)  return _fromAny(null, type, EMPTY_BINDINGS);\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeFactory.java:602)  return constructType(type, constructType(contextClass));\n\tat com.fasterxml.jackson.databind.interop.DeprecatedTypeHandling1102Test.testDeprecatedTypeResolution(DeprecatedTypeHandling1102Test.java:102)  JavaType t2 = tf.constructType(Point.class, (Class<?>) null);"
+            }
+        },
+        "evaluation_done": true,
+        "generation_done_for_notest_methods": true
+    }
+}

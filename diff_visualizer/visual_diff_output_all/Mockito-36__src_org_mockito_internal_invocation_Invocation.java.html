@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to701__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-36 - Buggy: src/org/mockito/internal/invocation/Invocation.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-36 - Fixed: src/org/mockito/internal/invocation/Invocation.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to701__0"></td><td class="diff_header" id="from701_8">8</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to701_8">8</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_9">9</td><td nowrap="nowrap">import&nbsp;org.hamcrest.Matcher;</td><td class="diff_next"></td><td class="diff_header" id="to701_9">9</td><td nowrap="nowrap">import&nbsp;org.hamcrest.Matcher;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_10">10</td><td nowrap="nowrap">import&nbsp;org.mockito.exceptions.PrintableInvocation;</td><td class="diff_next"></td><td class="diff_header" id="to701_10">10</td><td nowrap="nowrap">import&nbsp;org.mockito.exceptions.PrintableInvocation;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to701__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to701__1">n</a></td><td class="diff_header" id="to701_11">11</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;org.mockito.exceptions.Reporter;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_11">11</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.debugging.Location;</td><td class="diff_next"></td><td class="diff_header" id="to701_12">12</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.debugging.Location;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_12">12</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.invocation.realmethod.RealMethod;</td><td class="diff_next"></td><td class="diff_header" id="to701_13">13</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.invocation.realmethod.RealMethod;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_13">13</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.matchers.*;</td><td class="diff_next"></td><td class="diff_header" id="to701_14">14</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.matchers.*;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to701__1"></td><td class="diff_header" id="from701_199">199</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to701_200">200</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_200">200</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to701_201">201</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_201">201</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;callRealMethod()&nbsp;throws&nbsp;Throwable&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to701_202">202</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;callRealMethod()&nbsp;throws&nbsp;Throwable&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to701__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to701__top">t</a></td><td class="diff_header" id="to701_203">203</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(this.getMethod().getDeclaringClass().isInterface())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to701_204">204</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;Reporter().cannotCallRealMethodOnInterface();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to701_205">205</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_202">202</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;realMethod.invoke(mock,&nbsp;rawArguments);</td><td class="diff_next"></td><td class="diff_header" id="to701_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;realMethod.invoke(mock,&nbsp;rawArguments);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_203">203</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to701_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from701_204">204</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to701_208">208</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

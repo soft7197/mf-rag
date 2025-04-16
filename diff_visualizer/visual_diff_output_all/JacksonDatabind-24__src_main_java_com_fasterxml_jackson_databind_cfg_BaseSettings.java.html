@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to357__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-24 - Buggy: src/main/java/com/fasterxml/jackson/databind/cfg/BaseSettings.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-24 - Fixed: src/main/java/com/fasterxml/jackson/databind/cfg/BaseSettings.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to357__0"></td><td class="diff_header" id="from357_231">231</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_dateFormat&nbsp;==&nbsp;df)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to357_231">231</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_dateFormat&nbsp;==&nbsp;df)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from357_232">232</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to357_232">232</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from357_233">233</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to357_233">233</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to357__1">n</a></td><td class="diff_header" id="from357_234">234</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TimeZone&nbsp;tz&nbsp;=&nbsp;(df&nbsp;==&nbsp;null)&nbsp;?&nbsp;_timeZone&nbsp;:&nbsp;df.getTimeZone();</span></td><td class="diff_next"><a href="#difflib_chg_to357__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to357__1"></td><td class="diff_header" id="from357_235">235</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;BaseSettings(_classIntrospector,&nbsp;_annotationIntrospector,&nbsp;_vi</td><td class="diff_next"></td><td class="diff_header" id="to357_234">234</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;BaseSettings(_classIntrospector,&nbsp;_annotationIntrospector,&nbsp;_vi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sibilityChecker,&nbsp;_propertyNamingStrategy,&nbsp;_typeFactory,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sibilityChecker,&nbsp;_propertyNamingStrategy,&nbsp;_typeFactory,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from357_236">236</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_typeResolverBuilder,&nbsp;df,&nbsp;_handlerInstantiator,&nbsp;_locale,</td><td class="diff_next"></td><td class="diff_header" id="to357_235">235</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_typeResolverBuilder,&nbsp;df,&nbsp;_handlerInstantiator,&nbsp;_locale,</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to357__top">t</a></td><td class="diff_header" id="from357_237">237</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t<span class="diff_chg">z</span>,&nbsp;_defaultBase64);</td><td class="diff_next"><a href="#difflib_chg_to357__top">t</a></td><td class="diff_header" id="to357_236">236</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_add">_</span>t<span class="diff_chg">imeZone</span>,&nbsp;_defaultBase64);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from357_238">238</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to357_237">237</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from357_239">239</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to357_238">238</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from357_240">240</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;BaseSettings&nbsp;withHandlerInstantiator(HandlerInstantiator&nbsp;hi)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to357_239">239</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;BaseSettings&nbsp;withHandlerInstantiator(HandlerInstantiator&nbsp;hi)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

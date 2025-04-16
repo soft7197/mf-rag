@@ -1,0 +1,87 @@
+{
+    "Jsoup-41": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Set this element's inner HTML. Clears the existing HTML first.\n* @param html HTML to parse and set into this element\n* @return this element\n* @see #append(String)\n*/\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this == o;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testHashAndEquals() {\n\n        String doc1 = \"<div id=1><p class=one>One</p><p class=one>One</p><p class=one>Two</p><p class=two>One</p></div>\" +\n\n                \"<div id=2><p class=one>One</p><p class=one>One</p><p class=one>Two</p><p class=two>One</p></div>\";\n\n\n\n        Document doc = Jsoup.parse(doc1);\n\n        Elements els = doc.select(\"p\");\n\n\n\n        /*\n\n        for (Element el : els) {\n\n            System.out.println(el.hashCode() + \" - \" + el.outerHtml());\n\n        }\n\n\n\n        0 1534787905 - <p class=\"one\">One</p>\n\n        1 1534787905 - <p class=\"one\">One</p>\n\n        2 1539683239 - <p class=\"one\">Two</p>\n\n        3 1535455211 - <p class=\"two\">One</p>\n\n        4 1534787905 - <p class=\"one\">One</p>\n\n        5 1534787905 - <p class=\"one\">One</p>\n\n        6 1539683239 - <p class=\"one\">Two</p>\n\n        7 1535455211 - <p class=\"two\">One</p>\n\n        */\n\n        assertEquals(8, els.size());\n\n        Element e0 = els.get(0);\n\n        Element e1 = els.get(1);\n\n        Element e2 = els.get(2);\n\n        Element e3 = els.get(3);\n\n        Element e4 = els.get(4);\n\n        Element e5 = els.get(5);\n\n        Element e6 = els.get(6);\n\n        Element e7 = els.get(7);\n\n\n\n        assertEquals(e0, e1);\n\n        assertEquals(e0, e4);\n\n        assertEquals(e0, e5);\n\n        assertFalse(e0.equals(e2));\n\n        assertFalse(e0.equals(e3));\n\n        assertFalse(e0.equals(e6));\n\n        assertFalse(e0.equals(e7));\n\n\n\n        assertEquals(e0.hashCode(), e1.hashCode());\n\n        assertEquals(e0.hashCode(), e4.hashCode());\n\n        assertEquals(e0.hashCode(), e5.hashCode());\n\n        assertFalse(e0.hashCode() == (e2.hashCode()));\n\n        assertFalse(e0.hashCode() == (e3).hashCode());\n\n        assertFalse(e0.hashCode() == (e6).hashCode());\n\n        assertFalse(e0.hashCode() == (e7).hashCode());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected: org.jsoup.nodes.Element<<p class=\"one\">One</p>> but was: org.jsoup.nodes.Element<<p class=\"one\">One</p>>\n\tat org.jsoup.nodes.ElementTest.testHashAndEquals(ElementTest.java:785)  assertEquals(e0, e1);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    Element element = (Element) o;\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return Objects.equals(this.outerHtml(), element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return Objects.equals(this.outerHtml(), element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Set this element's inner HTML. Clears the existing HTML first.\n* @param html HTML to parse and set into this element\n* @return this element\n* @see #append(String)\n*/\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this == o;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testHashAndEquals() {\n\n        String doc1 = \"<div id=1><p class=one>One</p><p class=one>One</p><p class=one>Two</p><p class=two>One</p></div>\" +\n\n                \"<div id=2><p class=one>One</p><p class=one>One</p><p class=one>Two</p><p class=two>One</p></div>\";\n\n\n\n        Document doc = Jsoup.parse(doc1);\n\n        Elements els = doc.select(\"p\");\n\n\n\n        /*\n\n        for (Element el : els) {\n\n            System.out.println(el.hashCode() + \" - \" + el.outerHtml());\n\n        }\n\n\n\n        0 1534787905 - <p class=\"one\">One</p>\n\n        1 1534787905 - <p class=\"one\">One</p>\n\n        2 1539683239 - <p class=\"one\">Two</p>\n\n        3 1535455211 - <p class=\"two\">One</p>\n\n        4 1534787905 - <p class=\"one\">One</p>\n\n        5 1534787905 - <p class=\"one\">One</p>\n\n        6 1539683239 - <p class=\"one\">Two</p>\n\n        7 1535455211 - <p class=\"two\">One</p>\n\n        */\n\n        assertEquals(8, els.size());\n\n        Element e0 = els.get(0);\n\n        Element e1 = els.get(1);\n\n        Element e2 = els.get(2);\n\n        Element e3 = els.get(3);\n\n        Element e4 = els.get(4);\n\n        Element e5 = els.get(5);\n\n        Element e6 = els.get(6);\n\n        Element e7 = els.get(7);\n\n\n\n        assertEquals(e0, e1);\n\n        assertEquals(e0, e4);\n\n        assertEquals(e0, e5);\n\n        assertFalse(e0.equals(e2));\n\n        assertFalse(e0.equals(e3));\n\n        assertFalse(e0.equals(e6));\n\n        assertFalse(e0.equals(e7));\n\n\n\n        assertEquals(e0.hashCode(), e1.hashCode());\n\n        assertEquals(e0.hashCode(), e4.hashCode());\n\n        assertEquals(e0.hashCode(), e5.hashCode());\n\n        assertFalse(e0.hashCode() == (e2.hashCode()));\n\n        assertFalse(e0.hashCode() == (e3).hashCode());\n\n        assertFalse(e0.hashCode() == (e6).hashCode());\n\n        assertFalse(e0.hashCode() == (e7).hashCode());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected: org.jsoup.nodes.Element<<p class=\"one\">One</p>> but was: org.jsoup.nodes.Element<<p class=\"one\">One</p>>\n\tat org.jsoup.nodes.ElementTest.testHashAndEquals(ElementTest.java:785)  assertEquals(e0, e1);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\n@Override public boolean matches(Element root, Element node) { for (int i = 0; i < num; i++) { Evaluator s = evaluators.get(i); if (s.matches(root, node)) return true; } return false; }\n```\n\n            \n```java\n@Override public boolean matches(Element root, Element element) { final Element p = element.parent(); return p != null && !(p instanceof Document) && element.elementSiblingIndex() == p.children().size() - 1; }\n```\n\n            \n```java\n@Override public boolean matches(Element root, Element node) { for (int i = 0; i < num; i++) { Evaluator s = evaluators.get(i); if (!s.matches(root, node)) return false; } return true; }\n```\n\n            \n```java\n@Override public boolean matches(Element root, Element element) { List<Node> family = element.childNodes(); for (int i = 0; i < family.size(); i++) { Node n = family.get(i); if (!(n instanceof Comment || n instanceof XmlDeclaration || n instanceof DocumentType)) return false; } return true; }\n```\n\n            \n```java\n@Override public boolean matches(Element root, Element element) { final Element p = element.parent(); return p != null && !(p instanceof Document) && element.elementSiblingIndex() == 0; }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    Element element = (Element) o;\n    return this.outerHtml().equals(element.outerHtml());\n}\n\n@Override\npublic int hashCode() {\n    return this.outerHtml().hashCode();\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    Element element = (Element) o;\n    return this.outerHtml().equals(element.outerHtml());\n}\n\n@Override\npublic int hashCode() {\n    return this.outerHtml().hashCode();\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    // Compare relevant fields for equality\n    return this.outerHtml().equals(element.outerHtml());\n}\n\n@Override\npublic int hashCode() {\n    return outerHtml().hashCode();\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return Objects.equals(this.attributes(), element.attributes()) &&\n           Objects.equals(this.childNodes(), element.childNodes());\n}\n\n@Override\npublic int hashCode() {\n    return Objects.hash(super.hashCode(), attributes(), childNodes());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    Element element = (Element) o;\n\n    // Assuming meaningful properties for equality check:\n    // Compare based on some unique attributes of the Element, like ID or HTML content\n    return Objects.equals(this.id(), element.id()) && \n           Objects.equals(this.outerHtml(), element.outerHtml());\n}\n\n@Override\npublic int hashCode() {\n    return Objects.hash(id(), outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n\n    Element element = (Element) o;\n\n    return this.attributes().equals(element.attributes()) &&\n           this.childNodes().equals(element.childNodes());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.outerHtml().equals(element.outerHtml());\n}\n"
+                ],
+                [
+                    "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n\n    Element element = (Element) o;\n\n    return Objects.equals(this.attributes(), element.attributes()) &&\n           Objects.equals(this.childNodes(), element.childNodes()) &&\n           Objects.equals(this.tag(), element.tag());\n}\n"
+                ],
+                [
+                    "\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.attributes().equals(element.attributes()) &&\n           this.childNodes().equals(element.childNodes()) &&\n           this.tagName().equals(element.tagName());\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.attributes().equals(element.attributes()) &&\n           this.childNodes().equals(element.childNodes()) &&\n           this.tagName().equals(element.tagName());\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null || getClass() != o.getClass()) return false;\n    if (!super.equals(o)) return false;\n\n    Element element = (Element) o;\n\n    return this.attributes().equals(element.attributes()) &&\n           this.childNodes().equals(element.childNodes()) &&\n           this.tagName().equals(element.tagName());\n}\n"
+                ]
+            ]
+        }
+    }
+}

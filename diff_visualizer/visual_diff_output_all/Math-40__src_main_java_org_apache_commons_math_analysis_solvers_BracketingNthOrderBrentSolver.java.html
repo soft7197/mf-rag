@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to605__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-40 - Buggy: src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-40 - Fixed: src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to605__0"></td><td class="diff_header" id="from605_232">232</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;targetY;</td><td class="diff_next"></td><td class="diff_header" id="to605_232">232</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;targetY;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_233">233</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(agingA&nbsp;&gt;=&nbsp;MAXIMAL_AGING)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to605_233">233</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(agingA&nbsp;&gt;=&nbsp;MAXIMAL_AGING)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_234">234</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;keep&nbsp;updating&nbsp;the&nbsp;high&nbsp;bracket,&nbsp;try&nbsp;to&nbsp;compensate&nbsp;this</td><td class="diff_next"></td><td class="diff_header" id="to605_234">234</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;keep&nbsp;updating&nbsp;the&nbsp;high&nbsp;bracket,&nbsp;try&nbsp;to&nbsp;compensate&nbsp;this</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to605__1">n</a></td><td class="diff_header" id="from605_235">235</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;targetY&nbsp;=&nbsp;-REDUCTION_FACTOR&nbsp;*&nbsp;yB;</span></td><td class="diff_next"><a href="#difflib_chg_to605__1">n</a></td><td class="diff_header" id="to605_235">235</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;p&nbsp;=&nbsp;agingA&nbsp;-&nbsp;MAXIMAL_AGING;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to605_236">236</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;weightA&nbsp;=&nbsp;(1&nbsp;&lt;&lt;&nbsp;p)&nbsp;-&nbsp;1;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to605_237">237</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;weightB&nbsp;=&nbsp;p&nbsp;+&nbsp;1;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to605_238">238</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;targetY&nbsp;=&nbsp;(weightA&nbsp;*&nbsp;yA&nbsp;-&nbsp;weightB&nbsp;*&nbsp;REDUCTION_FACTOR&nbsp;*&nbsp;yB)&nbsp;/&nbsp;(we</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to605__1"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ightA&nbsp;+&nbsp;weightB);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_236">236</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(agingB&nbsp;&gt;=&nbsp;MAXIMAL_AGING)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to605_239">239</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(agingB&nbsp;&gt;=&nbsp;MAXIMAL_AGING)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_237">237</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;keep&nbsp;updating&nbsp;the&nbsp;low&nbsp;bracket,&nbsp;try&nbsp;to&nbsp;compensate&nbsp;this</td><td class="diff_next"></td><td class="diff_header" id="to605_240">240</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;keep&nbsp;updating&nbsp;the&nbsp;low&nbsp;bracket,&nbsp;try&nbsp;to&nbsp;compensate&nbsp;this</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to605__top">t</a></td><td class="diff_header" id="from605_238">238</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;targetY&nbsp;=&nbsp;-REDUCTION_FACTOR&nbsp;*&nbsp;yA;</span></td><td class="diff_next"><a href="#difflib_chg_to605__top">t</a></td><td class="diff_header" id="to605_241">241</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;p&nbsp;=&nbsp;agingB&nbsp;-&nbsp;MAXIMAL_AGING;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to605_242">242</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;weightA&nbsp;=&nbsp;p&nbsp;+&nbsp;1;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to605_243">243</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;weightB&nbsp;=&nbsp;(1&nbsp;&lt;&lt;&nbsp;p)&nbsp;-&nbsp;1;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to605_244">244</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;targetY&nbsp;=&nbsp;(weightB&nbsp;*&nbsp;yB&nbsp;-&nbsp;weightA&nbsp;*&nbsp;REDUCTION_FACTOR&nbsp;*&nbsp;yA)&nbsp;/&nbsp;(we</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ightA&nbsp;+&nbsp;weightB);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_239">239</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to605_245">245</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_240">240</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;bracketing&nbsp;is&nbsp;balanced,&nbsp;try&nbsp;to&nbsp;find&nbsp;the&nbsp;root&nbsp;itself</td><td class="diff_next"></td><td class="diff_header" id="to605_246">246</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;bracketing&nbsp;is&nbsp;balanced,&nbsp;try&nbsp;to&nbsp;find&nbsp;the&nbsp;root&nbsp;itself</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from605_241">241</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;targetY&nbsp;=&nbsp;0;</td><td class="diff_next"></td><td class="diff_header" id="to605_247">247</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;targetY&nbsp;=&nbsp;0;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

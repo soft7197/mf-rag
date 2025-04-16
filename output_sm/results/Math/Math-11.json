@@ -1,0 +1,81 @@
+{
+    "Math-11": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testUnivariateDistribution() {\n\n        final double[] mu = { -1.5 };\n\n        final double[][] sigma = { { 1 } };\n\n \n\n        final MultivariateNormalDistribution multi = new MultivariateNormalDistribution(mu, sigma);\n\n\n\n        final NormalDistribution uni = new NormalDistribution(mu[0], sigma[0][0]);\n\n        final Random rng = new Random();\n\n        final int numCases = 100;\n\n        final double tol = Math.ulp(1d);\n\n        for (int i = 0; i < numCases; i++) {\n\n            final double v = rng.nextDouble() * 10 - 5;\n\n            Assert.assertEquals(uni.density(v), multi.density(new double[] { v }), tol);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<0.23644016090654427> but was:<0.5926675925866471>\n\tat org.apache.commons.math3.distribution.MultivariateNormalDistributionTest.testUnivariateDistribution(MultivariateNormalDistributionTest.java:151)  Assert.assertEquals(uni.density(v), multi.density(new double[] { v }), tol);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Ensure division is floating-point\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Use -dim / 2.0 to ensure correct division\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -0.5 * dim) * // Corrected exponent\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Correcting -dim / 2 to -dim / 2.0\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Changed -dim / 2 to -dim / 2.0\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Change -dim / 2 to -dim / 2.0\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Ensure division is floating-point\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Use -dim / 2.0 to ensure correct division\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -0.5 * dim) * // Corrected exponent\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Correcting -dim / 2 to -dim / 2.0\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Changed -dim / 2 to -dim / 2.0\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Change -dim / 2 to -dim / 2.0\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\n/**\n* Gets the covariance matrix.\n*\n* @return the covariance matrix.\n*/\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) *\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -dim / 2.0) * // Ensure division is floating-point\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ],
+                [
+                    "\npublic double density(final double[] vals) throws DimensionMismatchException {\n    final int dim = getDimension();\n    if (vals.length != dim) {\n        throw new DimensionMismatchException(vals.length, dim);\n    }\n\n    return FastMath.pow(2 * FastMath.PI, -0.5 * dim) * // Corrected exponent\n        FastMath.pow(covarianceMatrixDeterminant, -0.5) *\n        getExponentTerm(vals);\n}\n"
+                ]
+            ]
+        }
+    }
+}

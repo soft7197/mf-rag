@@ -1,0 +1,77 @@
+{
+    "Math-9": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, zero.subtract(direction));\n    return reverted;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testRevert() {\n\n        \n\n        // setup\n\n        Line line = new Line(new Vector3D(1653345.6696423641, 6170370.041579291, 90000),\n\n                             new Vector3D(1650757.5050732433, 6160710.879908984, 0.9));\n\n        Vector3D expected = line.getDirection().negate();\n\n\n\n        // action\n\n        Line reverted = line.revert();\n\n\n\n        // verify\n\n        Assert.assertArrayEquals(expected.toArray(), reverted.getDirection().toArray(), 0);\n\n\n\n    }\n\n```\n#Error message: \tat org.apache.commons.math3.geometry.euclidean.threed.LineTest.testRevert(LineTest.java:144)  Assert.assertArrayEquals(expected.toArray(), reverted.getDirection().toArray(), 0);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, zero.subtract(direction));\n    return reverted;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testRevert() {\n\n        \n\n        // setup\n\n        Line line = new Line(new Vector3D(1653345.6696423641, 6170370.041579291, 90000),\n\n                             new Vector3D(1650757.5050732433, 6160710.879908984, 0.9));\n\n        Vector3D expected = line.getDirection().negate();\n\n\n\n        // action\n\n        Line reverted = line.revert();\n\n\n\n        // verify\n\n        Assert.assertArrayEquals(expected.toArray(), reverted.getDirection().toArray(), 0);\n\n\n\n    }\n\n```\n#Error message: \tat org.apache.commons.math3.geometry.euclidean.threed.LineTest.testRevert(LineTest.java:144)  Assert.assertArrayEquals(expected.toArray(), reverted.getDirection().toArray(), 0);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic Rotation revert() { return new Rotation(-q0, q1, q2, q3, false); }\n```\n\n            \n```java\npublic BigDecimal bigDecimalValue() { return new BigDecimal(numerator).divide(new BigDecimal(denominator)); }\n```\n\n            \n```java\npublic Decimal64 rint() { return new Decimal64(FastMath.rint(value)); }\n```\n\n            \n```java\npublic BigReal multiply(BigReal a) { return new BigReal(d.multiply(a.d)); }\n```\n\n            \n```java\npublic BigReal subtract(BigReal a) { return new BigReal(d.subtract(a.d)); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ],
+                [
+                    "\n/** Get a line with reversed direction.\n* @return a new instance, with reversed direction\n*/\npublic Line revert() {\n    final Line reverted = new Line(zero, direction.negate());\n    return reverted;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

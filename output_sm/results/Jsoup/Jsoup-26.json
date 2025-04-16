@@ -1,0 +1,89 @@
+{
+    "Jsoup-26": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\nCreates a new, clean document, from the original dirty document, containing only elements allowed by the whitelist.\nThe original document is not modified. Only elements from the dirt document's <code>body</code> are used.\n@param dirtyDocument Untrusted base document to clean.\n@return cleaned document.\n*/\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n        copySafeNodes(dirtyDocument.body(), clean.body());\n\n    return clean;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void handlesFramesets() {\n\n        String dirty = \"<html><head><script></script><noscript></noscript></head><frameset><frame src=\\\"foo\\\" /><frame src=\\\"foo\\\" /></frameset></html>\";\n\n        String clean = Jsoup.clean(dirty, Whitelist.basic());\n\n        assertEquals(\"\", clean); // nothing good can come out of that\n\n\n\n        Document dirtyDoc = Jsoup.parse(dirty);\n\n        Document cleanDoc = new Cleaner(Whitelist.basic()).clean(dirtyDoc);\n\n        assertFalse(cleanDoc == null);\n\n        assertEquals(0, cleanDoc.body().childNodes().size());\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.jsoup.safety.Cleaner.copySafeNodes(Cleaner.java:73)  List<Node> sourceChildren = source.childNodes();\n\tat org.jsoup.safety.Cleaner.clean(Cleaner.java:43)  copySafeNodes(dirtyDocument.body(), clean.body());\n\tat org.jsoup.safety.CleanerTest.handlesFramesets(CleanerTest.java:176)  Document cleanDoc = new Cleaner(Whitelist.basic()).clean(dirtyDoc);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n\n    if (body != null) {\n        copySafeNodes(body, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        body = new Element(Tag.valueOf(\"body\"), dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        body = new Element(Tag.valueOf(\"body\"), dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    Element dirtyBody = dirtyDocument.body();\n    \n    if (dirtyBody != null) {\n        copySafeNodes(dirtyBody, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n\n    if (body != null) {\n        copySafeNodes(body, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        return Document.createShell(dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n\n    if (body != null) {\n        copySafeNodes(body, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        body = new Element(Tag.valueOf(\"body\"), dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        body = new Element(Tag.valueOf(\"body\"), dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    Element dirtyBody = dirtyDocument.body();\n    \n    if (dirtyBody != null) {\n        copySafeNodes(dirtyBody, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n\n    if (body != null) {\n        copySafeNodes(body, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        return Document.createShell(dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    if (dirtyDocument.body() != null) {\n        copySafeNodes(dirtyDocument.body(), clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n\n    if (body != null) {\n        copySafeNodes(body, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        body = new Element(Tag.valueOf(\"body\"), dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    Element dirtyBody = dirtyDocument.body();\n    \n    if (dirtyBody != null) {\n        copySafeNodes(dirtyBody, clean.body());\n    }\n\n    return clean;\n}\n"
+                ],
+                [
+                    "\npublic Document clean(Document dirtyDocument) {\n    Validate.notNull(dirtyDocument);\n\n    Element body = dirtyDocument.body();\n    if (body == null) {\n        return Document.createShell(dirtyDocument.baseUri());\n    }\n\n    Document clean = Document.createShell(dirtyDocument.baseUri());\n    copySafeNodes(body, clean.body());\n\n    return clean;\n}\n"
+                ]
+            ]
+        }
+    }
+}

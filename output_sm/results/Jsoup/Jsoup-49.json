@@ -1,0 +1,77 @@
+{
+    "Jsoup-49": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n//most used. short circuit addChildren(int), which hits reindex children and array copy\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = children.length - 1; i >= 0; i--) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index, in);\n    }\n    reindexChildren(index);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void appendMustCorrectlyMoveChildrenInsideOneParentElement() {\n\n        Document doc = new Document(\"\");\n\n        Element body = doc.appendElement(\"body\");\n\n        body.appendElement(\"div1\");\n\n        body.appendElement(\"div2\");\n\n        final Element div3 = body.appendElement(\"div3\");\n\n        div3.text(\"Check\");\n\n        final Element div4 = body.appendElement(\"div4\");\n\n\n\n        ArrayList<Element> toMove = new ArrayList<Element>();\n\n        toMove.add(div3);\n\n        toMove.add(div4);\n\n\n\n        body.insertChildren(0, toMove);\n\n\n\n        String result = doc.toString().replaceAll(\"\\\\s+\", \"\");\n\n        assertEquals(\"<body><div3>Check</div3><div4></div4><div1></div1><div2></div2></body>\", result);\n\n\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<...><div3>Check</div3><[div4></div4><div1></div1><div2></div2><]/body>> but was:<...><div3>Check</div3><[]/body>>\n\tat org.jsoup.nodes.ElementTest.appendMustCorrectlyMoveChildrenInsideOneParentElement(ElementTest.java:878)  assertEquals(\"<body><div3>Check</div3><div4></div4><div1></div1><div2></div2></body>\", result);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    int currentIndex = index;\n    for (Node in : children) {\n        reparentChild(in);\n        childNodes.add(currentIndex++, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (Node in : children) {\n        reparentChild(in);\n        childNodes.add(index++, in);\n    }\n    reindexChildren(index - children.length);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n//most used. short circuit addChildren(int), which hits reindex children and array copy\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = children.length - 1; i >= 0; i--) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index, in);\n    }\n    reindexChildren(index);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void appendMustCorrectlyMoveChildrenInsideOneParentElement() {\n\n        Document doc = new Document(\"\");\n\n        Element body = doc.appendElement(\"body\");\n\n        body.appendElement(\"div1\");\n\n        body.appendElement(\"div2\");\n\n        final Element div3 = body.appendElement(\"div3\");\n\n        div3.text(\"Check\");\n\n        final Element div4 = body.appendElement(\"div4\");\n\n\n\n        ArrayList<Element> toMove = new ArrayList<Element>();\n\n        toMove.add(div3);\n\n        toMove.add(div4);\n\n\n\n        body.insertChildren(0, toMove);\n\n\n\n        String result = doc.toString().replaceAll(\"\\\\s+\", \"\");\n\n        assertEquals(\"<body><div3>Check</div3><div4></div4><div1></div1><div2></div2></body>\", result);\n\n\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<...><div3>Check</div3><[div4></div4><div1></div1><div2></div2><]/body>> but was:<...><div3>Check</div3><[]/body>>\n\tat org.jsoup.nodes.ElementTest.appendMustCorrectlyMoveChildrenInsideOneParentElement(ElementTest.java:878)  assertEquals(\"<body><div3>Check</div3><div4></div4><div1></div1><div2></div2></body>\", result);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nprotected void addChildren(Node... children) { for (Node child : children) { reparentChild(child); ensureChildNodes(); childNodes.add(child); child.setSiblingIndex(childNodes.size() - 1); } }\n```\n\n            \n```java\nprotected void removeChild(Node out) { Validate.isTrue(out.parentNode == this); final int index = out.siblingIndex; childNodes.remove(index); reindexChildren(index); out.parentNode = null; }\n```\n\n            \n```java\npublic Element previousElementSibling() { if (parentNode == null) return null; List<Element> siblings = parent().children(); Integer index = indexInList(this, siblings); Validate.notNull(index); if (index > 0) return siblings.get(index - 1); else return null; }\n```\n\n            \n```java\nprotected void replaceChild(Node out, Node in) { Validate.isTrue(out.parentNode == this); Validate.notNull(in); if (in.parentNode != null) in.parentNode.removeChild(in); final int index = out.siblingIndex; childNodes.set(index, in); in.parentNode = this; in.setSiblingIndex(index); out.parentNode = null; }\n```\n\n            \n```java\npublic Element nextElementSibling() { if (parentNode == null) return null; List<Element> siblings = parent().children(); Integer index = indexInList(this, siblings); Validate.notNull(index); if (siblings.size() > index + 1) return siblings.get(index + 1); else return null; }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {  // Change iteration order to preserve order of insertion\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in); // Adjust index to insert sequentially\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) { // Change loop order to maintain order when inserting\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in); // Adjust index for each subsequent insertion\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    int currentIndex = index;\n    for (Node in : children) {\n        reparentChild(in);\n        childNodes.add(currentIndex++, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {  // Incrementing from 0 to children.length\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);  // Adjust index for new insertions\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\n//most used. short circuit addChildren(int), which hits reindex children and array copy\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (Node child : children) {\n        reparentChild(child);\n        childNodes.add(index++, child);\n    }\n    reindexChildren(index);\n}\n"
+                ],
+                [
+                    "\n//most used. short circuit addChildren(int), which hits reindex children and array copy\nprotected void addChildren(int index, Node... children) {\n    Validate.noNullElements(children);\n    ensureChildNodes();\n    for (int i = 0; i < children.length; i++) {\n        Node in = children[i];\n        reparentChild(in);\n        childNodes.add(index + i, in);\n    }\n    reindexChildren(index);\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

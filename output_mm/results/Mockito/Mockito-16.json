@@ -1,0 +1,289 @@
+{
+    "Mockito-16": {
+        "function_num": 4,
+        "functions": [
+            {
+                "path": "src/org/mockito/Mockito.java",
+                "start_loc": 826,
+                "end_loc": 828,
+                "buggy_function": "    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n",
+                "fixed_function": "    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, mockSettings, true);\n    }\n",
+                "comment": "    /**\n     * Creates a mock with some non-standard settings.\n     * <p>\n     * The number of configuration points for a mock grows \n     * so we need a fluent way to introduce new configuration without adding more and more overloaded Mockito.mock() methods. \n     * Hence {@link MockSettings}.\n     * <pre>\n     *   Listener mock = mock(Listener.class, withSettings()\n     *     .name(\"firstListner\").defaultBehavior(RETURNS_SMART_NULLS));\n     *   );  \n     * </pre>\n     * <b>Use it carefully and occasionally</b>. What might be reason your test needs non-standard mocks? \n     * Is the code under test so complicated that it requires non-standard mocks? \n     * Wouldn't you prefer to refactor the code under test so it is testable in a simple way?\n     * <p>\n     * See also {@link Mockito#withSettings()}\n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param classToMock class or interface to mock\n     * @param mockSettings additional mock settings\n     * @return mock object\n     */\n",
+                "normalized_body": [
+                    "public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) { return MOCKITO_CORE.mock(classToMock, mockSettings); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        0.9999998807907104,
+                        "public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) { return MOCKITO_CORE.mock(classToMock, mockSettings); }"
+                    ],
+                    [
+                        0.9819314479827881,
+                        "public static <T> OngoingStubbing<T> when(T methodCall) { return MOCKITO_CORE.when(methodCall); }"
+                    ],
+                    [
+                        0.9772646427154541,
+                        "public static <T> T verify(T mock, VerificationMode mode) { return MOCKITO_CORE.verify(mock, mode); }"
+                    ],
+                    [
+                        0.9764798879623413,
+                        "public static <T> VoidMethodStubbable<T> stubVoid(T mock) { return MOCKITO_CORE.stubVoid(mock); }"
+                    ],
+                    [
+                        0.9757630228996277,
+                        "public static <T> T mock(Class<T> classToMock) { return mock(classToMock, withSettings().defaultAnswer(RETURNS_DEFAULTS)); }"
+                    ],
+                    [
+                        0.9715478420257568,
+                        "public static void verifyZeroInteractions(Object... mocks) { MOCKITO_CORE.verifyNoMoreInteractions(mocks); }"
+                    ],
+                    [
+                        0.9711582660675049,
+                        "public static Type getType(final String typeDescriptor) { return getType(typeDescriptor.toCharArray(), 0); }"
+                    ],
+                    [
+                        0.9666358232498169,
+                        "public static <T> T mock(Class<T> classToMock, Answer defaultAnswer) { return mock(classToMock, withSettings().defaultAnswer(defaultAnswer)); }"
+                    ],
+                    [
+                        0.9665244817733765,
+                        "public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { return mock(classToMock, mockSettings); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are buggy method(s) from a large Java project. These methods cause one or more test failures.\nYour task is to fix the bugs in these methods. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Methods\n\n\n```java\n    /**\n     * Creates a mock with some non-standard settings.\n     * <p>\n     * The number of configuration points for a mock grows \n     * so we need a fluent way to introduce new configuration without adding more and more overloaded Mockito.mock() methods. \n     * Hence {@link MockSettings}.\n     * <pre>\n     *   Listener mock = mock(Listener.class, withSettings()\n     *     .name(\"firstListner\").defaultBehavior(RETURNS_SMART_NULLS));\n     *   );  \n     * </pre>\n     * <b>Use it carefully and occasionally</b>. What might be reason your test needs non-standard mocks? \n     * Is the code under test so complicated that it requires non-standard mocks? \n     * Wouldn't you prefer to refactor the code under test so it is testable in a simple way?\n     * <p>\n     * See also {@link Mockito#withSettings()}\n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param classToMock class or interface to mock\n     * @param mockSettings additional mock settings\n     * @return mock object\n     */\n\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n\n```\n\n```java\n    /**\n     * Creates a spy of the real object. The spy calls <b>real</b> methods unless they are stubbed.\n     * <p>\n     * Real spies should be used <b>carefully and occasionally</b>, for example when dealing with legacy code.\n     * <p>\n     * As usual you are going to read <b>the partial mock warning</b>:\n     * Object oriented programming is more less tackling complexity by dividing the complexity into separate, specific, SRPy objects.\n     * How does partial mock fit into this paradigm? Well, it just doesn't... \n     * Partial mock usually means that the complexity has been moved to a different method on the same object.\n     * In most cases, this is not the way you want to design your application.\n     * <p>\n     * However, there are rare cases when partial mocks come handy: \n     * dealing with code you cannot change easily (3rd party interfaces, interim refactoring of legacy code etc.)\n     * However, I wouldn't use partial mocks for new, test-driven & well-designed code.\n     * <p>\n     * Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     * \n     *   //optionally, you can stub out some methods:\n     *   when(spy.size()).thenReturn(100);\n     * \n     *   //using the spy calls <b>real</b> methods\n     *   spy.add(\"one\");\n     *   spy.add(\"two\");\n     * \n     *   //prints \"one\" - the first element of a list\n     *   System.out.println(spy.get(0));\n     * \n     *   //size() method was stubbed - 100 is printed\n     *   System.out.println(spy.size());\n     * \n     *   //optionally, you can verify\n     *   verify(spy).add(\"one\");\n     *   verify(spy).add(\"two\");\n     * </pre>\n     * \n     * <h4>Important gotcha on spying real objects!</h4>\n     * \n     * 1. Sometimes it's impossible to use {@link Mockito#when(Object)} for stubbing spies. Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     *   \n     *   //Impossible: real method is called so spy.get(0) throws IndexOutOfBoundsException (the list is yet empty)\n     *   when(spy.get(0)).thenReturn(\"foo\");\n     *   \n     *   //You have to use doReturn() for stubbing\n     *   doReturn(\"foo\").when(spy).get(0);\n     * </pre>\n     * \n     * 2. Watch out for final methods. \n     * Mockito doesn't mock final methods so the bottom line is: when you spy on real objects + you try to stub a final method = trouble.\n     * What will happen is the real method will be called *on mock* but *not on the real instance* you passed to the spy() method.\n     * Typically you may get a NullPointerException because mock instances don't have fields initiated.\n     * \n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param object\n     *            to spy on\n     * @return a spy of the real object\n     */\n\n    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n\n```\n\n```java\n\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n            mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n\n```\n\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS() {\n        IMethods mock = mock(IMethods.class, RETURNS_MOCKS);\n        when(mock.objectReturningMethodNoArgs()).thenReturn(null);\n    }\n```\n#Error message from the test method 1: org.mockito.exceptions.misusing.MissingMethodInvocationException:\n\n---\n\n## Your Goal\n\nFix the buggy methods. Return only the fixed Java methods. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, withSettings().defaultAnswer(RETURNS_DEFAULTS).merge(mockSettings));\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, withSettings().defaultAnswer(RETURNS_MOCKS).mergeSettings(mockSettings));\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (!(mockSettings instanceof MockSettingsImpl)) {\n            throw new IllegalArgumentException(\"MockSettings must be instance of MockSettingsImpl\");\n        }\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        MOCKITO_CORE.mockingProgress.validateState();\n        MOCKITO_CORE.mockingProgress.resetOngoingStubbing();\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (classToMock == null) {\n            throw new IllegalArgumentException(\"classToMock cannot be null\");\n        }\n        if (mockSettings == null) {\n            throw new IllegalArgumentException(\"mockSettings cannot be null\");\n        }\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (mockSettings == null) {\n            throw new IllegalArgumentException(\"MockSettings cannot be null\");\n        }\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n",
+                            "\npublic static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n    if (mockSettings == null) {\n        throw new IllegalArgumentException(\"MockSettings cannot be null\");\n    }\n    return MOCKITO_CORE.mock(classToMock, mockSettings);\n}\n",
+                            "\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (mockSettings == null) {\n            throw new IllegalArgumentException(\"MockSettings cannot be null\");\n        }\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/org/mockito/Mockito.java",
+                "start_loc": 896,
+                "end_loc": 900,
+                "buggy_function": "    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n",
+                "fixed_function": "    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS), true); \n    }\n",
+                "comment": "    /**\n     * Creates a spy of the real object. The spy calls <b>real</b> methods unless they are stubbed.\n     * <p>\n     * Real spies should be used <b>carefully and occasionally</b>, for example when dealing with legacy code.\n     * <p>\n     * As usual you are going to read <b>the partial mock warning</b>:\n     * Object oriented programming is more less tackling complexity by dividing the complexity into separate, specific, SRPy objects.\n     * How does partial mock fit into this paradigm? Well, it just doesn't... \n     * Partial mock usually means that the complexity has been moved to a different method on the same object.\n     * In most cases, this is not the way you want to design your application.\n     * <p>\n     * However, there are rare cases when partial mocks come handy: \n     * dealing with code you cannot change easily (3rd party interfaces, interim refactoring of legacy code etc.)\n     * However, I wouldn't use partial mocks for new, test-driven & well-designed code.\n     * <p>\n     * Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     * \n     *   //optionally, you can stub out some methods:\n     *   when(spy.size()).thenReturn(100);\n     * \n     *   //using the spy calls <b>real</b> methods\n     *   spy.add(\"one\");\n     *   spy.add(\"two\");\n     * \n     *   //prints \"one\" - the first element of a list\n     *   System.out.println(spy.get(0));\n     * \n     *   //size() method was stubbed - 100 is printed\n     *   System.out.println(spy.size());\n     * \n     *   //optionally, you can verify\n     *   verify(spy).add(\"one\");\n     *   verify(spy).add(\"two\");\n     * </pre>\n     * \n     * <h4>Important gotcha on spying real objects!</h4>\n     * \n     * 1. Sometimes it's impossible to use {@link Mockito#when(Object)} for stubbing spies. Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     *   \n     *   //Impossible: real method is called so spy.get(0) throws IndexOutOfBoundsException (the list is yet empty)\n     *   when(spy.get(0)).thenReturn(\"foo\");\n     *   \n     *   //You have to use doReturn() for stubbing\n     *   doReturn(\"foo\").when(spy).get(0);\n     * </pre>\n     * \n     * 2. Watch out for final methods. \n     * Mockito doesn't mock final methods so the bottom line is: when you spy on real objects + you try to stub a final method = trouble.\n     * What will happen is the real method will be called *on mock* but *not on the real instance* you passed to the spy() method.\n     * Typically you may get a NullPointerException because mock instances don't have fields initiated.\n     * \n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param object\n     *            to spy on\n     * @return a spy of the real object\n     */\n",
+                "normalized_body": [
+                    "public static <T> T spy(T object) { return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings() .spiedInstance(object) .defaultAnswer(CALLS_REAL_METHODS)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        0.9999998807907104,
+                        "public static <T> T spy(T object) { return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings().spiedInstance(object).defaultAnswer(CALLS_REAL_METHODS)); }"
+                    ],
+                    [
+                        0.989631175994873,
+                        "public static <T> T eq(T value) { return (T) reportMatcher(new Equals(value)).<T>returnFor((Class) value.getClass()); }"
+                    ],
+                    [
+                        0.9869350790977478,
+                        "public static <T> T same(T value) { return (T) reportMatcher(new Same(value)).<T>returnFor((Class) value.getClass()); }"
+                    ],
+                    [
+                        0.9842917919158936,
+                        "public static <T extends Comparable<T>> T cmpEq(Comparable<T> value) { return reportMatcher(new CompareEqual<T>(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9833540916442871,
+                        "public static <T extends Comparable<T>> T leq(Comparable<T> value) { return reportMatcher(new LessOrEqual<T>(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9816035628318787,
+                        "public static <T extends Comparable<T>> T geq(Comparable<T> value) { return reportMatcher(new GreaterOrEqual<T>(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9814093112945557,
+                        "public static <T> T[] aryEq(T[] value) { return reportMatcher(new ArrayEquals(value)).returnNull(); }"
+                    ],
+                    [
+                        0.978629469871521,
+                        "public static <T> T mock(Class<T> classToMock) { return mock(classToMock, withSettings().defaultAnswer(RETURNS_DEFAULTS)); }"
+                    ],
+                    [
+                        0.9783957004547119,
+                        "public static <T extends Comparable<T>> T gt(Comparable<T> value) { return reportMatcher(new GreaterThan<T>(value)).<T>returnNull(); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are buggy method(s) from a large Java project. These methods cause one or more test failures.\nYour task is to fix the bugs in these methods. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Methods\n\n\n```java\n    /**\n     * Creates a mock with some non-standard settings.\n     * <p>\n     * The number of configuration points for a mock grows \n     * so we need a fluent way to introduce new configuration without adding more and more overloaded Mockito.mock() methods. \n     * Hence {@link MockSettings}.\n     * <pre>\n     *   Listener mock = mock(Listener.class, withSettings()\n     *     .name(\"firstListner\").defaultBehavior(RETURNS_SMART_NULLS));\n     *   );  \n     * </pre>\n     * <b>Use it carefully and occasionally</b>. What might be reason your test needs non-standard mocks? \n     * Is the code under test so complicated that it requires non-standard mocks? \n     * Wouldn't you prefer to refactor the code under test so it is testable in a simple way?\n     * <p>\n     * See also {@link Mockito#withSettings()}\n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param classToMock class or interface to mock\n     * @param mockSettings additional mock settings\n     * @return mock object\n     */\n\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n\n```\n\n```java\n    /**\n     * Creates a spy of the real object. The spy calls <b>real</b> methods unless they are stubbed.\n     * <p>\n     * Real spies should be used <b>carefully and occasionally</b>, for example when dealing with legacy code.\n     * <p>\n     * As usual you are going to read <b>the partial mock warning</b>:\n     * Object oriented programming is more less tackling complexity by dividing the complexity into separate, specific, SRPy objects.\n     * How does partial mock fit into this paradigm? Well, it just doesn't... \n     * Partial mock usually means that the complexity has been moved to a different method on the same object.\n     * In most cases, this is not the way you want to design your application.\n     * <p>\n     * However, there are rare cases when partial mocks come handy: \n     * dealing with code you cannot change easily (3rd party interfaces, interim refactoring of legacy code etc.)\n     * However, I wouldn't use partial mocks for new, test-driven & well-designed code.\n     * <p>\n     * Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     * \n     *   //optionally, you can stub out some methods:\n     *   when(spy.size()).thenReturn(100);\n     * \n     *   //using the spy calls <b>real</b> methods\n     *   spy.add(\"one\");\n     *   spy.add(\"two\");\n     * \n     *   //prints \"one\" - the first element of a list\n     *   System.out.println(spy.get(0));\n     * \n     *   //size() method was stubbed - 100 is printed\n     *   System.out.println(spy.size());\n     * \n     *   //optionally, you can verify\n     *   verify(spy).add(\"one\");\n     *   verify(spy).add(\"two\");\n     * </pre>\n     * \n     * <h4>Important gotcha on spying real objects!</h4>\n     * \n     * 1. Sometimes it's impossible to use {@link Mockito#when(Object)} for stubbing spies. Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     *   \n     *   //Impossible: real method is called so spy.get(0) throws IndexOutOfBoundsException (the list is yet empty)\n     *   when(spy.get(0)).thenReturn(\"foo\");\n     *   \n     *   //You have to use doReturn() for stubbing\n     *   doReturn(\"foo\").when(spy).get(0);\n     * </pre>\n     * \n     * 2. Watch out for final methods. \n     * Mockito doesn't mock final methods so the bottom line is: when you spy on real objects + you try to stub a final method = trouble.\n     * What will happen is the real method will be called *on mock* but *not on the real instance* you passed to the spy() method.\n     * Typically you may get a NullPointerException because mock instances don't have fields initiated.\n     * \n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param object\n     *            to spy on\n     * @return a spy of the real object\n     */\n\n    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n\n```\n\n```java\n\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n            mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n\n```\n\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS() {\n        IMethods mock = mock(IMethods.class, RETURNS_MOCKS);\n        when(mock.objectReturningMethodNoArgs()).thenReturn(null);\n    }\n```\n#Error message from the test method 1: org.mockito.exceptions.misusing.MissingMethodInvocationException:\n\n---\n\n## Your Goal\n\nFix the buggy methods. Return only the fixed Java methods. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        MockSettingsImpl settings = (mockSettings instanceof MockSettingsImpl) ? (MockSettingsImpl) mockSettings : withSettings().defaultAnswer(RETURNS_DEFAULTS).merge(mockSettings);\n        return mockUtil.createMock(classToMock, settings);\n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        MockSettingsImpl settings = (mockSettings instanceof MockSettingsImpl) \n                                    ? (MockSettingsImpl) mockSettings \n                                    : (MockSettingsImpl) withSettings();\n        return mockUtil.createMock(classToMock, settings);\n    }\n",
+                            "\n    public static <T> T spy(T object) {\n        if (object == null) {\n            throw new IllegalArgumentException(\"Object to spy on cannot be null\");\n        }\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS));\n    }\n",
+                            "\n    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n",
+                            "\n    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)\n                .lenient()); // Adding lenient configuration\n    }\n",
+                            "\n    public static <T> T spy(T object) {\n        if (object == null) {\n            throw new IllegalArgumentException(\"object cannot be null\");\n        }\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS));\n    }\n",
+                            "\n    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)\n                .useConstructor()  // Use this to ensure constructor is called\n        );\n    }\n",
+                            "\n    public static <T> T spy(T object) {\n        if (object == null) {\n            throw new IllegalArgumentException(\"Object to spy on cannot be null\");\n        }\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n",
+                            "\npublic static <T> T spy(T object) {\n    if (object == null) {\n        throw new IllegalArgumentException(\"Object to spy on cannot be null\");\n    }\n    return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n            .spiedInstance(object)\n            .defaultAnswer(CALLS_REAL_METHODS));\n}\n",
+                            "\n    public static <T> T spy(T object) {\n        if (object == null) {\n            throw new IllegalArgumentException(\"Object to spy on cannot be null\");\n        }\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/org/mockito/internal/MockitoCore.java",
+                "start_loc": 32,
+                "end_loc": 32,
+                "buggy_function": "    public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { return mock(classToMock, mockSettings); }\n",
+                "fixed_function": "    public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n        mockingProgress.validateState();\n        if (shouldResetOngoingStubbing) {\n            mockingProgress.resetOngoingStubbing();\n        }\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { return mock(classToMock, mockSettings); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { return mock(classToMock, mockSettings); }"
+                    ],
+                    [
+                        0.9727888703346252,
+                        "public VoidMethodStubbable<T> voidMethodStubbable(T mock) { return new VoidMethodStubbableImpl<T>(mock, invocationContainerImpl); }"
+                    ],
+                    [
+                        0.9674422740936279,
+                        "public <T> OngoingStubbing<T> when(T methodCall) { mockingProgress.stubbingStarted(); return (OngoingStubbing) stub(); }"
+                    ],
+                    [
+                        0.9665243625640869,
+                        "public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) { return MOCKITO_CORE.mock(classToMock, mockSettings); }"
+                    ],
+                    [
+                        0.9617956876754761,
+                        "public AnnotationVisitor visitArray(String name) { return getInstance(av1.visitArray(name), av2.visitArray(name)); }"
+                    ],
+                    [
+                        0.9611726999282837,
+                        "public <T> void copyToMock(T from, T mock) { copy(from, mock, from.getClass(), mock.getClass().getSuperclass()); }"
+                    ],
+                    [
+                        0.9608461260795593,
+                        "public <T> T mock(Class<T> classToMock, MockSettings mockSettings) { mockingProgress.validateState(); mockingProgress.resetOngoingStubbing(); return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings); }"
+                    ],
+                    [
+                        0.9582849740982056,
+                        "public AnnotationVisitor visitAnnotation(String name, String desc) { return getInstance(av1.visitAnnotation(name, desc), av2.visitAnnotation(name, desc)); }"
+                    ],
+                    [
+                        0.9575476050376892,
+                        "public <T> void copyValue(T from, T to, Field field) throws IllegalAccessException { Object value = field.get(from); field.set(to, value); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.mockitousage.bugs.StubbingMocksThatAreConfiguredToReturnMocksTest::shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { return mock(classToMock, mockSettings); }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS() {\n        IMethods mock = mock(IMethods.class, RETURNS_MOCKS);\n        when(mock.objectReturningMethodNoArgs()).thenReturn(null);\n    }\n```\n#Error message: org.mockito.exceptions.misusing.MissingMethodInvocationException: \nwhen() requires an argument which has to be a method call on a mock.\nFor example:\n    when(mock.getArticles()).thenReturn(articles);\n\nAlso, this error might show up because you stub final/private/equals() or hashCode() method.\nThose methods *cannot* be stubbed/verified.\n\n\tat org.mockito.exceptions.Reporter.missingMethodInvocation(Reporter.java:77)  throw new MissingMethodInvocationException(join(                \"when() requires an argument which has to be a method call on a mock.\",                \"For example:\",                \"    when(mock.getArticles()).thenReturn(articles);\",                \"\",                \"Also, this error might show up because you stub final/private/equals() or hashCode() method.\",                \"Those methods *cannot* be stubbed/verified.\",                \"\"        ));\n\tat org.mockito.internal.MockitoCore.stub(MockitoCore.java:43)  reporter.missingMethodInvocation();\n\tat org.mockito.internal.MockitoCore.when(MockitoCore.java:56)  return (OngoingStubbing) stub();\n\tat org.mockito.Mockito.when(Mockito.java:994)  return MOCKITO_CORE.when(methodCall);\n\tat org.mockitousage.bugs.StubbingMocksThatAreConfiguredToReturnMocksTest.shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS(StubbingMocksThatAreConfiguredToReturnMocksTest.java:19)  when(mock.objectReturningMethodNoArgs()).thenReturn(null);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { \n    T mock = mock(classToMock, mockSettings); \n    if (shouldResetOngoingStubbing) {\n        // reset ongoing stubbing logic if needed\n        // This could involve clearing any previous stubbing state\n        // ensuring that the mock behaves as expected with new stubbings\n    }\n    return mock;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n    if (shouldResetOngoingStubbing) {\n        // Reset ongoing stubbing logic if necessary\n        // Add reset logic here\n    }\n    return mock(classToMock, mockSettings);\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n    T createdMock = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        // Assuming there is a method to clear or reset stubs on the created mock\n        Mockito.reset(createdMock);\n    }\n    return createdMock;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { \n    T createdMock = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        mockitoCore.resetMock(createdMock);\n    }\n    return createdMock;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { \n    T createdMock = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        Mockito.reset(createdMock);\n    }\n    return createdMock;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) { \n    T createdMock = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        Mockito.resetOngoingStubbing(createdMock);\n    }\n    return createdMock;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n    T mockInstance = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        Mockito.reset(mockInstance);\n    }\n    return mockInstance;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n    T mockedObject = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        Mockito.reset(mockedObject);\n    }\n    return mockedObject;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n    T mock = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        Mockito.reset(mock);\n    }\n    return mock;\n}\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n    T mockInstance = mock(classToMock, mockSettings);\n    if (shouldResetOngoingStubbing) {\n        Mockito.reset(mockInstance);\n    }\n    return mockInstance;\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/org/mockito/internal/MockitoCore.java",
+                "start_loc": 33,
+                "end_loc": 37,
+                "buggy_function": "    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n            mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                "fixed_function": "    public <T> T mock(Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {\n        mockingProgress.validateState();\n        if (shouldResetOngoingStubbing) {\n            mockingProgress.resetOngoingStubbing();\n        }\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "public <T> T mock(Class<T> classToMock, MockSettings mockSettings) { mockingProgress.validateState(); mockingProgress.resetOngoingStubbing(); return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        0.9999999403953552,
+                        "public <T> T mock(Class<T> classToMock, MockSettings mockSettings) { mockingProgress.validateState(); mockingProgress.resetOngoingStubbing(); return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings); }"
+                    ],
+                    [
+                        0.9872944355010986,
+                        "public <T> VoidMethodStubbable<T> stubVoid(T mock) { MockHandlerInterface<T> handler = mockUtil.getMockHandler(mock); mockingProgress.stubbingStarted(); return handler.voidMethodStubbable(mock); }"
+                    ],
+                    [
+                        0.9728839993476868,
+                        "public List<Invocation> findAllMatchingUnverifiedChunks(List<Invocation> invocations, InvocationMatcher wanted) { List<Invocation> unverified = removeVerifiedInOrder(invocations); return ListUtil.filter(unverified, new RemoveNotMatching(wanted)); }"
+                    ],
+                    [
+                        0.9721144437789917,
+                        "public void verify(VerificationData data) { Invocation unverified = new InvocationsFinder().findFirstUnverified(data.getAllInvocations()); if (unverified != null) { new Reporter().noMoreInteractionsWanted(unverified); } }"
+                    ],
+                    [
+                        0.9694951176643372,
+                        "public AnnotationVisitor visitAnnotation(final String name, final String desc) { checkEnd(); checkName(name); CheckMethodAdapter.checkDesc(desc, false); return new CheckAnnotationAdapter(av == null ? null : av.visitAnnotation(name, desc)); }"
+                    ],
+                    [
+                        0.9693229794502258,
+                        "public void noMoreInteractionsWanted(PrintableInvocation undesired) { throw new NoInteractionsWanted(join(\\\"No interactions wanted here:\\\", new Location(), \\\"But found this interaction:\\\", undesired.getLocation(), \\\"\\\")); }"
+                    ],
+                    [
+                        0.9689798355102539,
+                        "public static void addProperties(BeanGenerator gen, Map props) { for (Iterator it = props.keySet().iterator(); it.hasNext(); ) { String name = (String) it.next(); gen.addProperty(name, (Class) props.get(name)); } }"
+                    ],
+                    [
+                        0.9684182405471802,
+                        "public void validateExtraInterfaces(Class classToMock, Class... extraInterfaces) { if (extraInterfaces == null) { return; } for (Class i : extraInterfaces) { if (classToMock == i) { new Reporter().extraInterfacesCannotContainMockedType(classToMock); } } }"
+                    ],
+                    [
+                        0.9674139022827148,
+                        "public Object answer(InvocationOnMock invocation) throws Throwable { Object ret = delegate.answer(invocation); if (ret != null) { return ret; } Class<?> returnType = invocation.getMethod().getReturnType(); return returnValueFor(returnType); }"
+                    ]
+                ],
+                "Compiling error!": true,
+                "non_directly_related_tests": [],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are buggy method(s) from a large Java project. These methods cause one or more test failures.\nYour task is to fix the bugs in these methods. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Methods\n\n\n```java\n    /**\n     * Creates a mock with some non-standard settings.\n     * <p>\n     * The number of configuration points for a mock grows \n     * so we need a fluent way to introduce new configuration without adding more and more overloaded Mockito.mock() methods. \n     * Hence {@link MockSettings}.\n     * <pre>\n     *   Listener mock = mock(Listener.class, withSettings()\n     *     .name(\"firstListner\").defaultBehavior(RETURNS_SMART_NULLS));\n     *   );  \n     * </pre>\n     * <b>Use it carefully and occasionally</b>. What might be reason your test needs non-standard mocks? \n     * Is the code under test so complicated that it requires non-standard mocks? \n     * Wouldn't you prefer to refactor the code under test so it is testable in a simple way?\n     * <p>\n     * See also {@link Mockito#withSettings()}\n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param classToMock class or interface to mock\n     * @param mockSettings additional mock settings\n     * @return mock object\n     */\n\n    public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        return MOCKITO_CORE.mock(classToMock, mockSettings);\n    }\n\n```\n\n```java\n    /**\n     * Creates a spy of the real object. The spy calls <b>real</b> methods unless they are stubbed.\n     * <p>\n     * Real spies should be used <b>carefully and occasionally</b>, for example when dealing with legacy code.\n     * <p>\n     * As usual you are going to read <b>the partial mock warning</b>:\n     * Object oriented programming is more less tackling complexity by dividing the complexity into separate, specific, SRPy objects.\n     * How does partial mock fit into this paradigm? Well, it just doesn't... \n     * Partial mock usually means that the complexity has been moved to a different method on the same object.\n     * In most cases, this is not the way you want to design your application.\n     * <p>\n     * However, there are rare cases when partial mocks come handy: \n     * dealing with code you cannot change easily (3rd party interfaces, interim refactoring of legacy code etc.)\n     * However, I wouldn't use partial mocks for new, test-driven & well-designed code.\n     * <p>\n     * Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     * \n     *   //optionally, you can stub out some methods:\n     *   when(spy.size()).thenReturn(100);\n     * \n     *   //using the spy calls <b>real</b> methods\n     *   spy.add(\"one\");\n     *   spy.add(\"two\");\n     * \n     *   //prints \"one\" - the first element of a list\n     *   System.out.println(spy.get(0));\n     * \n     *   //size() method was stubbed - 100 is printed\n     *   System.out.println(spy.size());\n     * \n     *   //optionally, you can verify\n     *   verify(spy).add(\"one\");\n     *   verify(spy).add(\"two\");\n     * </pre>\n     * \n     * <h4>Important gotcha on spying real objects!</h4>\n     * \n     * 1. Sometimes it's impossible to use {@link Mockito#when(Object)} for stubbing spies. Example:\n     * \n     * <pre>\n     *   List list = new LinkedList();\n     *   List spy = spy(list);\n     *   \n     *   //Impossible: real method is called so spy.get(0) throws IndexOutOfBoundsException (the list is yet empty)\n     *   when(spy.get(0)).thenReturn(\"foo\");\n     *   \n     *   //You have to use doReturn() for stubbing\n     *   doReturn(\"foo\").when(spy).get(0);\n     * </pre>\n     * \n     * 2. Watch out for final methods. \n     * Mockito doesn't mock final methods so the bottom line is: when you spy on real objects + you try to stub a final method = trouble.\n     * What will happen is the real method will be called *on mock* but *not on the real instance* you passed to the spy() method.\n     * Typically you may get a NullPointerException because mock instances don't have fields initiated.\n     * \n     * <p>\n     * See examples in javadoc for {@link Mockito} class\n     * \n     * @param object\n     *            to spy on\n     * @return a spy of the real object\n     */\n\n    public static <T> T spy(T object) {\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n\n```\n\n```java\n\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n            mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n\n```\n\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS() {\n        IMethods mock = mock(IMethods.class, RETURNS_MOCKS);\n        when(mock.objectReturningMethodNoArgs()).thenReturn(null);\n    }\n```\n#Error message from the test method 1: org.mockito.exceptions.misusing.MissingMethodInvocationException:\n\n---\n\n## Your Goal\n\nFix the buggy methods. Return only the fixed Java methods. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public static <T> T spy(T object) {\n        if (object == null) {\n            throw new IllegalArgumentException(\"Cannot spy on a null object\");\n        }\n        return MOCKITO_CORE.mock((Class<T>) object.getClass(), withSettings()\n                .spiedInstance(object)\n                .defaultAnswer(CALLS_REAL_METHODS)); \n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (!(mockSettings instanceof MockSettingsImpl)) {\n            throw new IllegalArgumentException(\"MockSettings must be instance of MockSettingsImpl\");\n        }\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (classToMock == null) {\n            throw new IllegalArgumentException(\"classToMock cannot be null\");\n        }\n        if (mockSettings == null) {\n            throw new IllegalArgumentException(\"mockSettings cannot be null\");\n        }\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        mockingProgress.validateState();\n            mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (classToMock == null) {\n            throw new IllegalArgumentException(\"Class to mock cannot be null\");\n        }\n        if (mockSettings == null) {\n            mockSettings = withSettings();\n        }\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n",
+                            "\npublic <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n    if (mockSettings == null) {\n        throw new IllegalArgumentException(\"MockSettings cannot be null\");\n    }\n    mockingProgress.validateState();\n    mockingProgress.resetOngoingStubbing();\n    return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n}\n",
+                            "\n    public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {\n        if (mockSettings == null) {\n            throw new IllegalArgumentException(\"MockSettings cannot be null\");\n        }\n        mockingProgress.validateState();\n        mockingProgress.resetOngoingStubbing();\n        return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "org.mockitousage.bugs.StubbingMocksThatAreConfiguredToReturnMocksTest::shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS": {
+                "path": "test/org/mockitousage/bugs/StubbingMocksThatAreConfiguredToReturnMocksTest.java",
+                "function_name": "shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS",
+                "src": "    public void shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS() {\n        IMethods mock = mock(IMethods.class, RETURNS_MOCKS);\n        when(mock.objectReturningMethodNoArgs()).thenReturn(null);\n    }",
+                "error_msg": "org.mockito.exceptions.misusing.MissingMethodInvocationException: \nwhen() requires an argument which has to be a method call on a mock.\nFor example:\n    when(mock.getArticles()).thenReturn(articles);\n\nAlso, this error might show up because you stub final/private/equals() or hashCode() method.\nThose methods *cannot* be stubbed/verified.\n\n\tat org.mockito.exceptions.Reporter.missingMethodInvocation(Reporter.java:77)\n\tat org.mockito.internal.MockitoCore.stub(MockitoCore.java:43)\n\tat org.mockito.internal.MockitoCore.when(MockitoCore.java:56)\n\tat org.mockito.Mockito.when(Mockito.java:994)\n\tat org.mockitousage.bugs.StubbingMocksThatAreConfiguredToReturnMocksTest.shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS(StubbingMocksThatAreConfiguredToReturnMocksTest.java:19)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "org.mockito.exceptions.misusing.MissingMethodInvocationException: \nwhen() requires an argument which has to be a method call on a mock.\nFor example:\n    when(mock.getArticles()).thenReturn(articles);\n\nAlso, this error might show up because you stub final/private/equals() or hashCode() method.\nThose methods *cannot* be stubbed/verified.\n\n\tat org.mockito.exceptions.Reporter.missingMethodInvocation(Reporter.java:77)  throw new MissingMethodInvocationException(join(                \"when() requires an argument which has to be a method call on a mock.\",                \"For example:\",                \"    when(mock.getArticles()).thenReturn(articles);\",                \"\",                \"Also, this error might show up because you stub final/private/equals() or hashCode() method.\",                \"Those methods *cannot* be stubbed/verified.\",                \"\"        ));\n\tat org.mockito.internal.MockitoCore.stub(MockitoCore.java:43)  reporter.missingMethodInvocation();\n\tat org.mockito.internal.MockitoCore.when(MockitoCore.java:56)  return (OngoingStubbing) stub();\n\tat org.mockito.Mockito.when(Mockito.java:994)  return MOCKITO_CORE.when(methodCall);\n\tat org.mockitousage.bugs.StubbingMocksThatAreConfiguredToReturnMocksTest.shouldAllowStubbingMocksConfiguredWithRETURNS_MOCKS(StubbingMocksThatAreConfiguredToReturnMocksTest.java:19)  when(mock.objectReturningMethodNoArgs()).thenReturn(null);"
+            }
+        },
+        "evaluation_done": true
+    }
+}

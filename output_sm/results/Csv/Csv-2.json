@@ -1,0 +1,80 @@
+{
+    "Csv-2": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns a value by name.\n*\n* @param name\n*            the name of the column to be retrieved.\n* @return the column value, or {@code null} if the column name is not found\n* @throws IllegalStateException\n*             if no header mapping was provided\n* @throws IllegalArgumentException\n*             if the record is inconsistent\n* @see #isConsistent()\n*/\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n        return index != null ? values[index.intValue()] : null;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetStringInconsistentRecord() {\n\n        header.put(\"fourth\", Integer.valueOf(4));\n\n        recordWithHeader.get(\"fourth\");\n\n    }\n\n```\n#Error message: java.lang.Exception: Unexpected exception, expected<java.lang.IllegalArgumentException> but was<java.lang.ArrayIndexOutOfBoundsException>\nCaused by: java.lang.ArrayIndexOutOfBoundsException: 4\n\tat org.apache.commons.csv.CSVRecord.get(CSVRecord.java:85)  return index != null ? values[index.intValue()] : null;\n\tat org.apache.commons.csv.CSVRecordTest.testGetStringInconsistentRecord(CSVRecordTest.java:69)  recordWithHeader.get(\"fourth\");\n\t... 33 more\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (!isConsistent() || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (!isConsistent() || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent: index out of bounds for column '\" + name + \"'\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index != null) {\n        if (index < 0 || index >= values.length) {\n            throw new IllegalArgumentException(\"Record is inconsistent\");\n        }\n        return values[index];\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (!isConsistent() || index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index != null) {\n        if (index >= values.length) {\n            throw new IllegalArgumentException(\"The record is inconsistent, index is out of bounds\");\n        }\n        return values[index.intValue()];\n    }\n    return null;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent: index out of bounds for column '\" + name + \"'\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index != null) {\n        if (index < 0 || index >= values.length) {\n            throw new IllegalArgumentException(\"Record is inconsistent\");\n        }\n        return values[index];\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index != null) {\n        if (index >= values.length) {\n            throw new IllegalArgumentException(\"The record is inconsistent, index is out of bounds\");\n        }\n        return values[index.intValue()];\n    }\n    return null;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"The record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index == null) {\n        return null;\n    }\n    if (index < 0 || index >= values.length) {\n        throw new IllegalArgumentException(\"Record is inconsistent: index out of bounds for column '\" + name + \"'\");\n    }\n    return values[index.intValue()];\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index != null) {\n        if (index < 0 || index >= values.length) {\n            throw new IllegalArgumentException(\"Record is inconsistent\");\n        }\n        return values[index];\n    }\n    return null;\n}\n"
+                ],
+                [
+                    "\npublic String get(final String name) {\n    if (mapping == null) {\n        throw new IllegalStateException(\n                \"No header mapping was specified, the record values can't be accessed by name\");\n    }\n    final Integer index = mapping.get(name);\n    if (index != null) {\n        if (index >= values.length) {\n            throw new IllegalArgumentException(\"The record is inconsistent, index is out of bounds\");\n        }\n        return values[index.intValue()];\n    }\n    return null;\n}\n"
+                ]
+            ]
+        }
+    }
+}

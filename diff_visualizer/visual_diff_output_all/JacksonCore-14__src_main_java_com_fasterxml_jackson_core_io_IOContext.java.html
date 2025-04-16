@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to310__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonCore-14 - Buggy: src/main/java/com/fasterxml/jackson/core/io/IOContext.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonCore-14 - Fixed: src/main/java/com/fasterxml/jackson/core/io/IOContext.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_271">271</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to310_271">271</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to310__0"></td><td class="diff_header" id="from310_272">272</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;final&nbsp;void&nbsp;_verifyRelease(byte[]&nbsp;toRelease,&nbsp;byte[]&nbsp;src)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to310_272">272</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;final&nbsp;void&nbsp;_verifyRelease(byte[]&nbsp;toRelease,&nbsp;byte[]&nbsp;src)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_273">273</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;07-Mar-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[core#255],&nbsp;only&nbsp;prevent&nbsp;shrinking&nbsp;of&nbsp;buffe</td><td class="diff_next"></td><td class="diff_header" id="to310_273">273</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;07-Mar-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[core#255],&nbsp;only&nbsp;prevent&nbsp;shrinking&nbsp;of&nbsp;buffe</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to310__1">n</a></td><td class="diff_header" id="from310_274">274</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((toRelease&nbsp;!=&nbsp;src)&nbsp;&amp;&amp;&nbsp;(toRelease.length&nbsp;&lt;<span class="diff_sub">=</span>&nbsp;src.length))&nbsp;{&nbsp;throw&nbsp;wron</td><td class="diff_next"><a href="#difflib_chg_to310__1">n</a></td><td class="diff_header" id="to310_274">274</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((toRelease&nbsp;!=&nbsp;src)&nbsp;&amp;&amp;&nbsp;(toRelease.length&nbsp;&lt;&nbsp;src.length))&nbsp;{&nbsp;throw&nbsp;wrong</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">gBuf();&nbsp;}</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Buf();&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to310_275">275</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_276">276</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to310_276">276</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to310__1"></td><td class="diff_header" id="from310_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;final&nbsp;void&nbsp;_verifyRelease(char[]&nbsp;toRelease,&nbsp;char[]&nbsp;src)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to310_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;final&nbsp;void&nbsp;_verifyRelease(char[]&nbsp;toRelease,&nbsp;char[]&nbsp;src)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;07-Mar-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[core#255],&nbsp;only&nbsp;prevent&nbsp;shrinking&nbsp;of&nbsp;buffe</td><td class="diff_next"></td><td class="diff_header" id="to310_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;07-Mar-2016,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[core#255],&nbsp;only&nbsp;prevent&nbsp;shrinking&nbsp;of&nbsp;buffe</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to310__2">n</a></td><td class="diff_header" id="from310_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((toRelease&nbsp;!=&nbsp;src)&nbsp;&amp;&amp;&nbsp;(toRelease.length&nbsp;&lt;<span class="diff_sub">=</span>&nbsp;src.length))&nbsp;{&nbsp;throw&nbsp;wron</td><td class="diff_next"><a href="#difflib_chg_to310__2">n</a></td><td class="diff_header" id="to310_279">279</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((toRelease&nbsp;!=&nbsp;src)&nbsp;&amp;&amp;&nbsp;(toRelease.length&nbsp;&lt;&nbsp;src.length))&nbsp;{&nbsp;throw&nbsp;wrong</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">gBuf();&nbsp;}</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Buf();&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to310_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to310__2"></td><td class="diff_header" id="from310_281">281</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to310_281">281</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;IllegalArgumentException&nbsp;wrongBuf()&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to310_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;IllegalArgumentException&nbsp;wrongBuf()&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_283">283</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;sanity&nbsp;check&nbsp;failed;&nbsp;trying&nbsp;to&nbsp;return&nbsp;different,&nbsp;smaller&nbsp;buffer.</td><td class="diff_next"></td><td class="diff_header" id="to310_283">283</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;sanity&nbsp;check&nbsp;failed;&nbsp;trying&nbsp;to&nbsp;return&nbsp;different,&nbsp;smaller&nbsp;buffer.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to310__top">t</a></td><td class="diff_header" id="from310_284">284</td><td nowrap="nowrap">return&nbsp;new&nbsp;IllegalArgumentException("Trying&nbsp;to&nbsp;release&nbsp;buffer&nbsp;<span class="diff_chg">not&nbsp;own</span>e<span class="diff_chg">d&nbsp;by</span>&nbsp;th<span class="diff_chg">e&nbsp;c</span></td><td class="diff_next"><a href="#difflib_chg_to310__top">t</a></td><td class="diff_header" id="to310_284">284</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>return&nbsp;new&nbsp;IllegalArgumentException("Trying&nbsp;to&nbsp;release&nbsp;buffer&nbsp;<span class="diff_chg">small</span>e<span class="diff_chg">r</span>&nbsp;th</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg"></span>on<span class="diff_chg">text</span>");<span class="diff_sub">&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">an&nbsp;</span>o<span class="diff_add">rigi</span>n<span class="diff_chg">al</span>");</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_285">285</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to310_285">285</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from310_286">286</td><td nowrap="nowrap">}</td><td class="diff_next"></td><td class="diff_header" id="to310_286">286</td><td nowrap="nowrap">}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

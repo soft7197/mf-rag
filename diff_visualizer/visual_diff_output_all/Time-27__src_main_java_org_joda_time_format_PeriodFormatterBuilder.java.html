@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to728__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-27 - Buggy: src/main/java/org/joda/time/format/PeriodFormatterBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-27 - Fixed: src/main/java/org/joda/time/format/PeriodFormatterBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to728__0"></td><td class="diff_header" id="from728_798">798</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;size&nbsp;=&nbsp;elementPairs.size();</td><td class="diff_next"></td><td class="diff_header" id="to728_798">798</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;size&nbsp;=&nbsp;elementPairs.size();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_799">799</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(size&nbsp;&gt;=&nbsp;2&nbsp;&amp;&amp;&nbsp;elementPairs.get(0)&nbsp;instanceof&nbsp;Separator)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to728_799">799</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(size&nbsp;&gt;=&nbsp;2&nbsp;&amp;&amp;&nbsp;elementPairs.get(0)&nbsp;instanceof&nbsp;Separator)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_800">800</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Separator&nbsp;sep&nbsp;=&nbsp;(Separator)&nbsp;elementPairs.get(0);</td><td class="diff_next"></td><td class="diff_header" id="to728_800">800</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Separator&nbsp;sep&nbsp;=&nbsp;(Separator)&nbsp;elementPairs.get(0);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to728__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to728__1">n</a></td><td class="diff_header" id="to728_801">801</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(sep.iAfterParser&nbsp;==&nbsp;null&nbsp;&amp;&amp;&nbsp;sep.iAfterPrinter&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_801">801</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PeriodFormatter&nbsp;f&nbsp;=&nbsp;toFormatter(elementPairs.subList(2,&nbsp;size),&nbsp;n</td><td class="diff_next"></td><td class="diff_header" id="to728_802">802</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PeriodFormatter&nbsp;f&nbsp;=&nbsp;toFormatter(elementPairs.subList(2,&nbsp;size),&nbsp;n</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to728__1"></td><td class="diff_header">></td><td nowrap="nowrap">otPrinter,&nbsp;notParser);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">otPrinter,&nbsp;notParser);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_802">802</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sep&nbsp;=&nbsp;sep.finish(f.getPrinter(),&nbsp;f.getParser());</td><td class="diff_next"></td><td class="diff_header" id="to728_803">803</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sep&nbsp;=&nbsp;sep.finish(f.getPrinter(),&nbsp;f.getParser());</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_803">803</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;PeriodFormatter(sep,&nbsp;sep);</td><td class="diff_next"></td><td class="diff_header" id="to728_804">804</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;PeriodFormatter(sep,&nbsp;sep);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to728__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to728__top">t</a></td><td class="diff_header" id="to728_805">805</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_804">804</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to728_806">806</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_805">805</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object[]&nbsp;comp&nbsp;=&nbsp;createComposite(elementPairs);</td><td class="diff_next"></td><td class="diff_header" id="to728_807">807</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object[]&nbsp;comp&nbsp;=&nbsp;createComposite(elementPairs);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from728_806">806</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(notPrinter)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to728_808">808</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(notPrinter)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

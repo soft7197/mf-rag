@@ -1,0 +1,79 @@
+{
+    "Mockito-36": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// in case someone deliberately passed null varArg array\npublic Object callRealMethod() throws Throwable {\n        return realMethod.invoke(mock, rawArguments);\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldScreamWhenCallingRealMethodOnInterface() throws Throwable {\n\n        //given\n\n        Invocation invocationOnInterface = new InvocationBuilder().toInvocation();\n\n\n\n        try {\n\n            //when\n\n            invocationOnInterface.callRealMethod();\n\n            //then\n\n            fail();\n\n        } catch(MockitoException e) {}\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockito.internal.invocation.Invocation.callRealMethod(Invocation.java:202)  return realMethod.invoke(mock, rawArguments);\n\tat org.mockito.internal.invocation.InvocationTest.shouldScreamWhenCallingRealMethodOnInterface(InvocationTest.java:175)  invocationOnInterface.callRealMethod();\n \n#Test method 2:\n```java\n    public void shouldFailInRuntimeWhenCallingRealMethodOnInterface() throws Exception {\n\n        //given\n\n        List list = mock(List.class);\n\n        when(list.get(0)).thenAnswer(\n\n            new Answer() {\n\n                public Object answer(InvocationOnMock invocation) throws Throwable {\n\n                    return invocation.callRealMethod();\n\n                }\n\n            }\n\n        );\n\n        try {\n\n            //when\n\n            list.get(0);            \n\n            //then\n\n            fail();\n\n        } catch (MockitoException e) {}\n\n    }\n\n```\n#Error message: java.lang.NoSuchMethodError: java.lang.Object.get(I)Ljava/lang/Object;\n\tat org.mockito.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:216)  return fci.f2.invoke(fci.i2, obj, args);\n\tat org.mockito.internal.creation.AbstractMockitoMethodProxy.invokeSuper(AbstractMockitoMethodProxy.java:11)  return getMethodProxy().invokeSuper(target, arguments);\n\tat org.mockito.internal.invocation.realmethod.CGLIBProxyRealMethod.invoke(CGLIBProxyRealMethod.java:20)  return methodProxy.invokeSuper(target, arguments);\n\tat org.mockito.internal.invocation.realmethod.FilteredCGLIBProxyRealMethod.invoke(FilteredCGLIBProxyRealMethod.java:26)  return realMethod.invoke(target, arguments);\n\tat org.mockito.internal.invocation.Invocation.callRealMethod(Invocation.java:202)  return realMethod.invoke(mock, rawArguments);\n\tat org.mockito.internal.stubbing.StubbedInvocationMatcher.answer(StubbedInvocationMatcher.java:28)  return answers.size() == 1 ? answers.peek().answer(invocation) : answers.poll().answer(invocation);\n\tat org.mockito.internal.MockHandler.handle(MockHandler.java:95)  return stubbedInvocation.answer(invocation);\n\tat org.mockito.internal.creation.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:47)  return mockHandler.handle(invocation);\n\tat org.mockitousage.spies.SpyingOnInterfacesTest.shouldFailInRuntimeWhenCallingRealMethodOnInterface(SpyingOnInterfacesTest.java:44)  list.get(0);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or when mock is null\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or when mock or method is not properly initialized.\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on an interface or when mock is null\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on an interface or when mock or method is null\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or when mock or realMethod is null\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on an interface\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\n// in case someone deliberately passed null varArg array\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or with null mock\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\n// in case someone deliberately passed null varArg array\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or uninitialized mock\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or null mock\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on interface or null mock\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// in case someone deliberately passed null varArg array\npublic Object callRealMethod() throws Throwable {\n        return realMethod.invoke(mock, rawArguments);\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldScreamWhenCallingRealMethodOnInterface() throws Throwable {\n\n        //given\n\n        Invocation invocationOnInterface = new InvocationBuilder().toInvocation();\n\n\n\n        try {\n\n            //when\n\n            invocationOnInterface.callRealMethod();\n\n            //then\n\n            fail();\n\n        } catch(MockitoException e) {}\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockito.internal.invocation.Invocation.callRealMethod(Invocation.java:202)  return realMethod.invoke(mock, rawArguments);\n\tat org.mockito.internal.invocation.InvocationTest.shouldScreamWhenCallingRealMethodOnInterface(InvocationTest.java:175)  invocationOnInterface.callRealMethod();\n \n#Test method 2:\n```java\n    public void shouldFailInRuntimeWhenCallingRealMethodOnInterface() throws Exception {\n\n        //given\n\n        List list = mock(List.class);\n\n        when(list.get(0)).thenAnswer(\n\n            new Answer() {\n\n                public Object answer(InvocationOnMock invocation) throws Throwable {\n\n                    return invocation.callRealMethod();\n\n                }\n\n            }\n\n        );\n\n        try {\n\n            //when\n\n            list.get(0);            \n\n            //then\n\n            fail();\n\n        } catch (MockitoException e) {}\n\n    }\n\n```\n#Error message: java.lang.NoSuchMethodError: java.lang.Object.get(I)Ljava/lang/Object;\n\tat org.mockito.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:216)  return fci.f2.invoke(fci.i2, obj, args);\n\tat org.mockito.internal.creation.AbstractMockitoMethodProxy.invokeSuper(AbstractMockitoMethodProxy.java:11)  return getMethodProxy().invokeSuper(target, arguments);\n\tat org.mockito.internal.invocation.realmethod.CGLIBProxyRealMethod.invoke(CGLIBProxyRealMethod.java:20)  return methodProxy.invokeSuper(target, arguments);\n\tat org.mockito.internal.invocation.realmethod.FilteredCGLIBProxyRealMethod.invoke(FilteredCGLIBProxyRealMethod.java:26)  return realMethod.invoke(target, arguments);\n\tat org.mockito.internal.invocation.Invocation.callRealMethod(Invocation.java:202)  return realMethod.invoke(mock, rawArguments);\n\tat org.mockito.internal.stubbing.StubbedInvocationMatcher.answer(StubbedInvocationMatcher.java:28)  return answers.size() == 1 ? answers.peek().answer(invocation) : answers.poll().answer(invocation);\n\tat org.mockito.internal.MockHandler.handle(MockHandler.java:95)  return stubbedInvocation.answer(invocation);\n\tat org.mockito.internal.creation.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:47)  return mockHandler.handle(invocation);\n\tat org.mockitousage.spies.SpyingOnInterfacesTest.shouldFailInRuntimeWhenCallingRealMethodOnInterface(SpyingOnInterfacesTest.java:44)  list.get(0);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic Object newInstance() throws InvocationTargetException { return fc.newInstance(index, null); }\n```\n\n            \n```java\npublic String getPluralizedActualCount() { return Pluralizer.pluralize(actualCount); }\n```\n\n            \n```java\npublic String getInternalName() { return new String(buf, off, len); }\n```\n\n            \n```java\npublic void aaload() { mv.visitInsn(Constants.AALOAD); }\n```\n\n            \n```java\npublic Class create() { setUseCache(false); return (Class) super.create(this); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Real method cannot be invoked on an interface or when method is null\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on an interface or due to null mock.\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null) {\n        throw new MockitoException(\"Cannot call real method. Method is null.\");\n    }\n    if (mock == null) {\n        throw new MockitoException(\"Cannot call real method. Mock target is null.\");\n    }\n    try {\n        return realMethod.invoke(mock, rawArguments);\n    } catch (NullPointerException e) {\n        throw new MockitoException(\"Calling real methods on interfaces is not supported.\", e);\n    } catch (Throwable e) {\n        throw e.getCause() != null ? e.getCause() : e;\n    }\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on a null mock or method.\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (mock == null || realMethod == null) {\n        throw new MockitoException(\"Cannot call real method on an interface or incomplete mock\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on a mock interface or with null method.\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null) {\n        throw new MockitoException(\"Cannot call real method on a mocked or interface method\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null || realMethod.getDeclaringClass().isInterface()) {\n        throw new MockitoException(\"Cannot call real method on an interface or when real method is undefined\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null || mock == null || rawArguments == null) {\n        throw new MockitoException(\"Cannot call real method on interface or uninitialized objects\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ],
+                [
+                    "\npublic Object callRealMethod() throws Throwable {\n    if (realMethod == null) {\n        throw new MockitoException(\"Cannot call real method on interface or abstract method.\");\n    }\n    return realMethod.invoke(mock, rawArguments);\n}\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

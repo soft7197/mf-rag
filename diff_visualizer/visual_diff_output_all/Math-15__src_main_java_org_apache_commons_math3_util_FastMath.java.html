@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to576__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-15 - Buggy: src/main/java/org/apache/commons/math3/util/FastMath.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-15 - Fixed: src/main/java/org/apache/commons/math3/util/FastMath.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_310">310</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;2^52&nbsp;-&nbsp;double&nbsp;numbers&nbsp;this&nbsp;large&nbsp;must&nbsp;be&nbsp;integral&nbsp;(no&nbsp;fraction)&nbsp;or&nbsp;NaN&nbsp;o</td><td class="diff_next"></td><td class="diff_header" id="to576_310">310</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;2^52&nbsp;-&nbsp;double&nbsp;numbers&nbsp;this&nbsp;large&nbsp;must&nbsp;be&nbsp;integral&nbsp;(no&nbsp;fraction)&nbsp;or&nbsp;NaN&nbsp;o</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to576__0"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;Infinite&nbsp;*/</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;Infinite&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_311">311</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;double&nbsp;TWO_POWER_52&nbsp;=&nbsp;4503599627370496.0;</td><td class="diff_next"></td><td class="diff_header" id="to576_311">311</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;double&nbsp;TWO_POWER_52&nbsp;=&nbsp;4503599627370496.0;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_312">312</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;2^53&nbsp;-&nbsp;double&nbsp;numbers&nbsp;this&nbsp;large&nbsp;must&nbsp;be&nbsp;even.&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to576_312">312</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;2^53&nbsp;-&nbsp;double&nbsp;numbers&nbsp;this&nbsp;large&nbsp;must&nbsp;be&nbsp;even.&nbsp;*/</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to576__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to576__1">n</a></td><td class="diff_header" id="to576_313">313</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;double&nbsp;TWO_POWER_53&nbsp;=&nbsp;2&nbsp;*&nbsp;TWO_POWER_52;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_313">313</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to576_314">314</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_314">314</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Constant:&nbsp;{@value}.&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to576_315">315</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;Constant:&nbsp;{@value}.&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_315">315</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;double&nbsp;F_1_3&nbsp;=&nbsp;1d&nbsp;/&nbsp;3d;</td><td class="diff_next"></td><td class="diff_header" id="to576_316">316</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;double&nbsp;F_1_3&nbsp;=&nbsp;1d&nbsp;/&nbsp;3d;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to576__1"></td><td class="diff_header" id="from576_1538">1538</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Handle&nbsp;special&nbsp;case&nbsp;x&lt;0&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to576_1539">1539</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Handle&nbsp;special&nbsp;case&nbsp;x&lt;0&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_1539">1539</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(x&nbsp;&lt;&nbsp;0)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to576_1540">1540</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(x&nbsp;&lt;&nbsp;0)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_1540">1540</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;y&nbsp;is&nbsp;an&nbsp;even&nbsp;integer&nbsp;in&nbsp;this&nbsp;case</td><td class="diff_next"></td><td class="diff_header" id="to576_1541">1541</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;y&nbsp;is&nbsp;an&nbsp;even&nbsp;integer&nbsp;in&nbsp;this&nbsp;case</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to576__top">t</a></td><td class="diff_header" id="from576_1541">1541</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(y&nbsp;&gt;=&nbsp;TWO_POWER_5<span class="diff_chg">2</span>&nbsp;||&nbsp;y&nbsp;&lt;=&nbsp;-TWO_POWER_5<span class="diff_chg">2</span>)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to576__top">t</a></td><td class="diff_header" id="to576_1542">1542</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(y&nbsp;&gt;=&nbsp;TWO_POWER_5<span class="diff_chg">3</span>&nbsp;||&nbsp;y&nbsp;&lt;=&nbsp;-TWO_POWER_5<span class="diff_chg">3</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_1542">1542</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;pow(-x,&nbsp;y);</td><td class="diff_next"></td><td class="diff_header" id="to576_1543">1543</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;pow(-x,&nbsp;y);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_1543">1543</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to576_1544">1544</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from576_1544">1544</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to576_1545">1545</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

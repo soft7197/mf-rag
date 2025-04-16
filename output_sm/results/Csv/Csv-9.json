@@ -1,0 +1,80 @@
+{
+    "Csv-9": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Puts all values of this record into the given Map.\n*\n* @param map The Map to populate.\n* @return the given map.\n*/\n<M extends Map<String, String>> M putIn(final M map) {\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testToMapWithNoHeader() throws Exception {\n\n       final CSVParser parser =  CSVParser.parse(\"a,b\", CSVFormat.newFormat(','));\n\n       final CSVRecord shortRec = parser.iterator().next();\n\n       Map<String, String> map = shortRec.toMap();\n\n       assertNotNull(\"Map is not null.\", map);\n\n       assertTrue(\"Map is empty.\", map.isEmpty());\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.csv.CSVRecord.putIn(CSVRecord.java:180)  for (final Entry<String, Integer> entry : mapping.entrySet()) {            final int col = entry.getValue().intValue();            if (col < values.length) {                map.put(entry.getKey(), values[col]);            }        }\n\tat org.apache.commons.csv.CSVRecord.toMap(CSVRecord.java:214)  return putIn(new HashMap<String, String>(values.length));\n\tat org.apache.commons.csv.CSVRecordTest.testToMapWithNoHeader(CSVRecordTest.java:175)  Map<String, String> map = shortRec.toMap();\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n/**\n* Puts all values of this record into the given Map.\n*\n* @param map The Map to populate.\n* @return the given map.\n*/\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n/**\n* Puts all values of this record into the given Map.\n*\n* @param map The Map to populate.\n* @return the given map.\n*/\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping != null) {\n        for (final Entry<String, Integer> entry : mapping.entrySet()) {\n            final int col = entry.getValue().intValue();\n            if (col < values.length) {\n                map.put(entry.getKey(), values[col]);\n            }\n        }\n    }\n    return map;\n}\n"
+                ],
+                [
+                    "\n<M extends Map<String, String>> M putIn(final M map) {\n    if (mapping == null) {\n        return map;\n    }\n    for (final Entry<String, Integer> entry : mapping.entrySet()) {\n        final int col = entry.getValue().intValue();\n        if (col < values.length) {\n            map.put(entry.getKey(), values[col]);\n        }\n    }\n    return map;\n}\n"
+                ]
+            ]
+        }
+    }
+}

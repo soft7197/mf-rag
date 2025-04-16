@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to283__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Csv-14 - Buggy: src/main/java/org/apache/commons/csv/CSVFormat.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Csv-14 - Fixed: src/main/java/org/apache/commons/csv/CSVFormat.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from283_1036">1036</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;c&nbsp;=&nbsp;value.charAt(pos);</td><td class="diff_next"></td><td class="diff_header" id="to283_1036">1036</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;c&nbsp;=&nbsp;value.charAt(pos);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to283__0"></td><td class="diff_header" id="from283_1037">1037</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to283_1037">1037</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from283_1038">1038</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;RFC4180&nbsp;(https://tools.ietf.org/html/rfc4180)&nbsp;TEXTDATA&nbsp;=&nbsp;&nbsp;%x2</td><td class="diff_next"></td><td class="diff_header" id="to283_1038">1038</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;RFC4180&nbsp;(https://tools.ietf.org/html/rfc4180)&nbsp;TEXTDATA&nbsp;=&nbsp;&nbsp;%x2</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">0-21&nbsp;/&nbsp;%x23-2B&nbsp;/&nbsp;%x2D-7E</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">0-21&nbsp;/&nbsp;%x23-2B&nbsp;/&nbsp;%x2D-7E</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to283__top">t</a></td><td class="diff_header" id="from283_1039">1039</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(newRecord&nbsp;&amp;&amp;&nbsp;(c&nbsp;&lt;&nbsp;<span class="diff_sub">'</span>0<span class="diff_chg">'</span>&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;<span class="diff_chg">'9'</span>&nbsp;&amp;&amp;&nbsp;c&nbsp;&lt;&nbsp;<span class="diff_chg">'A'</span>&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;<span class="diff_chg">'Z'</span>&nbsp;&amp;&amp;&nbsp;c&nbsp;</td><td class="diff_next"><a href="#difflib_chg_to283__top">t</a></td><td class="diff_header" id="to283_1039">1039</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(newRecord&nbsp;&amp;&amp;&nbsp;(c&nbsp;&lt;&nbsp;0<span class="diff_chg">x20</span>&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;<span class="diff_chg">0x21</span>&nbsp;&amp;&amp;&nbsp;c&nbsp;&lt;&nbsp;<span class="diff_chg">0x23</span>&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;<span class="diff_chg">0x2B</span>&nbsp;&amp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;&nbsp;<span class="diff_chg">'a'</span>&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;<span class="diff_chg">'z'</span>))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&amp;&nbsp;c&nbsp;&lt;&nbsp;<span class="diff_chg">0x2D</span>&nbsp;||&nbsp;c&nbsp;&gt;&nbsp;<span class="diff_chg">0x7E</span>))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from283_1040">1040</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quote&nbsp;=&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to283_1040">1040</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quote&nbsp;=&nbsp;true;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from283_1041">1041</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(c&nbsp;&lt;=&nbsp;COMMENT)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to283_1041">1041</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(c&nbsp;&lt;=&nbsp;COMMENT)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from283_1042">1042</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Some&nbsp;other&nbsp;chars&nbsp;at&nbsp;the&nbsp;start&nbsp;of&nbsp;a&nbsp;value&nbsp;caused&nbsp;the&nbsp;parse</td><td class="diff_next"></td><td class="diff_header" id="to283_1042">1042</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Some&nbsp;other&nbsp;chars&nbsp;at&nbsp;the&nbsp;start&nbsp;of&nbsp;a&nbsp;value&nbsp;caused&nbsp;the&nbsp;parse</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;to&nbsp;fail,&nbsp;so&nbsp;for&nbsp;now</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;to&nbsp;fail,&nbsp;so&nbsp;for&nbsp;now</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

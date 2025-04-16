@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to526__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-3 - Buggy: src/main/java/org/apache/commons/lang3/math/NumberUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-3 - Fixed: src/main/java/org/apache/commons/lang3/math/NumberUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to526__0"></td><td class="diff_header" id="from526_590">590</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Must&nbsp;be&nbsp;a&nbsp;Float,&nbsp;Double,&nbsp;BigDecimal</td><td class="diff_next"></td><td class="diff_header" id="to526_590">590</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Must&nbsp;be&nbsp;a&nbsp;Float,&nbsp;Double,&nbsp;BigDecimal</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_591">591</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;allZeros&nbsp;=&nbsp;isAllZeros(mant)&nbsp;&amp;&amp;&nbsp;isAllZeros(exp);</td><td class="diff_next"></td><td class="diff_header" id="to526_591">591</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;allZeros&nbsp;=&nbsp;isAllZeros(mant)&nbsp;&amp;&amp;&nbsp;isAllZeros(exp);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_592">592</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to526_592">592</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to526__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to526__1">n</a></td><td class="diff_header" id="to526_593">593</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(numDecimals&nbsp;&lt;=&nbsp;7){//&nbsp;If&nbsp;number&nbsp;has&nbsp;7&nbsp;or&nbsp;fewer&nbsp;digits&nbsp;past&nbsp;the&nbsp;dec</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">imal&nbsp;point&nbsp;then&nbsp;make&nbsp;it&nbsp;a&nbsp;float</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_593">593</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Float&nbsp;f&nbsp;=&nbsp;createFloat(str);</td><td class="diff_next"></td><td class="diff_header" id="to526_594">594</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Float&nbsp;f&nbsp;=&nbsp;createFloat(str);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_594">594</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(f.isInfinite()&nbsp;||&nbsp;(f.floatValue()&nbsp;==&nbsp;0.0F&nbsp;&amp;&amp;&nbsp;!allZeros)))&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to526_595">595</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(f.isInfinite()&nbsp;||&nbsp;(f.floatValue()&nbsp;==&nbsp;0.0F&nbsp;&amp;&amp;&nbsp;!allZeros)))&nbsp;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to526__1"></td><td class="diff_header">></td><td nowrap="nowrap">{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_595">595</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;f;</td><td class="diff_next"></td><td class="diff_header" id="to526_596">596</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;f;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_596">596</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to526_597">597</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to526__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to526__2">n</a></td><td class="diff_header" id="to526_598">598</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_597">597</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(final&nbsp;NumberFormatException&nbsp;nfe)&nbsp;{&nbsp;//&nbsp;NOPMD</td><td class="diff_next"></td><td class="diff_header" id="to526_599">599</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(final&nbsp;NumberFormatException&nbsp;nfe)&nbsp;{&nbsp;//&nbsp;NOPMD</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to526__2"></td><td class="diff_header" id="from526_598">598</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ignore&nbsp;the&nbsp;bad&nbsp;number</td><td class="diff_next"></td><td class="diff_header" id="to526_600">600</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ignore&nbsp;the&nbsp;bad&nbsp;number</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_599">599</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to526_601">601</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_600">600</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to526_602">602</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to526__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to526__3">n</a></td><td class="diff_header" id="to526_603">603</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(numDecimals&nbsp;&lt;=&nbsp;16){//&nbsp;If&nbsp;number&nbsp;has&nbsp;between&nbsp;8&nbsp;and&nbsp;16&nbsp;digits&nbsp;past&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">the&nbsp;decimal&nbsp;point&nbsp;then&nbsp;make&nbsp;it&nbsp;a&nbsp;double</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_601">601</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Double&nbsp;d&nbsp;=&nbsp;createDouble(str);</td><td class="diff_next"></td><td class="diff_header" id="to526_604">604</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Double&nbsp;d&nbsp;=&nbsp;createDouble(str);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_602">602</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(d.isInfinite()&nbsp;||&nbsp;(d.doubleValue()&nbsp;==&nbsp;0.0D&nbsp;&amp;&amp;&nbsp;!allZeros)))</td><td class="diff_next"></td><td class="diff_header" id="to526_605">605</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(d.isInfinite()&nbsp;||&nbsp;(d.doubleValue()&nbsp;==&nbsp;0.0D&nbsp;&amp;&amp;&nbsp;!allZeros)))</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to526__3"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_603">603</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;d;</td><td class="diff_next"></td><td class="diff_header" id="to526_606">606</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;d;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_604">604</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to526_607">607</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to526__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to526__top">t</a></td><td class="diff_header" id="to526_608">608</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_605">605</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(final&nbsp;NumberFormatException&nbsp;nfe)&nbsp;{&nbsp;//&nbsp;NOPMD</td><td class="diff_next"></td><td class="diff_header" id="to526_609">609</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(final&nbsp;NumberFormatException&nbsp;nfe)&nbsp;{&nbsp;//&nbsp;NOPMD</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_606">606</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ignore&nbsp;the&nbsp;bad&nbsp;number</td><td class="diff_next"></td><td class="diff_header" id="to526_610">610</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ignore&nbsp;the&nbsp;bad&nbsp;number</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from526_607">607</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to526_611">611</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

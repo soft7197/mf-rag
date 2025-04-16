@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to63__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-103 - Buggy: src/com/google/javascript/jscomp/DisambiguateProperties.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-103 - Fixed: src/com/google/javascript/jscomp/DisambiguateProperties.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to63__0"></td><td class="diff_header" id="from63_760">760</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to63_760">760</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_761">761</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;the&nbsp;property&nbsp;does&nbsp;not&nbsp;exist&nbsp;on&nbsp;the&nbsp;referenced&nbsp;type&nbsp;but&nbsp;the&nbsp;original</td><td class="diff_next"></td><td class="diff_header" id="to63_761">761</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;the&nbsp;property&nbsp;does&nbsp;not&nbsp;exist&nbsp;on&nbsp;the&nbsp;referenced&nbsp;type&nbsp;but&nbsp;the&nbsp;original</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_762">762</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;type&nbsp;is&nbsp;an&nbsp;object&nbsp;type,&nbsp;see&nbsp;if&nbsp;any&nbsp;subtype&nbsp;has&nbsp;the&nbsp;property.</td><td class="diff_next"></td><td class="diff_header" id="to63_762">762</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;type&nbsp;is&nbsp;an&nbsp;object&nbsp;type,&nbsp;see&nbsp;if&nbsp;any&nbsp;subtype&nbsp;has&nbsp;the&nbsp;property.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to63__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to63__1">n</a></td><td class="diff_header" id="to63_763">763</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(foundType&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to63_764">764</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectType&nbsp;maybeType&nbsp;=&nbsp;ObjectType.cast(</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to63_765">765</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registry.getGreatestSubtypeWithProperty(type,&nbsp;field));</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to63__1"></td><td class="diff_header" id="from63_763">763</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;getGreatestSubtypeWithProperty&nbsp;does&nbsp;not&nbsp;guarantee&nbsp;that&nbsp;the&nbsp;property</td><td class="diff_next"></td><td class="diff_header" id="to63_766">766</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;getGreatestSubtypeWithProperty&nbsp;does&nbsp;not&nbsp;guarantee&nbsp;that&nbsp;the&nbsp;property</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_764">764</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;is&nbsp;defined&nbsp;on&nbsp;the&nbsp;returned&nbsp;type,&nbsp;it&nbsp;just&nbsp;indicates&nbsp;that&nbsp;it&nbsp;might&nbsp;be,</td><td class="diff_next"></td><td class="diff_header" id="to63_767">767</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;is&nbsp;defined&nbsp;on&nbsp;the&nbsp;returned&nbsp;type,&nbsp;it&nbsp;just&nbsp;indicates&nbsp;that&nbsp;it&nbsp;might&nbsp;be,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_765">765</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;so&nbsp;we&nbsp;have&nbsp;to&nbsp;double&nbsp;check.</td><td class="diff_next"></td><td class="diff_header" id="to63_768">768</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;so&nbsp;we&nbsp;have&nbsp;to&nbsp;double&nbsp;check.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to63__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to63__top">t</a></td><td class="diff_header" id="to63_769">769</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(maybeType&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;maybeType.hasOwnProperty(field))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to63_770">770</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foundType&nbsp;=&nbsp;maybeType;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to63_771">771</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to63_772">772</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_766">766</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;foundType;</td><td class="diff_next"></td><td class="diff_header" id="to63_773">773</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;foundType;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_767">767</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to63_774">774</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from63_768">768</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to63_775">775</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

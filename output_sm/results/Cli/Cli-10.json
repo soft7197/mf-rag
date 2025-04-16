@@ -1,0 +1,79 @@
+{
+    "Cli-10": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p><code>Parser</code> creates {@link CommandLine}s.</p>\n*\n* @author John Keyes (john at integralsource.com)\n* @see Parser\n* @version $Revision$\n*/\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = options.getRequiredOptions();\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testReuseOptionsTwice() throws Exception\n\n    {\n\n        Options opts = new Options();\n\n\t\topts.addOption(OptionBuilder.isRequired().create('v'));\n\n\n\n\t\tGnuParser parser = new GnuParser();\n\n\n\n        // first parsing\n\n        parser.parse(opts, new String[] { \"-v\" });\n\n\n\n        try\n\n        {\n\n            // second parsing, with the same Options instance and an invalid command line\n\n            parser.parse(opts, new String[0]);\n\n            fail(\"MissingOptionException not thrown\");\n\n        }\n\n        catch (MissingOptionException e)\n\n        {\n\n            // expected\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: MissingOptionException not thrown\n\tat org.apache.commons.cli.ParseRequiredTest.testReuseOptionsTwice(ParseRequiredTest.java:157)  fail(\"MissingOptionException not thrown\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = (Options) options.clone();\n        this.requiredOptions = this.options.getRequiredOptions();\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new LinkedHashSet<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = (Options) options.clone();\n        this.requiredOptions = this.options.getRequiredOptions();\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = new Options();\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n}\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = new Options();\n        this.options.addOptions(options.getOptions());\n        this.requiredOptions = options.getRequiredOptions();\n    }\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p><code>Parser</code> creates {@link CommandLine}s.</p>\n*\n* @author John Keyes (john at integralsource.com)\n* @see Parser\n* @version $Revision$\n*/\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = options.getRequiredOptions();\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testReuseOptionsTwice() throws Exception\n\n    {\n\n        Options opts = new Options();\n\n\t\topts.addOption(OptionBuilder.isRequired().create('v'));\n\n\n\n\t\tGnuParser parser = new GnuParser();\n\n\n\n        // first parsing\n\n        parser.parse(opts, new String[] { \"-v\" });\n\n\n\n        try\n\n        {\n\n            // second parsing, with the same Options instance and an invalid command line\n\n            parser.parse(opts, new String[0]);\n\n            fail(\"MissingOptionException not thrown\");\n\n        }\n\n        catch (MissingOptionException e)\n\n        {\n\n            // expected\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: MissingOptionException not thrown\n\tat org.apache.commons.cli.ParseRequiredTest.testReuseOptionsTwice(ParseRequiredTest.java:157)  fail(\"MissingOptionException not thrown\");\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nprivate void processSingleHyphen(String hyphen) { tokens.add(hyphen); }\n```\n\n            \n```java\npublic void setOptionalArg(boolean optionalArg) { this.optionalArg = optionalArg; }\n```\n\n            \n```java\npublic void setOptionComparator(Comparator comparator) { if (comparator == null) { this.optionComparator = new OptionComparator(); } else { this.optionComparator = comparator; } }\n```\n\n            \n```java\npublic void setArgs(int num) { this.numberOfArgs = num; }\n```\n\n            \n```java\npublic boolean addValue(String value) { addValueForProcessing(value); return true; }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprotected void setOptions(final Options options) {\n    this.options = options;\n    this.requiredOptions = new HashSet<>(options.getRequiredOptions());\n}\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\n/**\n* <p><code>Parser</code> creates {@link CommandLine}s.</p>\n*\n* @author John Keyes (john at integralsource.com)\n* @see Parser\n* @version $Revision$\n*/\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\n/**\n* <p><code>Parser</code> creates {@link CommandLine}s.</p>\n*\n* @author John Keyes (john at integralsource.com)\n* @see Parser\n* @version $Revision$\n*/\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n    this.options = options;\n    this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n}\n"
+                ],
+                [
+                    "\n/**\n* <p><code>Parser</code> creates {@link CommandLine}s.</p>\n*\n* @author John Keyes (john at integralsource.com)\n* @see Parser\n* @version $Revision$\n*/\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions()); // Create a copy of the required options list\n    }\n"
+                ],
+                [
+                    "\n/**\n* <p><code>Parser</code> creates {@link CommandLine}s.</p>\n*\n* @author John Keyes (john at integralsource.com)\n* @see Parser\n* @version $Revision$\n*/\nprotected void setOptions(final Options options) {\n        this.options = options;\n        // Create a new list to ensure requiredOptions is fresh on each call\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ],
+                [
+                    "\nprotected void setOptions(final Options options) {\n        this.options = options;\n        this.requiredOptions = new ArrayList<>(options.getRequiredOptions());\n    }\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

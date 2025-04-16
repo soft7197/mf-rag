@@ -1,0 +1,77 @@
+{
+    "Cli-29": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Remove the leading and trailing quotes from <code>str</code>.\n* E.g. if str is '\"one two\"', then 'one two' is returned.\n*\n* @param str The string from which the leading and trailing quotes\n* should be removed.\n*\n* @return The string without the leading and trailing quotes.\n*/\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    int length = str.length();\n    if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, length - 1);\n    }\n    \n    return str;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testStripLeadingAndTrailingQuotes()\n\n    {\n\n        assertEquals(\"foo\", Util.stripLeadingAndTrailingQuotes(\"\\\"foo\\\"\"));\n\n        assertEquals(\"foo \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"foo \\\"bar\\\"\"));\n\n        assertEquals(\"\\\"foo\\\" bar\", Util.stripLeadingAndTrailingQuotes(\"\\\"foo\\\" bar\"));\n\n        assertEquals(\"\\\"foo\\\" and \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"\\\"foo\\\" and \\\"bar\\\"\"));\n\n        assertEquals(\"\\\"\", Util.stripLeadingAndTrailingQuotes(\"\\\"\"));\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<foo \"bar[\"]> but was:<foo \"bar[]>\n\tat org.apache.commons.cli.UtilTest.testStripLeadingAndTrailingQuotes(UtilTest.java:38)  assertEquals(\"foo \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"foo \\\"bar\\\"\"));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        str = str.substring(1, str.length() - 1);\n    }\n    else if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    else if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    \n    if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    int length = str.length();\n    if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, length - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 1 && str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 1 && str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 0 && str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1);\n    }\n    if (str.length() > 0 && str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 1 && str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length() - 1);\n    }\n    else if (str.equals(\"\\\"\"))\n    {\n        return \"\";\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 1 && str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\")) \n    {\n        return str.substring(1, str.length() - 1);\n    }\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() <= 1) {\n        return str.equals(\"\\\"\") ? \"\" : str;\n    }\n    \n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    else if (str.startsWith(\"\\\"\"))\n    {\n        return str.substring(1);\n    }\n    else if (str.endsWith(\"\\\"\"))\n    {\n        return str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        str = str.substring(1, str.length() - 1);\n    }\n    else if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    else if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 1 && str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    else if (str.startsWith(\"\\\"\"))\n    {\n        return str.substring(1);\n    }\n    else if (str.endsWith(\"\\\"\"))\n    {\n        return str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Remove the leading and trailing quotes from <code>str</code>.\n* E.g. if str is '\"one two\"', then 'one two' is returned.\n*\n* @param str The string from which the leading and trailing quotes\n* should be removed.\n*\n* @return The string without the leading and trailing quotes.\n*/\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    int length = str.length();\n    if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, length - 1);\n    }\n    \n    return str;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testStripLeadingAndTrailingQuotes()\n\n    {\n\n        assertEquals(\"foo\", Util.stripLeadingAndTrailingQuotes(\"\\\"foo\\\"\"));\n\n        assertEquals(\"foo \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"foo \\\"bar\\\"\"));\n\n        assertEquals(\"\\\"foo\\\" bar\", Util.stripLeadingAndTrailingQuotes(\"\\\"foo\\\" bar\"));\n\n        assertEquals(\"\\\"foo\\\" and \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"\\\"foo\\\" and \\\"bar\\\"\"));\n\n        assertEquals(\"\\\"\", Util.stripLeadingAndTrailingQuotes(\"\\\"\"));\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<foo \"bar[\"]> but was:<foo \"bar[]>\n\tat org.apache.commons.cli.UtilTest.testStripLeadingAndTrailingQuotes(UtilTest.java:38)  assertEquals(\"foo \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"foo \\\"bar\\\"\"));\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nstatic String stripLeadingHyphens(String str) { if (str == null) { return null; } if (str.startsWith(\\\"--\\\")) { return str.substring(2, str.length()); } else if (str.startsWith(\\\"-\\\")) { return str.substring(1, str.length()); } return str; }\n```\n\n            \n```java\npublic static Number createNumber(String str) throws ParseException { try { if (str.indexOf('.') != -1) { return Double.valueOf(str); } else { return Long.valueOf(str); } } catch (NumberFormatException e) { throw new ParseException(e.getMessage()); } }\n```\n\n            \n```java\npublic Options addOptionGroup(OptionGroup group) { Iterator options = group.getOptions().iterator(); if (group.isRequired()) { requiredOpts.add(group); } while (options.hasNext()) { Option option = (Option) options.next(); option.setRequired(false); addOption(option); optionGroups.put(option.getKey(), group); } return this; }\n```\n\n            \n```java\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text) { StringBuffer sb = new StringBuffer(text.length()); renderWrappedText(sb, width, nextLineTabStop, text); pw.println(sb.toString()); }\n```\n\n            \n```java\npublic void testOrder() throws ParseException { Option optionA = new Option(\\\"a\\\", \\\"first\\\"); Options opts = new Options(); opts.addOption(optionA); PosixParser posixParser = new PosixParser(); CommandLine line = posixParser.parse(opts, null); assertFalse(line.hasOption(null)); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.isEmpty() || str.equals(\"\\\"\")) {\n        return str;\n    }\n    \n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    \n    if (str.startsWith(\"\\\"\"))\n    {\n        return str.substring(1);\n    }\n    \n    if (str.endsWith(\"\\\"\"))\n    {\n        return str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.length() == 0) {\n        return str;\n    }\n    \n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    \n    if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1);\n    }\n    \n    if (str.endsWith(\"\\\"\") && str.length() > 0)\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        str = str.substring(1, str.length() - 1);\n    }\n    else if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    else if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.length() <= 1) {\n        return str;\n    }\n    \n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.length() < 2)\n    {\n        return str;\n    }\n\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        return str.substring(1, str.length() - 1);\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.length() < 2) {\n        return str;\n    }\n\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str) {\n    if (str == null || str.length() < 2) {\n        return str;\n    }\n    \n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\")) {\n        return str.substring(1, str.length() - 1);\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str.length() > 0 && str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n    if (str.length() > 0 && str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.length() < 2) {\n        return str;\n    }\n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\"))\n    {\n        return str.substring(1, str.length() - 1);\n    }\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingAndTrailingQuotes(String str)\n{\n    if (str == null || str.equals(\"\\\"\"))\n    {\n        return \"\";\n    }\n    \n    if (str.startsWith(\"\\\"\") && str.endsWith(\"\\\"\") && str.length() > 1)\n    {\n        return str.substring(1, str.length() - 1);\n    }\n\n    if (str.startsWith(\"\\\"\"))\n    {\n        str = str.substring(1, str.length());\n    }\n\n    if (str.endsWith(\"\\\"\"))\n    {\n        str = str.substring(0, str.length() - 1);\n    }\n    \n    return str;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

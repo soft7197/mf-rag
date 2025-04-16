@@ -1,0 +1,95 @@
+{
+    "JacksonCore-8": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// not if we have String as value\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testEmpty() {\n\n        TextBuffer tb = new TextBuffer(new BufferRecycler());\n\n        tb.resetWithEmpty();\n\n\n\n        assertTrue(tb.getTextBuffer().length == 0);\n\n        tb.contentsAsString();\n\n        assertTrue(tb.getTextBuffer().length == 0);\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat com.fasterxml.jackson.core.util.TestTextBuffer.testEmpty(TestTextBuffer.java:83)  assertTrue(tb.getTextBuffer().length == 0);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // If there's no content, return an empty array\n    if (!_hasSegments && (_currentSegment == null || _currentSegment.length == 0)) {\n        return new char[0];\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments && _currentSegment != null) return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    char[] result = contentsAsArray();\n    return (result != null) ? result : new char[0];\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer() {\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null) return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments) return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    char[] contents = contentsAsArray();\n    return contents != null ? contents : new char[0];\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments) return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null) return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments && _currentSegment != null) return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // If there's no content, return an empty array\n    if (!_hasSegments && (_currentSegment == null || _currentSegment.length == 0)) {\n        return new char[0];\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments && _currentSegment != null) return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    char[] result = contentsAsArray();\n    return (result != null) ? result : new char[0];\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer() {\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null) return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments) return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    char[] contents = contentsAsArray();\n    return contents != null ? contents : new char[0];\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments) return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null) return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments && _currentSegment != null) return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // If there's no content, return an empty array\n    if (!_hasSegments && (_currentSegment == null || _currentSegment.length == 0)) {\n        return new char[0];\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments && _currentSegment != null) return _currentSegment;\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return (_currentSegment != null) ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    char[] result = contentsAsArray();\n    return (result != null) ? result : new char[0];\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer() {\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null) return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments) return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    char[] contents = contentsAsArray();\n    return contents != null ? contents : new char[0];\n}\n"
+                ],
+                [
+                    "\npublic char[] getTextBuffer()\n{\n    // Are we just using shared input buffer?\n    if (_inputStart >= 0 && _inputBuffer != null) return _inputBuffer;\n    if (_resultArray != null)  return _resultArray;\n    if (_resultString != null) {\n        return (_resultArray = _resultString.toCharArray());\n    }\n    // Nope; but does it fit in just one segment?\n    if (!_hasSegments)  return _currentSegment != null ? _currentSegment : new char[0];\n    // Nope, need to have/create a non-segmented array and return it\n    return contentsAsArray();\n}\n"
+                ]
+            ]
+        }
+    }
+}

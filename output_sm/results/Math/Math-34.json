@@ -1,0 +1,51 @@
+{
+    "Math-34": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns an iterator over the unmodifiable list of chromosomes.\n* <p>Any call to {@link Iterator#remove()} will result in a {@link UnsupportedOperationException}.</p>\n*\n* @return chromosome iterator\n*/\npublic Iterator<Chromosome> iterator() {\n    return chromosomes.iterator();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testIterator() {\n\n        final ArrayList<Chromosome> chromosomes = new ArrayList<Chromosome>();\n\n        chromosomes.add(new DummyBinaryChromosome(BinaryChromosome.randomBinaryRepresentation(3)));\n\n        chromosomes.add(new DummyBinaryChromosome(BinaryChromosome.randomBinaryRepresentation(3)));\n\n        chromosomes.add(new DummyBinaryChromosome(BinaryChromosome.randomBinaryRepresentation(3)));\n\n\n\n        final ListPopulation population = new ListPopulation(10) {\n\n            public Population nextGeneration() {\n\n                // not important\n\n                return null;\n\n            }\n\n        };\n\n\n\n        population.addChromosomes(chromosomes);\n\n\n\n        final Iterator<Chromosome> iter = population.iterator();\n\n        while (iter.hasNext()) {\n\n            iter.next();\n\n            iter.remove();\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected exception: java.lang.UnsupportedOperationException\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return new Iterator<Chromosome>() {\n        private final Iterator<Chromosome> iter = chromosomes.iterator();\n\n        public boolean hasNext() {\n            return iter.hasNext();\n        }\n\n        public Chromosome next() {\n            return iter.next();\n        }\n\n        public void remove() {\n            throw new UnsupportedOperationException();\n        }\n    };\n}\n"
+                ],
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns an iterator over the unmodifiable list of chromosomes.\n* <p>Any call to {@link Iterator#remove()} will result in a {@link UnsupportedOperationException}.</p>\n*\n* @return chromosome iterator\n*/\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return new Iterator<Chromosome>() {\n        private final Iterator<Chromosome> iter = chromosomes.iterator();\n\n        @Override\n        public boolean hasNext() {\n            return iter.hasNext();\n        }\n\n        @Override\n        public Chromosome next() {\n            return iter.next();\n        }\n\n        @Override\n        public void remove() {\n            throw new UnsupportedOperationException();\n        }\n    };\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns an iterator over the unmodifiable list of chromosomes.\n* <p>Any call to {@link Iterator#remove()} will result in a {@link UnsupportedOperationException}.</p>\n*\n* @return chromosome iterator\n*/\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns an iterator over the unmodifiable list of chromosomes.\n* <p>Any call to {@link Iterator#remove()} will result in a {@link UnsupportedOperationException}.</p>\n*\n* @return chromosome iterator\n*/\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic Iterator<Chromosome> iterator() {\n    return Collections.unmodifiableList(chromosomes).iterator();\n}\n"
+                ]
+            ]
+        }
+    }
+}

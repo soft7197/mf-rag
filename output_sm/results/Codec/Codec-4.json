@@ -1,0 +1,77 @@
+{
+    "Codec-4": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testEncoder() throws EncoderException {\n\n        Encoder enc = new Base64();\n\n        for (int i = 0; i < STRINGS.length; i++) {\n\n            if (STRINGS[i] != null) {\n\n                byte[] base64 = utf8(STRINGS[i]);\n\n                byte[] binary = BYTES[i];\n\n                boolean b = Arrays.equals(base64, (byte[]) enc.encode(binary));\n\n                assertTrue(\"Encoder test-\" + i, b);\n\n            }\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Encoder test-1\n\tat org.apache.commons.codec.binary.Base64Codec13Test.testEncoder(Base64Codec13Test.java:378)  assertTrue(\"Encoder test-\" + i, b);\n \n#Test method 2:\n```java\n    public void testBinaryEncoder() throws EncoderException {\n\n        BinaryEncoder enc = new Base64();\n\n        for (int i = 0; i < STRINGS.length; i++) {\n\n            if (STRINGS[i] != null) {\n\n                byte[] base64 = utf8(STRINGS[i]);\n\n                byte[] binary = BYTES[i];\n\n                boolean b = Arrays.equals(base64, enc.encode(binary));\n\n                assertTrue(\"BinaryEncoder test-\" + i, b);\n\n            }\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: BinaryEncoder test-1\n\tat org.apache.commons.codec.binary.Base64Codec13Test.testBinaryEncoder(Base64Codec13Test.java:414)  assertTrue(\"BinaryEncoder test-\" + i, b);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, false);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, STANDARD_ENCODE_TABLE);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    super(0, null, false, STANDARD_ENCODE_TABLE, DECODABET, DECODABET_URL_SAFE);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, STANDARD_ENCODE_TABLE);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, STANDARD_ENCODE_TABLE, false, 0, CHUNK_SEPARATOR);\n}\n"
+                ],
+                [
+                    "\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, false);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, STANDARD_ENCODE_TABLE, false);\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testEncoder() throws EncoderException {\n\n        Encoder enc = new Base64();\n\n        for (int i = 0; i < STRINGS.length; i++) {\n\n            if (STRINGS[i] != null) {\n\n                byte[] base64 = utf8(STRINGS[i]);\n\n                byte[] binary = BYTES[i];\n\n                boolean b = Arrays.equals(base64, (byte[]) enc.encode(binary));\n\n                assertTrue(\"Encoder test-\" + i, b);\n\n            }\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Encoder test-1\n\tat org.apache.commons.codec.binary.Base64Codec13Test.testEncoder(Base64Codec13Test.java:378)  assertTrue(\"Encoder test-\" + i, b);\n \n#Test method 2:\n```java\n    public void testBinaryEncoder() throws EncoderException {\n\n        BinaryEncoder enc = new Base64();\n\n        for (int i = 0; i < STRINGS.length; i++) {\n\n            if (STRINGS[i] != null) {\n\n                byte[] base64 = utf8(STRINGS[i]);\n\n                byte[] binary = BYTES[i];\n\n                boolean b = Arrays.equals(base64, enc.encode(binary));\n\n                assertTrue(\"BinaryEncoder test-\" + i, b);\n\n            }\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: BinaryEncoder test-1\n\tat org.apache.commons.codec.binary.Base64Codec13Test.testBinaryEncoder(Base64Codec13Test.java:414)  assertTrue(\"BinaryEncoder test-\" + i, b);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic void testObjectDecodeWithInvalidParameter() throws Exception { Base64 b64 = new Base64(); try { b64.decode(new Integer(5)); fail(\\\"decode(Object) didn't throw an exception when passed an Integer object\\\"); } catch (DecoderException e) { } }\n```\n\n            \n```java\npublic void testDecodeStringWithNull() throws Exception { URLCodec urlCodec = new URLCodec(); String test = null; String result = urlCodec.decode(test, \\\"charset\\\"); assertEquals(\\\"Result should be null\\\", null, result); }\n```\n\n            \n```java\npublic void testTCH() { assertEquals(\\\"RX\\\", this.getMetaphone().metaphone(\\\"RETCH\\\")); assertEquals(\\\"WX\\\", this.getMetaphone().metaphone(\\\"WATCH\\\")); }\n```\n\n            \n```java\npublic void testEncodeStringWithNull() throws Exception { URLCodec urlCodec = new URLCodec(); String test = null; String result = urlCodec.encode(test, \\\"charset\\\"); assertEquals(\\\"Result should be null\\\", null, result); }\n```\n\n            \n```java\npublic void testMaxLength() throws Exception { Soundex soundex = new Soundex(); soundex.setMaxLength(soundex.getMaxLength()); assertEquals(\\\"S460\\\", this.getEncoder().encode(\\\"Sgler\\\")); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Base64() {\n    super();\n    this.lineLength = 0;\n    this.encodeTable = STANDARD_ENCODE_TABLE;\n    this.decodeTable = getDecodeTable();\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, false);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(false, STANDARD_ENCODE_TABLE, false);\n}\n"
+                ],
+                [
+                    "\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(true); // Changed from false to true to use URL-unsafe encoding mode\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is URL_SAFE_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(true);\n}\n"
+                ],
+                [
+                    "\npublic Base64() {\n    this.setEncodeTable(STANDARD_ENCODE_TABLE); \n    this.setChunkSize(0); \n    this.setUrlSafe(false);\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.\n* <p>\n* When encoding the line length is 0 (no chunking), and the encoding table is STANDARD_ENCODE_TABLE.\n* </p>\n*\n* <p>\n* When decoding all variants are supported.\n* </p>\n*/\npublic Base64() {\n    this(true);\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

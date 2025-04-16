@@ -1,0 +1,77 @@
+{
+    "Csv-1": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetLineNumberWithCR() throws Exception {\n\n        CSVParser parser = new CSVParser(\"a\\rb\\rc\", CSVFormat.DEFAULT.withLineSeparator(\"\\r\"));\n\n        \n\n        assertEquals(0, parser.getLineNumber());\n\n        assertNotNull(parser.getRecord());\n\n        assertEquals(1, parser.getLineNumber());\n\n        assertNotNull(parser.getRecord());\n\n        assertEquals(2, parser.getLineNumber());\n\n        assertNotNull(parser.getRecord());\n\n        assertEquals(2, parser.getLineNumber());\n\n        assertNull(parser.getRecord());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<1> but was:<0>\n\tat org.apache.commons.csv.CSVParserTest.testGetLineNumberWithCR(CSVParserTest.java:510)  assertEquals(1, parser.getLineNumber());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testGetLineNumberWithCR() throws Exception {\n\n        CSVParser parser = new CSVParser(\"a\\rb\\rc\", CSVFormat.DEFAULT.withLineSeparator(\"\\r\"));\n\n        \n\n        assertEquals(0, parser.getLineNumber());\n\n        assertNotNull(parser.getRecord());\n\n        assertEquals(1, parser.getLineNumber());\n\n        assertNotNull(parser.getRecord());\n\n        assertEquals(2, parser.getLineNumber());\n\n        assertNotNull(parser.getRecord());\n\n        assertEquals(2, parser.getLineNumber());\n\n        assertNull(parser.getRecord());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<1> but was:<0>\n\tat org.apache.commons.csv.CSVParserTest.testGetLineNumberWithCR(CSVParserTest.java:510)  assertEquals(1, parser.getLineNumber());\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\n@Test public void testExcelPrinter1() throws IOException { StringWriter sw = new StringWriter(); CSVPrinter printer = new CSVPrinter(sw, CSVFormat.EXCEL); printer.println(\\\"a\\\", \\\"b\\\"); assertEquals(\\\"a,b\\\" + lineSeparator, sw.toString()); }\n```\n\n            \n```java\n@Test public void testPrinter7() throws IOException { StringWriter sw = new StringWriter(); CSVPrinter printer = new CSVPrinter(sw, CSVFormat.DEFAULT); printer.println(\\\"a\\\", \\\"b\\\\c\\\"); assertEquals(\\\"a,b\\\\c\\\" + lineSeparator, sw.toString()); }\n```\n\n            \n```java\n@Test public void testPrinter2() throws IOException { StringWriter sw = new StringWriter(); CSVPrinter printer = new CSVPrinter(sw, CSVFormat.DEFAULT); printer.println(\\\"a,b\\\", \\\"b\\\"); assertEquals(\\\"\\\\\"a,b\\\\\",b\\\" + lineSeparator, sw.toString()); }\n```\n\n            \n```java\n@Override public String toString() { return Arrays.toString(values); }\n```\n\n            \n```java\nint lookAhead() throws IOException { super.mark(1); int c = super.read(); super.reset(); return c; }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {  // account for '\\r' as well\n        lineCounter++;\n        if (current == '\\r') { // Check for a possible '\\n' following '\\r'\n            super.mark(1);\n            int next = super.read();\n            if (next != '\\n') {\n                super.reset();\n            }\n        }\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ],
+                [
+                    "\n/**\n* Created extended buffered reader using default buffer-size\n*/\npublic int read() throws IOException {\n    int current = super.read();\n    if (current == '\\n' || current == '\\r') {\n        lineCounter++;\n    }\n    lastChar = current;\n    return lastChar;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

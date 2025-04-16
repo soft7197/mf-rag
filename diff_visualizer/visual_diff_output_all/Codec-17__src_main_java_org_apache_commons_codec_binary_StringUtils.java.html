@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to224__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Codec-17 - Buggy: src/main/java/org/apache/commons/codec/binary/StringUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Codec-17 - Fixed: src/main/java/org/apache/commons/codec/binary/StringUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from224_336">336</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@since&nbsp;As&nbsp;of&nbsp;1.7,&nbsp;throws&nbsp;{@link&nbsp;NullPointerException}&nbsp;instead&nbsp;of&nbsp;Unsuppor</td><td class="diff_next"></td><td class="diff_header" id="to224_336">336</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@since&nbsp;As&nbsp;of&nbsp;1.7,&nbsp;throws&nbsp;{@link&nbsp;NullPointerException}&nbsp;instead&nbsp;of&nbsp;Unsuppor</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to224__0"></td><td class="diff_header">></td><td nowrap="nowrap">tedEncodingException</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tedEncodingException</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from224_337">337</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to224_337">337</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from224_338">338</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;String&nbsp;newStringIso8859_1(final&nbsp;byte[]&nbsp;bytes)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to224_338">338</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;String&nbsp;newStringIso8859_1(final&nbsp;byte[]&nbsp;bytes)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to224__top">t</a></td><td class="diff_header" id="from224_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new<span class="diff_sub">&nbsp;</span>String(bytes,&nbsp;Charsets.ISO_8859_1);</td><td class="diff_next"><a href="#difflib_chg_to224__top">t</a></td><td class="diff_header" id="to224_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;newString(bytes,&nbsp;Charsets.ISO_8859_1);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from224_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to224_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from224_341">341</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to224_341">341</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from224_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to224_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

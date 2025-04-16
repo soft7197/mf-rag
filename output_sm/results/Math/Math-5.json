@@ -1,0 +1,78 @@
+{
+    "Math-5": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns a {@code Complex} whose value is {@code (this / divisor)},\n* with {@code divisor} interpreted as a real number.\n*\n* @param  divisor Value by which this {@code Complex} is to be divided.\n* @return {@code this / divisor}.\n* @see #divide(Complex)\n*/\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return NaN;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testReciprocalZero() {\n\n        Assert.assertEquals(Complex.ZERO.reciprocal(), Complex.INF);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<(NaN, NaN)> but was:<(Infinity, Infinity)>\n\tat org.apache.commons.math3.complex.ComplexTest.testReciprocalZero(ComplexTest.java:334)  Assert.assertEquals(Complex.ZERO.reciprocal(), Complex.INF);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Change from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Corrected this line to return INF instead of NaN\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Corrected from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Changed from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Corrected from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Change from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Corrected this line to return INF instead of NaN\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Corrected from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF;\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Changed from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ],
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Corrected from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic Complex reciprocal() {\n    if (isNaN) {\n        return NaN;\n    }\n\n    if (real == 0.0 && imaginary == 0.0) {\n        return INF; // Change from NaN to INF\n    }\n\n    if (isInfinite) {\n        return ZERO;\n    }\n\n    if (FastMath.abs(real) < FastMath.abs(imaginary)) {\n        double q = real / imaginary;\n        double scale = 1. / (real * q + imaginary);\n        return createComplex(scale * q, -scale);\n    } else {\n        double q = imaginary / real;\n        double scale = 1. / (imaginary * q + real);\n        return createComplex(scale, -scale * q);\n    }\n}\n"
+                ]
+            ]
+        }
+    }
+}

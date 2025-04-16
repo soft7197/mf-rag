@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to399__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-66 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-66 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to399__0"></td><td class="diff_header" id="from399_8">8</td><td nowrap="nowrap">import&nbsp;java.net.URL;</td><td class="diff_next"></td><td class="diff_header" id="to399_8">8</td><td nowrap="nowrap">import&nbsp;java.net.URL;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_9">9</td><td nowrap="nowrap">import&nbsp;java.util.*;</td><td class="diff_next"></td><td class="diff_header" id="to399_9">9</td><td nowrap="nowrap">import&nbsp;java.util.*;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_10">10</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to399_10">10</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to399__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to399__1">n</a></td><td class="diff_header" id="to399_11">11</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;com.fasterxml.jackson.core.JsonParser;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_11">11</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.core.JsonProcessingException;</td><td class="diff_next"></td><td class="diff_header" id="to399_12">12</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.core.JsonProcessingException;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_12">12</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.core.io.NumberInput;</td><td class="diff_next"></td><td class="diff_header" id="to399_13">13</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.core.io.NumberInput;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_13">13</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.*;</td><td class="diff_next"></td><td class="diff_header" id="to399_14">14</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.*;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to399__1"></td><td class="diff_header" id="from399_15">15</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.introspect.AnnotatedMethod;</td><td class="diff_next"></td><td class="diff_header" id="to399_16">16</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.introspect.AnnotatedMethod;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_16">16</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.util.ClassUtil;</td><td class="diff_next"></td><td class="diff_header" id="to399_17">17</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.util.ClassUtil;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_17">17</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.util.EnumResolver;</td><td class="diff_next"></td><td class="diff_header" id="to399_18">18</td><td nowrap="nowrap">import&nbsp;com.fasterxml.jackson.databind.util.EnumResolver;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to399__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to399__2">n</a></td><td class="diff_header" id="to399_19">19</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;com.fasterxml.jackson.databind.util.TokenBuffer;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_18">18</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to399_20">20</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_19">19</td><td nowrap="nowrap">/**</td><td class="diff_next"></td><td class="diff_header" id="to399_21">21</td><td nowrap="nowrap">/**</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_20">20</td><td nowrap="nowrap">&nbsp;*&nbsp;Default&nbsp;{@link&nbsp;KeyDeserializer}&nbsp;implementation&nbsp;used&nbsp;for&nbsp;most&nbsp;{@link&nbsp;java.util</td><td class="diff_next"></td><td class="diff_header" id="to399_22">22</td><td nowrap="nowrap">&nbsp;*&nbsp;Default&nbsp;{@link&nbsp;KeyDeserializer}&nbsp;implementation&nbsp;used&nbsp;for&nbsp;most&nbsp;{@link&nbsp;java.util</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.Map}</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.Map}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to399__2"></td><td class="diff_header" id="from399_311">311</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(key&nbsp;==&nbsp;null)&nbsp;{&nbsp;//&nbsp;is&nbsp;this&nbsp;even&nbsp;legal&nbsp;call?</td><td class="diff_next"></td><td class="diff_header" id="to399_313">313</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(key&nbsp;==&nbsp;null)&nbsp;{&nbsp;//&nbsp;is&nbsp;this&nbsp;even&nbsp;legal&nbsp;call?</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_312">312</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to399_314">314</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_313">313</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to399_315">315</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to399__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to399__3">n</a></td><td class="diff_header" id="to399_316">316</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenBuffer&nbsp;tb&nbsp;=&nbsp;new&nbsp;TokenBuffer(ctxt.getParser(),&nbsp;ctxt);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to399_317">317</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tb.writeString(key);</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to399__3"></td><td class="diff_header" id="from399_314">314</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to399_318">318</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_315">315</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Ugh...&nbsp;should&nbsp;not&nbsp;have&nbsp;to&nbsp;give&nbsp;parser&nbsp;which&nbsp;may&nbsp;or&nbsp;may&nbsp;not&nbsp;be</td><td class="diff_next"></td><td class="diff_header" id="to399_319">319</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Ugh...&nbsp;should&nbsp;not&nbsp;have&nbsp;to&nbsp;give&nbsp;parser&nbsp;which&nbsp;may&nbsp;or&nbsp;may&nbsp;not&nbsp;be</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;correct&nbsp;one...</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;correct&nbsp;one...</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to399__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to399__top">t</a></td><td class="diff_header" id="to399_320">320</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonParser&nbsp;p&nbsp;=&nbsp;tb.asParser();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to399_321">321</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.nextToken();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_316">316</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;result&nbsp;=&nbsp;_delegate.deserialize(<span class="diff_chg">ctxt.getParser()</span>,&nbsp;ctxt);</td><td class="diff_next"></td><td class="diff_header" id="to399_322">322</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;result&nbsp;=&nbsp;_delegate.deserialize(<span class="diff_chg">p</span>,&nbsp;ctxt);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_317">317</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(result&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to399_323">323</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(result&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_318">318</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;result;</td><td class="diff_next"></td><td class="diff_header" id="to399_324">324</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;result;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from399_319">319</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to399_325">325</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

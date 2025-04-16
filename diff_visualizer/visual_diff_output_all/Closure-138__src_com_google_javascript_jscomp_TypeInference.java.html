@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to101__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-138 - Buggy: src/com/google/javascript/jscomp/TypeInference.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-138 - Fixed: src/com/google/javascript/jscomp/TypeInference.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to101__0"></td><td class="diff_header" id="from101_629">629</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;scope;</td><td class="diff_next"></td><td class="diff_header" id="to101_629">629</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;scope;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_630">630</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to101_630">630</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_631">631</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StaticSlot&lt;JSType&gt;&nbsp;var&nbsp;=&nbsp;scope.getSlot(varName);</td><td class="diff_next"></td><td class="diff_header" id="to101_631">631</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StaticSlot&lt;JSType&gt;&nbsp;var&nbsp;=&nbsp;scope.getSlot(varName);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to101__1">n</a></td><td class="diff_header" id="from101_632">632</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(var&nbsp;!=&nbsp;null<span class="diff_chg">&nbsp;&amp;&amp;</span></td><td class="diff_next"><a href="#difflib_chg_to101__1">n</a></td><td class="diff_header" id="to101_632">632</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(var&nbsp;!=&nbsp;null<span class="diff_chg">)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_633">633</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!(var.isTypeInferred()&nbsp;&amp;&amp;&nbsp;unflowableVarNames.contains(varName)))&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_634">634</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;There&nbsp;are&nbsp;two&nbsp;situations&nbsp;where&nbsp;we&nbsp;don't&nbsp;want&nbsp;to&nbsp;use&nbsp;type&nbsp;information</td><td class="diff_next"></td><td class="diff_header" id="to101_633">633</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;There&nbsp;are&nbsp;two&nbsp;situations&nbsp;where&nbsp;we&nbsp;don't&nbsp;want&nbsp;to&nbsp;use&nbsp;type&nbsp;information</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_635">635</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;from&nbsp;the&nbsp;scope,&nbsp;even&nbsp;if&nbsp;we&nbsp;have&nbsp;it.</td><td class="diff_next"></td><td class="diff_header" id="to101_634">634</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;from&nbsp;the&nbsp;scope,&nbsp;even&nbsp;if&nbsp;we&nbsp;have&nbsp;it.</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to101__1"></td><td class="diff_header" id="from101_636">636</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_635">635</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_637">637</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1)&nbsp;The&nbsp;var&nbsp;is&nbsp;escaped&nbsp;in&nbsp;a&nbsp;weird&nbsp;way,&nbsp;e.g.,</td><td class="diff_next"></td><td class="diff_header" id="to101_636">636</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1)&nbsp;The&nbsp;var&nbsp;is&nbsp;escaped&nbsp;in&nbsp;a&nbsp;weird&nbsp;way,&nbsp;e.g.,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_638">638</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;function&nbsp;f()&nbsp;{&nbsp;var&nbsp;x&nbsp;=&nbsp;3;&nbsp;function&nbsp;g()&nbsp;{&nbsp;x&nbsp;=&nbsp;null&nbsp;}&nbsp;(x);&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to101_637">637</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;function&nbsp;f()&nbsp;{&nbsp;var&nbsp;x&nbsp;=&nbsp;3;&nbsp;function&nbsp;g()&nbsp;{&nbsp;x&nbsp;=&nbsp;null&nbsp;}&nbsp;(x);&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to101__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to101__2">n</a></td><td class="diff_header" id="to101_638">638</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isInferred&nbsp;=&nbsp;var.isTypeInferred();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_639">639</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;unflowable&nbsp;=</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_640">640</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isInferred&nbsp;&amp;&amp;&nbsp;unflowableVarNames.contains(varName);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_639">639</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_641">641</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to101__2"></td><td class="diff_header" id="from101_640">640</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2)&nbsp;We're&nbsp;reading&nbsp;type&nbsp;information&nbsp;from&nbsp;another&nbsp;scope&nbsp;for&nbsp;an</td><td class="diff_next"></td><td class="diff_header" id="to101_642">642</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2)&nbsp;We're&nbsp;reading&nbsp;type&nbsp;information&nbsp;from&nbsp;another&nbsp;scope&nbsp;for&nbsp;an</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_641">641</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;inferred&nbsp;variable.</td><td class="diff_next"></td><td class="diff_header" id="to101_643">643</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;inferred&nbsp;variable.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_642">642</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;var&nbsp;t&nbsp;=&nbsp;null;&nbsp;function&nbsp;f()&nbsp;{&nbsp;(t);&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to101_644">644</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;var&nbsp;t&nbsp;=&nbsp;null;&nbsp;function&nbsp;f()&nbsp;{&nbsp;(t);&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to101__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to101__3">n</a></td><td class="diff_header" id="to101_645">645</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;nonLocalInferredSlot&nbsp;=</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_646">646</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isInferred&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to101__3"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_647">647</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;syntacticScope.getParent()&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_648">648</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;==&nbsp;syntacticScope.getParent().getSlot(varName);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_643">643</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to101_649">649</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to101__4">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to101__4">n</a></td><td class="diff_header" id="to101_650">650</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!unflowable&nbsp;&amp;&amp;&nbsp;!nonLocalInferredSlot)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to101__4"></td><td class="diff_header" id="from101_644">644</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;var.getType();</td><td class="diff_next"></td><td class="diff_header" id="to101_651">651</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;var.getType();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_645">645</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(type&nbsp;==&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to101_652">652</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(type&nbsp;==&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_646">646</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;getNativeType(UNKNOWN_TYPE);</td><td class="diff_next"></td><td class="diff_header" id="to101_653">653</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;getNativeType(UNKNOWN_TYPE);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to101__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to101__top">t</a></td><td class="diff_header" id="to101_654">654</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_647">647</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to101_655">655</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_648">648</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to101_656">656</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from101_649">649</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to101_657">657</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

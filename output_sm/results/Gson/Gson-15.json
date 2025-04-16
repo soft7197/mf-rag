@@ -1,0 +1,83 @@
+{
+    "Gson-15": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Encodes {@code value}.\n*\n* @param value a finite value. May not be {@link Double#isNaN() NaNs} or\n*     {@link Double#isInfinite() infinities}.\n* @return this writer.\n*/\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (Double.isNaN(value) || Double.isInfinite(value)) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testNonFiniteDoublesWhenLenient() throws IOException {\n\n    StringWriter stringWriter = new StringWriter();\n\n    JsonWriter jsonWriter = new JsonWriter(stringWriter);\n\n    jsonWriter.setLenient(true);\n\n    jsonWriter.beginArray();\n\n    jsonWriter.value(Double.NaN);\n\n    jsonWriter.value(Double.NEGATIVE_INFINITY);\n\n    jsonWriter.value(Double.POSITIVE_INFINITY);\n\n    jsonWriter.endArray();\n\n    assertEquals(\"[NaN,-Infinity,Infinity]\", stringWriter.toString());\n\n  }\n\n```\n#Error message: java.lang.IllegalArgumentException: Numeric values must be finite, but was NaN\n\tat com.google.gson.stream.JsonWriter.value(JsonWriter.java:496)  throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n\tat com.google.gson.stream.JsonWriterTest.testNonFiniteDoublesWhenLenient(JsonWriterTest.java:222)  jsonWriter.value(Double.NaN);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (value == Double.POSITIVE_INFINITY) {\n    out.append(\"Infinity\");\n  } else if (value == Double.NEGATIVE_INFINITY) {\n    out.append(\"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (value == Double.POSITIVE_INFINITY) {\n    out.append(\"Infinity\");\n  } else if (value == Double.NEGATIVE_INFINITY) {\n    out.append(\"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  out.append(Double.toString(value));\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (Double.isInfinite(value)) {\n    out.append(value > 0 ? \"Infinity\" : \"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ],
+                [
+                    "\npublic JsonWriter value(double value) throws IOException {\n  writeDeferredName();\n  if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {\n    throw new IllegalArgumentException(\"Numeric values must be finite, but was \" + value);\n  }\n  beforeValue();\n  if (Double.isNaN(value)) {\n    out.append(\"NaN\");\n  } else if (value == Double.POSITIVE_INFINITY) {\n    out.append(\"Infinity\");\n  } else if (value == Double.NEGATIVE_INFINITY) {\n    out.append(\"-Infinity\");\n  } else {\n    out.append(Double.toString(value));\n  }\n  return this;\n}\n"
+                ]
+            ]
+        }
+    }
+}

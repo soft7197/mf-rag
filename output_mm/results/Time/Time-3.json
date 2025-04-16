@@ -1,0 +1,1016 @@
+{
+    "Time-3": {
+        "function_num": 10,
+        "functions": [
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 635,
+                "end_loc": 640,
+                "buggy_function": "    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                "fixed_function": "    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n",
+                "comment": "    /**\n     * Adds to the instant specifying the duration and multiple to add.\n     *\n     * @param type  a field type, usually obtained from DateTimeFieldType, not null\n     * @param amount  the amount to add of this duration\n     * @throws IllegalArgumentException if the value is null or invalid\n     * @throws ArithmeticException if the result exceeds the capacity of the instant\n     */\n",
+                "normalized_body": [
+                    "public void add(DurationFieldType type, int amount) { if (type == null) { throw new IllegalArgumentException(\\\"Field must not be null\\\"); } setMillis(type.getField(getChronology()).add(getMillis(), amount)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "public void add(DurationFieldType type, int amount) { if (type == null) { throw new IllegalArgumentException(\\\"Field must not be null\\\"); } setMillis(type.getField(getChronology()).add(getMillis(), amount)); }"
+                    ],
+                    [
+                        0.9968396425247192,
+                        "public void set(DateTimeFieldType type, int value) { if (type == null) { throw new IllegalArgumentException(\\\"Field must not be null\\\"); } setMillis(type.getField(getChronology()).set(getMillis(), value)); }"
+                    ],
+                    [
+                        0.9829452633857727,
+                        "public long set(long instant, int year) { FieldUtils.verifyValueBounds(this, year, 0, getMaximumValue()); if (getWrappedField().get(instant) < 0) { year = -year; } return super.set(instant, year); }"
+                    ],
+                    [
+                        0.9829287528991699,
+                        "public void setPeriodBeforeEnd(ReadablePeriod period) { if (period == null) { setStartMillis(getEndMillis()); } else { setStartMillis(getChronology().add(period, getEndMillis(), -1)); } }"
+                    ],
+                    [
+                        0.9826623201370239,
+                        "public YearMonthDay setCopy(String text, Locale locale) { int[] newValues = iYearMonthDay.getValues(); newValues = getField().set(iYearMonthDay, iFieldIndex, newValues, text, locale); return new YearMonthDay(iYearMonthDay, newValues); }"
+                    ],
+                    [
+                        0.9820964336395264,
+                        "public long addWrapField(long instant, int value) { int current = get(instant); int wrapped = FieldUtils.getWrappedValue(current, value, getMinimumValue(instant), getMaximumValue(instant)); return set(instant, wrapped); }"
+                    ],
+                    [
+                        0.9818694591522217,
+                        "public void setDurationAfterStart(ReadableDuration duration) { long durationMillis = DateTimeUtils.getDurationMillis(duration); setEndMillis(FieldUtils.safeAdd(getStartMillis(), durationMillis)); }"
+                    ],
+                    [
+                        0.9815335273742676,
+                        "public TimeOfDay addWrapFieldToCopy(int valueToAdd) { int[] newValues = iTimeOfDay.getValues(); newValues = getField().addWrapField(iTimeOfDay, iFieldIndex, newValues, valueToAdd); return new TimeOfDay(iTimeOfDay, newValues); }"
+                    ],
+                    [
+                        0.9814386367797852,
+                        "public long add(long instant, long value) { int offset = getOffsetToAdd(instant); instant = iField.add(instant + offset, value); return instant - (iTimeField ? offset : getOffsetFromLocalToSubtract(instant)); }"
+                    ],
+                    [
+                        0.9810614585876465,
+                        "public void setDate(final int year, final int monthOfYear, final int dayOfMonth) { Chronology c = getChronology(); long instantMidnight = c.getDateTimeMillis(year, monthOfYear, dayOfMonth, 0); setDate(instantMidnight); }"
+                    ],
+                    [
+                        0.981017529964447,
+                        "public YearMonthDay withDayOfMonth(int dayOfMonth) { int[] newValues = getValues(); newValues = getChronology().dayOfMonth().set(this, DAY_OF_MONTH, newValues, dayOfMonth); return new YearMonthDay(this, newValues); }"
+                    ],
+                    [
+                        0.9808745980262756,
+                        "public long set(long instant, int year) { FieldUtils.verifyValueBounds(this, year, 1, getMaximumValue()); if (iChronology.getYear(instant) <= 0) { year = 1 - year; } return super.set(instant, year); }"
+                    ],
+                    [
+                        0.9807133674621582,
+                        "public void printTo(StringBuffer buf, long instant, Chronology chrono, int displayOffset, DateTimeZone displayZone, Locale locale) { try { buf.append(print(instant, chrono, locale)); } catch (RuntimeException e) { buf.append('\\ufffd'); } }"
+                    ],
+                    [
+                        0.9807014465332031,
+                        "public long add(long instant, int value) { int offset = getOffsetToAdd(instant); instant = iField.add(instant + offset, value); return instant - (iTimeField ? offset : getOffsetFromLocalToSubtract(instant)); }"
+                    ],
+                    [
+                        0.980666995048523,
+                        "public YearMonth withMonthOfYear(int monthOfYear) { int[] newValues = getValues(); newValues = getChronology().monthOfYear().set(this, MONTH_OF_YEAR, newValues, monthOfYear); return new YearMonth(this, newValues); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.joda.time.TestMutableDateTime_Adds::testAdd_DurationFieldType_int_dstOverlapWinter_addZero"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Adds to the instant specifying the duration and multiple to add.\n     *\n     * @param type  a field type, usually obtained from DateTimeFieldType, not null\n     * @param amount  the amount to add of this duration\n     * @throws IllegalArgumentException if the value is null or invalid\n     * @throws ArithmeticException if the result exceeds the capacity of the instant\n     */\n\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testAdd_DurationFieldType_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.add(DurationFieldType.years(), 0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAdd_DurationFieldType_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:187)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // no change needed if amount is zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Do nothing if the amount is zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return;\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return;\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n",
+                            "\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount != 0) {\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n        }\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 659,
+                "end_loc": 661,
+                "buggy_function": "    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                "fixed_function": "    public void addYears(final int years) {\n        if (years != 0) {\n            setMillis(getChronology().years().add(getMillis(), years));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addYears(final int years) { setMillis(getChronology().years().add(getMillis(), years)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.000000238418579,
+                        "public void addYears(final int years) { setMillis(getChronology().years().add(getMillis(), years)); }"
+                    ],
+                    [
+                        0.9893633127212524,
+                        "public void setYear(final int year) { setMillis(getChronology().year().set(getMillis(), year)); }"
+                    ],
+                    [
+                        0.9866123199462891,
+                        "public void addHours(final int hours) { setMillis(getChronology().hours().add(getMillis(), hours)); }"
+                    ],
+                    [
+                        0.9761890769004822,
+                        "public void addMonths(final int months) { setMillis(getChronology().months().add(getMillis(), months)); }"
+                    ],
+                    [
+                        0.9651787281036377,
+                        "public DateTime withYear(int year) { return withMillis(getChronology().year().set(getMillis(), year)); }"
+                    ],
+                    [
+                        0.96188884973526,
+                        "public void addDays(final int days) { setMillis(getChronology().days().add(getMillis(), days)); }"
+                    ],
+                    [
+                        0.9532204866409302,
+                        "public LocalDate toLocalDate(int dayOfMonth) { return new LocalDate(getYear(), getMonthOfYear(), dayOfMonth, getChronology()); }"
+                    ],
+                    [
+                        0.9503822922706604,
+                        "public LocalDate toLocalDate(int year) { return new LocalDate(year, getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ],
+                    [
+                        0.950021505355835,
+                        "public YearMonthDay withYear(int year) { int[] newValues = getValues(); newValues = getChronology().year().set(this, YEAR, newValues, year); return new YearMonthDay(this, newValues); }"
+                    ],
+                    [
+                        0.9475972652435303,
+                        "public void testPropertySetYear() { YearMonthDay test = new YearMonthDay(1972, 6, 9); YearMonthDay copy = test.year().setCopy(12); check(test, 1972, 6, 9); check(copy, 12, 6, 9); }"
+                    ],
+                    [
+                        0.9449719190597534,
+                        "public void testWithDate() { LocalDateTime test = new LocalDateTime(2004, 6, 9, 10, 20, 30, 40); LocalDateTime result = test.withDate(2006, 2, 1); check(test, 2004, 6, 9, 10, 20, 30, 40); check(result, 2006, 2, 1, 10, 20, 30, 40); }"
+                    ],
+                    [
+                        0.9436046481132507,
+                        "public LocalDate toLocalDate() { return new LocalDate(getYear(), getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ],
+                    [
+                        0.9421313405036926,
+                        "public void addYears(int years) { super.addField(DurationFieldType.years(), years); }"
+                    ],
+                    [
+                        0.9416812062263489,
+                        "public void testWithField4() { TimeOfDay test = new TimeOfDay(10, 20, 30, 40); TimeOfDay result = test.withField(DateTimeFieldType.hourOfDay(), 10); assertSame(test, result); }"
+                    ],
+                    [
+                        0.9398354291915894,
+                        "public Hours plus(int hours) { if (hours == 0) { return this; } return Hours.hours(FieldUtils.safeAdd(getValue(), hours)); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.joda.time.TestMutableDateTime_Adds::testAddYears_int_dstOverlapWinter_addZero"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testAddYears_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addYears(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddYears_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:227)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years), true);\n    }\n",
+                            "\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        setMillis(getChronology().years().add(getMillis(), years, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        if (years != 0) {\n            setMillis(getChronology().years().add(getMillis(), years));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        if (years != 0) {\n            setMillis(getChronology().years().add(getMillis(), years));\n        }\n    }\n",
+                            "\n    public void addYears(final int years) {\n        if (years == 0) return; // No operation needed if years is zero\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        long millisBefore = getMillis();\n        long millisAfter = getChronology().years().add(millisBefore, years);\n        if (years == 0) {\n            boolean sameInstant = getChronology().getZone().getOffset(millisBefore) == getChronology().getZone().getOffset(millisAfter);\n            if (!sameInstant) {\n                setMillis(millisBefore); // If zone offset changed, reset to previous millis\n                return;\n            }\n        }\n        setMillis(millisAfter);\n    }\n",
+                            "\n    public void addYears(final int years) {\n        long instant = getChronology().years().add(getMillis(), years);\n        setMillis(getChronology().withZone(getZone()).getZone().convertLocalToUTC(instant, false, instant));\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        if (years != 0) {\n            setMillis(getChronology().years().add(getMillis(), years));\n        }\n    }\n",
+                            "\n    public void addYears(final int years) {\n        if (years == 0) return; // No operation needed if years is zero\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        long millisBefore = getMillis();\n        long millisAfter = getChronology().years().add(millisBefore, years);\n        if (years == 0) {\n            boolean sameInstant = getChronology().getZone().getOffset(millisBefore) == getChronology().getZone().getOffset(millisAfter);\n            if (!sameInstant) {\n                setMillis(millisBefore); // If zone offset changed, reset to previous millis\n                return;\n            }\n        }\n        setMillis(millisAfter);\n    }\n",
+                            "\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        if (years != 0) {\n            setMillis(getChronology().years().add(getMillis(), years));\n        }\n    }\n",
+                            "\n    public void addYears(final int years) {\n        if (years == 0) return; // No operation needed if years is zero\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n",
+                            "\n    /**\n     * Add a number of years to the date.\n     *\n     * @param years  the years to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addYears(final int years) {\n        long millisBefore = getMillis();\n        long millisAfter = getChronology().years().add(millisBefore, years);\n        if (years == 0) {\n            boolean sameInstant = getChronology().getZone().getOffset(millisBefore) == getChronology().getZone().getOffset(millisAfter);\n            if (!sameInstant) {\n                setMillis(millisBefore); // If zone offset changed, reset to previous millis\n                return;\n            }\n        }\n        setMillis(millisAfter);\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 680,
+                "end_loc": 682,
+                "buggy_function": "    public void addWeekyears(final int weekyears) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n",
+                "fixed_function": "    public void addWeekyears(final int weekyears) {\n        if (weekyears != 0) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of weekyears to the date.\n     *\n     * @param weekyears  the weekyears to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addWeekyears(final int weekyears) { setMillis(getChronology().weekyears().add(getMillis(), weekyears)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.000000238418579,
+                        "public void addWeekyears(final int weekyears) { setMillis(getChronology().weekyears().add(getMillis(), weekyears)); }"
+                    ],
+                    [
+                        0.9863657355308533,
+                        "public void setWeekyear(final int weekyear) { setMillis(getChronology().weekyear().set(getMillis(), weekyear)); }"
+                    ],
+                    [
+                        0.9829938411712646,
+                        "public DateTime withZone(DateTimeZone newZone) { return withChronology(getChronology().withZone(newZone)); }"
+                    ],
+                    [
+                        0.9825676679611206,
+                        "public void addMillis(final int millis) { setMillis(getChronology().millis().add(getMillis(), millis)); }"
+                    ],
+                    [
+                        0.9803926348686218,
+                        "public void setMinuteOfDay(final int minuteOfDay) { setMillis(getChronology().minuteOfDay().set(getMillis(), minuteOfDay)); }"
+                    ],
+                    [
+                        0.9793301224708557,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9787622690200806,
+                        "public void setMonthOfYear(final int monthOfYear) { setMillis(getChronology().monthOfYear().set(getMillis(), monthOfYear)); }"
+                    ],
+                    [
+                        0.9787173271179199,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.9784747958183289,
+                        "public DateTime addToCopy(long value) { return iInstant.withMillis(iField.add(iInstant.getMillis(), value)); }"
+                    ],
+                    [
+                        0.9784356951713562,
+                        "public void setDayOfYear(final int dayOfYear) { setMillis(getChronology().dayOfYear().set(getMillis(), dayOfYear)); }"
+                    ],
+                    [
+                        0.9781188368797302,
+                        "public void addMinutes(final int minutes) { setMillis(getChronology().minutes().add(getMillis(), minutes)); }"
+                    ],
+                    [
+                        0.9776960015296936,
+                        "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                    ],
+                    [
+                        0.9776273965835571,
+                        "public void addDays(int days) { super.addField(DurationFieldType.days(), days); }"
+                    ],
+                    [
+                        0.9769319295883179,
+                        "public void setDays(int days) { super.setField(DurationFieldType.days(), days); }"
+                    ],
+                    [
+                        0.9765089154243469,
+                        "public int getMaximumValue(long millis) { return iChronology.year().isLeap(millis) ? 366 : 365; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 2 - Buggy:\n```java\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 3 - Buggy:\n```java\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 3 - Fixed:\n```java\n\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 4 - Buggy:\n```java\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 4 - Fixed:\n```java\n\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 5 - Buggy:\n```java\n    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n### Example 5 - Fixed:\n```java\n\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public void addWeekyears(final int weekyears) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n```\n\n### Method 2:\n```java\n    public void addHours(final int hours) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n```\n\n### Method 3:\n```java\n    public void addMinutes(final int minutes) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n```\n\n### Method 4:\n```java\n    public void addSeconds(final int seconds) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n```\n\n### Method 5:\n```java\n    public void addMillis(final int millis) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n",
+                            "\n    public void addWeekyears(final int weekyears) {\n        if (weekyears == 0) {\n            return;\n        }\n        setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 701,
+                "end_loc": 703,
+                "buggy_function": "    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                "fixed_function": "    public void addMonths(final int months) {\n        if (months != 0) {\n            setMillis(getChronology().months().add(getMillis(), months));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addMonths(final int months) { setMillis(getChronology().months().add(getMillis(), months)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "public void addMonths(final int months) { setMillis(getChronology().months().add(getMillis(), months)); }"
+                    ],
+                    [
+                        0.9878756999969482,
+                        "public void addHours(final int hours) { setMillis(getChronology().hours().add(getMillis(), hours)); }"
+                    ],
+                    [
+                        0.9863775968551636,
+                        "public void setYear(final int year) { setMillis(getChronology().year().set(getMillis(), year)); }"
+                    ],
+                    [
+                        0.9761890769004822,
+                        "public void addYears(final int years) { setMillis(getChronology().years().add(getMillis(), years)); }"
+                    ],
+                    [
+                        0.9739893674850464,
+                        "public void addDays(final int days) { setMillis(getChronology().days().add(getMillis(), days)); }"
+                    ],
+                    [
+                        0.9729925394058228,
+                        "public void addSeconds(final int seconds) { setMillis(getChronology().seconds().add(getMillis(), seconds)); }"
+                    ],
+                    [
+                        0.9697816371917725,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.96876060962677,
+                        "public void setMonthOfYear(final int monthOfYear) { setMillis(getChronology().monthOfYear().set(getMillis(), monthOfYear)); }"
+                    ],
+                    [
+                        0.9655255079269409,
+                        "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                    ],
+                    [
+                        0.9635095000267029,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9619055390357971,
+                        "public void setWeekyear(final int weekyear) { setMillis(getChronology().weekyear().set(getMillis(), weekyear)); }"
+                    ],
+                    [
+                        0.9608857035636902,
+                        "public void setDayOfYear(final int dayOfYear) { setMillis(getChronology().dayOfYear().set(getMillis(), dayOfYear)); }"
+                    ],
+                    [
+                        0.9580679535865784,
+                        "public void testWithField4() { TimeOfDay test = new TimeOfDay(10, 20, 30, 40); TimeOfDay result = test.withField(DateTimeFieldType.hourOfDay(), 10); assertSame(test, result); }"
+                    ],
+                    [
+                        0.9571092128753662,
+                        "public int get(long instant) { int year = getWrappedField().get(instant); return year < 0 ? -year : year; }"
+                    ],
+                    [
+                        0.9561445116996765,
+                        "public LocalDate toLocalDate() { return new LocalDate(getYear(), getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.joda.time.TestMutableDateTime_Adds::testAddMonths_int_dstOverlapWinter_addZero"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testAddMonths_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addMonths(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddMonths_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:249)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        long newMillis = getChronology().months().add(getMillis(), months);\n        // Retain the original time zone offset if no months are added\n        if (months == 0) {\n            newMillis += getZone().getOffset(getMillis()) - getZone().getOffset(newMillis);\n        }\n        setMillis(newMillis);\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n            long newMillis = getChronology().months().add(getMillis(), months);\n            setMillis(getChronology().withZoneRetainFields(getZone()).getDateTimeMillis(newMillis, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        long instant = getChronology().months().add(getMillis(), months);\n        DateTimeZone zone = getZone();\n        // Handle DST by calculating zone offset at the new instant\n        int newOffset = zone.getOffset(instant);\n        int currentOffset = zone.getOffset(getMillis());\n        setMillis(instant - (newOffset - currentOffset));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addMonths(final int months) {\n        if (months == 0) return; // No need to perform operation if months is zero\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        long currentMillis = getMillis();\n        long newMillis = getChronology().months().add(currentMillis, months);\n        if (months == 0) {\n            DateTimeZone zone = getZone();\n            if (zone.isStandardOffset(currentMillis) != zone.isStandardOffset(newMillis)) {\n                newMillis = getChronology().millis().add(newMillis, -zone.getOffset(newMillis) + zone.getOffset(currentMillis));\n            }\n        }\n        setMillis(newMillis);\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months != 0) {\n            setMillis(getChronology().months().add(getMillis(), months));\n        }\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addMonths(final int months) {\n        if (months == 0) return; // No need to perform operation if months is zero\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months != 0) {\n            setMillis(getChronology().months().add(getMillis(), months));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addMonths(final int months) {\n        if (months == 0) return; // No need to perform operation if months is zero\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n",
+                            "\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months != 0) {\n            setMillis(getChronology().months().add(getMillis(), months));\n        }\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 722,
+                "end_loc": 724,
+                "buggy_function": "    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n",
+                "fixed_function": "    public void addWeeks(final int weeks) {\n        if (weeks != 0) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                    ],
+                    [
+                        0.995283842086792,
+                        "public void addSeconds(final int seconds) { setMillis(getChronology().seconds().add(getMillis(), seconds)); }"
+                    ],
+                    [
+                        0.9921519756317139,
+                        "public void setWeekyear(final int weekyear) { setMillis(getChronology().weekyear().set(getMillis(), weekyear)); }"
+                    ],
+                    [
+                        0.99152672290802,
+                        "public void addMillis(final int millis) { setMillis(getChronology().millis().add(getMillis(), millis)); }"
+                    ],
+                    [
+                        0.9914724230766296,
+                        "public void addMinutes(final int minutes) { setMillis(getChronology().minutes().add(getMillis(), minutes)); }"
+                    ],
+                    [
+                        0.9850887060165405,
+                        "public void setHourOfDay(final int hourOfDay) { setMillis(getChronology().hourOfDay().set(getMillis(), hourOfDay)); }"
+                    ],
+                    [
+                        0.9811689853668213,
+                        "public void setMinuteOfDay(final int minuteOfDay) { setMillis(getChronology().minuteOfDay().set(getMillis(), minuteOfDay)); }"
+                    ],
+                    [
+                        0.981050968170166,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.9802520275115967,
+                        "public void setMonthOfYear(final int monthOfYear) { setMillis(getChronology().monthOfYear().set(getMillis(), monthOfYear)); }"
+                    ],
+                    [
+                        0.9793610572814941,
+                        "public void setMinuteOfHour(final int minuteOfHour) { setMillis(getChronology().minuteOfHour().set(getMillis(), minuteOfHour)); }"
+                    ],
+                    [
+                        0.9788435697555542,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9783157110214233,
+                        "public void addMonths(int months) { super.addField(DurationFieldType.months(), months); }"
+                    ],
+                    [
+                        0.9776960015296936,
+                        "public void addWeekyears(final int weekyears) { setMillis(getChronology().weekyears().add(getMillis(), weekyears)); }"
+                    ],
+                    [
+                        0.9739876389503479,
+                        "public DateTime toDateTime(Chronology chronology) { chronology = DateTimeUtils.getChronology(chronology); if (getChronology() == chronology) { return this; } return super.toDateTime(chronology); }"
+                    ],
+                    [
+                        0.9735202193260193,
+                        "public int get(long instant) { int year = getWrappedField().get(instant); return year < 0 ? -year : year; }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.joda.time.TestMutableDateTime_Adds::testAddWeeks_int_dstOverlapWinter_addZero"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testAddWeeks_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addWeeks(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddWeeks_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:300)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks != 0) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addWeeks(final int weeks) {\n        setMillis(getChronology().weeks().add(getMillis(), weeks, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) {\n            return;\n        }\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        setMillis(getChronology().weeks().add(getMillis(), weeks, getZone(), 0));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    public void addWeeks(final int weeks) {\n        long initialMillis = getMillis();\n        long newMillis = getChronology().weeks().add(initialMillis, weeks);\n\n        // Account for DST overlap by checking if the local time representation is the same\n        if (weeks == 0 || getChronology().millisOfDay().get(initialMillis) != getChronology().millisOfDay().get(newMillis)) {\n            setMillis(newMillis);\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        setMillis(getChronology().weeks().add(getMillis(), weeks, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks, getZone()));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    \n    public void addWeeks(final int weeks) {\n        if (weeks == 0) {\n            return;\n        }\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks != 0) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) {\n            return;\n        }\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks != 0) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) {\n            return;\n        }\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 763,
+                "end_loc": 765,
+                "buggy_function": "    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                "fixed_function": "    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addDays(final int days) { setMillis(getChronology().days().add(getMillis(), days)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public void addDays(final int days) { setMillis(getChronology().days().add(getMillis(), days)); }"
+                    ],
+                    [
+                        0.9835197925567627,
+                        "public void addHours(final int hours) { setMillis(getChronology().hours().add(getMillis(), hours)); }"
+                    ],
+                    [
+                        0.9814990758895874,
+                        "public void setYear(final int year) { setMillis(getChronology().year().set(getMillis(), year)); }"
+                    ],
+                    [
+                        0.9739894866943359,
+                        "public void addMonths(final int months) { setMillis(getChronology().months().add(getMillis(), months)); }"
+                    ],
+                    [
+                        0.9705686569213867,
+                        "public LocalDate toLocalDate(int year) { return new LocalDate(year, getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ],
+                    [
+                        0.9700343608856201,
+                        "public void setDayOfYear(final int dayOfYear) { setMillis(getChronology().dayOfYear().set(getMillis(), dayOfYear)); }"
+                    ],
+                    [
+                        0.9676216244697571,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.9673247337341309,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9663863182067871,
+                        "public LocalDate toLocalDate(int dayOfMonth) { return new LocalDate(getYear(), getMonthOfYear(), dayOfMonth, getChronology()); }"
+                    ],
+                    [
+                        0.9635210037231445,
+                        "public LocalDate toLocalDate() { return new LocalDate(getYear(), getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ],
+                    [
+                        0.96188884973526,
+                        "public void addYears(final int years) { setMillis(getChronology().years().add(getMillis(), years)); }"
+                    ],
+                    [
+                        0.9608066082000732,
+                        "public Days plus(int days) { if (days == 0) { return this; } return Days.days(FieldUtils.safeAdd(getValue(), days)); }"
+                    ],
+                    [
+                        0.9595922827720642,
+                        "public MonthDay setCopy(int value) { int[] newValues = iBase.getValues(); newValues = getField().set(iBase, iFieldIndex, newValues, value); return new MonthDay(iBase, newValues); }"
+                    ],
+                    [
+                        0.9593129754066467,
+                        "public void setMonthOfYear(final int monthOfYear) { setMillis(getChronology().monthOfYear().set(getMillis(), monthOfYear)); }"
+                    ],
+                    [
+                        0.9552210569381714,
+                        "public int get(long instant) { int year = getWrappedField().get(instant); return year < 0 ? -year : year; }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.joda.time.TestMutableDateTime_Adds::testAddDays_int_dstOverlapWinter_addZero"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testAddDays_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addDays(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddDays_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:271)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        setMillis(getChronology().days().add(getMillis(), days), getZone());\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) { // Only adjust time if days are actually added\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    \n    public void addDays(final int days) {\n        if (days == 0) return; // Avoid modification for zero days\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) return;\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    \n    public void addDays(final int days) {\n        if (days == 0) return; // Avoid modification for zero days\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days != 0) {\n            setMillis(getChronology().days().add(getMillis(), days));\n        }\n    }\n",
+                            "\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n    \n    public void addDays(final int days) {\n        if (days == 0) return; // Avoid modification for zero days\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 784,
+                "end_loc": 786,
+                "buggy_function": "    public void addHours(final int hours) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n",
+                "fixed_function": "    public void addHours(final int hours) {\n        if (hours != 0) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of hours to the date.\n     *\n     * @param hours  the hours to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addHours(final int hours) { setMillis(getChronology().hours().add(getMillis(), hours)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public void addHours(final int hours) { setMillis(getChronology().hours().add(getMillis(), hours)); }"
+                    ],
+                    [
+                        0.9916741847991943,
+                        "public void setYear(final int year) { setMillis(getChronology().year().set(getMillis(), year)); }"
+                    ],
+                    [
+                        0.9878755807876587,
+                        "public void addMonths(final int months) { setMillis(getChronology().months().add(getMillis(), months)); }"
+                    ],
+                    [
+                        0.9866122603416443,
+                        "public void addYears(final int years) { setMillis(getChronology().years().add(getMillis(), years)); }"
+                    ],
+                    [
+                        0.9835195541381836,
+                        "public void addDays(final int days) { setMillis(getChronology().days().add(getMillis(), days)); }"
+                    ],
+                    [
+                        0.9593115448951721,
+                        "public LocalDate toLocalDate(int dayOfMonth) { return new LocalDate(getYear(), getMonthOfYear(), dayOfMonth, getChronology()); }"
+                    ],
+                    [
+                        0.9582942128181458,
+                        "public LocalDate toLocalDate(int year) { return new LocalDate(year, getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ],
+                    [
+                        0.9539142847061157,
+                        "public LocalDate toLocalDate() { return new LocalDate(getYear(), getMonthOfYear(), getDayOfMonth(), getChronology()); }"
+                    ],
+                    [
+                        0.9534672498703003,
+                        "public DateTime withYear(int year) { return withMillis(getChronology().year().set(getMillis(), year)); }"
+                    ],
+                    [
+                        0.9516415596008301,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.950123131275177,
+                        "public Hours plus(int hours) { if (hours == 0) { return this; } return Hours.hours(FieldUtils.safeAdd(getValue(), hours)); }"
+                    ],
+                    [
+                        0.9482889175415039,
+                        "public void setDayOfYear(final int dayOfYear) { setMillis(getChronology().dayOfYear().set(getMillis(), dayOfYear)); }"
+                    ],
+                    [
+                        0.9478700160980225,
+                        "public void setMonthOfYear(final int monthOfYear) { setMillis(getChronology().monthOfYear().set(getMillis(), monthOfYear)); }"
+                    ],
+                    [
+                        0.9467336535453796,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9442669749259949,
+                        "public void testToString() { LocalDateTime test = new LocalDateTime(2002, 6, 9, 10, 20, 30, 40); assertEquals(\\\"2002-06-09T10:20:30.040\\\", test.toString()); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 2 - Buggy:\n```java\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 3 - Buggy:\n```java\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 3 - Fixed:\n```java\n\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 4 - Buggy:\n```java\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 4 - Fixed:\n```java\n\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 5 - Buggy:\n```java\n    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n### Example 5 - Fixed:\n```java\n\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public void addWeekyears(final int weekyears) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n```\n\n### Method 2:\n```java\n    public void addHours(final int hours) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n```\n\n### Method 3:\n```java\n    public void addMinutes(final int minutes) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n```\n\n### Method 4:\n```java\n    public void addSeconds(final int seconds) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n```\n\n### Method 5:\n```java\n    public void addMillis(final int millis) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n",
+                            "\n    public void addHours(final int hours) {\n        if (hours == 0) {\n            return;\n        }\n        setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 815,
+                "end_loc": 817,
+                "buggy_function": "    public void addMinutes(final int minutes) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n",
+                "fixed_function": "    public void addMinutes(final int minutes) {\n        if (minutes != 0) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of minutes to the date.\n     *\n     * @param minutes  the minutes to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addMinutes(final int minutes) { setMillis(getChronology().minutes().add(getMillis(), minutes)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public void addMinutes(final int minutes) { setMillis(getChronology().minutes().add(getMillis(), minutes)); }"
+                    ],
+                    [
+                        0.9955271482467651,
+                        "public void addMillis(final int millis) { setMillis(getChronology().millis().add(getMillis(), millis)); }"
+                    ],
+                    [
+                        0.9914724826812744,
+                        "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                    ],
+                    [
+                        0.9891000986099243,
+                        "public void addSeconds(final int seconds) { setMillis(getChronology().seconds().add(getMillis(), seconds)); }"
+                    ],
+                    [
+                        0.9878137707710266,
+                        "public void setMinuteOfDay(final int minuteOfDay) { setMillis(getChronology().minuteOfDay().set(getMillis(), minuteOfDay)); }"
+                    ],
+                    [
+                        0.9866406917572021,
+                        "public void setMinuteOfHour(final int minuteOfHour) { setMillis(getChronology().minuteOfHour().set(getMillis(), minuteOfHour)); }"
+                    ],
+                    [
+                        0.9862311482429504,
+                        "public void setWeekyear(final int weekyear) { setMillis(getChronology().weekyear().set(getMillis(), weekyear)); }"
+                    ],
+                    [
+                        0.9848395586013794,
+                        "public void setHourOfDay(final int hourOfDay) { setMillis(getChronology().hourOfDay().set(getMillis(), hourOfDay)); }"
+                    ],
+                    [
+                        0.9798223376274109,
+                        "public void setDurationBeforeEnd(long duration) { setStartMillis(FieldUtils.safeAdd(getEndMillis(), -duration)); }"
+                    ],
+                    [
+                        0.978118896484375,
+                        "public void addWeekyears(final int weekyears) { setMillis(getChronology().weekyears().add(getMillis(), weekyears)); }"
+                    ],
+                    [
+                        0.9774709939956665,
+                        "public DateTime toDateTime(Chronology chronology) { chronology = DateTimeUtils.getChronology(chronology); if (getChronology() == chronology) { return this; } return super.toDateTime(chronology); }"
+                    ],
+                    [
+                        0.9759969115257263,
+                        "public void setMonths(int months) { super.setField(DurationFieldType.months(), months); }"
+                    ],
+                    [
+                        0.9755750298500061,
+                        "public void addMonths(int months) { super.addField(DurationFieldType.months(), months); }"
+                    ],
+                    [
+                        0.9750313758850098,
+                        "public void setWeekOfWeekyear(final int weekOfWeekyear) { setMillis(getChronology().weekOfWeekyear().set(getMillis(), weekOfWeekyear)); }"
+                    ],
+                    [
+                        0.9737505912780762,
+                        "public void setSecondOfDay(final int secondOfDay) { setMillis(getChronology().secondOfDay().set(getMillis(), secondOfDay)); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 2 - Buggy:\n```java\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 3 - Buggy:\n```java\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 3 - Fixed:\n```java\n\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 4 - Buggy:\n```java\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 4 - Fixed:\n```java\n\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 5 - Buggy:\n```java\n    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n### Example 5 - Fixed:\n```java\n\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public void addWeekyears(final int weekyears) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n```\n\n### Method 2:\n```java\n    public void addHours(final int hours) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n```\n\n### Method 3:\n```java\n    public void addMinutes(final int minutes) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n```\n\n### Method 4:\n```java\n    public void addSeconds(final int seconds) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n```\n\n### Method 5:\n```java\n    public void addMillis(final int millis) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n",
+                            "\n    public void addMinutes(final int minutes) {\n        if (minutes == 0) {\n            return;\n        }\n        setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 846,
+                "end_loc": 848,
+                "buggy_function": "    public void addSeconds(final int seconds) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n",
+                "fixed_function": "    public void addSeconds(final int seconds) {\n        if (seconds != 0) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of seconds to the date.\n     *\n     * @param seconds  the seconds to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addSeconds(final int seconds) { setMillis(getChronology().seconds().add(getMillis(), seconds)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "public void addSeconds(final int seconds) { setMillis(getChronology().seconds().add(getMillis(), seconds)); }"
+                    ],
+                    [
+                        0.9952839612960815,
+                        "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                    ],
+                    [
+                        0.9891000986099243,
+                        "public void addMinutes(final int minutes) { setMillis(getChronology().minutes().add(getMillis(), minutes)); }"
+                    ],
+                    [
+                        0.9879395365715027,
+                        "public void setWeekyear(final int weekyear) { setMillis(getChronology().weekyear().set(getMillis(), weekyear)); }"
+                    ],
+                    [
+                        0.9877254962921143,
+                        "public void addMillis(final int millis) { setMillis(getChronology().millis().add(getMillis(), millis)); }"
+                    ],
+                    [
+                        0.9827088117599487,
+                        "public void setHourOfDay(final int hourOfDay) { setMillis(getChronology().hourOfDay().set(getMillis(), hourOfDay)); }"
+                    ],
+                    [
+                        0.9805176854133606,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.9787935614585876,
+                        "public void setMonthOfYear(final int monthOfYear) { setMillis(getChronology().monthOfYear().set(getMillis(), monthOfYear)); }"
+                    ],
+                    [
+                        0.9778980016708374,
+                        "public void setMinuteOfDay(final int minuteOfDay) { setMillis(getChronology().minuteOfDay().set(getMillis(), minuteOfDay)); }"
+                    ],
+                    [
+                        0.9773847460746765,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9758164882659912,
+                        "public void setMinuteOfHour(final int minuteOfHour) { setMillis(getChronology().minuteOfHour().set(getMillis(), minuteOfHour)); }"
+                    ],
+                    [
+                        0.9729925990104675,
+                        "public void addMonths(final int months) { setMillis(getChronology().months().add(getMillis(), months)); }"
+                    ],
+                    [
+                        0.9727104902267456,
+                        "public void addWeekyears(final int weekyears) { setMillis(getChronology().weekyears().add(getMillis(), weekyears)); }"
+                    ],
+                    [
+                        0.9726729393005371,
+                        "public void addMonths(int months) { super.addField(DurationFieldType.months(), months); }"
+                    ],
+                    [
+                        0.9711723923683167,
+                        "public int get(long instant) { int year = getWrappedField().get(instant); return year < 0 ? -year : year; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 2 - Buggy:\n```java\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 3 - Buggy:\n```java\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 3 - Fixed:\n```java\n\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 4 - Buggy:\n```java\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 4 - Fixed:\n```java\n\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 5 - Buggy:\n```java\n    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n### Example 5 - Fixed:\n```java\n\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public void addWeekyears(final int weekyears) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n```\n\n### Method 2:\n```java\n    public void addHours(final int hours) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n```\n\n### Method 3:\n```java\n    public void addMinutes(final int minutes) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n```\n\n### Method 4:\n```java\n    public void addSeconds(final int seconds) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n```\n\n### Method 5:\n```java\n    public void addMillis(final int millis) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n",
+                            "\n    public void addSeconds(final int seconds) {\n        if (seconds == 0) {\n            return;\n        }\n        setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/joda/time/MutableDateTime.java",
+                "start_loc": 879,
+                "end_loc": 881,
+                "buggy_function": "    public void addMillis(final int millis) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n",
+                "fixed_function": "    public void addMillis(final int millis) {\n        if (millis != 0) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n        }\n    }\n",
+                "comment": "    /**\n     * Add a number of milliseconds to the date. The implementation of this\n     * method differs from the {@link #add(long)} method in that a\n     * DateTimeField performs the addition.\n     *\n     * @param millis  the milliseconds to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n",
+                "normalized_body": [
+                    "public void addMillis(final int millis) { setMillis(getChronology().millis().add(getMillis(), millis)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public void addMillis(final int millis) { setMillis(getChronology().millis().add(getMillis(), millis)); }"
+                    ],
+                    [
+                        0.9955271482467651,
+                        "public void addMinutes(final int minutes) { setMillis(getChronology().minutes().add(getMillis(), minutes)); }"
+                    ],
+                    [
+                        0.99152672290802,
+                        "public void addWeeks(final int weeks) { setMillis(getChronology().weeks().add(getMillis(), weeks)); }"
+                    ],
+                    [
+                        0.9882293939590454,
+                        "public void setMinuteOfDay(final int minuteOfDay) { setMillis(getChronology().minuteOfDay().set(getMillis(), minuteOfDay)); }"
+                    ],
+                    [
+                        0.9879310727119446,
+                        "public void setWeekyear(final int weekyear) { setMillis(getChronology().weekyear().set(getMillis(), weekyear)); }"
+                    ],
+                    [
+                        0.9877253770828247,
+                        "public void addSeconds(final int seconds) { setMillis(getChronology().seconds().add(getMillis(), seconds)); }"
+                    ],
+                    [
+                        0.9855223894119263,
+                        "public void setHourOfDay(final int hourOfDay) { setMillis(getChronology().hourOfDay().set(getMillis(), hourOfDay)); }"
+                    ],
+                    [
+                        0.9825676679611206,
+                        "public void addWeekyears(final int weekyears) { setMillis(getChronology().weekyears().add(getMillis(), weekyears)); }"
+                    ],
+                    [
+                        0.9824477434158325,
+                        "public void setMinuteOfHour(final int minuteOfHour) { setMillis(getChronology().minuteOfHour().set(getMillis(), minuteOfHour)); }"
+                    ],
+                    [
+                        0.9821113348007202,
+                        "public DateTime toDateTime(Chronology chronology) { chronology = DateTimeUtils.getChronology(chronology); if (getChronology() == chronology) { return this; } return super.toDateTime(chronology); }"
+                    ],
+                    [
+                        0.9805328249931335,
+                        "public void setDurationBeforeEnd(long duration) { setStartMillis(FieldUtils.safeAdd(getEndMillis(), -duration)); }"
+                    ],
+                    [
+                        0.9772297739982605,
+                        "public void setDayOfMonth(final int dayOfMonth) { setMillis(getChronology().dayOfMonth().set(getMillis(), dayOfMonth)); }"
+                    ],
+                    [
+                        0.9769995212554932,
+                        "public void addMonths(int months) { super.addField(DurationFieldType.months(), months); }"
+                    ],
+                    [
+                        0.9768702387809753,
+                        "public void setDayOfWeek(final int dayOfWeek) { setMillis(getChronology().dayOfWeek().set(getMillis(), dayOfWeek)); }"
+                    ],
+                    [
+                        0.9765864610671997,
+                        "public void setMonths(int months) { super.setField(DurationFieldType.months(), months); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n            setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    public void add(DurationFieldType type, int amount) {\n        if (type == null) {\n            throw new IllegalArgumentException(\"Field must not be null\");\n        }\n        if (amount == 0) {\n            return; // Avoid changing the time zone offset when adding zero\n        }\n        setMillis(type.getField(getChronology()).add(getMillis(), amount));\n    }\n\n```\n\n### Example 2 - Buggy:\n```java\n    public void addYears(final int years) {\n            setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    public void addYears(final int years) {\n        if (years == 0) {\n            return;\n        }\n        setMillis(getChronology().years().add(getMillis(), years));\n    }\n\n```\n\n### Example 3 - Buggy:\n```java\n    public void addMonths(final int months) {\n            setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 3 - Fixed:\n```java\n\n    /**\n     * Add a number of months to the date.\n     *\n     * @param months  the months to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addMonths(final int months) {\n        if (months == 0) {\n            return;\n        }\n        setMillis(getChronology().months().add(getMillis(), months));\n    }\n\n```\n\n### Example 4 - Buggy:\n```java\n    public void addWeeks(final int weeks) {\n            setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 4 - Fixed:\n```java\n\n    /**\n     * Add a number of weeks to the date.\n     *\n     * @param weeks  the weeks to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addWeeks(final int weeks) {\n        if (weeks == 0) return; // No change required if adding zero weeks\n        setMillis(getChronology().weeks().add(getMillis(), weeks));\n    }\n\n```\n\n### Example 5 - Buggy:\n```java\n    public void addDays(final int days) {\n            setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n### Example 5 - Fixed:\n```java\n\n    /**\n     * Add a number of days to the date.\n     *\n     * @param days  the days to add\n     * @throws IllegalArgumentException if the value is invalid\n     */\n\n    public void addDays(final int days) {\n        if (days == 0) {\n            return;\n        }\n        setMillis(getChronology().days().add(getMillis(), days));\n    }\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public void addWeekyears(final int weekyears) {\n            setMillis(getChronology().weekyears().add(getMillis(), weekyears));\n    }\n\n```\n\n### Method 2:\n```java\n    public void addHours(final int hours) {\n            setMillis(getChronology().hours().add(getMillis(), hours));\n    }\n\n```\n\n### Method 3:\n```java\n    public void addMinutes(final int minutes) {\n            setMillis(getChronology().minutes().add(getMillis(), minutes));\n    }\n\n```\n\n### Method 4:\n```java\n    public void addSeconds(final int seconds) {\n            setMillis(getChronology().seconds().add(getMillis(), seconds));\n    }\n\n```\n\n### Method 5:\n```java\n    public void addMillis(final int millis) {\n            setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n",
+                            "\n    public void addMillis(final int millis) {\n        if (millis == 0) {\n            return;\n        }\n        setMillis(getChronology().millis().add(getMillis(), millis));\n    }\n\n"
+                        ]
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "org.joda.time.TestMutableDateTime_Adds::testAddYears_int_dstOverlapWinter_addZero": {
+                "path": "src/test/java/org/joda/time/TestMutableDateTime_Adds.java",
+                "function_name": "testAddYears_int_dstOverlapWinter_addZero",
+                "src": "    public void testAddYears_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addYears(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat org.joda.time.TestMutableDateTime_Adds.testAddYears_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:227)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddYears_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:227)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());"
+            },
+            "org.joda.time.TestMutableDateTime_Adds::testAddDays_int_dstOverlapWinter_addZero": {
+                "path": "src/test/java/org/joda/time/TestMutableDateTime_Adds.java",
+                "function_name": "testAddDays_int_dstOverlapWinter_addZero",
+                "src": "    public void testAddDays_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addDays(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat org.joda.time.TestMutableDateTime_Adds.testAddDays_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:271)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddDays_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:271)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());"
+            },
+            "org.joda.time.TestMutableDateTime_Adds::testAddWeeks_int_dstOverlapWinter_addZero": {
+                "path": "src/test/java/org/joda/time/TestMutableDateTime_Adds.java",
+                "function_name": "testAddWeeks_int_dstOverlapWinter_addZero",
+                "src": "    public void testAddWeeks_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addWeeks(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat org.joda.time.TestMutableDateTime_Adds.testAddWeeks_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:300)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddWeeks_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:300)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());"
+            },
+            "org.joda.time.TestMutableDateTime_Adds::testAdd_DurationFieldType_int_dstOverlapWinter_addZero": {
+                "path": "src/test/java/org/joda/time/TestMutableDateTime_Adds.java",
+                "function_name": "testAdd_DurationFieldType_int_dstOverlapWinter_addZero",
+                "src": "    public void testAdd_DurationFieldType_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.add(DurationFieldType.years(), 0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat org.joda.time.TestMutableDateTime_Adds.testAdd_DurationFieldType_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:187)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAdd_DurationFieldType_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:187)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());"
+            },
+            "org.joda.time.TestMutableDateTime_Adds::testAddMonths_int_dstOverlapWinter_addZero": {
+                "path": "src/test/java/org/joda/time/TestMutableDateTime_Adds.java",
+                "function_name": "testAddMonths_int_dstOverlapWinter_addZero",
+                "src": "    public void testAddMonths_int_dstOverlapWinter_addZero() {\n        MutableDateTime test = new MutableDateTime(2011, 10, 30, 2, 30, 0, 0, DateTimeZone.forID(\"Europe/Berlin\"));\n        test.addHours(1);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n        test.addMonths(0);\n        assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());\n    }",
+                "error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat junit.framework.Assert.assertEquals(Assert.java:100)\n\tat junit.framework.Assert.assertEquals(Assert.java:107)\n\tat junit.framework.TestCase.assertEquals(TestCase.java:269)\n\tat org.joda.time.TestMutableDateTime_Adds.testAddMonths_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:249)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.ComparisonFailure: expected:<...10-30T02:30:00.000+0[1]:00> but was:<...10-30T02:30:00.000+0[2]:00>\n\tat org.joda.time.TestMutableDateTime_Adds.testAddMonths_int_dstOverlapWinter_addZero(TestMutableDateTime_Adds.java:249)  assertEquals(\"2011-10-30T02:30:00.000+01:00\", test.toString());"
+            }
+        },
+        "evaluation_done": true,
+        "generation_done_for_notest_methods": true
+    }
+}

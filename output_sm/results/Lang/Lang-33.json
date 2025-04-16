@@ -1,0 +1,83 @@
+{
+    "Lang-33": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Converts an array of <code>Object</code> in to an array of <code>Class</code> objects.\n* If any of these objects is null, a null element will be inserted into the array.</p>\n*\n* <p>This method returns <code>null</code> for a <code>null</code> input array.</p>\n*\n* @param array an <code>Object</code> array\n* @return a <code>Class</code> array, <code>null</code> if null array input\n* @since 2.4\n*/\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = array[i].getClass();\n    }\n    return classes;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testToClass_object() {\n\n        assertNull(ClassUtils.toClass(null));\n\n\n\n        assertSame(ArrayUtils.EMPTY_CLASS_ARRAY, ClassUtils.toClass(ArrayUtils.EMPTY_OBJECT_ARRAY));\n\n\n\n        assertTrue(Arrays.equals(new Class[] { String.class, Integer.class, Double.class },\n\n                ClassUtils.toClass(new Object[] { \"Test\", 1, 99d })));\n\n\n\n        assertTrue(Arrays.equals(new Class[] { String.class, null, Double.class },\n\n                ClassUtils.toClass(new Object[] { \"Test\", null, 99d })));\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.lang3.ClassUtils.toClass(ClassUtils.java:910)  classes[i] = array[i].getClass();\n\tat org.apache.commons.lang3.ClassUtilsTest.testToClass_object(ClassUtilsTest.java:910)  assertTrue(Arrays.equals(new Class[] { String.class, null, Double.class },                ClassUtils.toClass(new Object[] { \"Test\", null, 99d })));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] != null) ? array[i].getClass() : null;\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] != null) ? array[i].getClass() : null;\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        if (array[i] != null) {\n            classes[i] = array[i].getClass();\n        } else {\n            classes[i] = null;\n        }\n    }\n    return classes;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] != null) ? array[i].getClass() : null;\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] != null) ? array[i].getClass() : null;\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        if (array[i] != null) {\n            classes[i] = array[i].getClass();\n        } else {\n            classes[i] = null;\n        }\n    }\n    return classes;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] == null) ? null : array[i].getClass();\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        classes[i] = (array[i] != null) ? array[i].getClass() : null;\n    }\n    return classes;\n}\n"
+                ],
+                [
+                    "\npublic static Class<?>[] toClass(Object[] array) {\n    if (array == null) {\n        return null;\n    } else if (array.length == 0) {\n        return ArrayUtils.EMPTY_CLASS_ARRAY;\n    }\n    Class<?>[] classes = new Class[array.length];\n    for (int i = 0; i < array.length; i++) {\n        if (array[i] != null) {\n            classes[i] = array[i].getClass();\n        } else {\n            classes[i] = null;\n        }\n    }\n    return classes;\n}\n"
+                ]
+            ]
+        }
+    }
+}

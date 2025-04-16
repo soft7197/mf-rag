@@ -1,0 +1,87 @@
+{
+    "JacksonXml-5": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = src._rootNameLookup;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testCopyWith() throws Exception\n\n    {\n\n        XmlMapper xmlMapper = newMapper();\n\n        final ObjectMapper xmlMapperNoAnno = xmlMapper.copy()\n\n                .disable(MapperFeature.USE_ANNOTATIONS)\n\n                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);\n\n\n\n        String xml1 = xmlMapper.writeValueAsString(new Pojo282());\n\n        String xml2 = xmlMapperNoAnno.writeValueAsString(new Pojo282());\n\n\n\n        if (!xml1.contains(\"AnnotatedName\")) {\n\n            fail(\"Should use name 'AnnotatedName', xml = \"+xml1);\n\n        }\n\n        if (!xml2.contains(\"Pojo282\")\n\n                || xml2.contains(\"AnnotatedName\")) {\n\n            fail(\"Should NOT use name 'AnnotatedName' but 'Pojo282', xml = \"+xml1);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Should NOT use name 'AnnotatedName' but 'Pojo282', xml = <AnnotatedName><a>3</a></AnnotatedName>\n\tat com.fasterxml.jackson.dataformat.xml.MapperCopyTest.testCopyWith(MapperCopyTest.java:89)  fail(\"Should NOT use name 'AnnotatedName' but 'Pojo282', xml = \"+xml1);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // Do not copy _rootNameLookup to prevent linking back to a different version/configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // Do not copy the root name lookup to avoid linking back to different version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // Do not copy root name lookup to avoid linking back to the original version\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = src._rootNameLookup;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testCopyWith() throws Exception\n\n    {\n\n        XmlMapper xmlMapper = newMapper();\n\n        final ObjectMapper xmlMapperNoAnno = xmlMapper.copy()\n\n                .disable(MapperFeature.USE_ANNOTATIONS)\n\n                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);\n\n\n\n        String xml1 = xmlMapper.writeValueAsString(new Pojo282());\n\n        String xml2 = xmlMapperNoAnno.writeValueAsString(new Pojo282());\n\n\n\n        if (!xml1.contains(\"AnnotatedName\")) {\n\n            fail(\"Should use name 'AnnotatedName', xml = \"+xml1);\n\n        }\n\n        if (!xml2.contains(\"Pojo282\")\n\n                || xml2.contains(\"AnnotatedName\")) {\n\n            fail(\"Should NOT use name 'AnnotatedName' but 'Pojo282', xml = \"+xml1);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Should NOT use name 'AnnotatedName' but 'Pojo282', xml = <AnnotatedName><a>3</a></AnnotatedName>\n\tat com.fasterxml.jackson.dataformat.xml.MapperCopyTest.testCopyWith(MapperCopyTest.java:89)  fail(\"Should NOT use name 'AnnotatedName' but 'Pojo282', xml = \"+xml1);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic void testDTDAttempt() throws Exception { XmlMapper mapper = new XmlMapper(); String XML = \\\"<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE foo SYSTEM 'http://127.0.0.1:8001' [ ]>\\n\\\" + \\\"<foo/>\\\"; try { mapper.readValue(XML, Map.class); } catch (Exception e) { fail(\\\"Should not try to resolve external DTD subset: \\\" + e); } }\n```\n\n            \n```java\nprotected static String decodeXmlClassName(String className) { int ix = className.lastIndexOf(\\\"..\\\"); if (ix >= 0) { StringBuilder sb = new StringBuilder(className); do { sb.replace(ix, ix + 2, \\\"$\\\"); ix = className.lastIndexOf(\\\"..\\\", ix - 1); } while (ix >= 0); className = sb.toString(); } return className; }\n```\n\n            \n```java\nprivate final static int skipSpace(InputAccessor acc, byte b) throws IOException { while (true) { int ch = (int) b & 0xFF; if (!(ch == ' ' || ch == '\\r' || ch == '\\n' || ch == '\\t')) { return ch; } if (!acc.hasMoreBytes()) { return -1; } b = acc.nextByte(); ch = (int) b & 0xFF; } }\n```\n\n            \n```java\n@Override public PropertyName findNameForSerialization(Annotated a) { PropertyName name = _findXmlName(a); if (name == null) { name = super.findNameForSerialization(a); if (name == null) { if (a.hasAnnotation(JacksonXmlText.class)) { return PropertyName.USE_DEFAULT; } } } return name; }\n```\n\n            \n```java\n@Override public void close() throws IOException { if (!_closed) { _closed = true; try { if (_ioContext.isResourceManaged() || isEnabled(JsonParser.Feature.AUTO_CLOSE_SOURCE)) { _xmlTokens.closeCompletely(); } else { _xmlTokens.close(); } } catch (XMLStreamException e) { StaxUtil.throwAsParseException(e, this); } finally { _releaseBuffers(); } } }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // To resolve the test issue, avoid copying _rootNameLookup directly\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // Do not copy _rootNameLookup to ensure independence from src's version\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // Do not copy root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new XmlRootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // Ensure that root name lookup is not shared between instances\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    // FIX: Remove the copying of root name lookup\n    _rootNameLookup = new RootNameLookup();\n}\n"
+                ],
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new XmlRootNameLookup();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new XmlRootNameLookup();\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* @since 2.8.9\n*/\nprotected XmlSerializerProvider(XmlSerializerProvider src) {\n    super(src);\n    // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy\n    //    root name lookup as that may link back to diff version, configuration\n    _rootNameLookup = new XmlRootNameLookup();\n}\n"
+                ]
+            ]
+        }
+    }
+}

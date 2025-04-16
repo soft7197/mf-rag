@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to556__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-60 - Buggy: src/java/org/apache/commons/lang/text/StrBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-60 - Fixed: src/java/org/apache/commons/lang/text/StrBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to556__0"></td><td class="diff_header" id="from556_1670">1670</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to556_1670">1670</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1671">1671</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;boolean&nbsp;contains(char&nbsp;ch)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to556_1671">1671</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;boolean&nbsp;contains(char&nbsp;ch)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1672">1672</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char[]&nbsp;thisBuf&nbsp;=&nbsp;buffer;</td><td class="diff_next"></td><td class="diff_header" id="to556_1672">1672</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char[]&nbsp;thisBuf&nbsp;=&nbsp;buffer;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to556__1">n</a></td><td class="diff_header" id="from556_1673">1673</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;this<span class="diff_sub">Buf</span>.<span class="diff_chg">l</span>e<span class="diff_sub">ngth</span>;&nbsp;i++)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to556__1">n</a></td><td class="diff_header" id="to556_1673">1673</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;this.<span class="diff_chg">siz</span>e;&nbsp;i++)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1674">1674</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(thisBuf[i]&nbsp;==&nbsp;ch)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to556_1674">1674</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(thisBuf[i]&nbsp;==&nbsp;ch)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1675">1675</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to556_1675">1675</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1676">1676</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to556_1676">1676</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to556__1"></td><td class="diff_header" id="from556_1727">1727</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;-1;</td><td class="diff_next"></td><td class="diff_header" id="to556_1727">1727</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;-1;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1728">1728</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to556_1728">1728</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1729">1729</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char[]&nbsp;thisBuf&nbsp;=&nbsp;buffer;</td><td class="diff_next"></td><td class="diff_header" id="to556_1729">1729</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char[]&nbsp;thisBuf&nbsp;=&nbsp;buffer;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to556__top">t</a></td><td class="diff_header" id="from556_1730">1730</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;startIndex;&nbsp;i&nbsp;&lt;&nbsp;<span class="diff_chg">th</span>i<span class="diff_chg">sBuf.l</span>e<span class="diff_sub">ngth</span>;&nbsp;i++)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to556__top">t</a></td><td class="diff_header" id="to556_1730">1730</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;startIndex;&nbsp;i&nbsp;&lt;&nbsp;<span class="diff_chg">s</span>i<span class="diff_chg">z</span>e;&nbsp;i++)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1731">1731</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(thisBuf[i]&nbsp;==&nbsp;ch)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to556_1731">1731</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(thisBuf[i]&nbsp;==&nbsp;ch)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1732">1732</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;i;</td><td class="diff_next"></td><td class="diff_header" id="to556_1732">1732</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;i;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from556_1733">1733</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to556_1733">1733</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

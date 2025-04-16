@@ -1,0 +1,68 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to533__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-37 - Buggy: src/java/org/apache/commons/lang3/ArrayUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-37 - Fixed: src/java/org/apache/commons/lang3/ArrayUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2959">2959</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Class&lt;?&gt;&nbsp;type1&nbsp;=&nbsp;array1.getClass().getComponentType();</td><td class="diff_next"></td><td class="diff_header" id="to533_2959">2959</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Class&lt;?&gt;&nbsp;type1&nbsp;=&nbsp;array1.getClass().getComponentType();</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to533__0"></td><td class="diff_header" id="from533_2960">2960</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T[]&nbsp;joinedArray&nbsp;=&nbsp;(T[])&nbsp;Array.newInstance(type1,&nbsp;array1.length&nbsp;+&nbsp;array2.</td><td class="diff_next"></td><td class="diff_header" id="to533_2960">2960</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T[]&nbsp;joinedArray&nbsp;=&nbsp;(T[])&nbsp;Array.newInstance(type1,&nbsp;array1.length&nbsp;+&nbsp;array2.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">length);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">length);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2961">2961</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.arraycopy(array1,&nbsp;0,&nbsp;joinedArray,&nbsp;0,&nbsp;array1.length);</td><td class="diff_next"></td><td class="diff_header" id="to533_2961">2961</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.arraycopy(array1,&nbsp;0,&nbsp;joinedArray,&nbsp;0,&nbsp;array1.length);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to533__1"><a href="#difflib_chg_to533__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to533__1">n</a></td><td class="diff_header" id="to533_2962">2962</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2962">2962</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.arraycopy(array2,&nbsp;0,&nbsp;joinedArray,&nbsp;array1.length,&nbsp;array2.lengt</td><td class="diff_next"></td><td class="diff_header" id="to533_2963">2963</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.arraycopy(array2,&nbsp;0,&nbsp;joinedArray,&nbsp;array1.length,&nbsp;array2.lengt</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to533__2"></td><td class="diff_header">></td><td nowrap="nowrap">h);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">h);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to533__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to533__2">n</a></td><td class="diff_header" id="to533_2964">2964</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(ArrayStoreException&nbsp;ase)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2963">2963</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Check&nbsp;if&nbsp;problem&nbsp;is&nbsp;incompatible&nbsp;types</td><td class="diff_next"></td><td class="diff_header" id="to533_2965">2965</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Check&nbsp;if&nbsp;problem&nbsp;is&nbsp;incompatible&nbsp;types</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to533__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to533__top">t</a></td><td class="diff_header" id="to533_2966">2966</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Class&lt;?&gt;&nbsp;type2&nbsp;=&nbsp;array2.getClass().getComponentType();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to533_2967">2967</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!type1.isAssignableFrom(type2)){</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to533_2968">2968</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("Cannot&nbsp;store&nbsp;"+type2.getName</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">()+"&nbsp;in&nbsp;an&nbsp;array&nbsp;of&nbsp;"+type1.getName());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to533_2969">2969</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to533_2970">2970</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ase;&nbsp;//&nbsp;No,&nbsp;so&nbsp;rethrow&nbsp;original</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to533_2971">2971</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2964">2964</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;joinedArray;</td><td class="diff_next"></td><td class="diff_header" id="to533_2972">2972</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;joinedArray;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2965">2965</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to533_2973">2973</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from533_2966">2966</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to533_2974">2974</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to690__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-27 - Buggy: src/org/mockito/internal/util/MockUtil.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-27 - Fixed: src/org/mockito/internal/util/MockUtil.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to690__0"></td><td class="diff_header" id="from690_61">61</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to690_61">61</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from690_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&lt;T&gt;&nbsp;void&nbsp;resetMock(T&nbsp;mock)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to690_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&lt;T&gt;&nbsp;void&nbsp;resetMock(T&nbsp;mock)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from690_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MockHandlerInterface&lt;T&gt;&nbsp;oldMockHandler&nbsp;=&nbsp;getMockHandler(mock);</td><td class="diff_next"></td><td class="diff_header" id="to690_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MockHandlerInterface&lt;T&gt;&nbsp;oldMockHandler&nbsp;=&nbsp;getMockHandler(mock);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to690__top">t</a></td><td class="diff_header" id="from690_64">64</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MockHandler&lt;T&gt;&nbsp;newMockHandler&nbsp;=&nbsp;new&nbsp;MockHandler&lt;T&gt;(oldMockHandler);</span></td><td class="diff_next"><a href="#difflib_chg_to690__top">t</a></td><td class="diff_header" id="to690_64">64</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MethodInterceptorFilter&nbsp;newFilter&nbsp;=&nbsp;newMethodInterceptorFilter(oldMockHa</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ndler.getMockSettings());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from690_65">65</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MethodInterceptorFilter&nbsp;newFilter&nbsp;=&nbsp;new&nbsp;MethodInterceptorFilter(newMockH</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">andler,&nbsp;(MockSettingsImpl)&nbsp;org.mockito.Mockito.withSettings().defaultAnswer(org.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">mockito.Mockito.RETURNS_DEFAULTS));</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from690_66">66</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((Factory)&nbsp;mock).setCallback(0,&nbsp;newFilter);</td><td class="diff_next"></td><td class="diff_header" id="to690_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((Factory)&nbsp;mock).setCallback(0,&nbsp;newFilter);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from690_67">67</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to690_66">66</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from690_68">68</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to690_67">67</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

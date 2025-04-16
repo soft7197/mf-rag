@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to451__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-42 - Buggy: src/main/java/org/jsoup/nodes/FormElement.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Jsoup-42 - Fixed: src/main/java/org/jsoup/nodes/FormElement.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;iterate&nbsp;the&nbsp;form&nbsp;control&nbsp;elements&nbsp;and&nbsp;accumulate&nbsp;their&nbsp;values</td><td class="diff_next"></td><td class="diff_header" id="to451_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;iterate&nbsp;the&nbsp;form&nbsp;control&nbsp;elements&nbsp;and&nbsp;accumulate&nbsp;their&nbsp;values</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to451__0"></td><td class="diff_header" id="from451_78">78</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Element&nbsp;el:&nbsp;elements)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to451_78">78</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Element&nbsp;el:&nbsp;elements)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_79">79</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!el.tag().isFormSubmittable())&nbsp;continue;&nbsp;//&nbsp;contents&nbsp;are&nbsp;form&nbsp;li</td><td class="diff_next"></td><td class="diff_header" id="to451_79">79</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!el.tag().isFormSubmittable())&nbsp;continue;&nbsp;//&nbsp;contents&nbsp;are&nbsp;form&nbsp;li</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">stable,&nbsp;superset&nbsp;of&nbsp;submitable</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">stable,&nbsp;superset&nbsp;of&nbsp;submitable</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to451__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to451__1">n</a></td><td class="diff_header" id="to451_80">80</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(el.hasAttr("disabled"))&nbsp;continue;&nbsp;//&nbsp;skip&nbsp;disabled&nbsp;form&nbsp;inputs</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_80">80</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;el.attr("name");</td><td class="diff_next"></td><td class="diff_header" id="to451_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;el.attr("name");</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(name.length()&nbsp;==&nbsp;0)&nbsp;continue;</td><td class="diff_next"></td><td class="diff_header" id="to451_82">82</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(name.length()&nbsp;==&nbsp;0)&nbsp;continue;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_82">82</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;type&nbsp;=&nbsp;el.attr("type");</td><td class="diff_next"></td><td class="diff_header" id="to451_83">83</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;type&nbsp;=&nbsp;el.attr("type");</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;("checkbox".equalsIgnoreCase(type)&nbsp;||&nbsp;"radio".equalsIgnore</td><td class="diff_next"></td><td class="diff_header" id="to451_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;("checkbox".equalsIgnoreCase(type)&nbsp;||&nbsp;"radio".equalsIgnore</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to451__1"></td><td class="diff_header">></td><td nowrap="nowrap">Case(type))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Case(type))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;only&nbsp;add&nbsp;checkbox&nbsp;or&nbsp;radio&nbsp;if&nbsp;they&nbsp;have&nbsp;the&nbsp;checked&nbsp;attribute</td><td class="diff_next"></td><td class="diff_header" id="to451_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;only&nbsp;add&nbsp;checkbox&nbsp;or&nbsp;radio&nbsp;if&nbsp;they&nbsp;have&nbsp;the&nbsp;checked&nbsp;attribute</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(el.hasAttr("checked"))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to451_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(el.hasAttr("checked"))&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to451__top">t</a></td><td class="diff_header" id="from451_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;String&nbsp;val&nbsp;=&nbsp;el.val();</td><td class="diff_next"><a href="#difflib_chg_to451__top">t</a></td><td class="diff_header" id="to451_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;String&nbsp;val&nbsp;=&nbsp;el.val()<span class="diff_add">.length()&nbsp;&gt;&nbsp;&nbsp;0&nbsp;?&nbsp;el.val()&nbsp;:&nbsp;"on"</span>;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.add(HttpConnection.KeyVal.create(name,&nbsp;val));</td><td class="diff_next"></td><td class="diff_header" id="to451_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.add(HttpConnection.KeyVal.create(name,&nbsp;val));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to451_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from451_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to451_103">103</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

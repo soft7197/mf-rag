@@ -1,0 +1,83 @@
+{
+    "Compress-1": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        super.close();\n        this.closed = true;\n    }\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testCpioUnarchive() throws Exception {\n\n        final File output = new File(dir, \"bla.cpio\");\n\n        {\n\n            final File file1 = getFile(\"test1.xml\");\n\n            final File file2 = getFile(\"test2.xml\");\n\n\n\n            final OutputStream out = new FileOutputStream(output);\n\n            final ArchiveOutputStream os = new ArchiveStreamFactory().createArchiveOutputStream(\"cpio\", out);\n\n            os.putArchiveEntry(new CpioArchiveEntry(\"test1.xml\", file1.length()));\n\n            IOUtils.copy(new FileInputStream(file1), os);\n\n            os.closeArchiveEntry();\n\n\n\n            os.putArchiveEntry(new CpioArchiveEntry(\"test2.xml\", file2.length()));\n\n            IOUtils.copy(new FileInputStream(file2), os);\n\n            os.closeArchiveEntry();\n\n\n\n            os.close();\n\n            out.close();\n\n        }\n\n\n\n        // Unarchive Operation\n\n        final File input = output;\n\n        final InputStream is = new FileInputStream(input);\n\n        final ArchiveInputStream in = new ArchiveStreamFactory().createArchiveInputStream(\"cpio\", is);\n\n\n\n\n\n        Map result = new HashMap();\n\n        ArchiveEntry entry = null;\n\n        while ((entry = in.getNextEntry()) != null) {\n\n            File target = new File(dir, entry.getName());\n\n            final OutputStream out = new FileOutputStream(target);\n\n            IOUtils.copy(in, out);\n\n            out.close();\n\n            result.put(entry.getName(), target);\n\n        }\n\n        in.close();\n\n\n\n        int lineSepLength = System.getProperty(\"line.separator\").length();\n\n\n\n        File t = (File)result.get(\"test1.xml\");\n\n        assertTrue(\"Expected \" + t.getAbsolutePath() + \" to exist\", t.exists());\n\n        assertEquals(\"length of \" + t.getAbsolutePath(),\n\n                     72 + 4 * lineSepLength, t.length());\n\n\n\n        t = (File)result.get(\"test2.xml\");\n\n        assertTrue(\"Expected \" + t.getAbsolutePath() + \" to exist\", t.exists());\n\n        assertEquals(\"length of \" + t.getAbsolutePath(),\n\n                     73 + 5 * lineSepLength, t.length());\n\n    }\n\n```\n#Error message: java.io.EOFException\n\tat org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream.readFully(CpioArchiveInputStream.java:293)  throw new EOFException();\n\tat org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream.getNextCPIOEntry(CpioArchiveInputStream.java:168)  readFully(magic, 0, magic.length);\n\tat org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream.getNextEntry(CpioArchiveInputStream.java:421)  return getNextCPIOEntry();\n\tat org.apache.commons.compress.archivers.CpioTestCase.testCpioUnarchive(CpioTestCase.java:82)  while ((entry = in.getNextEntry()) != null) {            File target = new File(dir, entry.getName());            final OutputStream out = new FileOutputStream(target);            IOUtils.copy(in, out);            out.close();            result.put(entry.getName(), target);        }\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are properly closed and written\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are properly finished before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all data is written before closing\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        finish(); // Ensure all data is written before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all data is written before closing\n        } finally {\n            this.closed = true;\n            super.close();\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            // Ensure any remaining data is properly written to the stream\n            finish();\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            super.finish(); // Ensure all data is written before closing\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all entries are finished and written\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are finished before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        finish(); // Ensure all entries are properly closed\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are properly closed and written\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are properly finished before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all data is written before closing\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        finish(); // Ensure all data is written before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all data is written before closing\n        } finally {\n            this.closed = true;\n            super.close();\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            // Ensure any remaining data is properly written to the stream\n            finish();\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all entries are finished and written\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are finished before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        finish(); // Ensure all entries are properly closed\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        this.finish(); // Ensure all entries are properly closed and written\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all data is written before closing\n        } finally {\n            super.close();\n            this.closed = true;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        finish(); // Ensure all data is written before closing\n        super.close();\n        this.closed = true;\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Closes the CPIO output stream as well as the stream being filtered.\n*\n* @throws IOException\n*             if an I/O error has occurred or if a CPIO file error has\n*             occurred\n*/\npublic void close() throws IOException {\n    if (!this.closed) {\n        try {\n            finish(); // Ensure all data is written before closing\n        } finally {\n            this.closed = true;\n            super.close();\n        }\n    }\n}\n"
+                ]
+            ]
+        }
+    }
+}

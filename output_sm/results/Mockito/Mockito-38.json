@@ -1,0 +1,51 @@
+{
+    "Mockito-38": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Suspiciously not matching arguments are those that don't much, the toString() representation is the same but types are different.\n*/\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return StringDescription.toString(m).equals(arg.toString());\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldWorkFineWhenGivenArgIsNull() {\n\n        //when\n\n        Integer[] suspicious = tool.getSuspiciouslyNotMatchingArgsIndexes((List) Arrays.asList(new Equals(20)), new Object[] {null});\n\n        \n\n        //then\n\n        assertEquals(0, suspicious.length);\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingTool.toStringEquals(ArgumentMatchingTool.java:48)  return StringDescription.toString(m).equals(arg.toString());\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingTool.getSuspiciouslyNotMatchingArgsIndexes(ArgumentMatchingTool.java:30)  && toStringEquals(m, arguments[i])\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingToolTest.shouldWorkFineWhenGivenArgIsNull(ArgumentMatchingToolTest.java:82)  Integer[] suspicious = tool.getSuspiciouslyNotMatchingArgsIndexes((List) Arrays.asList(new Equals(20)), new Object[] {null});\n \n#Test method 2:\n```java\n    public void shouldAllowPassingNullArgument() {\n\n        //given\n\n        Fun mockFun = mock(Fun.class);\n\n        when(mockFun.doFun((String) anyObject())).thenReturn(\"value\");\n\n\n\n        //when\n\n        mockFun.doFun(null);\n\n\n\n        //then\n\n        try {\n\n            verify(mockFun).doFun(\"hello\");\n\n        } catch(AssertionError r) {\n\n            //it's ok, we just want to reproduce the bug\n\n        }\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingTool.toStringEquals(ArgumentMatchingTool.java:48)  return StringDescription.toString(m).equals(arg.toString());\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingTool.getSuspiciouslyNotMatchingArgsIndexes(ArgumentMatchingTool.java:30)  && toStringEquals(m, arguments[i])\n\tat org.mockito.internal.verification.checkers.MissingInvocationChecker.check(MissingInvocationChecker.java:38)  Integer[] indexesOfSuspiciousArgs = argumentMatchingTool.getSuspiciouslyNotMatchingArgsIndexes(wanted.getMatchers(), similar.getArguments());\n\tat org.mockito.internal.verification.Times.verify(Times.java:34)  missingInvocation.check(data.getAllInvocations(), data.getWanted());\n\tat org.mockito.internal.MockHandler.intercept(MockHandler.java:74)  verificationMode.verify(data);\n\tat org.mockito.internal.creation.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:46)  return delegate.intercept(proxy, method, args, methodProxy);\n\tat org.mockitousage.bugs.ActualInvocationHasNullArgumentNPEBugTest.shouldAllowPassingNullArgument(ActualInvocationHasNullArgumentNPEBugTest.java:30)  verify(mockFun).doFun(\"hello\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ],
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    if (arg == null) {\n        return false;\n    }\n    return StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\nprivate boolean toStringEquals(Matcher m, Object arg) {\n    return arg != null && StringDescription.toString(m).equals(arg.toString());\n}\n"
+                ]
+            ]
+        }
+    }
+}

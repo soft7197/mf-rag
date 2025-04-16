@@ -1,0 +1,101 @@
+{
+    "Math-91": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Compares this object to another based on size.\n* @param object the object to compare to\n* @return -1 if this is less than <tt>object</tt>, +1 if this is greater\n*         than <tt>object</tt>, 0 if they are equal.\n*/\npublic int compareTo(Fraction object) {\n    double nOd = doubleValue();\n    double dOn = object.doubleValue();\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testCompareTo() {\n\n        Fraction first = new Fraction(1, 2);\n\n        Fraction second = new Fraction(1, 3);\n\n        Fraction third = new Fraction(1, 2);\n\n        \n\n        assertEquals(0, first.compareTo(first));\n\n        assertEquals(0, first.compareTo(third));\n\n        assertEquals(1, first.compareTo(second));\n\n        assertEquals(-1, second.compareTo(first));\n\n\n\n        // these two values are different approximations of PI\n\n        // the first  one is approximately PI - 3.07e-18\n\n        // the second one is approximately PI + 1.936e-17\n\n        Fraction pi1 = new Fraction(1068966896, 340262731);\n\n        Fraction pi2 = new Fraction( 411557987, 131002976);\n\n        assertEquals(-1, pi1.compareTo(pi2));\n\n        assertEquals( 1, pi2.compareTo(pi1));\n\n        assertEquals(0.0, pi1.doubleValue() - pi2.doubleValue(), 1.0e-20);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<-1> but was:<0>\n\tat org.apache.commons.math.fraction.FractionTest.testCompareTo(FractionTest.java:178)  assertEquals(-1, pi1.compareTo(pi2));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = this.numerator * object.denominator;\n    long dOn = object.numerator * this.denominator;\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long lhs = (long) this.numerator * object.denominator;\n    long rhs = (long) object.numerator * this.denominator;\n    return Long.compare(lhs, rhs);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long n1 = (long) this.numerator * object.denominator;\n    long n2 = (long) object.numerator * this.denominator;\n    return Long.compare(n1, n2);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long lhsNumerator = this.numerator * (long) object.denominator;\n    long rhsNumerator = object.numerator * (long) this.denominator;\n    return Long.compare(lhsNumerator, rhsNumerator);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) this.denominator * object.numerator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = this.numerator * object.denominator;\n    long dOn = object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long thisNumerator = (long) this.numerator * object.denominator;\n    long otherNumerator = (long) object.numerator * this.denominator;\n    return Long.compare(thisNumerator, otherNumerator);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = this.numerator * object.denominator;\n    long dOn = object.numerator * this.denominator;\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long lhs = (long) this.numerator * object.denominator;\n    long rhs = (long) object.numerator * this.denominator;\n    return Long.compare(lhs, rhs);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long n1 = (long) this.numerator * object.denominator;\n    long n2 = (long) object.numerator * this.denominator;\n    return Long.compare(n1, n2);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long lhsNumerator = this.numerator * (long) object.denominator;\n    long rhsNumerator = object.numerator * (long) this.denominator;\n    return Long.compare(lhsNumerator, rhsNumerator);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) this.denominator * object.numerator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = this.numerator * object.denominator;\n    long dOn = object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long thisNumerator = (long) this.numerator * object.denominator;\n    long otherNumerator = (long) object.numerator * this.denominator;\n    return Long.compare(thisNumerator, otherNumerator);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = this.numerator * object.denominator;\n    long dOn = object.numerator * this.denominator;\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long lhs = (long) this.numerator * object.denominator;\n    long rhs = (long) object.numerator * this.denominator;\n    return Long.compare(lhs, rhs);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long n1 = (long) this.numerator * object.denominator;\n    long n2 = (long) object.numerator * this.denominator;\n    return Long.compare(n1, n2);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) object.numerator * this.denominator;\n    return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long lhsNumerator = this.numerator * (long) object.denominator;\n    long rhsNumerator = object.numerator * (long) this.denominator;\n    return Long.compare(lhsNumerator, rhsNumerator);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = (long) this.numerator * object.denominator;\n    long dOn = (long) this.denominator * object.numerator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long nOd = this.numerator * object.denominator;\n    long dOn = object.numerator * this.denominator;\n    return Long.compare(nOd, dOn);\n}\n"
+                ],
+                [
+                    "\npublic int compareTo(Fraction object) {\n    long thisNumerator = (long) this.numerator * object.denominator;\n    long otherNumerator = (long) object.numerator * this.denominator;\n    return Long.compare(thisNumerator, otherNumerator);\n}\n"
+                ]
+            ]
+        }
+    }
+}

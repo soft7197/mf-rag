@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to143__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-3 - Buggy: src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-3 - Fixed: src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to143__0"></td><td class="diff_header" id="from143_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;reachingUses&nbsp;=&nbsp;new&nbsp;MaybeReachingVariableUse(cfg,&nbsp;t.getScope(),&nbsp;compiler);</td><td class="diff_next"></td><td class="diff_header" id="to143_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;reachingUses&nbsp;=&nbsp;new&nbsp;MaybeReachingVariableUse(cfg,&nbsp;t.getScope(),&nbsp;compiler);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;reachingUses.analyze();</td><td class="diff_next"></td><td class="diff_header" id="to143_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;reachingUses.analyze();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Candidate&nbsp;c&nbsp;:&nbsp;candidates)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to143_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(Candidate&nbsp;c&nbsp;:&nbsp;candidates)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to143__1">n</a></td><td class="diff_header" id="from143_155">155</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c.canInline())&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to143__1">n</a></td><td class="diff_header" id="to143_155">155</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c.canInline(<span class="diff_add">t.getScope(</span>))<span class="diff_add">)</span>&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.inlineVariable();</td><td class="diff_next"></td><td class="diff_header" id="to143_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.inlineVariable();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_157">157</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_157">157</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_158">158</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;definition&nbsp;c&nbsp;has&nbsp;dependencies,&nbsp;then&nbsp;inlining&nbsp;it&nbsp;may&nbsp;have</td><td class="diff_next"></td><td class="diff_header" id="to143_158">158</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;If&nbsp;definition&nbsp;c&nbsp;has&nbsp;dependencies,&nbsp;then&nbsp;inlining&nbsp;it&nbsp;may&nbsp;have</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to143__1"></td><td class="diff_header" id="from143_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;defMetadata.node;</td><td class="diff_next"></td><td class="diff_header" id="to143_277">277</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;defMetadata.node;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to143_278">278</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_279">279</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_279">279</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to143__2">n</a></td><td class="diff_header" id="from143_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;canInline()&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to143__2">n</a></td><td class="diff_header" id="to143_280">280</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;canInline(<span class="diff_add">final&nbsp;Scope&nbsp;scope</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_281">281</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Cannot&nbsp;inline&nbsp;a&nbsp;parameter.</td><td class="diff_next"></td><td class="diff_header" id="to143_281">281</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Cannot&nbsp;inline&nbsp;a&nbsp;parameter.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(getDefCfgNode().isFunction())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to143_282">282</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(getDefCfgNode().isFunction())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_283">283</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to143_283">283</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to143__2"></td><td class="diff_header" id="from143_372">372</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.REGEXP:</td><td class="diff_next"></td><td class="diff_header" id="to143_372">372</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.REGEXP:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NEW:</td><td class="diff_next"></td><td class="diff_header" id="to143_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NEW:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_374">374</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to143_374">374</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to143__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to143__top">t</a></td><td class="diff_header" id="to143_375">375</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NAME:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_376">376</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Var&nbsp;var&nbsp;=&nbsp;scope.getOwnSlot(input.getString());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_377">377</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(var&nbsp;!=&nbsp;null</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_378">378</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;var.getParentNode().isCatch())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_379">379</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to143_380">380</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_375">375</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to143_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_376">376</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to143_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from143_377">377</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to143_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

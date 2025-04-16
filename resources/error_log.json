@@ -1,0 +1,15 @@
+{
+    "JacksonDatabind-65": {
+        "error_type": "FileNotFoundError",
+        "error_message": "[Errno 2] No such file or directory: '/home/selab/Desktop/MF-dlt/checkouts/JacksonDatabind-65/failing_tests'",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/selab/Desktop/MF-dlt/src/step_1_map_construction.py\", line 103, in process_bug\n    with open(f\"{work_dir}/failing_tests\", 'r') as file:\nFileNotFoundError: [Errno 2] No such file or directory: '/home/selab/Desktop/MF-dlt/checkouts/JacksonDatabind-65/failing_tests'\n"
+    }
+}Error in bug Chart-2:
+Traceback (most recent call last):
+  File "/home/selab/Desktop/MF-dlt/src/lib/query_vector_db.py", line 267, in retrieve_context
+    top_methods_id_scores = query_similar_methods(query_method, mapping_json, index)[:allocation[index]]
+  File "/home/selab/Desktop/MF-dlt/src/lib/query_vector_db.py", line 75, in query_similar_methods
+    faiss_embeddings = np.array([index.reconstruct(i) for i in range(index.ntotal)])
+AttributeError: 'int' object has no attribute 'ntotal'
+
+--------------------------------------------------------------------------------

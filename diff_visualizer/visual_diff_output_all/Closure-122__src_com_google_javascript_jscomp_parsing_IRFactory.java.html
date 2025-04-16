@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to86__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-122 - Buggy: src/com/google/javascript/jscomp/parsing/IRFactory.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-122 - Fixed: src/com/google/javascript/jscomp/parsing/IRFactory.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to86__0"></td><td class="diff_header" id="from86_249">249</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;Check&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;given&nbsp;block&nbsp;comment&nbsp;looks&nbsp;like&nbsp;it&nbsp;should&nbsp;be&nbsp;JSDoc.</td><td class="diff_next"></td><td class="diff_header" id="to86_249">249</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;Check&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;given&nbsp;block&nbsp;comment&nbsp;looks&nbsp;like&nbsp;it&nbsp;should&nbsp;be&nbsp;JSDoc.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from86_250">250</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to86_250">250</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from86_251">251</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;void&nbsp;handleBlockComment(Comment&nbsp;comment)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to86_251">251</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;void&nbsp;handleBlockComment(Comment&nbsp;comment)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to86__top">t</a></td><td class="diff_header" id="from86_252">252</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(comment.getValue().indexOf("/*&nbsp;@")&nbsp;!=&nbsp;-1&nbsp;||&nbsp;comment.getValue().indexOf("</span></td><td class="diff_next"><a href="#difflib_chg_to86__top">t</a></td><td class="diff_header" id="to86_252">252</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;Pattern&nbsp;p&nbsp;=&nbsp;Pattern.compile("(/|(\n[&nbsp;\t]*))\\*[&nbsp;\t]*@[a-zA-Z]");</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">\n&nbsp;*&nbsp;@")&nbsp;!=&nbsp;-1)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to86_253">253</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.matcher(comment.getValue()).find())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from86_253">253</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorReporter.warning(</td><td class="diff_next"></td><td class="diff_header" id="to86_254">254</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorReporter.warning(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from86_254">254</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUSPICIOUS_COMMENT_WARNING,</td><td class="diff_next"></td><td class="diff_header" id="to86_255">255</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUSPICIOUS_COMMENT_WARNING,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from86_255">255</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sourceName,</td><td class="diff_next"></td><td class="diff_header" id="to86_256">256</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sourceName,</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

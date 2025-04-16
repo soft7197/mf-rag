@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to70__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-109 - Buggy: src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-109 - Fixed: src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to70__0"></td><td class="diff_header" id="from70_1905">1905</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;For&nbsp;expressions&nbsp;on&nbsp;the&nbsp;right&nbsp;hand&nbsp;side&nbsp;of&nbsp;a&nbsp;this:&nbsp;or&nbsp;new:</td><td class="diff_next"></td><td class="diff_header" id="to70_1905">1905</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;For&nbsp;expressions&nbsp;on&nbsp;the&nbsp;right&nbsp;hand&nbsp;side&nbsp;of&nbsp;a&nbsp;this:&nbsp;or&nbsp;new:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from70_1906">1906</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to70_1906">1906</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from70_1907">1907</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;Node&nbsp;parseContextTypeExpression(JsDocToken&nbsp;token)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to70_1907">1907</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;Node&nbsp;parseContextTypeExpression(JsDocToken&nbsp;token)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to70__top">t</a></td><td class="diff_header" id="from70_1908">1908</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;parseTypeName(token);</span></td><td class="diff_next"><a href="#difflib_chg_to70__top">t</a></td><td class="diff_header" id="to70_1908">1908</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(token&nbsp;==&nbsp;JsDocToken.QMARK)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to70_1909">1909</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;newNode(Token.QMARK);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to70_1910">1910</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to70_1911">1911</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;parseBasicTypeExpression(token);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to70_1912">1912</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from70_1909">1909</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to70_1913">1913</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from70_1910">1910</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to70_1914">1914</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from70_1911">1911</td><td nowrap="nowrap">&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to70_1915">1915</td><td nowrap="nowrap">&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

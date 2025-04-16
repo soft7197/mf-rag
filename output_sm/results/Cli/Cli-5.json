@@ -1,0 +1,83 @@
+{
+    "Cli-5": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Remove the hyphens from the begining of <code>str</code> and\n* return the new String.</p>\n*\n* @param str The string from which the hyphens should be removed.\n*\n* @return the new String.\n*/\nstatic String stripLeadingHyphens(String str)\n{\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testStripLeadingHyphens() {\n\n        assertEquals(\"f\", Util.stripLeadingHyphens(\"-f\"));\n\n        assertEquals(\"foo\", Util.stripLeadingHyphens(\"--foo\"));\n\n        assertNull(Util.stripLeadingHyphens(null));\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.cli.Util.stripLeadingHyphens(Util.java:36)  if (str.startsWith(\"--\"))\n\tat org.apache.commons.cli.UtilTest.testStripLeadingHyphens(UtilTest.java:28)  assertNull(Util.stripLeadingHyphens(null));\n \n#Test method 2:\n```java\n    public void testOrder() throws ParseException {\n\n        Option optionA = new Option(\"a\", \"first\");\n\n        Options opts = new Options();\n\n        opts.addOption(optionA);\n\n        PosixParser posixParser = new PosixParser();\n\n        CommandLine line = posixParser.parse(opts, null);\n\n        assertFalse(line.hasOption(null));\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.cli.Util.stripLeadingHyphens(Util.java:36)  if (str.startsWith(\"--\"))\n\tat org.apache.commons.cli.CommandLine.resolveOption(CommandLine.java:166)  opt = Util.stripLeadingHyphens(opt);\n\tat org.apache.commons.cli.CommandLine.hasOption(CommandLine.java:68)  return options.contains( resolveOption(opt));\n\tat org.apache.commons.cli.bug.BugCLI133Test.testOrder(BugCLI133Test.java:32)  assertFalse(line.hasOption(null));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2);\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1);\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    while (str.startsWith(\"-\")) {\n        str = str.substring(1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    while (str.startsWith(\"-\")) {\n        str = str.substring(1);\n    }\n\n    return str;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2);\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1);\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    while (str.startsWith(\"-\")) {\n        str = str.substring(1);\n    }\n    \n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    while (str.startsWith(\"-\")) {\n        str = str.substring(1);\n    }\n\n    return str;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2, str.length());\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1, str.length());\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n\n    if (str.startsWith(\"--\"))\n    {\n        return str.substring(2);\n    }\n    else if (str.startsWith(\"-\"))\n    {\n        return str.substring(1);\n    }\n\n    return str;\n}\n"
+                ],
+                [
+                    "\nstatic String stripLeadingHyphens(String str)\n{\n    if (str == null) {\n        return null;\n    }\n    \n    while (str.startsWith(\"-\")) {\n        str = str.substring(1);\n    }\n    \n    return str;\n}\n"
+                ]
+            ]
+        }
+    }
+}

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to129__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-174 - Buggy: src/com/google/javascript/jscomp/NodeUtil.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-174 - Fixed: src/com/google/javascript/jscomp/NodeUtil.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to129__0"></td><td class="diff_header" id="from129_2364">2364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(nameNode.isName())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to129_2364">2364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(nameNode.isName())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from129_2365">2365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;IR.var(nameNode,&nbsp;value);</td><td class="diff_next"></td><td class="diff_header" id="to129_2365">2365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;IR.var(nameNode,&nbsp;value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from129_2366">2366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.setJSDocInfo(info);</td><td class="diff_next"></td><td class="diff_header" id="to129_2366">2366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.setJSDocInfo(info);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to129__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to129__1">n</a></td><td class="diff_header" id="to129_2367">2367</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(value&nbsp;!=&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to129__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to129_2368">2368</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;IR.exprResult(IR.assign(nameNode,&nbsp;value));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to129_2369">2369</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.getFirstChild().setJSDocInfo(info);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from129_2367">2367</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to129_2370">2370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to129__top">t</a></td><td class="diff_header" id="from129_2368">2368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;IR.exprResult(<span class="diff_sub">IR.assign(</span>nameNode<span class="diff_sub">,&nbsp;value)</span>);</td><td class="diff_next"><a href="#difflib_chg_to129__top">t</a></td><td class="diff_header" id="to129_2371">2371</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;IR.exprResult(nameNode);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from129_2369">2369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.getFirstChild().setJSDocInfo(info);</td><td class="diff_next"></td><td class="diff_header" id="to129_2372">2372</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.getFirstChild().setJSDocInfo(info);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from129_2370">2370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to129_2373">2373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from129_2371">2371</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;result;</td><td class="diff_next"></td><td class="diff_header" id="to129_2374">2374</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;result;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

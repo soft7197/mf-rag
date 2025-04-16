@@ -1,0 +1,68 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to387__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-54 - Buggy: src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-54 - Fixed: src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_131">131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;always&nbsp;suppress&nbsp;nulls</td><td class="diff_next"></td><td class="diff_header" id="to387_131">131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;always&nbsp;suppress&nbsp;nulls</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to387__0"></td><td class="diff_header" id="from387_132">132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suppressNulls&nbsp;=&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to387_132">132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suppressNulls&nbsp;=&nbsp;true;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_133">133</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;for&nbsp;referential&nbsp;types,&nbsp;also&nbsp;"empty",&nbsp;which&nbsp;in&nbsp;their&nbsp;case&nbsp;mean</td><td class="diff_next"></td><td class="diff_header" id="to387_133">133</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;for&nbsp;referential&nbsp;types,&nbsp;also&nbsp;"empty",&nbsp;which&nbsp;in&nbsp;their&nbsp;case&nbsp;mean</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;"absent"</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;"absent"</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to387__1">n</a></td><td class="diff_header" id="from387_134">134</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_chg">de</span>cl<span class="diff_sub">ared</span>Type.isReferenceType())&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to387__1">n</a></td><td class="diff_header" id="to387_134">134</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_chg">a</span>c<span class="diff_add">tua</span>lType.isReferenceType())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_135">135</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;BeanPropertyWriter.MARKER_FOR_EMPTY;</td><td class="diff_next"></td><td class="diff_header" id="to387_135">135</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;BeanPropertyWriter.MARKER_FOR_EMPTY;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_136">136</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to387_136">136</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_137">137</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td><td class="diff_next"></td><td class="diff_header" id="to387_137">137</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;ALWAYS:&nbsp;//&nbsp;default</td><td class="diff_next"></td><td class="diff_header" id="to387_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;ALWAYS:&nbsp;//&nbsp;default</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to387__1"></td><td class="diff_header" id="from387_148">148</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</td><td class="diff_next"></td><td class="diff_header" id="to387_148">148</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;may&nbsp;still&nbsp;want&nbsp;to&nbsp;suppress&nbsp;empty&nbsp;collections,&nbsp;as&nbsp;per&nbsp;[JACKSON-</td><td class="diff_next"></td><td class="diff_header" id="to387_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;may&nbsp;still&nbsp;want&nbsp;to&nbsp;suppress&nbsp;empty&nbsp;collections,&nbsp;as&nbsp;per&nbsp;[JACKSON-</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">254]:</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">254]:</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to387__top">t</a></td><td class="diff_header" id="from387_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_chg">de</span>cl<span class="diff_sub">ared</span>Type.isContainerType()</td><td class="diff_next"><a href="#difflib_chg_to387__top">t</a></td><td class="diff_header" id="to387_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(<span class="diff_chg">a</span>c<span class="diff_add">tua</span>lType.isContainerType()</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;!_config.isEnabled(SerializationFeature.WRITE_EMPTY_JSON_</td><td class="diff_next"></td><td class="diff_header" id="to387_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;!_config.isEnabled(SerializationFeature.WRITE_EMPTY_JSON_</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ARRAYS))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ARRAYS))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;BeanPropertyWriter.MARKER_FOR_EMPTY;</td><td class="diff_next"></td><td class="diff_header" id="to387_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueToSuppress&nbsp;=&nbsp;BeanPropertyWriter.MARKER_FOR_EMPTY;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from387_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to387_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

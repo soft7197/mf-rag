@@ -1,0 +1,77 @@
+{
+    "Mockito-7": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void discoverDeepMockingOfGenerics() {\n\n    MyClass1 myMock1 = mock(MyClass1.class, RETURNS_DEEP_STUBS);\n\n    when(myMock1.getNested().getNested().returnSomething()).thenReturn(\"Hello World.\");\n\n  }\n\n```\n#Error message: org.mockito.exceptions.base.MockitoException: Raw extraction not supported for : 'null'\n\tat org.mockito.internal.stubbing.defaultanswers.ReturnsDeepStubs.answer(ReturnsDeepStubs.java:51)  Class<?> rawType = returnTypeGenericMetadata.rawType();\n\tat org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:93)  Object ret = mockSettings.getDefaultAnswer().answer(invocation);\n\tat org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)  Object result = delegate.handle(invocation);\n\tat org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:38)  Object returnedValue = mockHandler.handle(invocation);\n\tat org.mockito.internal.creation.cglib.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:59)  return handler.handle(invocation);\n\tat org.mockitousage.bugs.deepstubs.DeepStubFailingWhenGenricNestedAsRawTypeTest.discoverDeepMockingOfGenerics(DeepStubFailingWhenGenricNestedAsRawTypeTest.java:26)  when(myMock1.getNested().getNested().returnSomething()).thenReturn(\"Hello World.\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof Class) {\n            registerTypeVariablesOn(type);\n        }\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof TypeVariable) {\n            registerTypeVariablesOn(type);\n        } else {\n            registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof TypeVariable) {\n            registerTypeVariablesOn(type);\n        }\n    }\n    registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    if (typeVariable == null) {\n        return;\n    }\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof TypeVariable) {\n            registerTypeVariablesOn((TypeVariable<?>) type);\n        } else {\n            registerTypeVariablesOn(type);\n        }\n    }\n    registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    if (typeVariable instanceof TypeVariable<?>) {\n        registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof TypeVariable) {\n            registerTypeVariablesOn(type);\n        }\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void discoverDeepMockingOfGenerics() {\n\n    MyClass1 myMock1 = mock(MyClass1.class, RETURNS_DEEP_STUBS);\n\n    when(myMock1.getNested().getNested().returnSomething()).thenReturn(\"Hello World.\");\n\n  }\n\n```\n#Error message: org.mockito.exceptions.base.MockitoException: Raw extraction not supported for : 'null'\n\tat org.mockito.internal.stubbing.defaultanswers.ReturnsDeepStubs.answer(ReturnsDeepStubs.java:51)  Class<?> rawType = returnTypeGenericMetadata.rawType();\n\tat org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:93)  Object ret = mockSettings.getDefaultAnswer().answer(invocation);\n\tat org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)  Object result = delegate.handle(invocation);\n\tat org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:38)  Object returnedValue = mockHandler.handle(invocation);\n\tat org.mockito.internal.creation.cglib.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:59)  return handler.handle(invocation);\n\tat org.mockitousage.bugs.deepstubs.DeepStubFailingWhenGenricNestedAsRawTypeTest.discoverDeepMockingOfGenerics(DeepStubFailingWhenGenricNestedAsRawTypeTest.java:26)  when(myMock1.getNested().getNested().returnSomething()).thenReturn(\"Hello World.\");\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nprivate void readTypeParameters() { registerTypeParametersOn(typeParameters); }\n```\n\n            \n```java\nprivate void readTypeParameters() { registerTypeParametersOn(typeParameters); }\n```\n\n            \n```java\nprivate void readActualTypeParameters() { registerTypeVariablesOn(parameterizedType.getRawType()); registerTypeVariablesOn(parameterizedType); }\n```\n\n            \n```java\nprivate void unfinishedStubbingHere() { when(mock.simpleMethod()); }\n```\n\n            \n```java\nprivate void undesiredInteraction() { mock.add(\\\"\\\"); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type != null) {  // Check if type is not null before calling the method\n            registerTypeVariablesOn(type);\n        }\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {  // Check if actualTypeArgument is not null before calling the method\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof Class) {\n            registerTypeVariablesOn(type);\n        }\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof TypeVariable) {\n            registerTypeVariablesOn((TypeVariable<?>) type);\n        }\n    }\n    registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    if (typeVariable != null) {\n        for (Type type : typeVariable.getBounds()) {\n            registerTypeVariablesOn(type);\n        }\n        Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n        if (actualTypeArgument != null) { // Add a null check before registering\n            registerTypeVariablesOn(actualTypeArgument);\n        }\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type instanceof TypeVariable) {\n            registerTypeVariablesOn(type);\n        }\n    }\n    registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type != null) {\n            registerTypeVariablesOn(type);\n        }\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        if (type != null) { // Ensure the type is not null before registering\n            registerTypeVariablesOn(type);\n        }\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) { // Check if the actual type argument is not null before registering\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ],
+                [
+                    "\n/**\n* Generic metadata for {@link TypeVariable} returned via {@link Method#getGenericReturnType()}.\n*/\nprivate void readTypeVariables() {\n    for (Type type : typeVariable.getBounds()) {\n        registerTypeVariablesOn(type);\n    }\n    Type actualTypeArgument = getActualTypeArgumentFor(typeVariable);\n    if (actualTypeArgument != null) {\n        registerTypeVariablesOn(actualTypeArgument);\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

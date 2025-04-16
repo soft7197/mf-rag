@@ -1,0 +1,69 @@
+{
+    "Closure-7": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Computes whether the given result of a {@code typeof} operator matches\n* expectations, i.e. whether a type that gives such a result should be\n* kept.\n*/\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : null;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testGoogIsFunction2() throws Exception {\n\n    testClosureFunction(\"goog.isFunction\",\n\n        OBJECT_NUMBER_STRING_BOOLEAN,\n\n        U2U_CONSTRUCTOR_TYPE,\n\n        OBJECT_NUMBER_STRING_BOOLEAN);\n\n  }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected: (Object|boolean|number|string)\nActual  : (boolean|number|string)\n\tat com.google.javascript.rhino.testing.Asserts.assertTypeEquals(Asserts.java:106)  Assert.assertTrue(        message +        (message.isEmpty() ? \"\" : \"\\n\") +        \"Expected: \" + a + \"\\n\" +        \"Actual  : \" + b,        a.isEquivalentTo(b));\n\tat com.google.javascript.rhino.testing.Asserts.assertTypeEquals(Asserts.java:96)  assertTypeEquals(\"\", a, b);\n\tat com.google.javascript.jscomp.ClosureReverseAbstractInterpreterTest.testClosureFunction(ClosureReverseAbstractInterpreterTest.java:187)  Asserts.assertTypeEquals(        falseType,        rai.getPreciserScopeKnowingConditionOutcome(call, flowScope, false)        .getSlot(\"a\").getType());\n\tat com.google.javascript.jscomp.ClosureReverseAbstractInterpreterTest.testGoogIsFunction2(ClosureReverseAbstractInterpreterTest.java:121)  testClosureFunction(\"goog.isFunction\",        OBJECT_NUMBER_STRING_BOOLEAN,        U2U_CONSTRUCTOR_TYPE,        OBJECT_NUMBER_STRING_BOOLEAN);\n \n#Test method 2:\n```java\n  public void testTypeof3() {\n\n    FlowScope blind = newScope();\n\n    testBinop(blind,\n\n        Token.EQ,\n\n        new Node(Token.TYPEOF, createVar(\n\n            blind, \"a\", OBJECT_NUMBER_STRING_BOOLEAN)),\n\n        Node.newString(\"function\"),\n\n        Sets.newHashSet(\n\n            new TypedName(\"a\", U2U_CONSTRUCTOR_TYPE)),\n\n        Sets.newHashSet(\n\n            new TypedName(\"a\", OBJECT_NUMBER_STRING_BOOLEAN)));\n\n  }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected: (Object|boolean|number|string)\nActual  : (boolean|number|string)\n\tat com.google.javascript.rhino.testing.Asserts.assertTypeEquals(Asserts.java:106)  Assert.assertTrue(        message +        (message.isEmpty() ? \"\" : \"\\n\") +        \"Expected: \" + a + \"\\n\" +        \"Actual  : \" + b,        a.isEquivalentTo(b));\n\tat com.google.javascript.rhino.testing.Asserts.assertTypeEquals(Asserts.java:96)  assertTypeEquals(\"\", a, b);\n\tat com.google.javascript.rhino.testing.BaseJSTypeTestCase.assertTypeEquals(BaseJSTypeTestCase.java:577)  Asserts.assertTypeEquals(a, b);\n\tat com.google.javascript.jscomp.SemanticReverseAbstractInterpreterTest.testBinop(SemanticReverseAbstractInterpreterTest.java:568)  assertTypeEquals(p.type, getVarType(informedFalse, p.name));\n\tat com.google.javascript.jscomp.SemanticReverseAbstractInterpreterTest.testTypeof3(SemanticReverseAbstractInterpreterTest.java:465)  testBinop(blind,        Token.EQ,        new Node(Token.TYPEOF, createVar(            blind, \"a\", OBJECT_NUMBER_STRING_BOOLEAN)),        Node.newString(\"function\"),        Sets.newHashSet(            new TypedName(\"a\", U2U_CONSTRUCTOR_TYPE)),        Sets.newHashSet(            new TypedName(\"a\", OBJECT_NUMBER_STRING_BOOLEAN)));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : matchesExpectation(\"object\") ? type : null;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Computes whether the given result of a {@code typeof} operator matches\n* expectations, i.e. whether a type that gives such a result should be\n* kept.\n*/\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue || ctorType.isSubtype(type) ? ctorType : null;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && type.isSubtype(ctorType) ? ctorType : null;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue || ctorType.isSubtype(type) ? ctorType : null;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Computes whether the given result of a {@code typeof} operator matches\n* expectations, i.e. whether a type that gives such a result should be\n* kept.\n*/\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && type.isSubtype(ctorType) ? type : null;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : matchesExpectation(\"object\") ? type : null;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : matchesExpectation(\"object\") ? type : null;\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ],
+                [
+                    "\npublic JSType caseObjectType(ObjectType type) {\n  if (value.equals(\"function\")) {\n    JSType ctorType = getNativeType(U2U_CONSTRUCTOR_TYPE);\n    return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : type;\n      // Objects are restricted to \"Function\", subtypes are left\n      // Only filter out subtypes of \"function\"\n  }\n  return matchesExpectation(\"object\") ? type : null;\n}\n"
+                ]
+            ]
+        }
+    }
+}

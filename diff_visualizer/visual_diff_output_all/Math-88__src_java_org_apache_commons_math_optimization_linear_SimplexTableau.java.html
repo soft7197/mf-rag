@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to664__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-88 - Buggy: src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-88 - Fixed: src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_326">326</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;basicRow&nbsp;=</td><td class="diff_next"></td><td class="diff_header" id="to664_326">326</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;basicRow&nbsp;=</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_327">327</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getBasicRow(getNumObjectiveFunctions()&nbsp;+&nbsp;getOriginalNumDecisionVaria</td><td class="diff_next"></td><td class="diff_header" id="to664_327">327</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getBasicRow(getNumObjectiveFunctions()&nbsp;+&nbsp;getOriginalNumDecisionVaria</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to664__0"></td><td class="diff_header">></td><td nowrap="nowrap">bles());</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">bles());</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_328">328</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;mostNegative&nbsp;=&nbsp;basicRow&nbsp;==&nbsp;null&nbsp;?&nbsp;0&nbsp;:&nbsp;getEntry(basicRow,&nbsp;getRhsOf</td><td class="diff_next"></td><td class="diff_header" id="to664_328">328</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;mostNegative&nbsp;=&nbsp;basicRow&nbsp;==&nbsp;null&nbsp;?&nbsp;0&nbsp;:&nbsp;getEntry(basicRow,&nbsp;getRhsOf</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">fset());</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">fset());</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to664__1"><a href="#difflib_chg_to664__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to664__1">n</a></td><td class="diff_header" id="to664_329">329</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;Integer&gt;&nbsp;basicRows&nbsp;=&nbsp;new&nbsp;HashSet&lt;Integer&gt;();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_329">329</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;coefficients.length;&nbsp;i++)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to664_330">330</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;coefficients.length;&nbsp;i++)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_330">330</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicRow&nbsp;=&nbsp;getBasicRow(getNumObjectiveFunctions()&nbsp;+&nbsp;i);</td><td class="diff_next"></td><td class="diff_header" id="to664_331">331</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicRow&nbsp;=&nbsp;getBasicRow(getNumObjectiveFunctions()&nbsp;+&nbsp;i);</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to664__2"><a href="#difflib_chg_to664__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to664__2">n</a></td><td class="diff_header" id="to664_332">332</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(basicRows.contains(basicRow))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_331">331</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;multiple&nbsp;variables&nbsp;can&nbsp;take&nbsp;a&nbsp;given&nbsp;value&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to664_333">333</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;multiple&nbsp;variables&nbsp;can&nbsp;take&nbsp;a&nbsp;given&nbsp;value&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_332">332</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;we&nbsp;choose&nbsp;the&nbsp;first&nbsp;and&nbsp;set&nbsp;the&nbsp;rest&nbsp;equal&nbsp;to&nbsp;0</td><td class="diff_next"></td><td class="diff_header" id="to664_334">334</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;we&nbsp;choose&nbsp;the&nbsp;first&nbsp;and&nbsp;set&nbsp;the&nbsp;rest&nbsp;equal&nbsp;to&nbsp;0</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to664__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to664__3">n</a></td><td class="diff_header" id="to664_335">335</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=&nbsp;0;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to664_336">336</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to664_337">337</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicRows.add(basicRow);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_333">333</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=</td><td class="diff_next"></td><td class="diff_header" id="to664_338">338</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to664__3"></td><td class="diff_header" id="from664_334">334</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(basicRow&nbsp;==&nbsp;null&nbsp;?&nbsp;0&nbsp;:&nbsp;getEntry(basicRow,&nbsp;getRhsOffset()))&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to664_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(basicRow&nbsp;==&nbsp;null&nbsp;?&nbsp;0&nbsp;:&nbsp;getEntry(basicRow,&nbsp;getRhsOffset()))&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">-</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_335">335</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(restrictToNonNegative&nbsp;?&nbsp;0&nbsp;:&nbsp;mostNegative);</td><td class="diff_next"></td><td class="diff_header" id="to664_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(restrictToNonNegative&nbsp;?&nbsp;0&nbsp;:&nbsp;mostNegative);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to664__top">t</a></td><td class="diff_header" id="from664_336">336</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(basicRow&nbsp;!=&nbsp;null)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to664__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_337">337</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;j&nbsp;=&nbsp;getNumObjectiveFunctions();&nbsp;j&nbsp;&lt;&nbsp;getNumObjectiveFunc</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">tions()&nbsp;+&nbsp;i;&nbsp;j++)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_338">338</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(tableau.getEntry(basicRow,&nbsp;j)&nbsp;==&nbsp;1)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_339">339</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=&nbsp;0;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_340">340</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_341">341</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to664_341">341</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to664_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from664_344">344</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;RealPointValuePair(coefficients,&nbsp;f.getValue(coefficients));</td><td class="diff_next"></td><td class="diff_header" id="to664_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;RealPointValuePair(coefficients,&nbsp;f.getValue(coefficients));</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

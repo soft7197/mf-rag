@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to520__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-22 - Buggy: src/main/java/org/apache/commons/lang3/math/Fraction.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-22 - Fixed: src/main/java/org/apache/commons/lang3/math/Fraction.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to520__0"></td><td class="diff_header" id="from520_580">580</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to520_580">580</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from520_581">581</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;int&nbsp;greatestCommonDivisor(int&nbsp;u,&nbsp;int&nbsp;v)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to520_581">581</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;int&nbsp;greatestCommonDivisor(int&nbsp;u,&nbsp;int&nbsp;v)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from520_582">582</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;From&nbsp;Commons&nbsp;Math:</td><td class="diff_next"></td><td class="diff_header" id="to520_582">582</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;From&nbsp;Commons&nbsp;Math:</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to520__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to520__1">n</a></td><td class="diff_header" id="to520_583">583</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((u&nbsp;==&nbsp;0)&nbsp;||&nbsp;(v&nbsp;==&nbsp;0))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to520_584">584</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((u&nbsp;==&nbsp;Integer.MIN_VALUE)&nbsp;||&nbsp;(v&nbsp;==&nbsp;Integer.MIN_VALUE))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to520_585">585</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;ArithmeticException("overflow:&nbsp;gcd&nbsp;is&nbsp;2^31");</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to520_586">586</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to520__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to520_587">587</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Math.abs(u)&nbsp;+&nbsp;Math.abs(v);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to520_588">588</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from520_583">583</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;either&nbsp;operand&nbsp;is&nbsp;abs&nbsp;1,&nbsp;return&nbsp;1:</td><td class="diff_next"></td><td class="diff_header" id="to520_589">589</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;either&nbsp;operand&nbsp;is&nbsp;abs&nbsp;1,&nbsp;return&nbsp;1:</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to520__top">t</a></td><td class="diff_header" id="from520_584">584</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Math.abs(u)&nbsp;<span class="diff_sub">&lt;</span>=&nbsp;1&nbsp;||&nbsp;Math.abs(v)&nbsp;<span class="diff_sub">&lt;</span>=&nbsp;1)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to520__top">t</a></td><td class="diff_header" id="to520_590">590</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Math.abs(u)&nbsp;=<span class="diff_add">=</span>&nbsp;1&nbsp;||&nbsp;Math.abs(v)&nbsp;=<span class="diff_add">=</span>&nbsp;1)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from520_585">585</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1;</td><td class="diff_next"></td><td class="diff_header" id="to520_591">591</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from520_586">586</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to520_592">592</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from520_587">587</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;keep&nbsp;u&nbsp;and&nbsp;v&nbsp;negative,&nbsp;as&nbsp;negative&nbsp;integers&nbsp;range&nbsp;down&nbsp;to</td><td class="diff_next"></td><td class="diff_header" id="to520_593">593</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;keep&nbsp;u&nbsp;and&nbsp;v&nbsp;negative,&nbsp;as&nbsp;negative&nbsp;integers&nbsp;range&nbsp;down&nbsp;to</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

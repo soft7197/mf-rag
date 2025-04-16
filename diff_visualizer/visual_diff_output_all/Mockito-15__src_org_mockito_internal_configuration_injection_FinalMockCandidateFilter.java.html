@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to682__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-15 - Buggy: src/org/mockito/internal/configuration/injection/FinalMockCandidateFilter.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-15 - Fixed: src/org/mockito/internal/configuration/injection/FinalMockCandidateFilter.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to682__0"><a href="#difflib_chg_to682__0">f</a></td><td class="diff_header" id="from682_1">1</td><td nowrap="nowrap">package&nbsp;org.mockito.internal.configuration.injection;</td><td class="diff_next"><a href="#difflib_chg_to682__0">f</a></td><td class="diff_header" id="to682_1">1</td><td nowrap="nowrap">package&nbsp;org.mockito.internal.configuration.injection;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_2">2</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to682_2">2</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_3">3</td><td nowrap="nowrap">import&nbsp;org.mockito.exceptions.base.MockitoException;</td><td class="diff_next"></td><td class="diff_header" id="to682_3">3</td><td nowrap="nowrap">import&nbsp;org.mockito.exceptions.base.MockitoException;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to682__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to682__1">n</a></td><td class="diff_header" id="to682_4">4</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;org.mockito.internal.util.reflection.BeanPropertySetter;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_4">4</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.util.reflection.FieldSetter;</td><td class="diff_next"></td><td class="diff_header" id="to682_5">5</td><td nowrap="nowrap">import&nbsp;org.mockito.internal.util.reflection.FieldSetter;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_5">5</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to682_6">6</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_6">6</td><td nowrap="nowrap">import&nbsp;java.lang.reflect.Field;</td><td class="diff_next"></td><td class="diff_header" id="to682_7">7</td><td nowrap="nowrap">import&nbsp;java.lang.reflect.Field;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to682__1"></td><td class="diff_header" id="from682_22">22</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;OngoingInjecter()&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to682_23">23</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;OngoingInjecter()&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_23">23</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;boolean&nbsp;thenInject()&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to682_24">24</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;boolean&nbsp;thenInject()&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_24">24</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to682_25">25</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to682__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to682__2">n</a></td><td class="diff_header" id="to682_26">26</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!new&nbsp;BeanPropertySetter(fieldInstance,&nbsp;field).set(ma</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to682__2"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">tchingMock))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_25">25</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;FieldSetter(fieldInstance,&nbsp;field).set(matchingMo</td><td class="diff_next"></td><td class="diff_header" id="to682_27">27</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;FieldSetter(fieldInstance,&nbsp;field).set(matchingMo</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ck);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ck);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to682__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to682__top">t</a></td><td class="diff_header" id="to682_28">28</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_26">26</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(Exception&nbsp;e)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to682_29">29</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(Exception&nbsp;e)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_27">27</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;MockitoException("Problems&nbsp;injecting&nbsp;dependenc</td><td class="diff_next"></td><td class="diff_header" id="to682_30">30</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;MockitoException("Problems&nbsp;injecting&nbsp;dependenc</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;in&nbsp;"&nbsp;+&nbsp;field.getName(),&nbsp;e);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;in&nbsp;"&nbsp;+&nbsp;field.getName(),&nbsp;e);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from682_28">28</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to682_31">31</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

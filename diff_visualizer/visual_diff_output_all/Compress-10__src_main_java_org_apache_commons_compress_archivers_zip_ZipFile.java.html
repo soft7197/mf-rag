@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to238__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Compress-10 - Buggy: src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Compress-10 - Fixed: src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to238__0"></td><td class="diff_header" id="from238_805">805</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;hashcode&nbsp;-&nbsp;see&nbsp;COMPRESS-164</td><td class="diff_next"></td><td class="diff_header" id="to238_805">805</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;hashcode&nbsp;-&nbsp;see&nbsp;COMPRESS-164</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_806">806</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Map&nbsp;needs&nbsp;to&nbsp;be&nbsp;reconstructed&nbsp;in&nbsp;order&nbsp;to&nbsp;keep&nbsp;central</td><td class="diff_next"></td><td class="diff_header" id="to238_806">806</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Map&nbsp;needs&nbsp;to&nbsp;be&nbsp;reconstructed&nbsp;in&nbsp;order&nbsp;to&nbsp;keep&nbsp;central</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_807">807</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;directory&nbsp;order</td><td class="diff_next"></td><td class="diff_header" id="to238_807">807</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;directory&nbsp;order</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to238__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to238__1">n</a></td><td class="diff_header" id="to238_808">808</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;ZipArchiveEntry,&nbsp;OffsetEntry&gt;&nbsp;origMap&nbsp;=</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to238_809">809</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;LinkedHashMap&lt;ZipArchiveEntry,&nbsp;OffsetEntry&gt;(entries);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to238_810">810</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entries.clear();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_808">808</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ZipArchiveEntry&nbsp;ze&nbsp;:&nbsp;<span class="diff_chg">ent</span>ri<span class="diff_chg">es</span>.keySet())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to238_811">811</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ZipArchiveEntry&nbsp;ze&nbsp;:&nbsp;<span class="diff_chg">o</span>ri<span class="diff_chg">gMap</span>.keySet())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_809">809</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OffsetEntry&nbsp;offsetEntry&nbsp;=&nbsp;<span class="diff_chg">ent</span>ri<span class="diff_chg">es</span>.get(ze);</td><td class="diff_next"></td><td class="diff_header" id="to238_812">812</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OffsetEntry&nbsp;offsetEntry&nbsp;=&nbsp;<span class="diff_chg">o</span>ri<span class="diff_chg">gMap</span>.get(ze);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_810">810</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;offset&nbsp;=&nbsp;offsetEntry.headerOffset;</td><td class="diff_next"></td><td class="diff_header" id="to238_813">813</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;offset&nbsp;=&nbsp;offsetEntry.headerOffset;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_811">811</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;archive.seek(offset&nbsp;+&nbsp;LFH_OFFSET_FOR_FILENAME_LENGTH);</td><td class="diff_next"></td><td class="diff_header" id="to238_814">814</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;archive.seek(offset&nbsp;+&nbsp;LFH_OFFSET_FOR_FILENAME_LENGTH);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_812">812</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte[]&nbsp;b&nbsp;=&nbsp;new&nbsp;byte[SHORT];</td><td class="diff_next"></td><td class="diff_header" id="to238_815">815</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte[]&nbsp;b&nbsp;=&nbsp;new&nbsp;byte[SHORT];</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to238__1"></td><td class="diff_header" id="from238_839">839</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameMap.put(ze.getName(),&nbsp;ze);</td><td class="diff_next"></td><td class="diff_header" id="to238_842">842</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameMap.put(ze.getName(),&nbsp;ze);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_840">840</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to238_843">843</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_841">841</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to238_844">844</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to238__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to238__top">t</a></td><td class="diff_header" id="to238_845">845</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entries.put(ze,&nbsp;offsetEntry);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_842">842</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to238_846">846</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_843">843</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to238_847">847</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from238_844">844</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to238_848">848</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

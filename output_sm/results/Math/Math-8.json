@@ -1,0 +1,69 @@
+{
+    "Math-8": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Generate a random sample from the distribution.\n*\n* @param sampleSize the number of random values to generate.\n* @return an array representing the random sample.\n* @throws NotStrictlyPositiveException if {@code sampleSize} is not\n* positive.\n*/\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[]out = (T[]) java.lang.reflect.Array.newInstance(singletons.get(0).getClass(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testIssue942() {\n\n        List<Pair<Object,Double>> list = new ArrayList<Pair<Object, Double>>();\n\n        list.add(new Pair<Object, Double>(new Object() {}, new Double(0)));\n\n        list.add(new Pair<Object, Double>(new Object() {}, new Double(1)));\n\n        Assert.assertEquals(1, new DiscreteDistribution<Object>(list).sample(1).length);\n\n    }\n\n```\n#Error message: java.lang.ArrayStoreException: org.apache.commons.math3.distribution.DiscreteRealDistributionTest$2\n\tat org.apache.commons.math3.distribution.DiscreteDistribution.sample(DiscreteDistribution.java:190)  out[i] = sample();\n\tat org.apache.commons.math3.distribution.DiscreteRealDistributionTest.testIssue942(DiscreteRealDistributionTest.java:212)  Assert.assertEquals(1, new DiscreteDistribution<Object>(list).sample(1).length);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(singletons.get(0).getClass().getComponentType(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    Class<?> componentType = singletons.get(0).getClass();\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(componentType, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = (T) sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(singletons.get(0).getClass().getComponentType(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    T firstSample = sample();\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(firstSample.getClass(), sampleSize);\n\n    out[0] = firstSample;\n    for (int i = 1; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(sample().getClass(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(singletons.get(0).getClass().getComponentType(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    // Use the class of the first element of singletons to create the array\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(singletons.get(0).getClass().getComponentType(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    T firstSample = sample();\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(firstSample.getClass(), sampleSize);\n\n    out[0] = firstSample;\n    for (int i = 1; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(sample().getClass(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(Object.class, sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    T firstSample = sample();\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(firstSample.getClass(), sampleSize);\n\n    out[0] = firstSample;\n    for (int i = 1; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n}\n"
+                ],
+                [
+                    "\npublic T[] sample(int sampleSize) throws NotStrictlyPositiveException {\n    if (sampleSize <= 0) {\n        throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,\n                sampleSize);\n    }\n\n    final T[] out = (T[]) java.lang.reflect.Array.newInstance(sample().getClass(), sampleSize);\n\n    for (int i = 0; i < sampleSize; i++) {\n        out[i] = sample();\n    }\n\n    return out;\n\n}\n"
+                ]
+            ]
+        }
+    }
+}

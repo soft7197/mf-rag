@@ -1,0 +1,90 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to517__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-19 - Buggy: src/main/java/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-19 - Fixed: src/main/java/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;translate(CharSequence&nbsp;input,&nbsp;int&nbsp;index,&nbsp;Writer&nbsp;out)&nbsp;throws&nbsp;IOExc</td><td class="diff_next"></td><td class="diff_header" id="to517_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;translate(CharSequence&nbsp;input,&nbsp;int&nbsp;index,&nbsp;Writer&nbsp;out)&nbsp;throws&nbsp;IOExc</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to517__0"></td><td class="diff_header">></td><td nowrap="nowrap">eption&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eption&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_38">38</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;seqEnd&nbsp;=&nbsp;input.length();</td><td class="diff_next"></td><td class="diff_header" id="to517_38">38</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;seqEnd&nbsp;=&nbsp;input.length();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_39">39</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Uses&nbsp;-2&nbsp;to&nbsp;ensure&nbsp;there&nbsp;is&nbsp;something&nbsp;after&nbsp;the&nbsp;&amp;#</td><td class="diff_next"></td><td class="diff_header" id="to517_39">39</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Uses&nbsp;-2&nbsp;to&nbsp;ensure&nbsp;there&nbsp;is&nbsp;something&nbsp;after&nbsp;the&nbsp;&amp;#</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to517__1">n</a></td><td class="diff_header" id="from517_40">40</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(input.charAt(index)&nbsp;==&nbsp;'&amp;'&nbsp;&amp;&amp;&nbsp;index&nbsp;&lt;&nbsp;seqEnd&nbsp;-&nbsp;<span class="diff_chg">1</span>&nbsp;&amp;&amp;&nbsp;input.charAt(inde</td><td class="diff_next"><a href="#difflib_chg_to517__1">n</a></td><td class="diff_header" id="to517_40">40</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(input.charAt(index)&nbsp;==&nbsp;'&amp;'&nbsp;&amp;&amp;&nbsp;index&nbsp;&lt;&nbsp;seqEnd&nbsp;-&nbsp;<span class="diff_chg">2</span>&nbsp;&amp;&amp;&nbsp;input.charAt(inde</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">x&nbsp;+&nbsp;1)&nbsp;==&nbsp;'#')&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">x&nbsp;+&nbsp;1)&nbsp;==&nbsp;'#')&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_41">41</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;start&nbsp;=&nbsp;index&nbsp;+&nbsp;2;</td><td class="diff_next"></td><td class="diff_header" id="to517_41">41</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;start&nbsp;=&nbsp;index&nbsp;+&nbsp;2;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_42">42</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isHex&nbsp;=&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to517_42">42</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isHex&nbsp;=&nbsp;false;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_43">43</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_43">43</td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to517__1"></td><td class="diff_header" id="from517_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isHex&nbsp;=&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to517_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isHex&nbsp;=&nbsp;true;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_48">48</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_48">48</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_49">49</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Check&nbsp;there's&nbsp;more&nbsp;than&nbsp;just&nbsp;an&nbsp;x&nbsp;after&nbsp;the&nbsp;&amp;#</td><td class="diff_next"></td><td class="diff_header" id="to517_49">49</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Check&nbsp;there's&nbsp;more&nbsp;than&nbsp;just&nbsp;an&nbsp;x&nbsp;after&nbsp;the&nbsp;&amp;#</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to517__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to517__2">n</a></td><td class="diff_header" id="to517_50">50</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(start&nbsp;==&nbsp;seqEnd)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_51">51</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_52">52</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_50">50</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to517_53">53</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to517__2"></td><td class="diff_header" id="from517_51">51</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_54">54</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_52">52</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;end&nbsp;=&nbsp;start;</td><td class="diff_next"></td><td class="diff_header" id="to517_55">55</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;end&nbsp;=&nbsp;start;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_53">53</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Note&nbsp;that&nbsp;this&nbsp;supports&nbsp;character&nbsp;codes&nbsp;without&nbsp;a&nbsp;;&nbsp;on&nbsp;the&nbsp;end</td><td class="diff_next"></td><td class="diff_header" id="to517_56">56</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Note&nbsp;that&nbsp;this&nbsp;supports&nbsp;character&nbsp;codes&nbsp;without&nbsp;a&nbsp;;&nbsp;on&nbsp;the&nbsp;end</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to517__3">n</a></td><td class="diff_header" id="from517_54">54</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(input.charAt(end)&nbsp;!=&nbsp;';')&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to517__3">n</a></td><td class="diff_header" id="to517_57">57</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(end&nbsp;&lt;&nbsp;seqEnd&nbsp;&amp;&amp;&nbsp;(&nbsp;(input.charAt(end)&nbsp;&gt;=&nbsp;'0'&nbsp;&amp;&amp;&nbsp;input.charAt(en</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">d)&nbsp;&lt;=&nbsp;'9')&nbsp;||</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_58">58</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(input.charAt(end)&nbsp;&gt;=&nbsp;'a'&nbsp;&amp;&amp;&nbsp;input.charAt(en</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">d)&nbsp;&lt;=&nbsp;'f')&nbsp;||</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_59">59</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(input.charAt(end)&nbsp;&gt;=&nbsp;'A'&nbsp;&amp;&amp;&nbsp;input.charAt(en</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">d)&nbsp;&lt;=&nbsp;'F')&nbsp;)&nbsp;)</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_55">55</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to517_60">60</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_56">56</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end++;</td><td class="diff_next"></td><td class="diff_header" id="to517_61">61</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end++;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_57">57</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to517_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to517__3"></td><td class="diff_header" id="from517_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.write(entityValue);</td><td class="diff_next"></td><td class="diff_header" id="to517_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.write(entityValue);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to517_82">82</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to517__4"></td><td class="diff_header" id="from517_78">78</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_83">83</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to517__4">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to517__4">n</a></td><td class="diff_header" id="to517_84">84</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;semiNext&nbsp;=&nbsp;(end&nbsp;!=&nbsp;seqEnd)&nbsp;&amp;&amp;&nbsp;(input.charAt(end)&nbsp;==&nbsp;';');</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_79">79</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to517_85">85</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to517__top">t</a></td><td class="diff_header" id="from517_80">80</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;2&nbsp;+&nbsp;(end&nbsp;-&nbsp;start)&nbsp;+&nbsp;(isHex&nbsp;?&nbsp;1&nbsp;:&nbsp;0)&nbsp;+&nbsp;1;</td><td class="diff_next"><a href="#difflib_chg_to517__top">t</a></td><td class="diff_header" id="to517_86">86</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;2&nbsp;+&nbsp;(end&nbsp;-&nbsp;start)&nbsp;+&nbsp;(isHex&nbsp;?&nbsp;1&nbsp;:&nbsp;0)&nbsp;+&nbsp;<span class="diff_add">(semiNext&nbsp;?&nbsp;</span>1<span class="diff_add">&nbsp;:&nbsp;0)</span>;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to517_87">87</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_82">82</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;</td><td class="diff_next"></td><td class="diff_header" id="to517_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from517_83">83</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to517_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

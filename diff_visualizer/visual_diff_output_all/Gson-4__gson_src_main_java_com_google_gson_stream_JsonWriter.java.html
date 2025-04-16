@@ -1,0 +1,143 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to301__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-4 - Buggy: gson/src/main/java/com/google/gson/stream/JsonWriter.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-4 - Fixed: gson/src/main/java/com/google/gson/stream/JsonWriter.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__0"></td><td class="diff_header" id="from301_322">322</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;bracket.</td><td class="diff_next"></td><td class="diff_header" id="to301_322">322</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;bracket.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_323">323</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to301_323">323</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_324">324</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;JsonWriter&nbsp;open(int&nbsp;empty,&nbsp;String&nbsp;openBracket)&nbsp;throws&nbsp;IOException&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to301_324">324</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;JsonWriter&nbsp;open(int&nbsp;empty,&nbsp;String&nbsp;openBracket)&nbsp;throws&nbsp;IOException&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__1">n</a></td><td class="diff_header" id="from301_325">325</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">true</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__1">n</a></td><td class="diff_header" id="to301_325">325</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_326">326</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;push(empty);</td><td class="diff_next"></td><td class="diff_header" id="to301_326">326</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;push(empty);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_327">327</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write(openBracket);</td><td class="diff_next"></td><td class="diff_header" id="to301_327">327</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write(openBracket);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_328">328</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_328">328</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__1"></td><td class="diff_header" id="from301_415">415</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;nullValue();</td><td class="diff_next"></td><td class="diff_header" id="to301_415">415</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;nullValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_416">416</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_416">416</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_417">417</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td><td class="diff_next"></td><td class="diff_header" id="to301_417">417</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__2">n</a></td><td class="diff_header" id="from301_418">418</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__2">n</a></td><td class="diff_header" id="to301_418">418</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_419">419</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;string(value);</td><td class="diff_next"></td><td class="diff_header" id="to301_419">419</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;string(value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_420">420</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_420">420</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_421">421</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_421">421</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__2"></td><td class="diff_header" id="from301_432">432</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;nullValue();</td><td class="diff_next"></td><td class="diff_header" id="to301_432">432</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;nullValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_433">433</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_433">433</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_434">434</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td><td class="diff_next"></td><td class="diff_header" id="to301_434">434</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__3">n</a></td><td class="diff_header" id="from301_435">435</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__3">n</a></td><td class="diff_header" id="to301_435">435</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_436">436</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.append(value);</td><td class="diff_next"></td><td class="diff_header" id="to301_436">436</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.append(value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_437">437</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_437">437</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_438">438</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_438">438</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__3"></td><td class="diff_header" id="from301_451">451</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;&nbsp;//&nbsp;skip&nbsp;the&nbsp;name&nbsp;and&nbsp;the&nbsp;value</td><td class="diff_next"></td><td class="diff_header" id="to301_451">451</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;&nbsp;//&nbsp;skip&nbsp;the&nbsp;name&nbsp;and&nbsp;the&nbsp;value</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_452">452</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_452">452</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_453">453</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_453">453</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__4">n</a></td><td class="diff_header" id="from301_454">454</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__4">n</a></td><td class="diff_header" id="to301_454">454</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_455">455</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write("null");</td><td class="diff_next"></td><td class="diff_header" id="to301_455">455</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write("null");</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_456">456</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_456">456</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_457">457</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_457">457</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__4"></td><td class="diff_header" id="from301_463">463</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to301_463">463</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_464">464</td><td nowrap="nowrap">&nbsp;&nbsp;public&nbsp;JsonWriter&nbsp;value(boolean&nbsp;value)&nbsp;throws&nbsp;IOException&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to301_464">464</td><td nowrap="nowrap">&nbsp;&nbsp;public&nbsp;JsonWriter&nbsp;value(boolean&nbsp;value)&nbsp;throws&nbsp;IOException&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_465">465</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td><td class="diff_next"></td><td class="diff_header" id="to301_465">465</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__5">n</a></td><td class="diff_header" id="from301_466">466</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__5">n</a></td><td class="diff_header" id="to301_466">466</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_467">467</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write(value&nbsp;?&nbsp;"true"&nbsp;:&nbsp;"false");</td><td class="diff_next"></td><td class="diff_header" id="to301_467">467</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write(value&nbsp;?&nbsp;"true"&nbsp;:&nbsp;"false");</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_468">468</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_468">468</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_469">469</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_469">469</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_480">480</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("Numeric&nbsp;values&nbsp;must&nbsp;be&nbsp;finite,&nbsp;but&nbsp;was</td><td class="diff_next"></td><td class="diff_header" id="to301_480">480</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("Numeric&nbsp;values&nbsp;must&nbsp;be&nbsp;finite,&nbsp;but&nbsp;was</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to301__5"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;"&nbsp;+&nbsp;value);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;"&nbsp;+&nbsp;value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_481">481</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_481">481</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_482">482</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td><td class="diff_next"></td><td class="diff_header" id="to301_482">482</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__6">n</a></td><td class="diff_header" id="from301_483">483</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__6">n</a></td><td class="diff_header" id="to301_483">483</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_484">484</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.append(Double.toString(value));</td><td class="diff_next"></td><td class="diff_header" id="to301_484">484</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.append(Double.toString(value));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_485">485</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_485">485</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_486">486</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_486">486</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__6"></td><td class="diff_header" id="from301_492">492</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to301_492">492</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_493">493</td><td nowrap="nowrap">&nbsp;&nbsp;public&nbsp;JsonWriter&nbsp;value(long&nbsp;value)&nbsp;throws&nbsp;IOException&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to301_493">493</td><td nowrap="nowrap">&nbsp;&nbsp;public&nbsp;JsonWriter&nbsp;value(long&nbsp;value)&nbsp;throws&nbsp;IOException&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_494">494</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td><td class="diff_next"></td><td class="diff_header" id="to301_494">494</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;writeDeferredName();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__7">n</a></td><td class="diff_header" id="from301_495">495</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__7">n</a></td><td class="diff_header" id="to301_495">495</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_496">496</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write(Long.toString(value));</td><td class="diff_next"></td><td class="diff_header" id="to301_496">496</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.write(Long.toString(value));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_497">497</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_497">497</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_498">498</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_498">498</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_515">515</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;(string.equals("-Infinity")&nbsp;||&nbsp;string.equals("Infinity")&nbsp;||&nbsp;string.eq</td><td class="diff_next"></td><td class="diff_header" id="to301_515">515</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;(string.equals("-Infinity")&nbsp;||&nbsp;string.equals("Infinity")&nbsp;||&nbsp;string.eq</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uals("NaN")))&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uals("NaN")))&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to301__7"></td><td class="diff_header" id="from301_516">516</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("Numeric&nbsp;values&nbsp;must&nbsp;be&nbsp;finite,&nbsp;but&nbsp;was</td><td class="diff_next"></td><td class="diff_header" id="to301_516">516</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalArgumentException("Numeric&nbsp;values&nbsp;must&nbsp;be&nbsp;finite,&nbsp;but&nbsp;was</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;"&nbsp;+&nbsp;value);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;"&nbsp;+&nbsp;value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_517">517</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_517">517</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__8">n</a></td><td class="diff_header" id="from301_518">518</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue(<span class="diff_sub">false</span>);</td><td class="diff_next"><a href="#difflib_chg_to301__8">n</a></td><td class="diff_header" id="to301_518">518</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;beforeValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_519">519</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.append(string);</td><td class="diff_next"></td><td class="diff_header" id="to301_519">519</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;out.append(string);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_520">520</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td><td class="diff_next"></td><td class="diff_header" id="to301_520">520</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_521">521</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_521">521</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__8"></td><td class="diff_header" id="from301_610">610</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;closing&nbsp;bracket&nbsp;or&nbsp;another&nbsp;element.</td><td class="diff_next"></td><td class="diff_header" id="to301_610">610</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*&nbsp;closing&nbsp;bracket&nbsp;or&nbsp;another&nbsp;element.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_611">611</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to301_611">611</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_612">612</td><td nowrap="nowrap">&nbsp;&nbsp;@SuppressWarnings("fallthrough")</td><td class="diff_next"></td><td class="diff_header" id="to301_612">612</td><td nowrap="nowrap">&nbsp;&nbsp;@SuppressWarnings("fallthrough")</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__9">n</a></td><td class="diff_header" id="from301_613">613</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;void&nbsp;beforeValue(<span class="diff_sub">boolean&nbsp;root</span>)&nbsp;throws&nbsp;IOException&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to301__9">n</a></td><td class="diff_header" id="to301_613">613</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;void&nbsp;beforeValue()&nbsp;throws&nbsp;IOException&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_614">614</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(peek())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to301_614">614</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(peek())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_615">615</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;NONEMPTY_DOCUMENT:</td><td class="diff_next"></td><td class="diff_header" id="to301_615">615</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;NONEMPTY_DOCUMENT:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_616">616</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!lenient)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to301_616">616</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!lenient)&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to301__9"></td><td class="diff_header" id="from301_619">619</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to301_619">619</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_620">620</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;fall-through</td><td class="diff_next"></td><td class="diff_header" id="to301_620">620</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;fall-through</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_621">621</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;EMPTY_DOCUMENT:&nbsp;//&nbsp;first&nbsp;in&nbsp;document</td><td class="diff_next"></td><td class="diff_header" id="to301_621">621</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;EMPTY_DOCUMENT:&nbsp;//&nbsp;first&nbsp;in&nbsp;document</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to301__top">t</a></td><td class="diff_header" id="from301_622">622</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!lenient&nbsp;&amp;&amp;&nbsp;!root)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to301__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_623">623</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalStateException(</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_624">624</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"JSON&nbsp;must&nbsp;start&nbsp;with&nbsp;an&nbsp;array&nbsp;or&nbsp;an&nbsp;object.");</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_625">625</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_626">626</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;replaceTop(NONEMPTY_DOCUMENT);</td><td class="diff_next"></td><td class="diff_header" id="to301_622">622</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;replaceTop(NONEMPTY_DOCUMENT);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_627">627</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td><td class="diff_next"></td><td class="diff_header" id="to301_623">623</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from301_628">628</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to301_624">624</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

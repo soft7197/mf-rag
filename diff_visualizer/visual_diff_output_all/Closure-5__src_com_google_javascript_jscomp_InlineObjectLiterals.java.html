@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to165__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-5 - Buggy: src/com/google/javascript/jscomp/InlineObjectLiterals.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-5 - Fixed: src/com/google/javascript/jscomp/InlineObjectLiterals.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to165__0"></td><td class="diff_header" id="from165_173">173</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to165_173">173</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from165_174">174</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Deleting&nbsp;a&nbsp;property&nbsp;has&nbsp;different&nbsp;semantics&nbsp;from&nbsp;deleting</td><td class="diff_next"></td><td class="diff_header" id="to165_174">174</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Deleting&nbsp;a&nbsp;property&nbsp;has&nbsp;different&nbsp;semantics&nbsp;from&nbsp;deleting</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from165_175">175</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;a&nbsp;variable,&nbsp;so&nbsp;deleted&nbsp;properties&nbsp;should&nbsp;not&nbsp;be&nbsp;inlined.</td><td class="diff_next"></td><td class="diff_header" id="to165_175">175</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;a&nbsp;variable,&nbsp;so&nbsp;deleted&nbsp;properties&nbsp;should&nbsp;not&nbsp;be&nbsp;inlined.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to165__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to165__top">t</a></td><td class="diff_header" id="to165_176">176</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(gramps.isDelProp())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to165_177">177</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to165_178">178</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from165_176">176</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to165_179">179</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from165_177">177</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;NOTE(nicksantos):&nbsp;This&nbsp;pass's&nbsp;object-splitting&nbsp;algorithm&nbsp;has</td><td class="diff_next"></td><td class="diff_header" id="to165_180">180</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;NOTE(nicksantos):&nbsp;This&nbsp;pass's&nbsp;object-splitting&nbsp;algorithm&nbsp;has</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from165_178">178</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;a&nbsp;blind&nbsp;spot.&nbsp;It&nbsp;assumes&nbsp;that&nbsp;if&nbsp;a&nbsp;property&nbsp;isn't&nbsp;defined&nbsp;on&nbsp;an</td><td class="diff_next"></td><td class="diff_header" id="to165_181">181</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;a&nbsp;blind&nbsp;spot.&nbsp;It&nbsp;assumes&nbsp;that&nbsp;if&nbsp;a&nbsp;property&nbsp;isn't&nbsp;defined&nbsp;on&nbsp;an</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

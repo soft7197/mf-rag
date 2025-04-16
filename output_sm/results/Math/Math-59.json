@@ -1,0 +1,84 @@
+{
+    "Math-59": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/** Compute the maximum of two values\n* @param a first value\n* @param b second value\n* @return b if a is lesser or equal to b, a otherwise\n*/\npublic static float max(final float a, final float b) {\n    return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testMinMaxFloat() {\n\n        float[][] pairs = {\n\n            { -50.0f, 50.0f },\n\n            {  Float.POSITIVE_INFINITY, 1.0f },\n\n            {  Float.NEGATIVE_INFINITY, 1.0f },\n\n            {  Float.NaN, 1.0f },\n\n            {  Float.POSITIVE_INFINITY, 0.0f },\n\n            {  Float.NEGATIVE_INFINITY, 0.0f },\n\n            {  Float.NaN, 0.0f },\n\n            {  Float.NaN, Float.NEGATIVE_INFINITY },\n\n            {  Float.NaN, Float.POSITIVE_INFINITY }\n\n        };\n\n        for (float[] pair : pairs) {\n\n            Assert.assertEquals(\"min(\" + pair[0] + \", \" + pair[1] + \")\",\n\n                                Math.min(pair[0], pair[1]),\n\n                                FastMath.min(pair[0], pair[1]),\n\n                                MathUtils.EPSILON);\n\n            Assert.assertEquals(\"min(\" + pair[1] + \", \" + pair[0] + \")\",\n\n                                Math.min(pair[1], pair[0]),\n\n                                FastMath.min(pair[1], pair[0]),\n\n                                MathUtils.EPSILON);\n\n            Assert.assertEquals(\"max(\" + pair[0] + \", \" + pair[1] + \")\",\n\n                                Math.max(pair[0], pair[1]),\n\n                                FastMath.max(pair[0], pair[1]),\n\n                                MathUtils.EPSILON);\n\n            Assert.assertEquals(\"max(\" + pair[1] + \", \" + pair[0] + \")\",\n\n                                Math.max(pair[1], pair[0]),\n\n                                FastMath.max(pair[1], pair[0]),\n\n                                MathUtils.EPSILON);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: max(50.0, -50.0) expected:<50.0> but was:<-50.0>\n\tat org.apache.commons.math.util.FastMathTest.testMinMaxFloat(FastMathTest.java:103)  Assert.assertEquals(\"max(\" + pair[1] + \", \" + pair[0] + \")\",                                Math.max(pair[1], pair[0]),                                FastMath.max(pair[1], pair[0]),                                MathUtils.EPSILON);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a >= b) ? a : b;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a)) {\n        return a;\n    }\n    if (Float.isNaN(b)) {\n        return b;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a >= b) ? a : b;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a)) {\n        return a;\n    }\n    if (Float.isNaN(b)) {\n        return b;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a >= b) ? a : b;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a)) {\n        return a;\n    }\n    if (Float.isNaN(b)) {\n        return b;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a >= b) ? a : b;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a)) {\n        return a;\n    }\n    if (Float.isNaN(b)) {\n        return b;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a) || Float.isNaN(b)) {\n        return Float.NaN;\n    }\n    return (a >= b) ? a : b;\n}\n"
+                ],
+                [
+                    "\npublic static float max(final float a, final float b) {\n    if (Float.isNaN(a)) {\n        return a;\n    }\n    if (Float.isNaN(b)) {\n        return b;\n    }\n    return (a <= b) ? b : a;\n}\n"
+                ]
+            ]
+        }
+    }
+}

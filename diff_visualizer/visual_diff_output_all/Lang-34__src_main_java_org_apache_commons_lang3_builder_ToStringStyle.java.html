@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to530__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-34 - Buggy: src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-34 - Fixed: src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to530__0"></td><td class="diff_header" id="from530_145">145</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;Set&nbsp;the&nbsp;registry&nbsp;of&nbsp;objects&nbsp;being&nbsp;traversed</td><td class="diff_next"></td><td class="diff_header" id="to530_145">145</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;Set&nbsp;the&nbsp;registry&nbsp;of&nbsp;objects&nbsp;being&nbsp;traversed</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_146">146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to530_146">146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;Map&lt;Object,&nbsp;Object&gt;&nbsp;getRegistry()&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to530_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;Map&lt;Object,&nbsp;Object&gt;&nbsp;getRegistry()&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to530__1">n</a></td><td class="diff_header" id="from530_148">148</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;REGISTRY.get()&nbsp;!=&nbsp;null&nbsp;?&nbsp;REGISTRY.get()&nbsp;:&nbsp;Collections.&lt;Object,&nbsp;Ob</span></td><td class="diff_next"><a href="#difflib_chg_to530__1">n</a></td><td class="diff_header" id="to530_148">148</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;REGISTRY.get();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ject&gt;emptyMap();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to530_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_150">150</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to530_150">150</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to530_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to530__1"></td><td class="diff_header" id="from530_161">161</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to530_161">161</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_162">162</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;boolean&nbsp;isRegistered(Object&nbsp;value)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to530_162">162</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;boolean&nbsp;isRegistered(Object&nbsp;value)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_163">163</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;Object,&nbsp;Object&gt;&nbsp;m&nbsp;=&nbsp;getRegistry();</td><td class="diff_next"></td><td class="diff_header" id="to530_163">163</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;Object,&nbsp;Object&gt;&nbsp;m&nbsp;=&nbsp;getRegistry();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to530__top">t</a></td><td class="diff_header" id="from530_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;m.containsKey(value);</td><td class="diff_next"><a href="#difflib_chg_to530__top">t</a></td><td class="diff_header" id="to530_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<span class="diff_add">&nbsp;m&nbsp;!=&nbsp;null&nbsp;&amp;&amp;</span>&nbsp;m.containsKey(value);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_165">165</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to530_165">165</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_166">166</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to530_166">166</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from530_167">167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to530_167">167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

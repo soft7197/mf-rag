@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to502__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JxPath-18 - Buggy: src/java/org/apache/commons/jxpath/ri/axes/AttributeContext.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JxPath-18 - Fixed: src/java/org/apache/commons/jxpath/ri/axes/AttributeContext.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to502__0"></td><td class="diff_header" id="from502_16">16</td><td nowrap="nowrap">&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to502_16">16</td><td nowrap="nowrap">&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_17">17</td><td nowrap="nowrap">package&nbsp;org.apache.commons.jxpath.ri.axes;</td><td class="diff_next"></td><td class="diff_header" id="to502_17">17</td><td nowrap="nowrap">package&nbsp;org.apache.commons.jxpath.ri.axes;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_18">18</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_18">18</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to502__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to502__1">n</a></td><td class="diff_header" id="to502_19">19</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;org.apache.commons.jxpath.ri.Compiler;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_19">19</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.EvalContext;</td><td class="diff_next"></td><td class="diff_header" id="to502_20">20</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.EvalContext;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to502__1"></td><td class="diff_header" id="from502_20">20</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.QName;</td><td class="diff_next"></td><td class="diff_header" id="to502_21">21</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.QName;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_21">21</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.compiler.NodeNameTest;</td><td class="diff_next"></td><td class="diff_header" id="to502_22">22</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.compiler.NodeNameTest;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_22">22</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.compiler.NodeTest;</td><td class="diff_next"></td><td class="diff_header" id="to502_23">23</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.compiler.NodeTest;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to502__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to502__2">n</a></td><td class="diff_header" id="to502_24">24</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;org.apache.commons.jxpath.ri.compiler.NodeTypeTest;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_23">23</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.model.NodeIterator;</td><td class="diff_next"></td><td class="diff_header" id="to502_25">25</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.model.NodeIterator;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_24">24</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.model.NodePointer;</td><td class="diff_next"></td><td class="diff_header" id="to502_26">26</td><td nowrap="nowrap">import&nbsp;org.apache.commons.jxpath.ri.model.NodePointer;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_25">25</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_27">27</td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to502__2"></td><td class="diff_header" id="from502_30">30</td><td nowrap="nowrap">&nbsp;*&nbsp;@version&nbsp;$Revision$&nbsp;$Date$</td><td class="diff_next"></td><td class="diff_header" id="to502_32">32</td><td nowrap="nowrap">&nbsp;*&nbsp;@version&nbsp;$Revision$&nbsp;$Date$</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_31">31</td><td nowrap="nowrap">&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to502_33">33</td><td nowrap="nowrap">&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_32">32</td><td nowrap="nowrap">public&nbsp;class&nbsp;AttributeContext&nbsp;extends&nbsp;EvalContext&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to502_34">34</td><td nowrap="nowrap">public&nbsp;class&nbsp;AttributeContext&nbsp;extends&nbsp;EvalContext&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to502__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to502__3">n</a></td><td class="diff_header" id="to502_35">35</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;NodeNameTest&nbsp;WILDCARD_TEST&nbsp;=&nbsp;new&nbsp;NodeNameTest(new&nbsp;QName</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">(null,&nbsp;"*"));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_33">33</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_36">36</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_34">34</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NodeTest&nbsp;nodeTest;</td><td class="diff_next"></td><td class="diff_header" id="to502_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NodeTest&nbsp;nodeTest;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_35">35</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;setStarted&nbsp;=&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to502_38">38</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;setStarted&nbsp;=&nbsp;false;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to502__3"></td><td class="diff_header" id="from502_72">72</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.setPosition(getCurrentPosition()&nbsp;+&nbsp;1);</td><td class="diff_next"></td><td class="diff_header" id="to502_75">75</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.setPosition(getCurrentPosition()&nbsp;+&nbsp;1);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_73">73</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!setStarted)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to502_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!setStarted)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_74">74</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setStarted&nbsp;=&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to502_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setStarted&nbsp;=&nbsp;true;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to502__4">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to502__4">n</a></td><td class="diff_header" id="to502_78">78</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NodeNameTest&nbsp;nodeNameTest&nbsp;=&nbsp;null;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_79">79</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(nodeTest&nbsp;instanceof&nbsp;NodeTypeTest)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_80">80</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(((NodeTypeTest)&nbsp;nodeTest).getNodeType()&nbsp;==&nbsp;Compiler.NODE_TYP</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">E_NODE)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_81">81</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodeNameTest&nbsp;=&nbsp;WILDCARD_TEST;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_82">82</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_83">83</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_75">75</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;<span class="diff_sub">(!</span>(nodeTest&nbsp;instanceof&nbsp;NodeNameTest)<span class="diff_sub">)</span>&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to502_84">84</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_add">&nbsp;else</span>&nbsp;if&nbsp;(nodeTest&nbsp;instanceof&nbsp;NodeNameTest)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_85">85</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodeNameTest&nbsp;=&nbsp;(NodeNameTest)&nbsp;nodeTest;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_86">86</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to502__4"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_87">87</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(nodeNameTest&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to502_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to502_89">89</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to502__top">t</a></td><td class="diff_header" id="from502_78">78</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QName&nbsp;name&nbsp;=&nbsp;((NodeNameTest)&nbsp;nodeTest).getNodeName();</span></td><td class="diff_next"><a href="#difflib_chg_to502__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_79">79</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterator&nbsp;=</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_80">80</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">&nbsp;&nbsp;&nbsp;</span>&nbsp;parentContext.getCurrentNodePointer().attributeIterator(<span class="diff_sub">name);</span></td><td class="diff_next"></td><td class="diff_header" id="to502_90">90</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">iterator&nbsp;=</span>&nbsp;parentContext.getCurrentNodePointer().attributeIterator(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to502_91">91</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodeNameTest.getNodeName());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to502_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_82">82</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iterator&nbsp;==&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to502_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iterator&nbsp;==&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from502_83">83</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to502_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

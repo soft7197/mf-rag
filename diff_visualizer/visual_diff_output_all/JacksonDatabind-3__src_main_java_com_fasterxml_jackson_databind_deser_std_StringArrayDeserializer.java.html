@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to365__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-3 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/std/StringArrayDeserializer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-3 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/std/StringArrayDeserializer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to365__0"></td><td class="diff_header" id="from365_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_STRING)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to365_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_STRING)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_64">64</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;jp.getText();</td><td class="diff_next"></td><td class="diff_header" id="to365_64">64</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;jp.getText();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to365_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to365__1">n</a></td><td class="diff_header" id="from365_66">66</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;_elementDeserializer.getNullValue();</span></td><td class="diff_next"><a href="#difflib_chg_to365__1">n</a></td><td class="diff_header" id="to365_66">66</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;null;&nbsp;//&nbsp;since&nbsp;we&nbsp;have&nbsp;established&nbsp;that&nbsp;'_elementDeseria</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">lizer&nbsp;==&nbsp;null'&nbsp;earlier</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_67">67</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to365_67">67</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_68">68</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;_parseString(jp,&nbsp;ctxt);</td><td class="diff_next"></td><td class="diff_header" id="to365_68">68</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;_parseString(jp,&nbsp;ctxt);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_69">69</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to365_69">69</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to365__1"></td><td class="diff_header" id="from365_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to365_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;((t&nbsp;=&nbsp;jp.nextToken())&nbsp;!=&nbsp;JsonToken.END_ARRAY)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to365_93">93</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;((t&nbsp;=&nbsp;jp.nextToken())&nbsp;!=&nbsp;JsonToken.END_ARRAY)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Ok:&nbsp;no&nbsp;need&nbsp;to&nbsp;convert&nbsp;Strings,&nbsp;but&nbsp;must&nbsp;recognize&nbsp;nulls</td><td class="diff_next"></td><td class="diff_header" id="to365_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Ok:&nbsp;no&nbsp;need&nbsp;to&nbsp;convert&nbsp;Strings,&nbsp;but&nbsp;must&nbsp;recognize&nbsp;nulls</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to365__top">t</a></td><td class="diff_header" id="from365_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;value&nbsp;=&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;?&nbsp;<span class="diff_chg">n</span>ull&nbsp;:&nbsp;deser.deserializ</td><td class="diff_next"><a href="#difflib_chg_to365__top">t</a></td><td class="diff_header" id="to365_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;value&nbsp;=&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;?&nbsp;<span class="diff_chg">deser.getN</span>ull<span class="diff_add">Value()</span>&nbsp;:&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e(jp,&nbsp;ctxt);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">deser.deserialize(jp,&nbsp;ctxt);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ix&nbsp;&gt;=&nbsp;chunk.length)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to365_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ix&nbsp;&gt;=&nbsp;chunk.length)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chunk&nbsp;=&nbsp;buffer.appendCompletedChunk(chunk);</td><td class="diff_next"></td><td class="diff_header" id="to365_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chunk&nbsp;=&nbsp;buffer.appendCompletedChunk(chunk);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from365_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ix&nbsp;=&nbsp;0;</td><td class="diff_next"></td><td class="diff_header" id="to365_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ix&nbsp;=&nbsp;0;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

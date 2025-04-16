@@ -1,0 +1,77 @@
+{
+    "Closure-133": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  return result;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testTextExtents() {\n\n    parse(\"@return {@code foo} bar \\n *    baz. */\",\n\n        true, \"Bad type annotation. type not recognized due to syntax error\");\n\n  }\n\n```\n#Error message: java.lang.IllegalStateException: Recorded bad position information\nstart-char: 14\nend-char: 13\n\tat com.google.javascript.rhino.SourcePosition.setPositionInformation(SourcePosition.java:87)  throw new IllegalStateException(            \"Recorded bad position information\\n\" +            \"start-char: \" + startCharno + \"\\n\" +            \"end-char: \" + endCharno);\n\tat com.google.javascript.rhino.JSDocInfoBuilder.markText(JSDocInfoBuilder.java:172)  position.setPositionInformation(startLineno, startCharno,          endLineno, endCharno);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParser.extractMultilineTextualBlock(JsDocInfoParser.java:1503)  jsdocBuilder.markText(multilineText, startLineno, startCharno,                  endLineno, endCharno);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParser.extractMultilineTextualBlock(JsDocInfoParser.java:1379)  return extractMultilineTextualBlock(token, WhitespaceOption.SINGLE_LINE);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParser.parse(JsDocInfoParser.java:958)  ExtractionInfo returnDescriptionInfo =\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParserTest.parse(JsDocInfoParserTest.java:2984)  jsdocParser.parse();\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParserTest.parse(JsDocInfoParserTest.java:2961)  return parse(comment, parseDocumentation, false, warnings);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParserTest.testTextExtents(JsDocInfoParserTest.java:2756)  parse(\"@return {@code foo} bar \\n *    baz. */\",        true, \"Bad type annotation. type not recognized due to syntax error\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result.endsWith(\"\\n\")) {\n    result = result.substring(0, result.length() - 1);\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result != null && result.endsWith(\"\\n\")) {\n    result = result.substring(0, result.length() - 1);\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, trimming any leading asterisk and whitespace.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  return result.replaceFirst(\"^\\\\s*\\\\*\", \"\").trim();\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, properly trimming leading asterisks and whitespace.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  return result.replaceFirst(\"^\\\\s*\\\\*?\\\\s*\", \"\");\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, trimming any leading '*'.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result != null && result.startsWith(\"*\")) {\n    result = result.substring(1).trim();\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, ensuring consistent line endings.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result.endsWith(\"\\n\")) {\n    result = result.substring(0, result.length() - 1);\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result.startsWith(\"*\")) {\n    result = result.substring(1).trim();\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result != null && result.endsWith(\"\\n\")) {\n    result = result.substring(0, result.length() - 1);\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result != null && result.endsWith(\"\\n\")) {\n    result = result.substring(0, result.length() - 1);\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  // Trim the result to avoid any leading or trailing spaces, which may cause position errors\n  return result.trim();\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  return result;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testTextExtents() {\n\n    parse(\"@return {@code foo} bar \\n *    baz. */\",\n\n        true, \"Bad type annotation. type not recognized due to syntax error\");\n\n  }\n\n```\n#Error message: java.lang.IllegalStateException: Recorded bad position information\nstart-char: 14\nend-char: 13\n\tat com.google.javascript.rhino.SourcePosition.setPositionInformation(SourcePosition.java:87)  throw new IllegalStateException(            \"Recorded bad position information\\n\" +            \"start-char: \" + startCharno + \"\\n\" +            \"end-char: \" + endCharno);\n\tat com.google.javascript.rhino.JSDocInfoBuilder.markText(JSDocInfoBuilder.java:172)  position.setPositionInformation(startLineno, startCharno,          endLineno, endCharno);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParser.extractMultilineTextualBlock(JsDocInfoParser.java:1503)  jsdocBuilder.markText(multilineText, startLineno, startCharno,                  endLineno, endCharno);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParser.extractMultilineTextualBlock(JsDocInfoParser.java:1379)  return extractMultilineTextualBlock(token, WhitespaceOption.SINGLE_LINE);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParser.parse(JsDocInfoParser.java:958)  ExtractionInfo returnDescriptionInfo =\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParserTest.parse(JsDocInfoParserTest.java:2984)  jsdocParser.parse();\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParserTest.parse(JsDocInfoParserTest.java:2961)  return parse(comment, parseDocumentation, false, warnings);\n\tat com.google.javascript.jscomp.parsing.JsDocInfoParserTest.testTextExtents(JsDocInfoParserTest.java:2756)  parse(\"@return {@code foo} bar \\n *    baz. */\",        true, \"Bad type annotation. type not recognized due to syntax error\");\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nprivate static RegExpImpl getImpl() { Context cx = Context.getCurrentContext(); return (RegExpImpl) ScriptRuntime.getRegExpProxy(cx); }\n```\n\n            \n```java\nprivate boolean hasAnySingletonSideEffectTags() { return currentInfo.isNoSideEffects() || currentInfo.hasModifies(); }\n```\n\n            \n```java\nprivate boolean implicitPrototypeChainIsUnknown() { ObjectType p = getImplicitPrototype(); while (p != null) { if (p.isUnknownType()) { return true; } p = p.getImplicitPrototype(); } return false; }\n```\n\n            \n```java\npublic boolean inExterns() { Node n = getDeclarationNode(); return n == null ? false : n.isFromExterns(); }\n```\n\n            \n```java\nprivate boolean hasAnySingletonTypeTags() { return currentInfo.hasType() || currentInfo.hasTypedefType() || currentInfo.hasEnumParameterType(); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Returns the remainder of the line without leading or trailing asterisks and whitespace.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  // Trim leading and trailing asterisks and whitespace\n  return result.replaceFirst(\"^\\\\s*\\\\*+\", \"\").trim();\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, trimming any leading asterisks that are\n* common in JSDoc comment blocks.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine().trim();\n  if (result.startsWith(\"*\")) {\n    result = result.substring(1).trim();\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  return result != null ? result.trim() : null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  // Ensure that line endings are consistent and potential trailing characters are removed\n  if (result != null) {\n    result = result.trim(); // Trim any leading or trailing whitespace\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line without leading asterisk or whitespace.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  // Remove leading asterisks and whitespace\n  return result.replaceFirst(\"^\\\\s*\\\\*\\\\s*\", \"\");\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, ensuring no leading asterisk.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result.startsWith(\"*\")) {\n    result = result.substring(1).trim();\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  // Ensure the result ends with a newline character to prevent invalid position information\n  if (!result.endsWith(\"\\n\")) {\n    result += \"\\n\";\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line, trimming leading and trailing whitespace.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  return result != null ? result.trim() : null;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line and handles JSDoc-specific formatting.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result.startsWith(\" *\")) {\n    result = result.substring(2); // Remove leading ' *'\n  }\n  return result;\n}\n"
+                ],
+                [
+                    "\n/**\n* Returns the remainder of the line without leading asterisks and whitespace.\n*/\nprivate String getRemainingJSDocLine() {\n  String result = stream.getRemainingJSDocLine();\n  if (result != null) {\n      result = result.replaceFirst(\"^\\\\s*\\\\*\\\\s*\", \"\"); // Remove leading asterisks and whitespace\n  }\n  return result;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

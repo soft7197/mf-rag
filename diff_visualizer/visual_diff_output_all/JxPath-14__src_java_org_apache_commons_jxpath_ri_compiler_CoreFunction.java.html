@@ -1,0 +1,76 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to496__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JxPath-14 - Buggy: src/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JxPath-14 - Fixed: src/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to496__0"></td><td class="diff_header" id="from496_653">653</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;Object&nbsp;functionFloor(EvalContext&nbsp;context)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to496_653">653</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;Object&nbsp;functionFloor(EvalContext&nbsp;context)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_654">654</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertArgCount(1);</td><td class="diff_next"></td><td class="diff_header" id="to496_654">654</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertArgCount(1);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_655">655</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;v&nbsp;=&nbsp;InfoSetUtil.doubleValue(getArg1().computeValue(context));</td><td class="diff_next"></td><td class="diff_header" id="to496_655">655</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;v&nbsp;=&nbsp;InfoSetUtil.doubleValue(getArg1().computeValue(context));</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to496__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to496__1">n</a></td><td class="diff_header" id="to496_656">656</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Double.isNaN(v)&nbsp;||&nbsp;Double.isInfinite(v))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_657">657</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(v);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_658">658</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_656">656</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(Math.floor(v));</td><td class="diff_next"></td><td class="diff_header" id="to496_659">659</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(Math.floor(v));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_657">657</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to496_660">660</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_658">658</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_661">661</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to496__1"></td><td class="diff_header" id="from496_659">659</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;Object&nbsp;functionCeiling(EvalContext&nbsp;context)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to496_662">662</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;Object&nbsp;functionCeiling(EvalContext&nbsp;context)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_660">660</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertArgCount(1);</td><td class="diff_next"></td><td class="diff_header" id="to496_663">663</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertArgCount(1);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_661">661</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;v&nbsp;=&nbsp;InfoSetUtil.doubleValue(getArg1().computeValue(context));</td><td class="diff_next"></td><td class="diff_header" id="to496_664">664</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;v&nbsp;=&nbsp;InfoSetUtil.doubleValue(getArg1().computeValue(context));</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to496__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to496__2">n</a></td><td class="diff_header" id="to496_665">665</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Double.isNaN(v)&nbsp;||&nbsp;Double.isInfinite(v))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_666">666</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(v);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_667">667</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_662">662</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(Math.ceil(v));</td><td class="diff_next"></td><td class="diff_header" id="to496_668">668</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(Math.ceil(v));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_663">663</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to496_669">669</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_664">664</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_670">670</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to496__2"></td><td class="diff_header" id="from496_665">665</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;Object&nbsp;functionRound(EvalContext&nbsp;context)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to496_671">671</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;Object&nbsp;functionRound(EvalContext&nbsp;context)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_666">666</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertArgCount(1);</td><td class="diff_next"></td><td class="diff_header" id="to496_672">672</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertArgCount(1);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_667">667</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;v&nbsp;=&nbsp;InfoSetUtil.doubleValue(getArg1().computeValue(context));</td><td class="diff_next"></td><td class="diff_header" id="to496_673">673</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;v&nbsp;=&nbsp;InfoSetUtil.doubleValue(getArg1().computeValue(context));</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to496__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to496__top">t</a></td><td class="diff_header" id="to496_674">674</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Double.isNaN(v)&nbsp;||&nbsp;Double.isInfinite(v))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_675">675</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(v);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_676">676</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_668">668</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(Math.round(v));</td><td class="diff_next"></td><td class="diff_header" id="to496_677">677</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;Double(Math.round(v));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_669">669</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to496_678">678</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from496_670">670</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to496_679">679</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

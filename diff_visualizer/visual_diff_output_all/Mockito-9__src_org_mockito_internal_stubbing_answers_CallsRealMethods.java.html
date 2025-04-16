@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to709__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-9 - Buggy: src/org/mockito/internal/stubbing/answers/CallsRealMethods.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-9 - Fixed: src/org/mockito/internal/stubbing/answers/CallsRealMethods.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to709__0"></td><td class="diff_header" id="from709_5">5</td><td nowrap="nowrap">package&nbsp;org.mockito.internal.stubbing.answers;</td><td class="diff_next"></td><td class="diff_header" id="to709_5">5</td><td nowrap="nowrap">package&nbsp;org.mockito.internal.stubbing.answers;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_6">6</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to709_6">6</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to709__1"></td><td class="diff_header" id="from709_7">7</td><td nowrap="nowrap">import&nbsp;java.io.Serializable;</td><td class="diff_next"></td><td class="diff_header" id="to709_7">7</td><td nowrap="nowrap">import&nbsp;java.io.Serializable;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to709__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to709__1">n</a></td><td class="diff_header" id="to709_8">8</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;java.lang.reflect.Modifier;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_8">8</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to709_9">9</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to709__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to709__2">n</a></td><td class="diff_header" id="to709_10">10</td><td nowrap="nowrap"><span class="diff_add">import&nbsp;org.mockito.internal.stubbing.defaultanswers.GloballyConfiguredAnswer;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_9">9</td><td nowrap="nowrap">import&nbsp;org.mockito.invocation.InvocationOnMock;</td><td class="diff_next"></td><td class="diff_header" id="to709_11">11</td><td nowrap="nowrap">import&nbsp;org.mockito.invocation.InvocationOnMock;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_10">10</td><td nowrap="nowrap">import&nbsp;org.mockito.stubbing.Answer;</td><td class="diff_next"></td><td class="diff_header" id="to709_12">12</td><td nowrap="nowrap">import&nbsp;org.mockito.stubbing.Answer;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_11">11</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to709_13">13</td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to709__2"></td><td class="diff_header" id="from709_33">33</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;long&nbsp;serialVersionUID&nbsp;=&nbsp;9057165148930624087L;</td><td class="diff_next"></td><td class="diff_header" id="to709_35">35</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;long&nbsp;serialVersionUID&nbsp;=&nbsp;9057165148930624087L;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_34">34</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to709_36">36</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_35">35</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;answer(InvocationOnMock&nbsp;invocation)&nbsp;throws&nbsp;Throwable&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to709_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;answer(InvocationOnMock&nbsp;invocation)&nbsp;throws&nbsp;Throwable&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to709__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to709__top">t</a></td><td class="diff_header" id="to709_38">38</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Modifier.isAbstract(invocation.getMethod().getModifiers()))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to709_39">39</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;GloballyConfiguredAnswer().answer(invocation);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to709_40">40</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_36">36</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;invocation.callRealMethod();</td><td class="diff_next"></td><td class="diff_header" id="to709_41">41</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;invocation.callRealMethod();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to709_42">42</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from709_38">38</td><td nowrap="nowrap">}</td><td class="diff_next"></td><td class="diff_header" id="to709_43">43</td><td nowrap="nowrap">}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

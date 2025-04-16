@@ -1,0 +1,80 @@
+{
+    "Lang-26": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testLang645() {\n\n        Locale locale = new Locale(\"sv\", \"SE\");\n\n\n\n        Calendar cal = Calendar.getInstance();\n\n        cal.set(2010, 0, 1, 12, 0, 0);\n\n        Date d = cal.getTime();\n\n\n\n        FastDateFormat fdf = FastDateFormat.getInstance(\"EEEE', week 'ww\", locale);\n\n\n\n        assertEquals(\"fredag, week 53\", fdf.format(d));\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<fredag, week [53]> but was:<fredag, week [01]>\n\tat org.apache.commons.lang3.time.FastDateFormatTest.testLang645(FastDateFormatTest.java:337)  assertEquals(\"fredag, week 53\", fdf.format(d));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setMinimalDaysInFirstWeek(4);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Ensure locale is considered\n    c.setMinimalDaysInFirstWeek(4); // Set minimal days in first week to 4 to match ISO 8601 week number\n    c.setFirstDayOfWeek(Calendar.MONDAY); // Set first day of the week to Monday to match ISO 8601\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setMinimalDaysInFirstWeek(4); // Set minimal days in first week to handle week calculations\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Include the locale in the Calendar\n    c.setMinimalDaysInFirstWeek(4); // Ensure first week has at least 4 days (ISO 8601)\n    c.setFirstDayOfWeek(Calendar.MONDAY); // Set first day of week to Monday (ISO 8601)\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setMinimalDaysInFirstWeek(4);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Ensure locale is set for correct week calculation\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // ensure locale is used\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Use mLocale for locale-specific rules\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setMinimalDaysInFirstWeek(4);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Ensure locale is considered\n    c.setMinimalDaysInFirstWeek(4); // Set minimal days in first week to 4 to match ISO 8601 week number\n    c.setFirstDayOfWeek(Calendar.MONDAY); // Set first day of the week to Monday to match ISO 8601\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setMinimalDaysInFirstWeek(4); // Set minimal days in first week to handle week calculations\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Include the locale in the Calendar\n    c.setMinimalDaysInFirstWeek(4); // Ensure first week has at least 4 days (ISO 8601)\n    c.setFirstDayOfWeek(Calendar.MONDAY); // Set first day of week to Monday (ISO 8601)\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setMinimalDaysInFirstWeek(4);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Ensure locale is set for correct week calculation\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // ensure locale is used\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Use mLocale for locale-specific rules\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale); // Ensure locale is considered\n    c.setMinimalDaysInFirstWeek(4); // Set minimal days in first week to 4 to match ISO 8601 week number\n    c.setFirstDayOfWeek(Calendar.MONDAY); // Set first day of the week to Monday to match ISO 8601\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ],
+                [
+                    "\n/**\n* <p>Formats a <code>Date</code> object.</p>\n*\n* @param date  the date to format\n* @return the formatted string\n*/\npublic String format(Date date) {\n    Calendar c = new GregorianCalendar(mTimeZone, mLocale);\n    c.setTime(date);\n    return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();\n}\n"
+                ]
+            ]
+        }
+    }
+}

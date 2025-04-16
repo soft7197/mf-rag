@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to305__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-7 - Buggy: gson/src/main/java/com/google/gson/stream/JsonReader.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-7 - Fixed: gson/src/main/java/com/google/gson/stream/JsonReader.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to305__0"></td><td class="diff_header" id="from305_951">951</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_NUMBER)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to305_951">951</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_NUMBER)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_952">952</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;new&nbsp;String(buffer,&nbsp;pos,&nbsp;peekedNumberLength);</td><td class="diff_next"></td><td class="diff_header" id="to305_952">952</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;new&nbsp;String(buffer,&nbsp;pos,&nbsp;peekedNumberLength);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_953">953</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;+=&nbsp;peekedNumberLength;</td><td class="diff_next"></td><td class="diff_header" id="to305_953">953</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;+=&nbsp;peekedNumberLength;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to305__1">n</a></td><td class="diff_header" id="from305_954">954</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;||&nbsp;p&nbsp;==&nbsp;PEEKED_DOUBLE_QUOTED)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to305__1">n</a></td><td class="diff_header" id="to305_954">954</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;||&nbsp;p&nbsp;==&nbsp;PEEKED_DOUBLE_QUOTED<span class="diff_add">&nbsp;||&nbsp;p&nbsp;==&nbsp;PE</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">EKED_UNQUOTED</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to305_955">955</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_UNQUOTED)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to305__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to305_956">956</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;nextUnquotedValue();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to305_957">957</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_955">955</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;nextQuotedValue(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;?&nbsp;'\''&nbsp;:&nbsp;'"');</td><td class="diff_next"></td><td class="diff_header" id="to305_958">958</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;nextQuotedValue(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;?&nbsp;'\''&nbsp;:&nbsp;'"');</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to305__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to305__2">n</a></td><td class="diff_header" id="to305_959">959</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_956">956</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to305_960">960</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_957">957</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;result&nbsp;=&nbsp;Long.parseLong(peekedString);</td><td class="diff_next"></td><td class="diff_header" id="to305_961">961</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;result&nbsp;=&nbsp;Long.parseLong(peekedString);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_958">958</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peeked&nbsp;=&nbsp;PEEKED_NONE;</td><td class="diff_next"></td><td class="diff_header" id="to305_962">962</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peeked&nbsp;=&nbsp;PEEKED_NONE;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to305__2"></td><td class="diff_header" id="from305_1179">1179</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_NUMBER)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to305_1183">1183</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_NUMBER)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_1180">1180</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;new&nbsp;String(buffer,&nbsp;pos,&nbsp;peekedNumberLength);</td><td class="diff_next"></td><td class="diff_header" id="to305_1184">1184</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;new&nbsp;String(buffer,&nbsp;pos,&nbsp;peekedNumberLength);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_1181">1181</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;+=&nbsp;peekedNumberLength;</td><td class="diff_next"></td><td class="diff_header" id="to305_1185">1185</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;+=&nbsp;peekedNumberLength;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to305__3">n</a></td><td class="diff_header" id="from305_1182">1182</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;||&nbsp;p&nbsp;==&nbsp;PEEKED_DOUBLE_QUOTED)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to305__3">n</a></td><td class="diff_header" id="to305_1186">1186</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;||&nbsp;p&nbsp;==&nbsp;PEEKED_DOUBLE_QUOTED<span class="diff_add">&nbsp;||&nbsp;p&nbsp;==&nbsp;PE</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">EKED_UNQUOTED</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to305_1187">1187</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;==&nbsp;PEEKED_UNQUOTED)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to305__3"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to305_1188">1188</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;nextUnquotedValue();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to305_1189">1189</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_1183">1183</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;nextQuotedValue(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;?&nbsp;'\''&nbsp;:&nbsp;'"');</td><td class="diff_next"></td><td class="diff_header" id="to305_1190">1190</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peekedString&nbsp;=&nbsp;nextQuotedValue(p&nbsp;==&nbsp;PEEKED_SINGLE_QUOTED&nbsp;?&nbsp;'\''&nbsp;:&nbsp;'"');</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to305__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to305__top">t</a></td><td class="diff_header" id="to305_1191">1191</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_1184">1184</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to305_1192">1192</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_1185">1185</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;Integer.parseInt(peekedString);</td><td class="diff_next"></td><td class="diff_header" id="to305_1193">1193</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;Integer.parseInt(peekedString);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from305_1186">1186</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peeked&nbsp;=&nbsp;PEEKED_NONE;</td><td class="diff_next"></td><td class="diff_header" id="to305_1194">1194</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peeked&nbsp;=&nbsp;PEEKED_NONE;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

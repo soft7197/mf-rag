@@ -1,0 +1,83 @@
+{
+    "Jsoup-85": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Create a new attribute from unencoded (raw) key and value.\n* @param key attribute key; case is preserved.\n* @param value attribute value\n* @see #createFromEncoded\n*/\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(key); // trimming could potentially make empty, so validate here\n    this.val = val;\n    this.parent = parent;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test(expected = IllegalArgumentException.class) public void validatesKeysNotEmpty() {\n\n        Attribute attr = new Attribute(\" \", \"Check\");\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected exception: java.lang.IllegalArgumentException\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate after trimming\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    key = key.trim();\n    Validate.notEmpty(key); // trimming could potentially make empty, so validate here\n    this.key = key;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate after trimming\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    key = key.trim(); // Trim the key before checking if it's empty\n    Validate.notEmpty(key); // validate that the trimmed key is not empty\n    this.key = key;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // use the trimmed key for validation\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    String trimmedKey = key.trim();\n    Validate.notEmpty(trimmedKey); // validate after trimming\n    this.key = trimmedKey;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate after trimming\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    key = key.trim();\n    Validate.notEmpty(key); // trimming could potentially make empty, so validate here\n    this.key = key;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate after trimming\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    key = key.trim(); // Trim the key before checking if it's empty\n    Validate.notEmpty(key); // validate that the trimmed key is not empty\n    this.key = key;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // use the trimmed key for validation\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    String trimmedKey = key.trim();\n    Validate.notEmpty(trimmedKey); // validate after trimming\n    this.key = trimmedKey;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    this.key = key.trim();\n    Validate.notEmpty(this.key); // validate the trimmed key\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    key = key.trim();\n    Validate.notEmpty(key); // trimming could potentially make empty, so validate here\n    this.key = key;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ],
+                [
+                    "\npublic Attribute(String key, String val, Attributes parent) {\n    Validate.notNull(key);\n    String trimmedKey = key.trim();\n    Validate.notEmpty(trimmedKey); // validate after trimming\n    this.key = trimmedKey;\n    this.val = val;\n    this.parent = parent;\n}\n"
+                ]
+            ]
+        }
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "Compress-38": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void survivesPaxHeaderWithNameEndingInSlash() throws Exception {\n\n        final TarArchiveInputStream is = getTestStream(\"/COMPRESS-356.tar\");\n\n        try {\n\n            final TarArchiveEntry entry = is.getNextTarEntry();\n\n            assertEquals(\"package/package.json\", entry.getName());\n\n            assertNull(is.getNextTarEntry());\n\n        } finally {\n\n            is.close();\n\n        }\n\n    }\n\n```\n#Error message: java.io.IOException: Error detected parsing the header\n\tat org.apache.commons.compress.archivers.tar.TarArchiveInputStream.getNextTarEntry(TarArchiveInputStream.java:286)  throw new IOException(\"Error detected parsing the header\", e);\n\tat org.apache.commons.compress.archivers.tar.TarArchiveInputStream.getNextEntry(TarArchiveInputStream.java:600)  return getNextTarEntry();\n\tat org.apache.commons.compress.archivers.tar.TarArchiveInputStream.paxHeaders(TarArchiveInputStream.java:445)  getNextEntry(); // Get the actual file entry\n\tat org.apache.commons.compress.archivers.tar.TarArchiveInputStream.getNextTarEntry(TarArchiveInputStream.java:319)  paxHeaders();\n\tat org.apache.commons.compress.archivers.tar.TarArchiveInputStreamTest.survivesPaxHeaderWithNameEndingInSlash(TarArchiveInputStreamTest.java:323)  final TarArchiveEntry entry = is.getNextTarEntry();\n\tat org.apache.commons.compress.archivers.tar.TarUtils.parseOctal(TarUtils.java:140)  throw new IllegalArgumentException(                        exceptionMessage(buffer, offset, length, start, currentByte));\n\tat org.apache.commons.compress.archivers.tar.TarUtils.parseOctalOrBinary(TarUtils.java:171)  return parseOctal(buffer, offset, length);\n\tat org.apache.commons.compress.archivers.tar.TarArchiveEntry.parseTarHeader(TarArchiveEntry.java:1096)  mode = (int) TarUtils.parseOctalOrBinary(header, offset, MODELEN);\n\tat org.apache.commons.compress.archivers.tar.TarArchiveEntry.parseTarHeader(TarArchiveEntry.java:1085)  parseTarHeader(header, encoding, false);\n\tat org.apache.commons.compress.archivers.tar.TarArchiveEntry.<init>(TarArchiveEntry.java:368)  parseTarHeader(headerBuf, encoding);\n\tat org.apache.commons.compress.archivers.tar.TarArchiveInputStream.getNextTarEntry(TarArchiveInputStream.java:284)  currEntry = new TarArchiveEntry(headerBuf, zipEncoding);\n\t... 44 more\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\") && linkFlag != LF_PAX_HEADER) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\") && !getName().equals(\"./PaxHeaders.X/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName() != null && getName().endsWith(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\") && file == null) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\") && !getName().equals(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\") && !isPaxHeader()) {\n        return true;\n    }\n\n    return false;\n}\n\nprivate boolean isPaxHeader() {\n    // Assuming there's a method or logic to determine if the entry is a PAX header.\n    // This method should return true if the entry is a PAX header. \n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (getName().endsWith(\"/\") && !getName().equals(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (linkFlag == LF_SYMLINK && getName().endsWith(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (linkFlag == LF_SYMLINK && getName().endsWith(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ],
+                [
+                    "\n/**\n* Return whether or not this entry represents a directory.\n*\n* @return True if this entry is a directory.\n*/\npublic boolean isDirectory() {\n    if (file != null) {\n        return file.isDirectory();\n    }\n\n    if (linkFlag == LF_DIR) {\n        return true;\n    }\n\n    if (linkFlag == LF_SYMLINK && getName().endsWith(\"/\")) {\n        return true;\n    }\n\n    return false;\n}\n"
+                ]
+            ]
+        }
+    }
+}

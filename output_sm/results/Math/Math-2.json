@@ -1,0 +1,78 @@
+{
+    "Math-2": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* {@inheritDoc}\n*\n* For population size {@code N}, number of successes {@code m}, and sample\n* size {@code n}, the mean is {@code n * m / N}.\n*/\npublic double getNumericalMean() {\n    return (double) (getSampleSize() * getNumberOfSuccesses()) / (double) getPopulationSize();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testMath1021() {\n\n        final int N = 43130568;\n\n        final int m = 42976365;\n\n        final int n = 50;\n\n        final HypergeometricDistribution dist = new HypergeometricDistribution(N, m, n);\n\n\n\n        for (int i = 0; i < 100; i++) {\n\n            final int sample = dist.sample();\n\n            Assert.assertTrue(\"sample=\" + sample, 0 <= sample);\n\n            Assert.assertTrue(\"sample=\" + sample, sample <= n);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: sample=-50\n\tat org.apache.commons.math3.distribution.HypergeometricDistributionTest.testMath1021(HypergeometricDistributionTest.java:297)  Assert.assertTrue(\"sample=\" + sample, 0 <= sample);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ],
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic double getNumericalMean() {\n    return (double) getSampleSize() * getNumberOfSuccesses() / getPopulationSize();\n}\n"
+                ]
+            ]
+        }
+    }
+}

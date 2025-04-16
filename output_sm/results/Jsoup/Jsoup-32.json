@@ -1,0 +1,80 @@
+{
+    "Jsoup-32": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// todo: fixup, not very useful\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames();\n    return clone;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testClonesClassnames() {\n\n        Document doc = Jsoup.parse(\"<div class='one two'></div>\");\n\n        Element div = doc.select(\"div\").first();\n\n        Set<String> classes = div.classNames();\n\n        assertEquals(2, classes.size());\n\n        assertTrue(classes.contains(\"one\"));\n\n        assertTrue(classes.contains(\"two\"));\n\n\n\n        Element copy = div.clone();\n\n        Set<String> copyClasses = copy.classNames();\n\n        assertEquals(2, copyClasses.size());\n\n        assertTrue(copyClasses.contains(\"one\"));\n\n        assertTrue(copyClasses.contains(\"two\"));\n\n        copyClasses.add(\"three\");\n\n        copyClasses.remove(\"one\");\n\n\n\n        assertTrue(classes.contains(\"one\"));\n\n        assertFalse(classes.contains(\"three\"));\n\n        assertFalse(copyClasses.contains(\"one\"));\n\n        assertTrue(copyClasses.contains(\"three\"));\n\n\n\n        assertEquals(\"\", div.html());\n\n        assertEquals(\"\", copy.html());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.jsoup.nodes.ElementTest.testClonesClassnames(ElementTest.java:493)  assertTrue(classes.contains(\"one\"));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "compiler_error": true,
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// todo: fixup, not very useful\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames();\n    return clone;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    @Test public void testClonesClassnames() {\n\n        Document doc = Jsoup.parse(\"<div class='one two'></div>\");\n\n        Element div = doc.select(\"div\").first();\n\n        Set<String> classes = div.classNames();\n\n        assertEquals(2, classes.size());\n\n        assertTrue(classes.contains(\"one\"));\n\n        assertTrue(classes.contains(\"two\"));\n\n\n\n        Element copy = div.clone();\n\n        Set<String> copyClasses = copy.classNames();\n\n        assertEquals(2, copyClasses.size());\n\n        assertTrue(copyClasses.contains(\"one\"));\n\n        assertTrue(copyClasses.contains(\"two\"));\n\n        copyClasses.add(\"three\");\n\n        copyClasses.remove(\"one\");\n\n\n\n        assertTrue(classes.contains(\"one\"));\n\n        assertFalse(classes.contains(\"three\"));\n\n        assertFalse(copyClasses.contains(\"one\"));\n\n        assertTrue(copyClasses.contains(\"three\"));\n\n\n\n        assertEquals(\"\", div.html());\n\n        assertEquals(\"\", copy.html());\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.jsoup.nodes.ElementTest.testClonesClassnames(ElementTest.java:493)  assertTrue(classes.contains(\"one\"));\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\n@Override public Document clone() { Document clone = (Document) super.clone(); clone.outputSettings = this.outputSettings.clone(); return clone; }\n```\n\n            \n```java\n@Override public boolean matches(Element root, Element element) { return element.elementSiblingIndex() == index; }\n```\n\n            \n```java\n@Override public boolean matches(Element root, Element element) { return element.elementSiblingIndex() > index; }\n```\n\n            \n```java\n@Override public int hashCode() { int result = key != null ? key.hashCode() : 0; result = 31 * result + (value != null ? value.hashCode() : 0); return result; }\n```\n\n            \n```java\n@Override public Attribute clone() { try { return (Attribute) super.clone(); } catch (CloneNotSupportedException e) { throw new RuntimeException(e); } }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.attributes = attributes.clone();\n    return clone;\n}\n"
+                ],
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().clear();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    try {\n        Element clone = (Element) super.clone();\n        clone.classNames = new HashSet<>(this.classNames);\n        return clone;\n    } catch (CloneNotSupportedException e) {\n        throw new RuntimeException(\"Clone not supported\", e);\n    }\n}\n"
+                ],
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.attributes = this.attributes.clone();\n    clone.childNodes = new ArrayList<>(this.childNodes.size());\n    for (Node child : this.childNodes) {\n        Node clonedChild = child.clone();\n        clonedChild.parentNode = clone;\n        clone.childNodes.add(clonedChild);\n    }\n    return clone;\n}\n"
+                ],
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.attributes = attributes.clone(); // Ensure attributes, including class names, are cloned\n    return clone;\n}\n"
+                ],
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames(new HashSet<>(this.classNames()));\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    try {\n        Element clone = (Element) super.clone();\n        clone.classNames = new HashSet<>(this.classNames); // Ensure deep copy of class names\n        return clone;\n    } catch (CloneNotSupportedException e) {\n        throw new RuntimeException(e); // Although normally wouldn't happen since Element is Cloneable\n    }\n}\n"
+                ],
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone;\n    try {\n        clone = (Element) super.clone();\n    } catch (CloneNotSupportedException e) {\n        throw new RuntimeException(e);\n    }\n    clone.parent = null; // Ensure cloned element does not have a parent\n    clone.siblingIndex = 0; // Adjust sibling index\n    clone.attributes = attributes.clone(); // Clone attributes\n    clone.childNodes = new ArrayList<>(childNodes.size()); // Create a new list for children\n    for (Node child : childNodes) {\n        Node childClone = child.clone();\n        childClone.setParentNode(clone); // Set parent for cloned child\n        clone.childNodes.add(childClone); // Add cloned child to new list\n    }\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames().addAll(this.classNames());\n    return clone;\n}\n"
+                ],
+                [
+                    "\n@Override\npublic Element clone() {\n    Element clone = (Element) super.clone();\n    clone.classNames = new LinkedHashSet<>(this.classNames);\n    return clone;\n}\n"
+                ]
+            ],
+            "regeneration": true,
+            "evaluation_done": true,
+            "second_check": true
+        },
+        "iteration_done": true
+    }
+}

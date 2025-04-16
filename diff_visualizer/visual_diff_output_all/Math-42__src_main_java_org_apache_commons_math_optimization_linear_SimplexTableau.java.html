@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to607__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-42 - Buggy: src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-42 - Fixed: src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to607__0"></td><td class="diff_header" id="from607_407">407</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;</td><td class="diff_next"></td><td class="diff_header" id="to607_407">407</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_408">408</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to607_408">408</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_409">409</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;basicRow&nbsp;=&nbsp;getBasicRow(colIndex);</td><td class="diff_next"></td><td class="diff_header" id="to607_409">409</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;basicRow&nbsp;=&nbsp;getBasicRow(colIndex);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to607__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to607__1">n</a></td><td class="diff_header" id="to607_410">410</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(basicRow&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;basicRow&nbsp;==&nbsp;0)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to607__1"></td><td class="diff_header" id="from607_410">410</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;the&nbsp;basic&nbsp;row&nbsp;is&nbsp;found&nbsp;to&nbsp;be&nbsp;the&nbsp;objective&nbsp;function&nbsp;row</td><td class="diff_next"></td><td class="diff_header" id="to607_411">411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;the&nbsp;basic&nbsp;row&nbsp;is&nbsp;found&nbsp;to&nbsp;be&nbsp;the&nbsp;objective&nbsp;function&nbsp;row</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_411">411</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;set&nbsp;the&nbsp;coefficient&nbsp;to&nbsp;0&nbsp;-&gt;&nbsp;this&nbsp;case&nbsp;handles&nbsp;unconstrained&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to607_412">412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;set&nbsp;the&nbsp;coefficient&nbsp;to&nbsp;0&nbsp;-&gt;&nbsp;this&nbsp;case&nbsp;handles&nbsp;unconstrained&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_412">412</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;variables&nbsp;that&nbsp;are&nbsp;still&nbsp;part&nbsp;of&nbsp;the&nbsp;objective&nbsp;function</td><td class="diff_next"></td><td class="diff_header" id="to607_413">413</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;variables&nbsp;that&nbsp;are&nbsp;still&nbsp;part&nbsp;of&nbsp;the&nbsp;objective&nbsp;function</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to607__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to607__top">t</a></td><td class="diff_header" id="to607_414">414</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=&nbsp;0;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_413">413</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(basicRows.contains(basicRow))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to607_415">415</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_add">&nbsp;}&nbsp;else</span>&nbsp;if&nbsp;(basicRows.contains(basicRow))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_414">414</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;multiple&nbsp;variables&nbsp;can&nbsp;take&nbsp;a&nbsp;given&nbsp;value</td><td class="diff_next"></td><td class="diff_header" id="to607_416">416</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;if&nbsp;multiple&nbsp;variables&nbsp;can&nbsp;take&nbsp;a&nbsp;given&nbsp;value</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_415">415</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;we&nbsp;choose&nbsp;the&nbsp;first&nbsp;and&nbsp;set&nbsp;the&nbsp;rest&nbsp;equal&nbsp;to&nbsp;0</td><td class="diff_next"></td><td class="diff_header" id="to607_417">417</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then&nbsp;we&nbsp;choose&nbsp;the&nbsp;first&nbsp;and&nbsp;set&nbsp;the&nbsp;rest&nbsp;equal&nbsp;to&nbsp;0</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from607_416">416</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=&nbsp;0&nbsp;-&nbsp;(restrictToNonNegative&nbsp;?&nbsp;0&nbsp;:&nbsp;mostNegative);</td><td class="diff_next"></td><td class="diff_header" id="to607_418">418</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coefficients[i]&nbsp;=&nbsp;0&nbsp;-&nbsp;(restrictToNonNegative&nbsp;?&nbsp;0&nbsp;:&nbsp;mostNegative);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

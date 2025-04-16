@@ -1,0 +1,76 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to700__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-35 - Buggy: src/org/mockito/Matchers.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-35 - Fixed: src/org/mockito/Matchers.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to700__0"></td><td class="diff_header" id="from700_359">359</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;&lt;code&gt;null&lt;/code&gt;.</td><td class="diff_next"></td><td class="diff_header" id="to700_359">359</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;&lt;code&gt;null&lt;/code&gt;.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_360">360</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to700_360">360</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_361">361</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;isA(Class&lt;T&gt;&nbsp;clazz)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to700_361">361</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;isA(Class&lt;T&gt;&nbsp;clazz)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to700__1">n</a></td><td class="diff_header" id="from700_362">362</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;reportMatcher(new&nbsp;InstanceOf(clazz)).&lt;T&gt;return<span class="diff_chg">Nu</span>l<span class="diff_chg">l(</span>);</td><td class="diff_next"><a href="#difflib_chg_to700__1">n</a></td><td class="diff_header" id="to700_362">362</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;reportMatcher(new&nbsp;InstanceOf(clazz)).&lt;T&gt;return<span class="diff_chg">For(c</span>l<span class="diff_chg">azz</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to700_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_364">364</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to700_364">364</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_365">365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to700_365">365</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to700__1"></td><td class="diff_header" id="from700_476">476</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;&lt;code&gt;null&lt;/code&gt;.</td><td class="diff_next"></td><td class="diff_header" id="to700_476">476</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;&lt;code&gt;null&lt;/code&gt;.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_477">477</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to700_477">477</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_478">478</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;eq(T&nbsp;value)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to700_478">478</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;eq(T&nbsp;value)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to700__2">n</a></td><td class="diff_header" id="from700_479">479</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;reportMatcher(new&nbsp;Equals(value)).&lt;T&gt;return<span class="diff_chg">N</span>ul<span class="diff_chg">l</span>();</td><td class="diff_next"><a href="#difflib_chg_to700__2">n</a></td><td class="diff_header" id="to700_479">479</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<span class="diff_add">&nbsp;(T)</span>&nbsp;reportMatcher(new&nbsp;Equals(value)).&lt;T&gt;return<span class="diff_chg">For((Class)&nbsp;val</span>u<span class="diff_add">e.g</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">etC</span>l<span class="diff_chg">ass</span>()<span class="diff_add">)</span>;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_480">480</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to700_480">480</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_481">481</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to700_481">481</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_482">482</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to700_482">482</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to700__2"></td><td class="diff_header" id="from700_513">513</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;&lt;code&gt;null&lt;/code&gt;.</td><td class="diff_next"></td><td class="diff_header" id="to700_513">513</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;&lt;code&gt;null&lt;/code&gt;.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_514">514</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to700_514">514</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_515">515</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;same(T&nbsp;value)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to700_515">515</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;same(T&nbsp;value)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to700__top">t</a></td><td class="diff_header" id="from700_516">516</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;reportMatcher(new&nbsp;Same(value)).&lt;T&gt;return<span class="diff_chg">N</span>ul<span class="diff_chg">l</span>();</td><td class="diff_next"><a href="#difflib_chg_to700__top">t</a></td><td class="diff_header" id="to700_516">516</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<span class="diff_add">&nbsp;(T)</span>&nbsp;reportMatcher(new&nbsp;Same(value)).&lt;T&gt;return<span class="diff_chg">For((Class)&nbsp;val</span>u<span class="diff_add">e.get</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">C</span>l<span class="diff_chg">ass</span>()<span class="diff_add">)</span>;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_517">517</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to700_517">517</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_518">518</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to700_518">518</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from700_519">519</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to700_519">519</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

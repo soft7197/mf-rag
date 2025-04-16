@@ -1,0 +1,71 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to634__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-62 - Buggy: src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-62 - Fixed: src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_143">143</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;GoalType&nbsp;goal,</td><td class="diff_next"></td><td class="diff_header" id="to634_143">143</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;GoalType&nbsp;goal,</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to634__0"></td><td class="diff_header" id="from634_144">144</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;min,&nbsp;final&nbsp;double&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to634_144">144</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;min,&nbsp;final&nbsp;double&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">max)</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">max)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_145">145</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;FunctionEvaluationException&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to634_145">145</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;FunctionEvaluationException&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to634__1">n</a></td><td class="diff_header" id="from634_146">146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;optimize(f,&nbsp;goal,&nbsp;min,&nbsp;max,&nbsp;0);</td><td class="diff_next"><a href="#difflib_chg_to634__1">n</a></td><td class="diff_header" id="to634_146">146</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;optimize(f,&nbsp;goal,&nbsp;min,&nbsp;max,&nbsp;<span class="diff_add">min&nbsp;+&nbsp;</span>0<span class="diff_add">.5&nbsp;*&nbsp;(max&nbsp;-&nbsp;min)</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to634_147">147</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_148">148</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to634_148">148</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;{@inheritDoc}&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to634_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**&nbsp;{@inheritDoc}&nbsp;*/</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to634__1"></td><td class="diff_header" id="from634_157">157</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Multi-start&nbsp;loop.</td><td class="diff_next"></td><td class="diff_header" id="to634_157">157</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Multi-start&nbsp;loop.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_158">158</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;starts;&nbsp;++i)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to634_158">158</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;starts;&nbsp;++i)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_159">159</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to634_159">159</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to634__top">t</a></td><td class="diff_header" id="from634_160">160</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;bound1&nbsp;=&nbsp;(i&nbsp;==&nbsp;0)&nbsp;?&nbsp;min&nbsp;:&nbsp;min&nbsp;+&nbsp;generator.nextDoubl</span></td><td class="diff_next"><a href="#difflib_chg_to634__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">e()&nbsp;*&nbsp;(max&nbsp;-&nbsp;min);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_161">161</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;<span class="diff_chg">bound2</span>&nbsp;=&nbsp;(i&nbsp;==&nbsp;0)&nbsp;?&nbsp;<span class="diff_chg">m</span>a<span class="diff_chg">x</span>&nbsp;:&nbsp;min&nbsp;+&nbsp;generator.nextDoubl</td><td class="diff_next"></td><td class="diff_header" id="to634_160">160</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;<span class="diff_chg">s</span>&nbsp;=&nbsp;(i&nbsp;==&nbsp;0)&nbsp;?&nbsp;<span class="diff_chg">st</span>a<span class="diff_chg">rtValue</span>&nbsp;:&nbsp;min&nbsp;+&nbsp;generator.nextDou</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e()&nbsp;*&nbsp;(max&nbsp;-&nbsp;min);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ble()&nbsp;*&nbsp;(max&nbsp;-&nbsp;min);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_162">162</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optima[i]&nbsp;=&nbsp;optimizer.optimize(f,&nbsp;goal,&nbsp;FastMath.min(bound1,&nbsp;bou</span></td><td class="diff_next"></td><td class="diff_header" id="to634_161">161</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optima[i]&nbsp;=&nbsp;optimizer.optimize(f,&nbsp;goal,&nbsp;min,&nbsp;max,&nbsp;s);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nd2),&nbsp;FastMath.max(bound1,&nbsp;bound2));</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_163">163</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(FunctionEvaluationException&nbsp;fee)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to634_162">162</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(FunctionEvaluationException&nbsp;fee)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optima[i]&nbsp;=&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to634_163">163</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optima[i]&nbsp;=&nbsp;null;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from634_165">165</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(ConvergenceException&nbsp;ce)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to634_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(ConvergenceException&nbsp;ce)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

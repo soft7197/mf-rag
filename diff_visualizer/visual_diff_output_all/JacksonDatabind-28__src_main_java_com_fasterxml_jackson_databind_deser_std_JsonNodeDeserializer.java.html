@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to363__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-28 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/std/JsonNodeDeserializer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-28 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/std/JsonNodeDeserializer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</td><td class="diff_next"></td><td class="diff_header" id="to363_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to363__0"></td><td class="diff_header" id="from363_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;ObjectNode&nbsp;deserialize(JsonParser&nbsp;p,&nbsp;DeserializationContext&nbsp;ctxt)</td><td class="diff_next"></td><td class="diff_header" id="to363_95">95</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;ObjectNode&nbsp;deserialize(JsonParser&nbsp;p,&nbsp;DeserializationContext&nbsp;ctxt)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;throws&nbsp;IOException</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;throws&nbsp;IOException</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to363_96">96</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to363__1">n</a></td><td class="diff_header" id="from363_97">97</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.getCurrentToken()&nbsp;==&nbsp;JsonToken.START_OBJECT)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to363__1">n</a></td><td class="diff_header" id="to363_97">97</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.isExpectedStartObjectToken()&nbsp;||&nbsp;p.hasToken(JsonToken.FIELD_NAM</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">E))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_98">98</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.nextToken();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;deserializeObject(p,&nbsp;ctxt,&nbsp;ctxt.getNodeFactory());</td><td class="diff_next"></td><td class="diff_header" id="to363_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;deserializeObject(p,&nbsp;ctxt,&nbsp;ctxt.getNodeFactory());</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to363_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;23-Sep-2015,&nbsp;tatu:&nbsp;Ugh.&nbsp;We&nbsp;may&nbsp;also&nbsp;be&nbsp;given&nbsp;END_OBJECT&nbsp;(similar&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to363_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;23-Sep-2015,&nbsp;tatu:&nbsp;Ugh.&nbsp;We&nbsp;may&nbsp;also&nbsp;be&nbsp;given&nbsp;END_OBJECT&nbsp;(similar&nbsp;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to363__1"></td><td class="diff_header">></td><td nowrap="nowrap">to&nbsp;FIELD_NAME),</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">to&nbsp;FIELD_NAME),</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_102">102</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;caller&nbsp;has&nbsp;advanced&nbsp;to&nbsp;the&nbsp;first&nbsp;token&nbsp;of&nbsp;Object,&nbsp;but&nbsp;for&nbsp;e</td><td class="diff_next"></td><td class="diff_header" id="to363_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;caller&nbsp;has&nbsp;advanced&nbsp;to&nbsp;the&nbsp;first&nbsp;token&nbsp;of&nbsp;Object,&nbsp;but&nbsp;for&nbsp;e</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mpty&nbsp;Object</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mpty&nbsp;Object</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to363__top">t</a></td><td class="diff_header" id="from363_103">103</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.getCurrentToken()&nbsp;==&nbsp;JsonToken.FIELD_NAME)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to363__top">t</a></td><td class="diff_header" id="to363_102">102</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p.hasToken(JsonToken.END_OBJECT))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_104">104</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;deserializeObject(p,&nbsp;ctxt,&nbsp;ctxt.getNodeFactory());</span></td><td class="diff_next"></td><td class="diff_header" id="to363_103">103</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;ctxt.getNodeFactory().objectNode();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_105">105</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to363_104">104</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_106">106</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.mappingException(ObjectNode.class);</td><td class="diff_next"></td><td class="diff_header" id="to363_105">105</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;ctxt.mappingException(ObjectNode.class);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from363_107">107</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to363_106">106</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

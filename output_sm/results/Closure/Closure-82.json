@@ -1,0 +1,51 @@
+{
+    "Closure-82": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* If we see a type name without braces, it might be legacy jsdoc.\n* So we shouldn't emit warnings about it. This method is how we skip\n* those warnings.\n*/\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testIssue301() throws Exception {\n\n    testTypes(\n\n        \"Array.indexOf = function() {};\" +\n\n        \"var s = 'hello';\" +\n\n        \"alert(s.toLowerCase.indexOf('1'));\",\n\n        \"Property indexOf never defined on String.prototype.toLowerCase\");\n\n  }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected a warning\n\tat com.google.javascript.jscomp.TypeCheckTest.testTypes(TypeCheckTest.java:8370)  assertTrue(\"expected a warning\", warnings.length > 0);\n\tat com.google.javascript.jscomp.TypeCheckTest.testTypes(TypeCheckTest.java:8350)  testTypes(DEFAULT_EXTERNS, js, description, isError);\n\tat com.google.javascript.jscomp.TypeCheckTest.testTypes(TypeCheckTest.java:8291)  testTypes(js, description, false);\n\tat com.google.javascript.jscomp.TypeCheckTest.testIssue301(TypeCheckTest.java:4955)  testTypes(        \"Array.indexOf = function() {};\" +        \"var s = 'hello';\" +        \"alert(s.toLowerCase.indexOf('1'));\",        \"Property indexOf never defined on String.prototype.toLowerCase\");\n \n#Test method 2:\n```java\n  public void testEmptyFunctionTypes() {\n\n    assertTrue(LEAST_FUNCTION_TYPE.isEmptyType());\n\n    assertFalse(GREATEST_FUNCTION_TYPE.isEmptyType());\n\n  }\n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat com.google.javascript.rhino.jstype.FunctionTypeTest.testEmptyFunctionTypes(FunctionTypeTest.java:173)  assertTrue(LEAST_FUNCTION_TYPE.isEmptyType());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isUnknownType();\n}\n"
+                ],
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionPrototypeType();\n}\n"
+                ],
+                [
+                    "\n/**\n* If we see a type name without braces, it might be legacy jsdoc.\n* So we shouldn't emit warnings about it. This method is how we skip\n* those warnings.\n*/\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionPrototypeType();\n}\n"
+                ],
+                [
+                    "\n/**\n* If we see a type name without braces, it might be legacy jsdoc.\n* So we shouldn't emit warnings about it. This method is how we skip\n* those warnings.\n*/\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionPrototypeType();\n}\n"
+                ],
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionPrototypeType();\n}\n"
+                ],
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionType() && this == getNativeType(JSTypeNative.LEAST_FUNCTION_TYPE);\n}\n"
+                ],
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isEmpty();\n}\n"
+                ],
+                [
+                    "\n/**\n* If we see a type name without braces, it might be legacy jsdoc.\n* So we shouldn't emit warnings about it. This method is how we skip\n* those warnings.\n*/\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionPrototypeType();\n}\n"
+                ],
+                [
+                    "\n/**\n* If we see a type name without braces, it might be legacy jsdoc.\n* So we shouldn't emit warnings about it. This method is how we skip\n* those warnings.\n*/\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isEmptyFunctionType();\n}\n"
+                ],
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionType() && this == getNativeType(JSTypeNative.LEAST_FUNCTION_TYPE);\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic final boolean isEmptyType() {\n  return isNoType() || isNoObjectType() || isNoResolvedType() || isFunctionType() && this == getNativeType(JSTypeNative.LEAST_FUNCTION_TYPE);\n}\n"
+                ]
+            ]
+        }
+    }
+}

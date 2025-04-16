@@ -1,0 +1,76 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to170__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-54 - Buggy: src/com/google/javascript/rhino/jstype/FunctionType.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-54 - Fixed: src/com/google/javascript/rhino/jstype/FunctionType.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to170__0"></td><td class="diff_header" id="from170_338">338</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//</td><td class="diff_next"></td><td class="diff_header" id="to170_338">338</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;In&nbsp;the&nbsp;second&nbsp;case,&nbsp;we&nbsp;just&nbsp;use&nbsp;the&nbsp;anonymous&nbsp;object&nbsp;as&nbsp;the&nbsp;prototype.</td><td class="diff_next"></td><td class="diff_header" id="to170_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;In&nbsp;the&nbsp;second&nbsp;case,&nbsp;we&nbsp;just&nbsp;use&nbsp;the&nbsp;anonymous&nbsp;object&nbsp;as&nbsp;the&nbsp;prototype.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(baseType.hasReferenceName()&nbsp;||</td><td class="diff_next"></td><td class="diff_header" id="to170_340">340</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(baseType.hasReferenceName()&nbsp;||</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to170__1">n</a></td><td class="diff_header" id="from170_341">341</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baseType.isUnknownType()&nbsp;||</span></td><td class="diff_next"><a href="#difflib_chg_to170__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isNativeObjectType()&nbsp;||</td><td class="diff_next"></td><td class="diff_header" id="to170_341">341</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isNativeObjectType()&nbsp;||</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baseType.isFunctionPrototypeType()&nbsp;||</td><td class="diff_next"></td><td class="diff_header" id="to170_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baseType.isFunctionPrototypeType()&nbsp;||</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_344">344</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!(baseType&nbsp;instanceof&nbsp;PrototypeObjectType))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to170_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!(baseType&nbsp;instanceof&nbsp;PrototypeObjectType))&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to170__1"></td><td class="diff_header" id="from170_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td><td class="diff_next"></td><td class="diff_header" id="to170_362">362</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_364">364</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to170_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_365">365</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to170_364">364</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to170__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to170__2">n</a></td><td class="diff_header" id="to170_365">365</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;PrototypeObjectType&nbsp;oldPrototype&nbsp;=&nbsp;this.prototype;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_366">366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;replacedPrototype&nbsp;=&nbsp;<span class="diff_chg">p</span>rototype&nbsp;!=&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to170_366">366</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;replacedPrototype&nbsp;=&nbsp;<span class="diff_chg">oldP</span>rototype&nbsp;!=&nbsp;null;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_367">367</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to170_367">367</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;this.prototype&nbsp;=&nbsp;prototype;</td><td class="diff_next"></td><td class="diff_header" id="to170_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;this.prototype&nbsp;=&nbsp;prototype;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to170__2"></td><td class="diff_header" id="from170_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;this.prototypeSlot&nbsp;=&nbsp;new&nbsp;SimpleSlot("prototype",&nbsp;prototype,&nbsp;true);</td><td class="diff_next"></td><td class="diff_header" id="to170_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;this.prototypeSlot&nbsp;=&nbsp;new&nbsp;SimpleSlot("prototype",&nbsp;prototype,&nbsp;true);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_370">370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;this.prototype.setOwnerFunction(this);</td><td class="diff_next"></td><td class="diff_header" id="to170_370">370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;this.prototype.setOwnerFunction(this);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_371">371</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to170_371">371</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to170__3"><a href="#difflib_chg_to170__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to170__3">n</a></td><td class="diff_header" id="to170_372">372</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(oldPrototype&nbsp;!=&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_372">372</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Disassociating&nbsp;the&nbsp;old&nbsp;prototype&nbsp;makes&nbsp;this&nbsp;easier&nbsp;to&nbsp;debug--</td><td class="diff_next"></td><td class="diff_header" id="to170_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Disassociating&nbsp;the&nbsp;old&nbsp;prototype&nbsp;makes&nbsp;this&nbsp;easier&nbsp;to&nbsp;debug--</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;don't&nbsp;have&nbsp;to&nbsp;worry&nbsp;about&nbsp;two&nbsp;prototypes&nbsp;running&nbsp;around.</td><td class="diff_next"></td><td class="diff_header" id="to170_374">374</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;don't&nbsp;have&nbsp;to&nbsp;worry&nbsp;about&nbsp;two&nbsp;prototypes&nbsp;running&nbsp;around.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to170__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to170__top">t</a></td><td class="diff_header" id="to170_375">375</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldPrototype.setOwnerFunction(null);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to170_376">376</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_374">374</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to170_377">377</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_375">375</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isConstructor()&nbsp;||&nbsp;isInterface())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to170_378">378</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isConstructor()&nbsp;||&nbsp;isInterface())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from170_376">376</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FunctionType&nbsp;superClass&nbsp;=&nbsp;getSuperClassConstructor();</td><td class="diff_next"></td><td class="diff_header" id="to170_379">379</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FunctionType&nbsp;superClass&nbsp;=&nbsp;getSuperClassConstructor();</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

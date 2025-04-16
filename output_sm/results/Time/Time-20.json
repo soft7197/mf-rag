@@ -1,0 +1,51 @@
+{
+    "Time-20": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n// no zone info\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            bucket.setZone(DateTimeZone.forID(id));\n            return position + id.length();\n        }\n    }\n    return ~position;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void test_printParseZoneDawsonCreek() {  // clashes with shorter Dawson\n\n        DateTimeFormatterBuilder bld = new DateTimeFormatterBuilder()\n\n            .appendPattern(\"yyyy-MM-dd HH:mm \").appendTimeZoneId();\n\n        DateTimeFormatter f = bld.toFormatter();\n\n        \n\n        DateTime dt = new DateTime(2007, 3, 4, 12, 30, 0, DateTimeZone.forID(\"America/Dawson_Creek\"));\n\n        assertEquals(\"2007-03-04 12:30 America/Dawson_Creek\", f.print(dt));\n\n        assertEquals(dt, f.parseDateTime(\"2007-03-04 12:30 America/Dawson_Creek\"));\n\n    }\n\n```\n#Error message: \tat org.joda.time.format.DateTimeFormatter.parseDateTime(DateTimeFormatter.java:866)  throw new IllegalArgumentException(FormatUtils.createErrorMessage(text, newPos));\n\tat org.joda.time.format.TestDateTimeFormatterBuilder.test_printParseZoneDawsonCreek(TestDateTimeFormatterBuilder.java:262)  assertEquals(dt, f.parseDateTime(\"2007-03-04 12:30 America/Dawson_Creek\"));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String matchId = null;\n    int matchLength = -1;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id) && id.length() > matchLength) {\n            matchId = id;\n            matchLength = id.length();\n        }\n    }\n    if (matchId != null) {\n        bucket.setZone(DateTimeZone.forID(matchId));\n        return position + matchLength;\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\n// no zone info\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    \n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    \n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    \n    return ~position;\n}\n"
+                ],
+                [
+                    "\n// no zone info\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\n// no zone info\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String matchedId = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (matchedId == null || id.length() > matchedId.length()) {\n                matchedId = id;\n            }\n        }\n    }\n    if (matchedId != null) {\n        bucket.setZone(DateTimeZone.forID(matchedId));\n        return position + matchedId.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\n// no zone info\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ],
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String bestMatch = null;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id)) {\n            if (bestMatch == null || id.length() > bestMatch.length()) {\n                bestMatch = id;\n            }\n        }\n    }\n    if (bestMatch != null) {\n        bucket.setZone(DateTimeZone.forID(bestMatch));\n        return position + bestMatch.length();\n    }\n    return ~position;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String matchId = null;\n    int matchLength = -1;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id) && id.length() > matchLength) {\n            matchId = id;\n            matchLength = id.length();\n        }\n    }\n    if (matchId != null) {\n        bucket.setZone(DateTimeZone.forID(matchId));\n        return position + matchLength;\n    }\n    return ~position;\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic int parseInto(DateTimeParserBucket bucket, String text, int position) {\n    String str = text.substring(position);\n    String matchId = null;\n    int matchLength = -1;\n    for (String id : ALL_IDS) {\n        if (str.startsWith(id) && id.length() > matchLength) {\n            matchId = id;\n            matchLength = id.length();\n        }\n    }\n    if (matchId != null) {\n        bucket.setZone(DateTimeZone.forID(matchId));\n        return position + matchLength;\n    }\n    return ~position;\n}\n"
+                ]
+            ]
+        }
+    }
+}

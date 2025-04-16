@@ -1,0 +1,83 @@
+{
+    "Math-105": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns the <a href=\"http://www.xycoon.com/SumOfSquares.htm\">\n* sum of squared errors</a> (SSE) associated with the regression\n* model.\n* <p>\n* The sum is computed using the computational formula\n* <p>\n* <code>SSE = SYY - (SXY * SXY / SXX)</code>\n* <p>\n* where <code>SYY</code> is the sum of the squared deviations of the y\n* values about their mean, <code>SXX</code> is similarly defined and\n* <code>SXY</code> is the sum of the products of x and y mean deviations.\n* <p>\n* The sums are accumulated using the updating algorithm referenced in\n* {@link #addData}.\n* <p>\n* The return value is constrained to be non-negative - i.e., if due to\n* rounding errors the computational formula returns a negative result,\n* 0 is returned.\n* <p>\n* <strong>Preconditions</strong>: <ul>\n* <li>At least two observations (with at least two different x values)\n* must have been added before invoking this method. If this method is\n* invoked before a model can be estimated, <code>Double,NaN</code> is\n* returned.\n* </li></ul>\n*\n* @return sum of squared errors associated with the regression model\n*/\npublic double getSumSquaredErrors() {\n    return sumYY - sumXY * sumXY / sumXX;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testSSENonNegative() {\n\n        double[] y = { 8915.102, 8919.302, 8923.502 };\n\n        double[] x = { 1.107178495E2, 1.107264895E2, 1.107351295E2 };\n\n        SimpleRegression reg = new SimpleRegression();\n\n        for (int i = 0; i < x.length; i++) {\n\n            reg.addData(x[i], y[i]);\n\n        }\n\n        assertTrue(reg.getSumSquaredErrors() >= 0.0);\n\n    } \n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.apache.commons.math.stat.regression.SimpleRegressionTest.testSSENonNegative(SimpleRegressionTest.java:275)  assertTrue(reg.getSumSquaredErrors() >= 0.0);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(0.0, sse);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(0.0, sse);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - (sumXY * sumXY / sumXX);\n    return sse < 0 ? 0 : sse;\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(0.0, sse);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(0.0, sse);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - (sumXY * sumXY / sumXX);\n    return sse < 0 ? 0 : sse;\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(sse, 0.0);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - sumXY * sumXY / sumXX;\n    return Math.max(0.0, sse);\n}\n"
+                ],
+                [
+                    "\npublic double getSumSquaredErrors() {\n    double sse = sumYY - (sumXY * sumXY / sumXX);\n    return sse < 0 ? 0 : sse;\n}\n"
+                ]
+            ]
+        }
+    }
+}

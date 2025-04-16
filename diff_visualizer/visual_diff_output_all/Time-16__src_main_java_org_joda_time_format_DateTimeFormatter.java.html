@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to717__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-16 - Buggy: src/main/java/org/joda/time/format/DateTimeFormatter.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Time-16 - Fixed: src/main/java/org/joda/time/format/DateTimeFormatter.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to717__0"></td><td class="diff_header" id="from717_706">706</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chrono&nbsp;=&nbsp;selectChronology(chrono);</td><td class="diff_next"></td><td class="diff_header" id="to717_706">706</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chrono&nbsp;=&nbsp;selectChronology(chrono);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from717_707">707</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to717_707">707</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from717_708">708</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DateTimeParserBucket&nbsp;bucket&nbsp;=&nbsp;new&nbsp;DateTimeParserBucket(</td><td class="diff_next"></td><td class="diff_header" id="to717_708">708</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DateTimeParserBucket&nbsp;bucket&nbsp;=&nbsp;new&nbsp;DateTimeParserBucket(</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to717__top">t</a></td><td class="diff_header" id="from717_709">709</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instantLocal,&nbsp;chrono,&nbsp;iLocale,&nbsp;iPivotYear,&nbsp;<span class="diff_chg">iDefaultY</span>ear);</td><td class="diff_next"><a href="#difflib_chg_to717__top">t</a></td><td class="diff_header" id="to717_709">709</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instantLocal,&nbsp;chrono,&nbsp;iLocale,&nbsp;iPivotYear,&nbsp;<span class="diff_chg">chrono.y</span>ear<span class="diff_add">().get(instant</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">Local)</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from717_710">710</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;newPos&nbsp;=&nbsp;parser.parseInto(bucket,&nbsp;text,&nbsp;position);</td><td class="diff_next"></td><td class="diff_header" id="to717_710">710</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;newPos&nbsp;=&nbsp;parser.parseInto(bucket,&nbsp;text,&nbsp;position);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from717_711">711</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instant.setMillis(bucket.computeMillis(false,&nbsp;text));</td><td class="diff_next"></td><td class="diff_header" id="to717_711">711</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instant.setMillis(bucket.computeMillis(false,&nbsp;text));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from717_712">712</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iOffsetParsed&nbsp;&amp;&amp;&nbsp;bucket.getOffsetInteger()&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to717_712">712</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(iOffsetParsed&nbsp;&amp;&amp;&nbsp;bucket.getOffsetInteger()&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+{
+    "Mockito-11": {
+        "function_num": 2,
+        "functions": [
+            {
+                "path": "src/org/mockito/internal/creation/DelegatingMethod.java",
+                "start_loc": 53,
+                "end_loc": 56,
+                "buggy_function": "    @Override\n    public boolean equals(Object o) {\n            return method.equals(o);\n    }\n",
+                "fixed_function": "    @Override\n    public boolean equals(Object o) {\n        if (this == o) {\n            return true;\n        }\n        if (o instanceof DelegatingMethod) {\n            DelegatingMethod that = (DelegatingMethod) o;\n            return method.equals(that.method);\n        } else {\n            return method.equals(o);\n        }\n    }\n",
+                "comment": "    /**\n     * @return True if the input object is a DelegatingMethod which has an internal Method which is equal to the internal Method of this DelegatingMethod,\n     * or if the input object is a Method which is equal to the internal Method of this DelegatingMethod.\n     */\n",
+                "normalized_body": [
+                    "@Override public boolean equals(Object o) { return method.equals(o); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.000000238418579,
+                        "@Override public boolean equals(Object o) { return method.equals(o); }"
+                    ],
+                    [
+                        0.9700092077255249,
+                        "@Override public boolean matches(Object argument) { String str = (String) argument; return str.equals(\\\"foo\\\"); }"
+                    ],
+                    [
+                        0.9671697616577148,
+                        "@Override public String say(String t) { return \\\"Dummy says: \\\" + t; }"
+                    ],
+                    [
+                        0.9666282534599304,
+                        "@Override public String getClassName(String prefix, String source, Object key, Predicate names) { return \\\"codegen.\\\" + super.getClassName(prefix, source, key, names); }"
+                    ],
+                    [
+                        0.9654549956321716,
+                        "@Override public void run(final RunNotifier notifier) { runner.run(notifier); }"
+                    ],
+                    [
+                        0.9598247408866882,
+                        "@Override protected Class<?> findClass(String name) throws ClassNotFoundException { if (nextToSearch != null) { return nextToSearch.loadClass(name); } else { return super.findClass(name); } }"
+                    ],
+                    [
+                        0.958005428314209,
+                        "@Override public String toString() { return \\\"Localized: \\\" + this.actualMatcher; }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.mockito.internal.creation.DelegatingMethodTest::equals_should_return_true_when_equal",
+                    "org.mockito.internal.creation.DelegatingMethodTest::equals_should_return_true_when_self"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * @return True if the input object is a DelegatingMethod which has an internal Method which is equal to the internal Method of this DelegatingMethod,\n     * or if the input object is a Method which is equal to the internal Method of this DelegatingMethod.\n     */\n\n    @Override\n    public boolean equals(Object o) {\n            return method.equals(o);\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void equals_should_return_true_when_equal() throws Exception {\n        DelegatingMethod equal = new DelegatingMethod(someMethod);\n        assertTrue(delegatingMethod.equals(equal));\n    }\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_equal(DelegatingMethodTest.java:30)  assertTrue(delegatingMethod.equals(equal));\n \n#Test method 2:\n```java\n    public void equals_should_return_true_when_self() throws Exception {\n        assertTrue(delegatingMethod.equals(delegatingMethod));\n    }\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_self(DelegatingMethodTest.java:35)  assertTrue(delegatingMethod.equals(delegatingMethod));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return o instanceof Method && method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n    @Override\n    public boolean equals(Object o) {\n        if (this == o) {\n            return true;\n        }\n        if (o == null) {\n            return false;\n        }\n        if (o instanceof DelegatingMethod) {\n            DelegatingMethod that = (DelegatingMethod) o;\n            return this.method.equals(that.method);\n        }\n        if (o instanceof Method) {\n            return this.method.equals(o);\n        }\n        return false;\n    }\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod other = (DelegatingMethod) o;\n        return method.equals(other.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    return o instanceof Method && this.method.equals(o);\n}\n"
+                        ],
+                        "plausible_patches": [
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return o instanceof Method && method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod other = (DelegatingMethod) o;\n        return method.equals(other.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    return o instanceof Method && this.method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    return o instanceof Method && method.equals(o);\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod other = (DelegatingMethod) o;\n        return method.equals(other.method);\n    }\n    if (o instanceof Method) {\n        return method.equals(o);\n    }\n    return false;\n}\n",
+                            "\n@Override\npublic boolean equals(Object o) {\n    if (this == o) return true;\n    if (o == null) return false;\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    return o instanceof Method && this.method.equals(o);\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/org/mockito/internal/creation/DelegatingMethod.java",
+                "start_loc": 58,
+                "end_loc": 61,
+                "buggy_function": "    @Override\n    public int hashCode() {\n        return 1;\n    }\n",
+                "fixed_function": "    @Override\n    public int hashCode() {\n        return method.hashCode();\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "@Override public int hashCode() { return 1; }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "@Override public int hashCode() { return 1; }"
+                    ],
+                    [
+                        1.0,
+                        "@Override public int hashCode() { return 1; }"
+                    ],
+                    [
+                        1.0,
+                        "@Override public int hashCode() { return 1; }"
+                    ],
+                    [
+                        1.0,
+                        "@Override public int hashCode() { return 1; }"
+                    ],
+                    [
+                        0.9893510341644287,
+                        "@Override public String getMessage() { return message; }"
+                    ],
+                    [
+                        0.9866632223129272,
+                        "@Override public String toString() { return mockName; }"
+                    ],
+                    [
+                        0.9822284579277039,
+                        "@Override public String toString() { return \\\"X\\\"; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    @Override\n    public boolean equals(Object o) {\n            return method.equals(o);\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n@Override\npublic boolean equals(Object o) {\n    if (this == o) {\n        return true;\n    }\n    if (o == null) {\n        return false;\n    }\n    if (o instanceof DelegatingMethod) {\n        DelegatingMethod that = (DelegatingMethod) o;\n        return this.method.equals(that.method);\n    }\n    if (o instanceof Method) {\n        return this.method.equals(o);\n    }\n    return false;\n}\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    @Override\n    public int hashCode() {\n        return 1;\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n@Override\npublic int hashCode() {\n    return Objects.hash(method);\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    int result = 17;\n    result = 31 * result + (method != null ? method.hashCode() : 0);\n    return result;\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    return Objects.hash(method);\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    return Objects.hash(method);\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    return method != null ? method.hashCode() : 0;\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    return Objects.hash(method);\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    int result = 17;\n    result = 31 * result + (method != null ? method.hashCode() : 0);\n    return result;\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    return method != null ? method.hashCode() : 0;\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    return Objects.hash(method);\n}\n",
+                            "\n@Override\npublic int hashCode() {\n    final int prime = 31;\n    int result = 1;\n    result = prime * result + ((method == null) ? 0 : method.hashCode());\n    return result;\n}\n"
+                        ]
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "org.mockito.internal.creation.DelegatingMethodTest::equals_should_return_true_when_equal": {
+                "path": "test/org/mockito/internal/creation/DelegatingMethodTest.java",
+                "function_name": "equals_should_return_true_when_equal",
+                "src": "    public void equals_should_return_true_when_equal() throws Exception {\n        DelegatingMethod equal = new DelegatingMethod(someMethod);\n        assertTrue(delegatingMethod.equals(equal));\n    }",
+                "error_msg": "junit.framework.AssertionFailedError\n\tat junit.framework.Assert.fail(Assert.java:55)\n\tat junit.framework.Assert.assertTrue(Assert.java:22)\n\tat junit.framework.Assert.assertTrue(Assert.java:31)\n\tat org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_equal(DelegatingMethodTest.java:30)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "junit.framework.AssertionFailedError\n\tat org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_equal(DelegatingMethodTest.java:30)  assertTrue(delegatingMethod.equals(equal));"
+            },
+            "org.mockito.internal.creation.DelegatingMethodTest::equals_should_return_true_when_self": {
+                "path": "test/org/mockito/internal/creation/DelegatingMethodTest.java",
+                "function_name": "equals_should_return_true_when_self",
+                "src": "    public void equals_should_return_true_when_self() throws Exception {\n        assertTrue(delegatingMethod.equals(delegatingMethod));\n    }",
+                "error_msg": "junit.framework.AssertionFailedError\n\tat junit.framework.Assert.fail(Assert.java:55)\n\tat junit.framework.Assert.assertTrue(Assert.java:22)\n\tat junit.framework.Assert.assertTrue(Assert.java:31)\n\tat org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_self(DelegatingMethodTest.java:35)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "junit.framework.AssertionFailedError\n\tat org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_self(DelegatingMethodTest.java:35)  assertTrue(delegatingMethod.equals(delegatingMethod));"
+            }
+        },
+        "evaluation_done": true,
+        "generation_done_for_notest_methods": true
+    }
+}

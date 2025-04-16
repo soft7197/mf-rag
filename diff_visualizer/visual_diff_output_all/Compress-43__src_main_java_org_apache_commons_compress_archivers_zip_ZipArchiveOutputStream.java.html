@@ -1,0 +1,89 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to271__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Compress-43 - Buggy: src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Compress-43 - Fixed: src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1031">1031</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to271_1031">1031</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to271__0"></td><td class="diff_header" id="from271_1032">1032</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;long&nbsp;localHeaderStart&nbsp;=&nbsp;streamCompressor.getTotalBytesWritten();</td><td class="diff_next"></td><td class="diff_header" id="to271_1032">1032</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;long&nbsp;localHeaderStart&nbsp;=&nbsp;streamCompressor.getTotalBytesWritten();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1033">1033</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;byte[]&nbsp;localHeader&nbsp;=&nbsp;createLocalFileHeader(ze,&nbsp;name,&nbsp;encodable,&nbsp;ph</td><td class="diff_next"></td><td class="diff_header" id="to271_1033">1033</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;byte[]&nbsp;localHeader&nbsp;=&nbsp;createLocalFileHeader(ze,&nbsp;name,&nbsp;encodable,&nbsp;ph</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ased,&nbsp;localHeaderStart);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ased,&nbsp;localHeaderStart);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to271__1">n</a></td><td class="diff_header" id="from271_1034">1034</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaData.put(ze,&nbsp;new&nbsp;EntryMetaData(localHeaderStart,&nbsp;usesDataDescriptor(</td><td class="diff_next"><a href="#difflib_chg_to271__1">n</a></td><td class="diff_header" id="to271_1034">1034</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaData.put(ze,&nbsp;new&nbsp;EntryMetaData(localHeaderStart,&nbsp;usesDataDescriptor(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ze.getMethod())));</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ze.getMethod()<span class="diff_add">,&nbsp;phased</span>)));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1035">1035</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry.localDataStart&nbsp;=&nbsp;localHeaderStart&nbsp;+&nbsp;LFH_CRC_OFFSET;&nbsp;//&nbsp;At&nbsp;crc&nbsp;offs</td><td class="diff_next"></td><td class="diff_header" id="to271_1035">1035</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry.localDataStart&nbsp;=&nbsp;localHeaderStart&nbsp;+&nbsp;LFH_CRC_OFFSET;&nbsp;//&nbsp;At&nbsp;crc&nbsp;offs</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">et</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">et</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1036">1036</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeCounted(localHeader);</td><td class="diff_next"></td><td class="diff_header" id="to271_1036">1036</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeCounted(localHeader);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1037">1037</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry.dataStart&nbsp;=&nbsp;streamCompressor.getTotalBytesWritten();</td><td class="diff_next"></td><td class="diff_header" id="to271_1037">1037</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry.dataStart&nbsp;=&nbsp;streamCompressor.getTotalBytesWritten();</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to271__1"></td><td class="diff_header" id="from271_1072">1072</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to271_1072">1072</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1073">1073</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//store&nbsp;method&nbsp;in&nbsp;local&nbsp;variable&nbsp;to&nbsp;prevent&nbsp;multiple&nbsp;method&nbsp;calls</td><td class="diff_next"></td><td class="diff_header" id="to271_1073">1073</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//store&nbsp;method&nbsp;in&nbsp;local&nbsp;variable&nbsp;to&nbsp;prevent&nbsp;multiple&nbsp;method&nbsp;calls</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1074">1074</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;zipMethod&nbsp;=&nbsp;ze.getMethod();</td><td class="diff_next"></td><td class="diff_header" id="to271_1074">1074</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;zipMethod&nbsp;=&nbsp;ze.getMethod();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to271__2">n</a></td><td class="diff_header" id="from271_1075">1075</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;dataDescriptor&nbsp;=&nbsp;usesDataDescriptor(zipMethod);</td><td class="diff_next"><a href="#difflib_chg_to271__2">n</a></td><td class="diff_header" id="to271_1075">1075</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;boolean&nbsp;dataDescriptor&nbsp;=&nbsp;usesDataDescriptor(zipMethod<span class="diff_add">,&nbsp;phased</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1076">1076</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to271_1076">1076</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1077">1077</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putShort(versionNeededToExtract(zipMethod,&nbsp;hasZip64Extra(ze),&nbsp;dataDescri</td><td class="diff_next"></td><td class="diff_header" id="to271_1077">1077</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putShort(versionNeededToExtract(zipMethod,&nbsp;hasZip64Extra(ze),&nbsp;dataDescri</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ptor),&nbsp;buf,&nbsp;LFH_VERSION_NEEDED_OFFSET);</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ptor),&nbsp;buf,&nbsp;LFH_VERSION_NEEDED_OFFSET);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1078">1078</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to271_1078">1078</td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1168">1168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;IOException&nbsp;on&nbsp;error</td><td class="diff_next"></td><td class="diff_header" id="to271_1168">1168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;IOException&nbsp;on&nbsp;error</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to271__2"></td><td class="diff_header" id="from271_1169">1169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to271_1169">1169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1170">1170</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;void&nbsp;writeDataDescriptor(final&nbsp;ZipArchiveEntry&nbsp;ze)&nbsp;throws&nbsp;IOExcept</td><td class="diff_next"></td><td class="diff_header" id="to271_1170">1170</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;void&nbsp;writeDataDescriptor(final&nbsp;ZipArchiveEntry&nbsp;ze)&nbsp;throws&nbsp;IOExcept</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ion&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ion&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to271__3">n</a></td><td class="diff_header" id="from271_1171">1171</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ze.getMethod()&nbsp;!=&nbsp;DEFLATED&nbsp;||&nbsp;channel&nbsp;!=&nbsp;null)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to271__3">n</a></td><td class="diff_header" id="to271_1171">1171</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!usesDataDescriptor(ze.getMethod(),&nbsp;false))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1172">1172</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</td><td class="diff_next"></td><td class="diff_header" id="to271_1172">1172</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1173">1173</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to271_1173">1173</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1174">1174</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeCounted(DD_SIG);</td><td class="diff_next"></td><td class="diff_header" id="to271_1174">1174</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeCounted(DD_SIG);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to271__3"></td><td class="diff_header" id="from271_1489">1489</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;versionNeededToExtractMethod(zipMethod);</td><td class="diff_next"></td><td class="diff_header" id="to271_1489">1489</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;versionNeededToExtractMethod(zipMethod);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1490">1490</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to271_1490">1490</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1491">1491</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to271_1491">1491</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to271__top">t</a></td><td class="diff_header" id="from271_1492">1492</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;usesDataDescriptor(final&nbsp;int&nbsp;zipMethod)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to271__top">t</a></td><td class="diff_header" id="to271_1492">1492</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;usesDataDescriptor(final&nbsp;int&nbsp;zipMethod<span class="diff_add">,&nbsp;boolean&nbsp;phased</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1493">1493</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;zipMethod&nbsp;==&nbsp;DEFLATED&nbsp;&amp;&amp;&nbsp;channel&nbsp;==&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to271_1493">1493</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<span class="diff_add">&nbsp;!phased&nbsp;&amp;&amp;</span>&nbsp;zipMethod&nbsp;==&nbsp;DEFLATED&nbsp;&amp;&amp;&nbsp;channel&nbsp;==&nbsp;null;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1494">1494</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to271_1494">1494</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1495">1495</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to271_1495">1495</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from271_1496">1496</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;int&nbsp;versionNeededToExtractMethod(int&nbsp;zipMethod)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to271_1496">1496</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;int&nbsp;versionNeededToExtractMethod(int&nbsp;zipMethod)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

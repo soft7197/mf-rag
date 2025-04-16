@@ -1,0 +1,78 @@
+{
+    "Lang-14": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Compares two CharSequences, returning {@code true} if they represent\n* equal sequences of characters.</p>\n*\n* <p>{@code null}s are handled without exceptions. Two {@code null}\n* references are considered to be equal. The comparison is case sensitive.</p>\n*\n* <pre>\n* StringUtils.equals(null, null)   = true\n* StringUtils.equals(null, \"abc\")  = false\n* StringUtils.equals(\"abc\", null)  = false\n* StringUtils.equals(\"abc\", \"abc\") = true\n* StringUtils.equals(\"abc\", \"ABC\") = false\n* </pre>\n*\n* @see java.lang.CharSequence#equals(Object)\n* @param cs1  the first CharSequence, may be {@code null}\n* @param cs2  the second CharSequence, may be {@code null}\n* @return {@code true} if the CharSequences are equal (case-sensitive), or both {@code null}\n* @since 3.0 Changed signature from equals(String, String) to equals(CharSequence, CharSequence)\n*/\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n        return cs1.equals(cs2);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testEquals() {\n\n        final CharSequence fooCs = FOO, barCs = BAR, foobarCs = FOOBAR;\n\n        assertTrue(StringUtils.equals(null, null));\n\n        assertTrue(StringUtils.equals(fooCs, fooCs));\n\n        assertTrue(StringUtils.equals(fooCs, (CharSequence) new StringBuilder(FOO)));\n\n        assertTrue(StringUtils.equals(fooCs, (CharSequence) new String(new char[] { 'f', 'o', 'o' })));\n\n        assertTrue(StringUtils.equals(fooCs, (CharSequence) new CustomCharSequence(FOO)));\n\n        assertTrue(StringUtils.equals((CharSequence) new CustomCharSequence(FOO), fooCs));\n\n        assertFalse(StringUtils.equals(fooCs, (CharSequence) new String(new char[] { 'f', 'O', 'O' })));\n\n        assertFalse(StringUtils.equals(fooCs, barCs));\n\n        assertFalse(StringUtils.equals(fooCs, null));\n\n        assertFalse(StringUtils.equals(null, fooCs));\n\n        assertFalse(StringUtils.equals(fooCs, foobarCs));\n\n        assertFalse(StringUtils.equals(foobarCs, fooCs));\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError\n\tat org.apache.commons.lang3.StringUtilsEqualsIndexOfTest.testEquals(StringUtilsEqualsIndexOfTest.java:490)  assertTrue(StringUtils.equals(fooCs, (CharSequence) new StringBuilder(FOO)));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ],
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic static boolean equals(CharSequence cs1, CharSequence cs2) {\n    if (cs1 == cs2) {\n        return true;\n    }\n    if (cs1 == null || cs2 == null) {\n        return false;\n    }\n    if (cs1.length() != cs2.length()) {\n        return false;\n    }\n    for (int i = 0; i < cs1.length(); i++) {\n        if (cs1.charAt(i) != cs2.charAt(i)) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+                ]
+            ]
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "Mockito-2": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\npublic Timer(long durationMillis) {\n        this.durationMillis = durationMillis;\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void should_throw_friendly_reminder_exception_when_duration_is_negative() {\n\n        try {\n\n            new Timer(-1);\n\n            Assert.fail(\"It is forbidden to create timer with negative value of timer's duration.\");\n\n        } catch (FriendlyReminderException e) {\n\n            Assert.assertTrue(true);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: It is forbidden to create timer with negative value of timer's duration.\n\tat org.mockito.internal.util.TimerTest.should_throw_friendly_reminder_exception_when_duration_is_negative(TimerTest.java:48)  Assert.fail(\"It is forbidden to create timer with negative value of timer's duration.\");\n \n#Test method 2:\n```java\n    public void should_throw_exception_when_duration_is_negative_for_timeout_method() {\n\n        try {\n\n            Mockito.timeout(-1);\n\n            Assert.fail(\"It is forbidden to invoke Mockito.timeout() with negative value.\");\n\n        } catch (FriendlyReminderException e) {\n\n            Assert.assertTrue(true);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: It is forbidden to invoke Mockito.timeout() with negative value.\n\tat org.mockito.verification.NegativeDurationTest.should_throw_exception_when_duration_is_negative_for_timeout_method(NegativeDurationTest.java:14)  Assert.fail(\"It is forbidden to invoke Mockito.timeout() with negative value.\");\n \n#Test method 3:\n```java\n    public void should_throw_exception_when_duration_is_negative_for_after_method() {\n\n        try {\n\n            Mockito.after(-1);\n\n            Assert.fail(\"It is forbidden to invoke Mockito.after() with negative value.\");\n\n        } catch (FriendlyReminderException e) {\n\n            Assert.assertTrue(true);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: It is forbidden to invoke Mockito.after() with negative value.\n\tat org.mockito.verification.NegativeDurationTest.should_throw_exception_when_duration_is_negative_for_after_method(NegativeDurationTest.java:24)  Assert.fail(\"It is forbidden to invoke Mockito.after() with negative value.\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"It is forbidden to create timer with negative value of timer's duration.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Timer duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\npublic Timer(long durationMillis) {\n        this.durationMillis = durationMillis;\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void should_throw_friendly_reminder_exception_when_duration_is_negative() {\n\n        try {\n\n            new Timer(-1);\n\n            Assert.fail(\"It is forbidden to create timer with negative value of timer's duration.\");\n\n        } catch (FriendlyReminderException e) {\n\n            Assert.assertTrue(true);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: It is forbidden to create timer with negative value of timer's duration.\n\tat org.mockito.internal.util.TimerTest.should_throw_friendly_reminder_exception_when_duration_is_negative(TimerTest.java:48)  Assert.fail(\"It is forbidden to create timer with negative value of timer's duration.\");\n \n#Test method 2:\n```java\n    public void should_throw_exception_when_duration_is_negative_for_timeout_method() {\n\n        try {\n\n            Mockito.timeout(-1);\n\n            Assert.fail(\"It is forbidden to invoke Mockito.timeout() with negative value.\");\n\n        } catch (FriendlyReminderException e) {\n\n            Assert.assertTrue(true);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: It is forbidden to invoke Mockito.timeout() with negative value.\n\tat org.mockito.verification.NegativeDurationTest.should_throw_exception_when_duration_is_negative_for_timeout_method(NegativeDurationTest.java:14)  Assert.fail(\"It is forbidden to invoke Mockito.timeout() with negative value.\");\n \n#Test method 3:\n```java\n    public void should_throw_exception_when_duration_is_negative_for_after_method() {\n\n        try {\n\n            Mockito.after(-1);\n\n            Assert.fail(\"It is forbidden to invoke Mockito.after() with negative value.\");\n\n        } catch (FriendlyReminderException e) {\n\n            Assert.assertTrue(true);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: It is forbidden to invoke Mockito.after() with negative value.\n\tat org.mockito.verification.NegativeDurationTest.should_throw_exception_when_duration_is_negative_for_after_method(NegativeDurationTest.java:24)  Assert.fail(\"It is forbidden to invoke Mockito.after() with negative value.\");\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic DeprecatedOngoingStubbing<T> toAnswer(Answer<?> answer) { invocationContainerImpl.addConsecutiveAnswer(answer); return this; }\n```\n\n            \n```java\npublic EqualsBuilder append(char lhs, char rhs) { isEquals &= (lhs == rhs); return this; }\n```\n\n            \n```java\npublic InvocationBuilder argTypes(Class<?>... argTypes) { this.argTypes = asList(argTypes); return this; }\n```\n\n            \n```java\npublic EqualsBuilder append(byte lhs, byte rhs) { isEquals &= (lhs == rhs); return this; }\n```\n\n            \n```java\npublic void visitMaxs(final int maxStack, final int maxLocals) { this.maxStack = maxStack; this.maxLocals = maxLocals; }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"It is forbidden to create timer with negative value of timer's duration.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"It is forbidden to create timer with negative value of timer's duration.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Timer duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"It is forbidden to create timer with negative value of timer's duration.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"It is forbidden to create timer with negative value of timer's duration.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Timer duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Timer duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ],
+                [
+                    "\npublic Timer(long durationMillis) {\n    if (durationMillis < 0) {\n        throw new FriendlyReminderException(\"Timer duration cannot be negative.\");\n    }\n    this.durationMillis = durationMillis;\n}\n"
+                ]
+            ],
+            "compiler_error": true,
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

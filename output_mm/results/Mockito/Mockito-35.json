@@ -1,0 +1,263 @@
+{
+    "Mockito-35": {
+        "function_num": 3,
+        "functions": [
+            {
+                "path": "src/org/mockito/Matchers.java",
+                "start_loc": 361,
+                "end_loc": 363,
+                "buggy_function": "    public static <T> T isA(Class<T> clazz) {\n        return reportMatcher(new InstanceOf(clazz)).<T>returnNull();\n    }\n",
+                "fixed_function": "    public static <T> T isA(Class<T> clazz) {\n        return reportMatcher(new InstanceOf(clazz)).<T>returnFor(clazz);\n    }\n",
+                "comment": "    /**\n     * Object argument that implements the given class. \n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param <T>\n     *            the accepted type.\n     * @param clazz\n     *            the class of the accepted type.\n     * @return <code>null</code>.\n     */\n",
+                "normalized_body": [
+                    "public static <T> T isA(Class<T> clazz) { return reportMatcher(new InstanceOf(clazz)).<T>returnNull(); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        0.9999998807907104,
+                        "public static <T> T isA(Class<T> clazz) { return reportMatcher(new InstanceOf(clazz)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.989804744720459,
+                        "public static <T> T same(T value) { return reportMatcher(new Same(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9879838824272156,
+                        "public static <T> T eq(T value) { return reportMatcher(new Equals(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9861363768577576,
+                        "public static String startsWith(String prefix) { return reportMatcher(new StartsWith(prefix)).returnString(); }"
+                    ],
+                    [
+                        0.9856623411178589,
+                        "public static int leq(int value) { return reportMatcher(new LessOrEqual<Integer>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9855707287788391,
+                        "public static byte leq(byte value) { return reportMatcher(new LessOrEqual<Byte>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9837902188301086,
+                        "public static int geq(int value) { return reportMatcher(new GreaterOrEqual<Integer>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9836104512214661,
+                        "public static byte geq(byte value) { return reportMatcher(new GreaterOrEqual<Byte>(value)).returnZero(); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntPassed",
+                    "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntegerPassed"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Object argument that implements the given class. \n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param <T>\n     *            the accepted type.\n     * @param clazz\n     *            the class of the accepted type.\n     * @return <code>null</code>.\n     */\n\n    public static <T> T isA(Class<T> clazz) {\n        return reportMatcher(new InstanceOf(clazz)).<T>returnNull();\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldNotThrowNPEWhenIntPassed() {\n        mock.intArgumentMethod(100);\n        \n        verify(mock).intArgumentMethod(isA(Integer.class));\n    }\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntPassed(NPEWithCertainMatchersTest.java:38)  verify(mock).intArgumentMethod(isA(Integer.class));\n \n#Test method 2:\n```java\n    public void shouldNotThrowNPEWhenIntegerPassed() {\n        mock.intArgumentMethod(100);\n\n        verify(mock).intArgumentMethod(isA(Integer.class));\n    }\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassed(NPEWithCertainMatchersTest.java:31)  verify(mock).intArgumentMethod(isA(Integer.class));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\nimport org.mockito.ArgumentMatchers;\n\n/**\n     * Object argument that implements the given class. \n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param <T>\n     *            the accepted type.\n     * @param clazz\n     *            the class of the accepted type.\n     * @return <code>null</code>.\n     */\n\npublic static <T> T isA(Class<T> clazz) {\n    return ArgumentMatchers.isA(clazz);\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    reportMatcher(new InstanceOf(clazz));\n    return null;\n}\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        reportMatcher(new InstanceOf(clazz));\n        return null;\n    }\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        return (T) reportMatcher(new InstanceOf(clazz));\n    }\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        reportMatcher(new InstanceOf(clazz));\n        return null;\n    }\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    reportMatcher(new InstanceOf(clazz));\n    return null;\n}\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        reportMatcher(new InstanceOf(clazz));\n        return null;\n    }\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    reportMatcher(new InstanceOf(clazz));\n    return null;\n}\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        return any(clazz);\n    }\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        reportMatcher(new InstanceOf(clazz));\n        return null;\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    },
+                    "2": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Object argument that implements the given class. \n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param <T>\n     *            the accepted type.\n     * @param clazz\n     *            the class of the accepted type.\n     * @return <code>null</code>.\n     */\n\n    public static <T> T isA(Class<T> clazz) {\n        return reportMatcher(new InstanceOf(clazz)).<T>returnNull();\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldNotThrowNPEWhenIntPassed() {\n        mock.intArgumentMethod(100);\n        \n        verify(mock).intArgumentMethod(isA(Integer.class));\n    }\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntPassed(NPEWithCertainMatchersTest.java:38)  verify(mock).intArgumentMethod(isA(Integer.class));\n \n#Test method 2:\n```java\n    public void shouldNotThrowNPEWhenIntegerPassed() {\n        mock.intArgumentMethod(100);\n\n        verify(mock).intArgumentMethod(isA(Integer.class));\n    }\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassed(NPEWithCertainMatchersTest.java:31)  verify(mock).intArgumentMethod(isA(Integer.class));\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic static <T> T same(T value) { return reportMatcher(new Same(value)).<T>returnNull(); }\n```\n\n            \n```java\npublic static <T> T eq(T value) { return reportMatcher(new Equals(value)).<T>returnNull(); }\n```\n\n            \n```java\npublic static String startsWith(String prefix) { return reportMatcher(new StartsWith(prefix)).returnString(); }\n```\n\n            \n```java\npublic static int leq(int value) { return reportMatcher(new LessOrEqual<Integer>(value)).returnZero(); }\n```\n\n            \n```java\npublic static byte leq(byte value) { return reportMatcher(new LessOrEqual<Byte>(value)).returnZero(); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        return reportMatcher(new InstanceOf(clazz)).returnDefault(clazz);\n    }\n",
+                            "\n    public static <T> T isA(Class<T> clazz) {\n        return reportMatcher(new InstanceOf(clazz)).returnNull();\n    }\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    return reportMatcher(new InstanceOf(clazz)).<T>returnsDefault();\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    reportMatcher(new InstanceOf(clazz));\n    return null;\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    reportMatcher(new InstanceOf(clazz));\n    return null;\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    return reportMatcher(new InstanceOf(clazz));\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    if (clazz == null) {\n        throw new IllegalArgumentException(\"Class type cannot be null\");\n    }\n    return reportMatcher(new InstanceOf(clazz)).<T>returnValue(clazz);\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    reportMatcher(new InstanceOf(clazz));\n    return null;\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    return reportMatcher(new InstanceOf(clazz)).<T>returnValue(clazz);\n}\n",
+                            "\npublic static <T> T isA(Class<T> clazz) {\n    return reportMatcher(new InstanceOf<>(clazz)).<T>returnNull();\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/org/mockito/Matchers.java",
+                "start_loc": 478,
+                "end_loc": 480,
+                "buggy_function": "    public static <T> T eq(T value) {\n        return reportMatcher(new Equals(value)).<T>returnNull();\n    }  \n",
+                "fixed_function": "    public static <T> T eq(T value) {\n        return (T) reportMatcher(new Equals(value)).<T>returnFor((Class) value.getClass());\n    }  \n",
+                "comment": "    /**\n     * Object argument that is equal to the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param value\n     *            the given value.\n     * @return <code>null</code>.\n     */\n",
+                "normalized_body": [
+                    "public static <T> T eq(T value) { return reportMatcher(new Equals(value)).<T>returnNull(); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public static <T> T eq(T value) { return reportMatcher(new Equals(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9977819919586182,
+                        "public static <T> T same(T value) { return reportMatcher(new Same(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9890462756156921,
+                        "public static String startsWith(String prefix) { return reportMatcher(new StartsWith(prefix)).returnString(); }"
+                    ],
+                    [
+                        0.9879839420318604,
+                        "public static <T> T isA(Class<T> clazz) { return reportMatcher(new InstanceOf(clazz)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.986581563949585,
+                        "public static int leq(int value) { return reportMatcher(new LessOrEqual<Integer>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9865370392799377,
+                        "public static byte leq(byte value) { return reportMatcher(new LessOrEqual<Byte>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9858635663986206,
+                        "public static String matches(String regex) { return reportMatcher(new Matches(regex)).returnString(); }"
+                    ],
+                    [
+                        0.9843448996543884,
+                        "public static int eq(int value) { return reportMatcher(new Equals(value)).returnZero(); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntegerPassedToEq"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Object argument that is equal to the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param value\n     *            the given value.\n     * @return <code>null</code>.\n     */\n\n    public static <T> T eq(T value) {\n        return reportMatcher(new Equals(value)).<T>returnNull();\n    }  \n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldNotThrowNPEWhenIntegerPassedToEq() {\n        mock.intArgumentMethod(100);\n        \n        verify(mock).intArgumentMethod(eq(new Integer(100)));\n    }\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassedToEq(NPEWithCertainMatchersTest.java:45)  verify(mock).intArgumentMethod(eq(new Integer(100)));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }  \n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }  \n",
+                            "\n    /**\n     * Object argument that is equal to the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param value\n     *            the given value.\n     * @return the given value.\n     */\n\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return value;\n    }\n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }  \n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return value;\n    }  \n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return null;\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /**\n     * Object argument that is equal to the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param value\n     *            the given value.\n     * @return the given value.\n     */\n\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return value;\n    }\n",
+                            "\n    /**\n     * Object argument that is equal to the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param value\n     *            the given value.\n     * @return the given value.\n     */\n\n    public static <T> T eq(T value) {\n        reportMatcher(new Equals(value));\n        return value;\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/org/mockito/Matchers.java",
+                "start_loc": 515,
+                "end_loc": 517,
+                "buggy_function": "    public static <T> T same(T value) {\n        return reportMatcher(new Same(value)).<T>returnNull();\n    }\n",
+                "fixed_function": "    public static <T> T same(T value) {\n        return (T) reportMatcher(new Same(value)).<T>returnFor((Class) value.getClass());\n    }\n",
+                "comment": "    /**\n     * Object argument that is the same as the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param <T>\n     *            the type of the object, it is passed through to prevent casts.\n     * @param value\n     *            the given value.\n     * @return <code>null</code>.\n     */\n",
+                "normalized_body": [
+                    "public static <T> T same(T value) { return reportMatcher(new Same(value)).<T>returnNull(); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public static <T> T same(T value) { return reportMatcher(new Same(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9977820515632629,
+                        "public static <T> T eq(T value) { return reportMatcher(new Equals(value)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9902293682098389,
+                        "public static String startsWith(String prefix) { return reportMatcher(new StartsWith(prefix)).returnString(); }"
+                    ],
+                    [
+                        0.989804744720459,
+                        "public static <T> T isA(Class<T> clazz) { return reportMatcher(new InstanceOf(clazz)).<T>returnNull(); }"
+                    ],
+                    [
+                        0.9894431829452515,
+                        "public static int leq(int value) { return reportMatcher(new LessOrEqual<Integer>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9893724918365479,
+                        "public static byte leq(byte value) { return reportMatcher(new LessOrEqual<Byte>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9880126714706421,
+                        "public static int gt(int value) { return reportMatcher(new GreaterThan<Integer>(value)).returnZero(); }"
+                    ],
+                    [
+                        0.9879140853881836,
+                        "public static String matches(String regex) { return reportMatcher(new Matches(regex)).returnString(); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntegerPassedToSame"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n    /**\n     * Object argument that is the same as the given value.\n     * <p>\n     * See examples in javadoc for {@link Matchers} class\n     * \n     * @param <T>\n     *            the type of the object, it is passed through to prevent casts.\n     * @param value\n     *            the given value.\n     * @return <code>null</code>.\n     */\n\n    public static <T> T same(T value) {\n        return reportMatcher(new Same(value)).<T>returnNull();\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldNotThrowNPEWhenIntegerPassedToSame() {\n        mock.intArgumentMethod(100);\n\n        verify(mock, never()).intArgumentMethod(same(new Integer(100)));\n    }\n```\n#Error message: java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassedToSame(NPEWithCertainMatchersTest.java:52)  verify(mock, never()).intArgumentMethod(same(new Integer(100)));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        return reportMatcher(new Same(value));\n    }\n",
+                            "\npublic static <T> T same(T value) {\n    reportMatcher(new Same(value));\n    return null;\n}\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return value;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return null;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return value;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return null;\n    }\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return value;\n    }\n",
+                            "\n    public static <T> T same(T value) {\n        reportMatcher(new Same(value));\n        return value;\n    }\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntPassed": {
+                "path": "test/org/mockitousage/bugs/NPEWithCertainMatchersTest.java",
+                "function_name": "shouldNotThrowNPEWhenIntPassed",
+                "src": "    public void shouldNotThrowNPEWhenIntPassed() {\n        mock.intArgumentMethod(100);\n        \n        verify(mock).intArgumentMethod(isA(Integer.class));\n    }",
+                "error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntPassed(NPEWithCertainMatchersTest.java:38)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntPassed(NPEWithCertainMatchersTest.java:38)  verify(mock).intArgumentMethod(isA(Integer.class));"
+            },
+            "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntegerPassed": {
+                "path": "test/org/mockitousage/bugs/NPEWithCertainMatchersTest.java",
+                "function_name": "shouldNotThrowNPEWhenIntegerPassed",
+                "src": "    public void shouldNotThrowNPEWhenIntegerPassed() {\n        mock.intArgumentMethod(100);\n\n        verify(mock).intArgumentMethod(isA(Integer.class));\n    }",
+                "error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassed(NPEWithCertainMatchersTest.java:31)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassed(NPEWithCertainMatchersTest.java:31)  verify(mock).intArgumentMethod(isA(Integer.class));"
+            },
+            "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntegerPassedToEq": {
+                "path": "test/org/mockitousage/bugs/NPEWithCertainMatchersTest.java",
+                "function_name": "shouldNotThrowNPEWhenIntegerPassedToEq",
+                "src": "    public void shouldNotThrowNPEWhenIntegerPassedToEq() {\n        mock.intArgumentMethod(100);\n        \n        verify(mock).intArgumentMethod(eq(new Integer(100)));\n    }",
+                "error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassedToEq(NPEWithCertainMatchersTest.java:45)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassedToEq(NPEWithCertainMatchersTest.java:45)  verify(mock).intArgumentMethod(eq(new Integer(100)));"
+            },
+            "org.mockitousage.bugs.NPEWithCertainMatchersTest::shouldNotThrowNPEWhenIntegerPassedToSame": {
+                "path": "test/org/mockitousage/bugs/NPEWithCertainMatchersTest.java",
+                "function_name": "shouldNotThrowNPEWhenIntegerPassedToSame",
+                "src": "    public void shouldNotThrowNPEWhenIntegerPassedToSame() {\n        mock.intArgumentMethod(100);\n\n        verify(mock, never()).intArgumentMethod(same(new Integer(100)));\n    }",
+                "error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassedToSame(NPEWithCertainMatchersTest.java:52)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:534)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1617)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:1039)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:2162)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:853)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:292)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:99)\n\tat org.apache.tools.ant.Task.perform(Task.java:350)\n\tat org.apache.tools.ant.Target.execute(Target.java:449)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:470)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1388)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1361)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:834)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:223)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:284)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:101)",
+                "clean_error_msg": "java.lang.NullPointerException\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenIntegerPassedToSame(NPEWithCertainMatchersTest.java:52)  verify(mock, never()).intArgumentMethod(same(new Integer(100)));"
+            }
+        },
+        "evaluation_done": true,
+        "context_generation_done": true,
+        "evaluation_done2": true
+    }
+}

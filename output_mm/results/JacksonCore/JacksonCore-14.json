@@ -1,0 +1,218 @@
+{
+    "JacksonCore-14": {
+        "function_num": 3,
+        "functions": [
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/io/IOContext.java",
+                "start_loc": 272,
+                "end_loc": 275,
+                "buggy_function": "    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); }\n    }\n",
+                "fixed_function": "    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "protected final void _verifyRelease(byte[] toRelease, byte[] src) { if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); } }"
+                ],
+                "top_similar_methods": [
+                    [
+                        0.9999998211860657,
+                        "protected final void _verifyRelease(byte[] toRelease, byte[] src) { if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); } }"
+                    ],
+                    [
+                        0.9925358295440674,
+                        "protected final void _verifyRelease(char[] toRelease, char[] src) { if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); } }"
+                    ],
+                    [
+                        0.9786821603775024,
+                        "protected void _checkParentPath() throws IOException { ++_matchCount; if (_includePath) { _filterContext.writePath(delegate); } if (!_allowMultipleMatches) { _filterContext.skipParentChecks(); } }"
+                    ],
+                    [
+                        0.9657373428344727,
+                        "protected final void _verifyAlloc(Object buffer) { if (buffer != null) { throw new IllegalStateException(\\\"Trying to call same allocXxx() method second time\\\"); } }"
+                    ],
+                    [
+                        0.9630574584007263,
+                        "protected final void _reportError(String msg) throws JsonParseException { throw _constructError(msg); }"
+                    ],
+                    [
+                        0.9598734378814697,
+                        "private int _appendNumeric(int value, char[] qbuf) { qbuf[1] = 'u'; qbuf[4] = HC[value >> 4]; qbuf[5] = HC[value & 0xF]; return 6; }"
+                    ],
+                    [
+                        0.9598004817962646,
+                        "protected final void _wrapError(String msg, Throwable t) throws JsonParseException { throw _constructError(msg, t); }"
+                    ],
+                    [
+                        0.9592435359954834,
+                        "private boolean _skipYAMLComment() throws IOException { if (!isEnabled(Feature.ALLOW_YAML_COMMENTS)) { return false; } _skipLine(); return true; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    private IllegalArgumentException wrongBuf() {\n        // sanity check failed; trying to return different, smaller buffer.\nreturn new IllegalArgumentException(\"Trying to release buffer not owned by the context\"); \n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); }\n    }\n\n```\n\n### Method 2:\n```java\n    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); }\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\n    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n\n",
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(byte[] toRelease, byte[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease == null) || (src == null) || (toRelease.length < src.length)) {\n        throw wrongBuf();\n    }\n}\n",
+                            "\n    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n",
+                            "\n    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/io/IOContext.java",
+                "start_loc": 277,
+                "end_loc": 280,
+                "buggy_function": "    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); }\n    }\n",
+                "fixed_function": "    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "protected final void _verifyRelease(char[] toRelease, char[] src) { if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); } }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "protected final void _verifyRelease(char[] toRelease, char[] src) { if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); } }"
+                    ],
+                    [
+                        0.9925357103347778,
+                        "protected final void _verifyRelease(byte[] toRelease, byte[] src) { if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); } }"
+                    ],
+                    [
+                        0.9809436202049255,
+                        "protected final void _verifyAlloc(Object buffer) { if (buffer != null) { throw new IllegalStateException(\\\"Trying to call same allocXxx() method second time\\\"); } }"
+                    ],
+                    [
+                        0.9769905209541321,
+                        "protected void _checkParentPath() throws IOException { ++_matchCount; if (_includePath) { _filterContext.writePath(delegate); } if (!_allowMultipleMatches) { _filterContext.skipParentChecks(); } }"
+                    ],
+                    [
+                        0.9657241106033325,
+                        "protected final void _wrapError(String msg, Throwable t) throws JsonParseException { throw _constructError(msg, t); }"
+                    ],
+                    [
+                        0.9633232355117798,
+                        "protected void _reportBase64EOF() throws IllegalArgumentException { throw new IllegalArgumentException(\\\"Unexpected end-of-String in base64 content\\\"); }"
+                    ],
+                    [
+                        0.9631906747817993,
+                        "private final int _calcOffset(int hash) { int ix = hash & (_hashSize - 1); return (ix << 2); }"
+                    ],
+                    [
+                        0.9625837802886963,
+                        "protected void _reportInvalidChar(int c) throws JsonParseException { if (c < INT_SPACE) { _throwInvalidSpace(c); } _reportInvalidInitial(c); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    private IllegalArgumentException wrongBuf() {\n        // sanity check failed; trying to return different, smaller buffer.\nreturn new IllegalArgumentException(\"Trying to release buffer not owned by the context\"); \n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    protected final void _verifyRelease(byte[] toRelease, byte[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); }\n    }\n\n```\n\n### Method 2:\n```java\n    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length <= src.length)) { throw wrongBuf(); }\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\n    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n\n",
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n}\n",
+                            "\nprotected final void _verifyRelease(char[] toRelease, char[] src) {\n    // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n    if ((toRelease == null) || (src == null) || (toRelease.length < src.length)) {\n        throw wrongBuf();\n    }\n}\n",
+                            "\n    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n",
+                            "\n    protected final void _verifyRelease(char[] toRelease, char[] src) {\n        // 07-Mar-2016, tatu: As per [core#255], only prevent shrinking of buffer\n        if ((toRelease != src) && (toRelease.length < src.length)) { throw wrongBuf(); }\n    }\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/core/io/IOContext.java",
+                "start_loc": 282,
+                "end_loc": 285,
+                "buggy_function": "    private IllegalArgumentException wrongBuf() {\n        // sanity check failed; trying to return different, smaller buffer.\nreturn new IllegalArgumentException(\"Trying to release buffer not owned by the context\"); \n    }\n",
+                "fixed_function": "    private IllegalArgumentException wrongBuf() {\n        // sanity check failed; trying to return different, smaller buffer.\n        return new IllegalArgumentException(\"Trying to release buffer smaller than original\");\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "private IllegalArgumentException wrongBuf() { return new IllegalArgumentException(\\\"Trying to release buffer not owned by the context\\\"); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.000000238418579,
+                        "private IllegalArgumentException wrongBuf() { return new IllegalArgumentException(\\\"Trying to release buffer not owned by the context\\\"); }"
+                    ],
+                    [
+                        0.9539719820022583,
+                        "private final int _spilloverStart() { int offset = _hashSize; return (offset << 3) - offset; }"
+                    ],
+                    [
+                        0.9491034150123596,
+                        "private final boolean _skipYAMLComment() throws IOException { if (!isEnabled(Feature.ALLOW_YAML_COMMENTS)) { return false; } _skipLine(); return true; }"
+                    ],
+                    [
+                        0.9443281292915344,
+                        "protected final void _throwInternal() { VersionUtil.throwInternal(); }"
+                    ],
+                    [
+                        0.9443281292915344,
+                        "protected final void _throwInternal() { VersionUtil.throwInternal(); }"
+                    ],
+                    [
+                        0.9432882070541382,
+                        "private void _verifySharing() { if (_hashShared) { _hashArea = Arrays.copyOf(_hashArea, _hashArea.length); _names = Arrays.copyOf(_names, _names.length); _hashShared = false; _verifyNeedForRehash(); } if (_needRehash) { rehash(); } }"
+                    ],
+                    [
+                        0.9429662227630615,
+                        "private void reportStrangeStream() throws IOException { throw new IOException(\\\"Strange I/O stream, returned 0 bytes on read\\\"); }"
+                    ],
+                    [
+                        0.9427206516265869,
+                        "private boolean _skipYAMLComment() throws IOException { if (!isEnabled(Feature.ALLOW_YAML_COMMENTS)) { return false; } _skipLine(); return true; }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "com.fasterxml.jackson.core.io.TestIOContext::testAllocations"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    private IllegalArgumentException wrongBuf() {\n        // sanity check failed; trying to return different, smaller buffer.\nreturn new IllegalArgumentException(\"Trying to release buffer not owned by the context\"); \n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testAllocations() throws Exception\n    {\n        IOContext ctxt = new IOContext(new BufferRecycler(), \"N/A\", true);\n\n        /* I/O Read buffer */\n\n        // First succeeds:\n        assertNotNull(ctxt.allocReadIOBuffer());\n        // second fails\n        try {\n            ctxt.allocReadIOBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        // Also: can't succeed with different buffer\n        try {\n            ctxt.releaseReadIOBuffer(new byte[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        // but call with null is a NOP for convenience\n        ctxt.releaseReadIOBuffer(null);\n\n        /* I/O Write buffer */\n\n        assertNotNull(ctxt.allocWriteEncodingBuffer());\n        try {\n            ctxt.allocWriteEncodingBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseWriteEncodingBuffer(new byte[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseWriteEncodingBuffer(null);\n\n        /* Token (read) buffer */\n\n        assertNotNull(ctxt.allocTokenBuffer());\n        try {\n            ctxt.allocTokenBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseTokenBuffer(new char[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseTokenBuffer(null);\n\n        /* Concat (write?) buffer */\n\n        assertNotNull(ctxt.allocConcatBuffer());\n        try {\n            ctxt.allocConcatBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseConcatBuffer(new char[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseConcatBuffer(null);\n\n        /* NameCopy (write?) buffer */\n\n        assertNotNull(ctxt.allocNameCopyBuffer(100));\n        try {\n            ctxt.allocNameCopyBuffer(100);\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseNameCopyBuffer(new char[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseNameCopyBuffer(null);\n    }\n```\n#Error message: junit.framework.AssertionFailedError: Expected an exception with one of substrings ([smaller than original]): got one with message \"Trying to release buffer not owned by the context\"\n\tat com.fasterxml.jackson.core.BaseTest.verifyException(BaseTest.java:390)  fail(\"Expected an exception with one of substrings (\"+Arrays.asList(matches)+\"): got one with message \\\"\"+msg+\"\\\"\");\n\tat com.fasterxml.jackson.core.io.TestIOContext.testAllocations(TestIOContext.java:27)  verifyException(e, \"smaller than original\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // changing the exception message to match the test case expectation\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // sanity check failed; trying to return different, smaller buffer.\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // Return the expected exception with a corrected message\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // sanity check failed; trying to return different, smaller buffer.\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // sanity check failed; trying to return different, smaller buffer.\n    return new IllegalArgumentException(\"Buffer smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n"
+                        ],
+                        "plausible_patches": [
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // sanity check failed; trying to return different, smaller buffer.\n    return new IllegalArgumentException(\"Buffer smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    return new IllegalArgumentException(\"smaller than original\");\n}\n",
+                            "\nprivate IllegalArgumentException wrongBuf() {\n    // sanity check failed; trying to return different, smaller buffer.\n    return new IllegalArgumentException(\"Buffer smaller than original\");\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "com.fasterxml.jackson.core.io.TestIOContext::testAllocations": {
+                "path": "src/test/java/com/fasterxml/jackson/core/io/TestIOContext.java",
+                "function_name": "testAllocations",
+                "src": "    public void testAllocations() throws Exception\n    {\n        IOContext ctxt = new IOContext(new BufferRecycler(), \"N/A\", true);\n\n        /* I/O Read buffer */\n\n        // First succeeds:\n        assertNotNull(ctxt.allocReadIOBuffer());\n        // second fails\n        try {\n            ctxt.allocReadIOBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        // Also: can't succeed with different buffer\n        try {\n            ctxt.releaseReadIOBuffer(new byte[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        // but call with null is a NOP for convenience\n        ctxt.releaseReadIOBuffer(null);\n\n        /* I/O Write buffer */\n\n        assertNotNull(ctxt.allocWriteEncodingBuffer());\n        try {\n            ctxt.allocWriteEncodingBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseWriteEncodingBuffer(new byte[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseWriteEncodingBuffer(null);\n\n        /* Token (read) buffer */\n\n        assertNotNull(ctxt.allocTokenBuffer());\n        try {\n            ctxt.allocTokenBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseTokenBuffer(new char[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseTokenBuffer(null);\n\n        /* Concat (write?) buffer */\n\n        assertNotNull(ctxt.allocConcatBuffer());\n        try {\n            ctxt.allocConcatBuffer();\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseConcatBuffer(new char[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseConcatBuffer(null);\n\n        /* NameCopy (write?) buffer */\n\n        assertNotNull(ctxt.allocNameCopyBuffer(100));\n        try {\n            ctxt.allocNameCopyBuffer(100);\n        } catch (IllegalStateException e) {\n            verifyException(e, \"second time\");\n        }\n        try {\n            ctxt.releaseNameCopyBuffer(new char[1]);\n        } catch (IllegalArgumentException e) {\n            verifyException(e, \"smaller than original\");\n        }\n        ctxt.releaseNameCopyBuffer(null);\n    }",
+                "error_msg": "junit.framework.AssertionFailedError: Expected an exception with one of substrings ([smaller than original]): got one with message \"Trying to release buffer not owned by the context\"\n\tat junit.framework.Assert.fail(Assert.java:57)\n\tat junit.framework.TestCase.fail(TestCase.java:227)\n\tat com.fasterxml.jackson.core.BaseTest.verifyException(BaseTest.java:390)\n\tat com.fasterxml.jackson.core.io.TestIOContext.testAllocations(TestIOContext.java:27)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.AssertionFailedError: Expected an exception with one of substrings ([smaller than original]): got one with message \"Trying to release buffer not owned by the context\"\n\tat com.fasterxml.jackson.core.BaseTest.verifyException(BaseTest.java:390)  fail(\"Expected an exception with one of substrings (\"+Arrays.asList(matches)+\"): got one with message \\\"\"+msg+\"\\\"\");\n\tat com.fasterxml.jackson.core.io.TestIOContext.testAllocations(TestIOContext.java:27)  verifyException(e, \"smaller than original\");"
+            }
+        },
+        "evaluation_done": true,
+        "generation_done_for_notest_methods": true
+    }
+}

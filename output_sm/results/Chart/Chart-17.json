@@ -1,0 +1,50 @@
+{
+    "Chart-17": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns a clone of the time series.\n* <P>\n* Notes:\n* <ul>\n*   <li>no need to clone the domain and range descriptions, since String\n*     object is immutable;</li>\n*   <li>we pass over to the more general method clone(start, end).</li>\n* </ul>\n*\n* @return A clone of the time series.\n*\n* @throws CloneNotSupportedException not thrown by this class, but\n*         subclasses may differ.\n*/\npublic Object clone() throws CloneNotSupportedException {\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testBug1832432() {\n\n        TimeSeries s1 = new TimeSeries(\"Series\");\n\n        TimeSeries s2 = null;\n\n        try {\n\n            s2 = (TimeSeries) s1.clone();\n\n        }\n\n        catch (CloneNotSupportedException e) {\n\n            e.printStackTrace();\n\n        }\n\n        assertTrue(s1 != s2);\n\n        assertTrue(s1.getClass() == s2.getClass());\n\n        assertTrue(s1.equals(s2));\n\n\n\n        // test independence\n\n        s1.add(new Day(1, 1, 2007), 100.0);\n\n        assertFalse(s1.equals(s2));    \t\n\n    }\n\n```\n#Error message: java.lang.IllegalArgumentException: Requires start <= end.\n\tat org.jfree.data.time.TimeSeries.createCopy(TimeSeries.java:880)  throw new IllegalArgumentException(\"Requires start <= end.\");\n\tat org.jfree.data.time.TimeSeries.clone(TimeSeries.java:857)  Object clone = createCopy(0, getItemCount() - 1);\n\tat org.jfree.data.time.junit.TimeSeriesTests.testBug1832432(TimeSeriesTests.java:619)  s2 = (TimeSeries) s1.clone();\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getKey(), getDomainDescription(), getRangeDescription(), getTimePeriodClass());\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return super.clone();\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getName(), getTimePeriodClass()); // Return an empty TimeSeries if there are no items\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getKey(), getDomainDescription(), getRangeDescription(), getTimePeriodClass());\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return super.clone();\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getKey());\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return createCopy(0, -1);\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return super.clone();\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getKey());\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ],
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return super.clone(); // or return a new empty TimeSeries instance\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getKey(), getDomainDescription(), getRangeDescription(), getTimePeriodClass());\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic Object clone() throws CloneNotSupportedException {\n    if (getItemCount() == 0) {\n        return new TimeSeries(getKey(), getDomainDescription(), getRangeDescription(), getTimePeriodClass());\n    }\n    Object clone = createCopy(0, getItemCount() - 1);\n    return clone;\n}\n"
+                ]
+            ]
+        }
+    }
+}

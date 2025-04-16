@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to132__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-176 - Buggy: src/com/google/javascript/jscomp/TypeInference.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-176 - Fixed: src/com/google/javascript/jscomp/TypeInference.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to132__0"></td><td class="diff_header" id="from132_527">527</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NAME:</td><td class="diff_next"></td><td class="diff_header" id="to132_527">527</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NAME:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_528">528</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;varName&nbsp;=&nbsp;left.getString();</td><td class="diff_next"></td><td class="diff_header" id="to132_528">528</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;varName&nbsp;=&nbsp;left.getString();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_529">529</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Var&nbsp;var&nbsp;=&nbsp;syntacticScope.getVar(varName);</td><td class="diff_next"></td><td class="diff_header" id="to132_529">529</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Var&nbsp;var&nbsp;=&nbsp;syntacticScope.getVar(varName);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to132__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to132__1">n</a></td><td class="diff_header" id="to132_530">530</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;varType&nbsp;=&nbsp;var&nbsp;==&nbsp;null&nbsp;?&nbsp;null&nbsp;:&nbsp;var.getType();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_530">530</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isVarDeclaration&nbsp;=&nbsp;left.hasChildren()<span class="diff_sub">;</span></td><td class="diff_next"></td><td class="diff_header" id="to132_531">531</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isVarDeclaration&nbsp;=&nbsp;left.hasChildren()</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_532">532</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;varType&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;!var.isTypeInferred();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_531">531</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_533">533</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_532">532</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;When&nbsp;looking&nbsp;at&nbsp;VAR&nbsp;initializers&nbsp;for&nbsp;declared&nbsp;VARs,&nbsp;we&nbsp;tend</td><td class="diff_next"></td><td class="diff_header" id="to132_534">534</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;When&nbsp;looking&nbsp;at&nbsp;VAR&nbsp;initializers&nbsp;for&nbsp;declared&nbsp;VARs,&nbsp;we&nbsp;tend</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_533">533</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;to&nbsp;use&nbsp;the&nbsp;declared&nbsp;type&nbsp;over&nbsp;the&nbsp;type&nbsp;it's&nbsp;being</td><td class="diff_next"></td><td class="diff_header" id="to132_535">535</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;to&nbsp;use&nbsp;the&nbsp;declared&nbsp;type&nbsp;over&nbsp;the&nbsp;type&nbsp;it's&nbsp;being</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to132__1"></td><td class="diff_header" id="from132_545">545</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;sure&nbsp;we&nbsp;back-infer&nbsp;the&nbsp;&lt;string&gt;&nbsp;element&nbsp;constraint&nbsp;on</td><td class="diff_next"></td><td class="diff_header" id="to132_547">547</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;sure&nbsp;we&nbsp;back-infer&nbsp;the&nbsp;&lt;string&gt;&nbsp;element&nbsp;constraint&nbsp;on</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_546">546</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;left&nbsp;hand&nbsp;side,&nbsp;so&nbsp;we&nbsp;use&nbsp;the&nbsp;left&nbsp;hand&nbsp;side.</td><td class="diff_next"></td><td class="diff_header" id="to132_548">548</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;left&nbsp;hand&nbsp;side,&nbsp;so&nbsp;we&nbsp;use&nbsp;the&nbsp;left&nbsp;hand&nbsp;side.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_547">547</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_549">549</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to132__2"><a href="#difflib_chg_to132__2">n</a></td><td class="diff_header" id="from132_548">548</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isVarTypeBetter&nbsp;=&nbsp;!isVarDeclaration&nbsp;||&nbsp;var&nbsp;==&nbsp;null&nbsp;||&nbsp;var.isType</span></td><td class="diff_next"><a href="#difflib_chg_to132__2">n</a></td><td class="diff_header" id="to132_550">550</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isVarTypeBetter&nbsp;=&nbsp;isVarDeclaration&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">Inferred();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_549">549</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Makes&nbsp;it&nbsp;easier&nbsp;to&nbsp;check&nbsp;for&nbsp;NPEs.</td><td class="diff_next"></td><td class="diff_header" id="to132_551">551</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Makes&nbsp;it&nbsp;easier&nbsp;to&nbsp;check&nbsp;for&nbsp;NPEs.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to132__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to132__3">n</a></td><td class="diff_header" id="to132_552">552</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!resultType.isNullType()&nbsp;&amp;&amp;&nbsp;!resultType.isVoidType();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_550">550</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_553">553</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_551">551</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO(nicksantos):&nbsp;This&nbsp;might&nbsp;be&nbsp;a&nbsp;better&nbsp;check&nbsp;once&nbsp;we&nbsp;have</td><td class="diff_next"></td><td class="diff_header" id="to132_554">554</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO(nicksantos):&nbsp;This&nbsp;might&nbsp;be&nbsp;a&nbsp;better&nbsp;check&nbsp;once&nbsp;we&nbsp;have</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_552">552</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;back-inference&nbsp;of&nbsp;object/array&nbsp;constraints.&nbsp;&nbsp;It&nbsp;will&nbsp;probably</td><td class="diff_next"></td><td class="diff_header" id="to132_555">555</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;back-inference&nbsp;of&nbsp;object/array&nbsp;constraints.&nbsp;&nbsp;It&nbsp;will&nbsp;probably</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to132__3"></td><td class="diff_header" id="from132_559">559</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_562">562</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_560">560</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_563">563</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_561">561</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isVarTypeBetter)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to132_564">564</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isVarTypeBetter)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to132__4">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to132__4">n</a></td><td class="diff_header" id="to132_565">565</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redeclareSimpleVar(scope,&nbsp;left,&nbsp;varType);</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to132__4"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_566">566</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_562">562</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redeclareSimpleVar(scope,&nbsp;left,&nbsp;resultType);</td><td class="diff_next"></td><td class="diff_header" id="to132_567">567</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redeclareSimpleVar(scope,&nbsp;left,&nbsp;resultType);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_563">563</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to132_568">568</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to132__top">t</a></td><td class="diff_header" id="from132_564">564</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left.setJSType(isVarDeclaration&nbsp;||&nbsp;leftType&nbsp;==&nbsp;null&nbsp;?</span></td><td class="diff_next"><a href="#difflib_chg_to132__top">t</a></td><td class="diff_header" id="to132_569">569</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left.setJSType(resultType);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_565">565</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultType&nbsp;:&nbsp;null);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_566">566</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to132_570">570</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_567">567</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(var&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;var.isTypeInferred())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to132_571">571</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(var&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;var.isTypeInferred())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from132_568">568</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;oldType&nbsp;=&nbsp;var.getType();</td><td class="diff_next"></td><td class="diff_header" id="to132_572">572</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSType&nbsp;oldType&nbsp;=&nbsp;var.getType();</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

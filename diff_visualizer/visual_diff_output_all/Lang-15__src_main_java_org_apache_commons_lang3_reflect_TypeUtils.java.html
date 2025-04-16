@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to514__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-15 - Buggy: src/main/java/org/apache/commons/lang3/reflect/TypeUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Lang-15 - Fixed: src/main/java/org/apache/commons/lang3/reflect/TypeUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to514__0"></td><td class="diff_header" id="from514_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toClass,&nbsp;typeVarAssigns);</td><td class="diff_next"></td><td class="diff_header" id="to514_216">216</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toClass,&nbsp;typeVarAssigns);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_217">217</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to514_217">217</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;now&nbsp;to&nbsp;check&nbsp;each&nbsp;type&nbsp;argument</td><td class="diff_next"></td><td class="diff_header" id="to514_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;now&nbsp;to&nbsp;check&nbsp;each&nbsp;type&nbsp;argument</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to514__1">n</a></td><td class="diff_header" id="from514_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(<span class="diff_sub">Map.Entry&lt;</span>TypeVariable&lt;?&gt;<span class="diff_chg">,&nbsp;Type&gt;&nbsp;ent</span>r<span class="diff_sub">y</span>&nbsp;:&nbsp;toTypeVarAssigns.e<span class="diff_sub">ntr</span>ySet(</td><td class="diff_next"><a href="#difflib_chg_to514__1">n</a></td><td class="diff_header" id="to514_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(TypeVariable&lt;?&gt;<span class="diff_chg">&nbsp;va</span>r&nbsp;:&nbsp;toTypeVarAssigns.<span class="diff_add">k</span>eySet())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">))&nbsp;{</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_220">220</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;toTypeArg&nbsp;=&nbsp;entry.getValue();</span></td><td class="diff_next"></td><td class="diff_header" id="to514_220">220</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;toTypeArg&nbsp;=&nbsp;unrollVariableAssignments(var,&nbsp;toTypeVarAssigns);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_221">221</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;fromTypeArg&nbsp;=&nbsp;fromTypeVarAssigns.get(entry.getKey());</span></td><td class="diff_next"></td><td class="diff_header" id="to514_221">221</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;fromTypeArg&nbsp;=&nbsp;unrollVariableAssignments(var,&nbsp;fromTypeVarAssigns</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_222">222</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to514_222">222</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;parameters&nbsp;must&nbsp;either&nbsp;be&nbsp;absent&nbsp;from&nbsp;the&nbsp;subject&nbsp;type,&nbsp;within</td><td class="diff_next"></td><td class="diff_header" id="to514_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;parameters&nbsp;must&nbsp;either&nbsp;be&nbsp;absent&nbsp;from&nbsp;the&nbsp;subject&nbsp;type,&nbsp;within</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;bounds&nbsp;of&nbsp;the&nbsp;wildcard&nbsp;type,&nbsp;or&nbsp;be&nbsp;an&nbsp;exact&nbsp;match&nbsp;to&nbsp;the</td><td class="diff_next"></td><td class="diff_header" id="to514_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;bounds&nbsp;of&nbsp;the&nbsp;wildcard&nbsp;type,&nbsp;or&nbsp;be&nbsp;an&nbsp;exact&nbsp;match&nbsp;to&nbsp;the</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to514__1"></td><td class="diff_header" id="from514_672">672</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;new&nbsp;HashMap&lt;TypeVariable&lt;?&gt;,&nbsp;Type&gt;(subtypeVarAssigns);</td><td class="diff_next"></td><td class="diff_header" id="to514_672">672</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;new&nbsp;HashMap&lt;TypeVariable&lt;?&gt;,&nbsp;Type&gt;(subtypeVarAssigns);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_673">673</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to514_673">673</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_674">674</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;has&nbsp;target&nbsp;class&nbsp;been&nbsp;reached?</td><td class="diff_next"></td><td class="diff_header" id="to514_674">674</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;has&nbsp;target&nbsp;class&nbsp;been&nbsp;reached?</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to514__top">t</a></td><td class="diff_header" id="from514_675">675</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(cls.getTypeParameters().length&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;toClass.equals(cls))&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to514__top">t</a></td><td class="diff_header" id="to514_675">675</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(toClass.equals(cls))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_676">676</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;typeVarAssigns;</td><td class="diff_next"></td><td class="diff_header" id="to514_676">676</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;typeVarAssigns;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_677">677</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to514_677">677</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from514_678">678</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to514_678">678</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

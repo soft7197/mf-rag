@@ -1,0 +1,301 @@
+{
+    "Math-49": {
+        "function_num": 4,
+        "functions": [
+            {
+                "path": "src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java",
+                "start_loc": 342,
+                "end_loc": 351,
+                "buggy_function": "    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                "fixed_function": "    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                "comment": "    /** {@inheritDoc} */\n",
+                "normalized_body": [
+                    "public OpenMapRealVector ebeDivide(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key())); } return res; }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public OpenMapRealVector ebeDivide(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.9984037280082703,
+                        "public OpenMapRealVector ebeMultiply(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.990359902381897,
+                        "@Override public OpenMapRealVector ebeDivide(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.98982834815979,
+                        "@Override public OpenMapRealVector ebeMultiply(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.9802941083908081,
+                        "public T dotProduct(FieldVector<T> v) { checkVectorDimensions(v.getDimension()); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { iter.advance(); res = res.add(v.getEntry(iter.key()).multiply(iter.value())); } return res; }"
+                    ],
+                    [
+                        0.97846519947052,
+                        "private OpenIntToFieldHashMap<Fraction> createFromJavaMap(Field<Fraction> field) { OpenIntToFieldHashMap<Fraction> map = new OpenIntToFieldHashMap<Fraction>(field); for (Map.Entry<Integer, Fraction> mapEntry : javaMap.entrySet()) { map.put(mapEntry.getKey(), mapEntry.getValue()); } return map; }"
+                    ],
+                    [
+                        0.972790002822876,
+                        "public OpenMapRealVector getSubVector(int index, int n) { checkIndex(index); checkIndex(index + n - 1); OpenMapRealVector res = new OpenMapRealVector(n); int end = index + n; Iterator iter = entries.iterator(); while (iter.hasNext()) { iter.advance(); int key = iter.key(); if (key >= index && key < end) { res.setEntry(key - index, iter.value()); } } return res; }"
+                    ],
+                    [
+                        0.9727751016616821,
+                        "private static RealMatrix selectColumns(final RealMatrix m, final int[] cols) { double[][] d = new double[m.getRowDimension()][cols.length]; for (int r = 0; r < m.getRowDimension(); r++) { for (int c = 0; c < cols.length; c++) { d[r][c] = m.getEntry(r, cols[c]); } } return new Array2DRowRealMatrix(d, false); }"
+                    ],
+                    [
+                        0.9727476835250854,
+                        "public double[] operate(final double[] x) { if (x.length != getColumnDimension()) { throw new DimensionMismatchException(x.length, getColumnDimension()); } final RealVector y = operate(new ArrayRealVector(x, false)); if (y instanceof ArrayRealVector) { return ((ArrayRealVector) y).getDataRef(); } else { return y.getData(); } }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n\n```\n\n### Example 2 - Buggy:\n```java\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n```\n\n### Method 2:\n```java\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java",
+                "start_loc": 354,
+                "end_loc": 364,
+                "buggy_function": "    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                "fixed_function": "    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                "comment": "    /** {@inheritDoc} */\n",
+                "normalized_body": [
+                    "@Override public OpenMapRealVector ebeDivide(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v[iter.key()]); } return res; }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "@Override public OpenMapRealVector ebeDivide(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.9973257780075073,
+                        "@Override public OpenMapRealVector ebeMultiply(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.9903600215911865,
+                        "public OpenMapRealVector ebeDivide(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.9893749356269836,
+                        "public OpenMapRealVector ebeMultiply(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.9796980619430542,
+                        "public T dotProduct(FieldVector<T> v) { checkVectorDimensions(v.getDimension()); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { iter.advance(); res = res.add(v.getEntry(iter.key()).multiply(iter.value())); } return res; }"
+                    ],
+                    [
+                        0.9781103134155273,
+                        "@Test public void testIterator() throws Exception { RealVector v = new TestVectorImpl(vec2.clone()); Entry e; int i = 0; for (Iterator<Entry> it = v.iterator(); it.hasNext() && (e = it.next()) != null; i++) { Assert.assertEquals(vec2[i], e.getValue(), 0); } }"
+                    ],
+                    [
+                        0.9780812859535217,
+                        "public RealMatrix getRowMatrix(final int row) { MatrixUtils.checkRowIndex(this, row); final int nCols = getColumnDimension(); final RealMatrix out = createMatrix(1, nCols); for (int i = 0; i < nCols; ++i) { out.setEntry(0, i, getEntry(row, i)); } return out; }"
+                    ],
+                    [
+                        0.9745350480079651,
+                        "public double value(double v) { if (v < knots[0] || v > knots[n]) { throw new OutOfRangeException(v, knots[0], knots[n]); } int i = Arrays.binarySearch(knots, v); if (i < 0) { i = -i - 2; } if (i >= polynomials.length) { i--; } return polynomials[i].value(v - knots[i]); }"
+                    ],
+                    [
+                        0.9743154048919678,
+                        "public T dotProduct(T[] v) { checkVectorDimensions(v.length); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { int idx = iter.key(); T value = field.getZero(); if (idx < v.length) { value = v[idx]; } res = res.add(value.multiply(iter.value())); } return res; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n\n```\n\n### Example 2 - Buggy:\n```java\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n```\n\n### Example 2 - Fixed:\n```java\n\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    public OpenMapRealVector ebeDivide(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n```\n\n### Method 2:\n```java\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix all the buggy methods above. Return only the fixed Java methods in the same order. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    @Override\n    public OpenMapRealVector ebeDivide(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() / v[iter.key()]);\n        }\n        return res;\n    }\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java",
+                "start_loc": 367,
+                "end_loc": 376,
+                "buggy_function": "    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                "fixed_function": "    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                "comment": "    /** {@inheritDoc} */\n",
+                "normalized_body": [
+                    "public OpenMapRealVector ebeMultiply(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key())); } return res; }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "public OpenMapRealVector ebeMultiply(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.9984039068222046,
+                        "public OpenMapRealVector ebeDivide(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.991539716720581,
+                        "@Override public OpenMapRealVector ebeMultiply(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.9893748760223389,
+                        "@Override public OpenMapRealVector ebeDivide(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.9810133576393127,
+                        "public T dotProduct(FieldVector<T> v) { checkVectorDimensions(v.getDimension()); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { iter.advance(); res = res.add(v.getEntry(iter.key()).multiply(iter.value())); } return res; }"
+                    ],
+                    [
+                        0.980626106262207,
+                        "private OpenIntToFieldHashMap<Fraction> createFromJavaMap(Field<Fraction> field) { OpenIntToFieldHashMap<Fraction> map = new OpenIntToFieldHashMap<Fraction>(field); for (Map.Entry<Integer, Fraction> mapEntry : javaMap.entrySet()) { map.put(mapEntry.getKey(), mapEntry.getValue()); } return map; }"
+                    ],
+                    [
+                        0.9755873084068298,
+                        "private StringBuffer formatImaginary(double absIm, StringBuffer toAppendTo, FieldPosition pos) { if (absIm < 0) { throw new MathInternalError(); } pos.setBeginIndex(0); pos.setEndIndex(0); CompositeFormat.formatDouble(absIm, getImaginaryFormat(), toAppendTo, pos); if (toAppendTo.toString().equals(\\\"1\\\")) { toAppendTo.setLength(0); } return toAppendTo; }"
+                    ],
+                    [
+                        0.9753544330596924,
+                        "public T dotProduct(T[] v) { checkVectorDimensions(v.length); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { int idx = iter.key(); T value = field.getZero(); if (idx < v.length) { value = v[idx]; } res = res.add(value.multiply(iter.value())); } return res; }"
+                    ],
+                    [
+                        0.9750292301177979,
+                        "private static RealMatrix selectColumns(final RealMatrix m, final int[] cols) { double[][] d = new double[m.getRowDimension()][cols.length]; for (int r = 0; r < m.getRowDimension(); r++) { for (int c = 0; c < cols.length; c++) { d[r][c] = m.getEntry(r, cols[c]); } } return new Array2DRowRealMatrix(d, false); }"
+                    ]
+                ],
+                "non_directly_related_tests": [
+                    "org.apache.commons.math.linear.SparseRealVectorTest::testConcurrentModification"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are buggy method(s) from a large Java project. These methods cause one or more test failures.\nYour task is to fix the bugs in these methods. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Methods\n\n\n```java\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n```\n\n```java\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n```\n\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testConcurrentModification() {\n        final RealVector u = new OpenMapRealVector(3, 1e-6);\n        u.setEntry(0, 1);\n        u.setEntry(1, 0);\n        u.setEntry(2, 2);\n\n        final RealVector v1 = new OpenMapRealVector(3, 1e-6);\n        final double[] v2 = new double[3];\n        v1.setEntry(0, 0);\n        v2[0] = 0;\n        v1.setEntry(1, 3);\n        v2[1] = 3;\n        v1.setEntry(2, 0);\n        v2[2] = 0;\n\n        RealVector w;\n\n        w = u.ebeMultiply(v1);\n        w = u.ebeMultiply(v2);\n\n        w = u.ebeDivide(v1);\n        w = u.ebeDivide(v2);\n    }\n```\n#Error message from the test method 1: org.apache.commons.math.MathRuntimeException$6: map has been modified while iterating\n\n---\n\n## Your Goal\n\nFix the buggy methods. Return only the fixed Java methods. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = this.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), getEpsilon());\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator(); // Iterate over original vector\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = this.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator(); // Use the original iterator\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator(); // Use original vector's iterator\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 0); // Initialize an empty OpenMapRealVector\n        Iterator iter = entries.iterator(); // Iterate over original vector's entries, not the copy's\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this.dimension);\n        Iterator iter = this.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n"
+                        ]
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java",
+                "start_loc": 379,
+                "end_loc": 389,
+                "buggy_function": "    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n",
+                "fixed_function": "    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n",
+                "comment": "    /** {@inheritDoc} */\n",
+                "normalized_body": [
+                    "@Override public OpenMapRealVector ebeMultiply(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v[iter.key()]); } return res; }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "@Override public OpenMapRealVector ebeMultiply(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.997325599193573,
+                        "@Override public OpenMapRealVector ebeDivide(double[] v) { checkVectorDimensions(v.length); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v[iter.key()]); } return res; }"
+                    ],
+                    [
+                        0.9915395379066467,
+                        "public OpenMapRealVector ebeMultiply(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.9898282289505005,
+                        "public OpenMapRealVector ebeDivide(RealVector v) { checkVectorDimensions(v.getDimension()); OpenMapRealVector res = new OpenMapRealVector(this); Iterator iter = res.entries.iterator(); while (iter.hasNext()) { iter.advance(); res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key())); } return res; }"
+                    ],
+                    [
+                        0.9802196025848389,
+                        "@Test public void testIterator() throws Exception { RealVector v = new TestVectorImpl(vec2.clone()); Entry e; int i = 0; for (Iterator<Entry> it = v.iterator(); it.hasNext() && (e = it.next()) != null; i++) { Assert.assertEquals(vec2[i], e.getValue(), 0); } }"
+                    ],
+                    [
+                        0.9785739183425903,
+                        "public T dotProduct(T[] v) { checkVectorDimensions(v.length); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { int idx = iter.key(); T value = field.getZero(); if (idx < v.length) { value = v[idx]; } res = res.add(value.multiply(iter.value())); } return res; }"
+                    ],
+                    [
+                        0.9781503081321716,
+                        "public RealMatrix getRowMatrix(final int row) { MatrixUtils.checkRowIndex(this, row); final int nCols = getColumnDimension(); final RealMatrix out = createMatrix(1, nCols); for (int i = 0; i < nCols; ++i) { out.setEntry(0, i, getEntry(row, i)); } return out; }"
+                    ],
+                    [
+                        0.9781383275985718,
+                        "public T dotProduct(FieldVector<T> v) { checkVectorDimensions(v.getDimension()); T res = field.getZero(); OpenIntToFieldHashMap<T>.Iterator iter = entries.iterator(); while (iter.hasNext()) { iter.advance(); res = res.add(v.getEntry(iter.key()).multiply(iter.value())); } return res; }"
+                    ],
+                    [
+                        0.9755147695541382,
+                        "public FieldMatrix<T> getColumnMatrix(final int column) { checkColumnIndex(column); final int nRows = getRowDimension(); final FieldMatrix<T> out = createMatrix(nRows, 1); for (int i = 0; i < nRows; ++i) { out.setEntry(i, 0, getEntry(i, column)); } return out; }"
+                    ]
+                ],
+                "non_directly_related_tests": [
+                    "org.apache.commons.math.linear.SparseRealVectorTest::testConcurrentModification"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are buggy method(s) from a large Java project. These methods cause one or more test failures.\nYour task is to fix the bugs in these methods. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Methods\n\n\n```java\n    /** {@inheritDoc} */\n\n    public OpenMapRealVector ebeMultiply(RealVector v) {\n        checkVectorDimensions(v.getDimension());\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));\n        }\n        return res;\n    }\n\n```\n\n```java\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = res.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n```\n\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testConcurrentModification() {\n        final RealVector u = new OpenMapRealVector(3, 1e-6);\n        u.setEntry(0, 1);\n        u.setEntry(1, 0);\n        u.setEntry(2, 2);\n\n        final RealVector v1 = new OpenMapRealVector(3, 1e-6);\n        final double[] v2 = new double[3];\n        v1.setEntry(0, 0);\n        v2[0] = 0;\n        v1.setEntry(1, 3);\n        v2[1] = 3;\n        v1.setEntry(2, 0);\n        v2[2] = 0;\n\n        RealVector w;\n\n        w = u.ebeMultiply(v1);\n        w = u.ebeMultiply(v2);\n\n        w = u.ebeDivide(v1);\n        w = u.ebeDivide(v2);\n    }\n```\n#Error message from the test method 1: org.apache.commons.math.MathRuntimeException$6: map has been modified while iterating\n\n---\n\n## Your Goal\n\nFix the buggy methods. Return only the fixed Java methods. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = this.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), getEpsilon());\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator(); // Iterate over original vector\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = this.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator(); // Use the original iterator\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this);\n        Iterator iter = entries.iterator(); // Use original vector's iterator\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 0); // Initialize an empty OpenMapRealVector\n        Iterator iter = entries.iterator(); // Iterate over original vector's entries, not the copy's\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(this.dimension);\n        Iterator iter = this.entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n"
+                        ],
+                        "plausible_patches": [
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n",
+                            "\n    /** {@inheritDoc} */\n\n    @Override\n    public OpenMapRealVector ebeMultiply(double[] v) {\n        checkVectorDimensions(v.length);\n        OpenMapRealVector res = new OpenMapRealVector(getDimension(), 1e-6);\n        Iterator iter = entries.iterator();\n        while (iter.hasNext()) {\n            iter.advance();\n            res.setEntry(iter.key(), iter.value() * v[iter.key()]);\n        }\n        return res;\n    }\n\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "org.apache.commons.math.linear.SparseRealVectorTest::testConcurrentModification": {
+                "path": "src/test/java/org/apache/commons/math/linear/SparseRealVectorTest.java",
+                "function_name": "testConcurrentModification",
+                "src": "    public void testConcurrentModification() {\n        final RealVector u = new OpenMapRealVector(3, 1e-6);\n        u.setEntry(0, 1);\n        u.setEntry(1, 0);\n        u.setEntry(2, 2);\n\n        final RealVector v1 = new OpenMapRealVector(3, 1e-6);\n        final double[] v2 = new double[3];\n        v1.setEntry(0, 0);\n        v2[0] = 0;\n        v1.setEntry(1, 3);\n        v2[1] = 3;\n        v1.setEntry(2, 0);\n        v2[2] = 0;\n\n        RealVector w;\n\n        w = u.ebeMultiply(v1);\n        w = u.ebeMultiply(v2);\n\n        w = u.ebeDivide(v1);\n        w = u.ebeDivide(v2);\n    }",
+                "error_msg": "org.apache.commons.math.MathRuntimeException$6: map has been modified while iterating\n\tat org.apache.commons.math.MathRuntimeException.createConcurrentModificationException(MathRuntimeException.java:373)\n\tat org.apache.commons.math.util.OpenIntToDoubleHashMap$Iterator.advance(OpenIntToDoubleHashMap.java:564)\n\tat org.apache.commons.math.linear.OpenMapRealVector.ebeMultiply(OpenMapRealVector.java:372)\n\tat org.apache.commons.math.linear.OpenMapRealVector.ebeMultiply(OpenMapRealVector.java:33)\n\tat org.apache.commons.math.linear.SparseRealVectorTest.testConcurrentModification(SparseRealVectorTest.java:1021)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "org.apache.commons.math.MathRuntimeException$6: map has been modified while iterating\n\tat org.apache.commons.math.MathRuntimeException.createConcurrentModificationException(MathRuntimeException.java:373)  return new ConcurrentModificationException() {            /** Serializable version identifier. */            private static final long serialVersionUID = -1878427236170442052L;            /** {@inheritDoc} */            @Override            public String getMessage() {                return buildMessage(Locale.US, pattern, arguments);            }            /** {@inheritDoc} */            @Override            public String getLocalizedMessage() {                return buildMessage(Locale.getDefault(), pattern, arguments);            }        };\n\tat org.apache.commons.math.linear.OpenMapRealVector.ebeMultiply(OpenMapRealVector.java:372)  iter.advance();\n\tat org.apache.commons.math.linear.OpenMapRealVector.ebeMultiply(OpenMapRealVector.java:33)  public class OpenMapRealVector extends AbstractRealVector\n\tat org.apache.commons.math.linear.SparseRealVectorTest.testConcurrentModification(SparseRealVectorTest.java:1021)  w = u.ebeMultiply(v1);"
+            }
+        },
+        "evaluation_done": true,
+        "generation_done_for_notest_methods": true
+    }
+}

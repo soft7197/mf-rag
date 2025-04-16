@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to364__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-29 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-29 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to364__0"></td><td class="diff_header" id="from364_225">225</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonParser&nbsp;p2&nbsp;=&nbsp;_tokens[index].asParser(p);</td><td class="diff_next"></td><td class="diff_header" id="to364_225">225</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonParser&nbsp;p2&nbsp;=&nbsp;_tokens[index].asParser(p);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_226">226</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t&nbsp;=&nbsp;p2.nextToken();</td><td class="diff_next"></td><td class="diff_header" id="to364_226">226</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t&nbsp;=&nbsp;p2.nextToken();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_227">227</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;29-Sep-2015,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#942],&nbsp;nulls&nbsp;need&nbsp;special&nbsp;support</td><td class="diff_next"></td><td class="diff_header" id="to364_227">227</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;29-Sep-2015,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#942],&nbsp;nulls&nbsp;need&nbsp;special&nbsp;support</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to364__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to364__1">n</a></td><td class="diff_header" id="to364_228">228</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to364_229">229</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to364_230">230</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_228">228</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to364_231">231</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_229">229</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenBuffer&nbsp;merged&nbsp;=&nbsp;new&nbsp;TokenBuffer(p);</td><td class="diff_next"></td><td class="diff_header" id="to364_232">232</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenBuffer&nbsp;merged&nbsp;=&nbsp;new&nbsp;TokenBuffer(p);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_230">230</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merged.writeStartArray();</td><td class="diff_next"></td><td class="diff_header" id="to364_233">233</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merged.writeStartArray();</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to364__1"></td><td class="diff_header" id="from364_248">248</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonParser&nbsp;p2&nbsp;=&nbsp;_tokens[index].asParser(p);</td><td class="diff_next"></td><td class="diff_header" id="to364_251">251</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonParser&nbsp;p2&nbsp;=&nbsp;_tokens[index].asParser(p);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_249">249</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t&nbsp;=&nbsp;p2.nextToken();</td><td class="diff_next"></td><td class="diff_header" id="to364_252">252</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JsonToken&nbsp;t&nbsp;=&nbsp;p2.nextToken();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_250">250</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;29-Sep-2015,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#942],&nbsp;nulls&nbsp;need&nbsp;special&nbsp;support</td><td class="diff_next"></td><td class="diff_header" id="to364_253">253</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;29-Sep-2015,&nbsp;tatu:&nbsp;As&nbsp;per&nbsp;[databind#942],&nbsp;nulls&nbsp;need&nbsp;special&nbsp;support</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to364__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to364__top">t</a></td><td class="diff_header" id="to364_254">254</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(t&nbsp;==&nbsp;JsonToken.VALUE_NULL)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to364_255">255</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_properties[index].getProperty().set(bean,&nbsp;null);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to364_256">256</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to364_257">257</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_251">251</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenBuffer&nbsp;merged&nbsp;=&nbsp;new&nbsp;TokenBuffer(p);</td><td class="diff_next"></td><td class="diff_header" id="to364_258">258</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TokenBuffer&nbsp;merged&nbsp;=&nbsp;new&nbsp;TokenBuffer(p);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_252">252</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merged.writeStartArray();</td><td class="diff_next"></td><td class="diff_header" id="to364_259">259</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merged.writeStartArray();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from364_253">253</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merged.writeString(typeId);</td><td class="diff_next"></td><td class="diff_header" id="to364_260">260</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merged.writeString(typeId);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

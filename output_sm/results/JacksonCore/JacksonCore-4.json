@@ -1,0 +1,77 @@
+{
+    "JacksonCore-4": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Method called to expand size of the current segment, to\n* accommodate for more contiguous content. Usually only\n* used when parsing tokens like names if even then.\n*/\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len == MAX_SEGMENT_LEN) ? (MAX_SEGMENT_LEN+1) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n      public void testExpand()\n\n      {\n\n          TextBuffer tb = new TextBuffer(new BufferRecycler());\n\n          char[] buf = tb.getCurrentSegment();\n\n\n\n          while (buf.length < 500 * 1000) {\n\n              char[] old = buf;\n\n              buf = tb.expandCurrentSegment();\n\n              if (old.length >= buf.length) {\n\n                  fail(\"Expected buffer of \"+old.length+\" to expand, did not, length now \"+buf.length);\n\n              }\n\n          }\n\n      }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected buffer of 262145 to expand, did not, length now 262144\n\tat com.fasterxml.jackson.core.util.TestTextBuffer.testExpand(TestTextBuffer.java:76)  fail(\"Expected buffer of \"+old.length+\" to expand, did not, length now \"+buf.length);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    final int len = curr.length;\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    final int len = curr.length;\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ],
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic char[] expandCurrentSegment()\n{\n    final char[] curr = _currentSegment;\n    // Let's grow by 50% by default\n    final int len = curr.length;\n    // but above intended maximum, slow to increase by 25%\n    int newLen = (len >= MAX_SEGMENT_LEN) ? (len + (len >> 2)) : Math.min(MAX_SEGMENT_LEN, len + (len >> 1));\n    return (_currentSegment = Arrays.copyOf(curr, newLen));\n}\n"
+                ]
+            ]
+        }
+    }
+}

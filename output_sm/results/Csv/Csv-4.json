@@ -1,0 +1,83 @@
+{
+    "Csv-4": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Returns a copy of the header map that iterates in column order.\n* <p>\n* The map keys are column names. The map values are 0-based indices.\n* </p>\n* @return a copy of the header map that iterates in column order.\n*/\npublic Map<String, Integer> getHeaderMap() {\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testNoHeaderMap() throws Exception {\n\n        final CSVParser parser = CSVParser.parse(\"a,b,c\\n1,2,3\\nx,y,z\", CSVFormat.DEFAULT);\n\n        Assert.assertNull(parser.getHeaderMap());\n\n    }\n\n```\n#Error message: java.lang.NullPointerException\n\tat org.apache.commons.csv.CSVParser.getHeaderMap(CSVParser.java:288)  return new LinkedHashMap<String, Integer>(this.headerMap);\n\tat org.apache.commons.csv.CSVParserTest.testNoHeaderMap(CSVParserTest.java:670)  Assert.assertNull(parser.getHeaderMap());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap != null ? new LinkedHashMap<String, Integer>(this.headerMap) : null;\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap != null ? new LinkedHashMap<String, Integer>(this.headerMap) : null;\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    if (this.headerMap == null) {\n        return null;\n    }\n    return new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap != null ? new LinkedHashMap<String, Integer>(this.headerMap) : null;\n}\n"
+                ],
+                [
+                    "\npublic Map<String, Integer> getHeaderMap() {\n    return this.headerMap == null ? null : new LinkedHashMap<String, Integer>(this.headerMap);\n}\n"
+                ]
+            ]
+        }
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "JacksonDatabind-7": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Helper method used by standard deserializer.\n*\n* @since 2.3\n*/\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n        copyCurrentStructure(jp);\n    /* 28-Oct-2014, tatu: As per #592, need to support a special case of starting from\n     *    FIELD_NAME, which is taken to mean that we are missing START_OBJECT, but need\n     *    to assume one did exist.\n     */\n    return this;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testDelegateWithTokenBuffer() throws Exception\n\n    {\n\n        ObjectMapper mapper = new ObjectMapper();\n\n        Value592 value = mapper.readValue(\"{\\\"a\\\":1,\\\"b\\\":2}\", Value592.class);\n\n        assertNotNull(value);\n\n        Object ob = value.stuff;\n\n        assertEquals(TokenBuffer.class, ob.getClass());\n\n        JsonParser jp = ((TokenBuffer) ob).asParser();\n\n        assertToken(JsonToken.START_OBJECT, jp.nextToken());\n\n        assertToken(JsonToken.FIELD_NAME, jp.nextToken());\n\n        assertEquals(\"a\", jp.getCurrentName());\n\n        assertToken(JsonToken.VALUE_NUMBER_INT, jp.nextToken());\n\n        assertEquals(1, jp.getIntValue());\n\n        assertToken(JsonToken.FIELD_NAME, jp.nextToken());\n\n        assertEquals(\"b\", jp.getCurrentName());\n\n        assertToken(JsonToken.VALUE_NUMBER_INT, jp.nextToken());\n\n        assertEquals(2, jp.getIntValue());\n\n        assertToken(JsonToken.END_OBJECT, jp.nextToken());\n\n        jp.close();\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected token START_OBJECT, current token FIELD_NAME\n\tat com.fasterxml.jackson.test.BaseTest.assertToken(BaseTest.java:333)  fail(\"Expected token \"+expToken+\", current token \"+actToken);\n\tat com.fasterxml.jackson.databind.creators.TestCreatorsDelegating.testDelegateWithTokenBuffer(TestCreatorsDelegating.java:132)  assertToken(JsonToken.START_OBJECT, jp.nextToken());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // We are missing START_OBJECT, so emulate it\n        writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // Close the emulated object\n        writeEndObject();\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // Start with implicit START_OBJECT\n        writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // End with implicit END_OBJECT\n        writeEndObject();\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        copyCurrentStructure(jp);\n    } else {\n        while (jp.getCurrentToken() != JsonToken.START_OBJECT && jp.nextToken() != null) {\n            // Skip tokens until START_OBJECT\n        }\n        if (jp.getCurrentToken() == JsonToken.START_OBJECT) {\n            copyCurrentStructure(jp);\n        }\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer tokenBuffer = new TokenBuffer(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeStartObject();\n    }\n    tokenBuffer.copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeEndObject();\n    }\n    return tokenBuffer;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer buffer = new TokenBuffer(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        buffer.writeStartObject();\n        copyCurrentStructure(buffer, jp);\n        buffer.writeEndObject();\n    } else {\n        copyCurrentStructure(buffer, jp);\n    }\n    return buffer;\n}\n\nprivate void copyCurrentStructure(TokenBuffer buffer, JsonParser jp) throws IOException {\n    JsonToken t = jp.getCurrentToken();\n    if (t == JsonToken.FIELD_NAME) {\n        buffer.writeFieldName(jp.getCurrentName());\n        jp.nextToken();\n        copyCurrentStructure(buffer, jp);\n    } else if (t != null) {\n        buffer.copyCurrentStructure(jp);\n    }\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // Simulate START_OBJECT\n        this.writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // Simulate END_OBJECT\n        this.writeEndObject();\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer tb = new TokenBuffer(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tb.writeStartObject();\n        copyCurrentStructure(jp);\n        tb.writeEndObject();\n    } else {\n        copyCurrentStructure(jp);\n    }\n    return tb;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        this.writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        this.writeEndObject();\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        writeEndObject();\n    }\n    return this;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Helper method used by standard deserializer.\n*\n* @since 2.3\n*/\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n        copyCurrentStructure(jp);\n    /* 28-Oct-2014, tatu: As per #592, need to support a special case of starting from\n     *    FIELD_NAME, which is taken to mean that we are missing START_OBJECT, but need\n     *    to assume one did exist.\n     */\n    return this;\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testDelegateWithTokenBuffer() throws Exception\n\n    {\n\n        ObjectMapper mapper = new ObjectMapper();\n\n        Value592 value = mapper.readValue(\"{\\\"a\\\":1,\\\"b\\\":2}\", Value592.class);\n\n        assertNotNull(value);\n\n        Object ob = value.stuff;\n\n        assertEquals(TokenBuffer.class, ob.getClass());\n\n        JsonParser jp = ((TokenBuffer) ob).asParser();\n\n        assertToken(JsonToken.START_OBJECT, jp.nextToken());\n\n        assertToken(JsonToken.FIELD_NAME, jp.nextToken());\n\n        assertEquals(\"a\", jp.getCurrentName());\n\n        assertToken(JsonToken.VALUE_NUMBER_INT, jp.nextToken());\n\n        assertEquals(1, jp.getIntValue());\n\n        assertToken(JsonToken.FIELD_NAME, jp.nextToken());\n\n        assertEquals(\"b\", jp.getCurrentName());\n\n        assertToken(JsonToken.VALUE_NUMBER_INT, jp.nextToken());\n\n        assertEquals(2, jp.getIntValue());\n\n        assertToken(JsonToken.END_OBJECT, jp.nextToken());\n\n        jp.close();\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Expected token START_OBJECT, current token FIELD_NAME\n\tat com.fasterxml.jackson.test.BaseTest.assertToken(BaseTest.java:333)  fail(\"Expected token \"+expToken+\", current token \"+actToken);\n\tat com.fasterxml.jackson.databind.creators.TestCreatorsDelegating.testDelegateWithTokenBuffer(TestCreatorsDelegating.java:132)  assertToken(JsonToken.START_OBJECT, jp.nextToken());\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic StringBuilder getPathReference(StringBuilder sb) { _appendPathDesc(sb); return sb; }\n```\n\n            \n```java\npublic Object setHandlerInstantiator(HandlerInstantiator hi) { _deserializationConfig = _deserializationConfig.with(hi); _serializationConfig = _serializationConfig.with(hi); return this; }\n```\n\n            \n```java\npublic JavaType resolveType(Class<?> cls) { return _typeFactory._constructType(cls, this); }\n```\n\n            \n```java\npublic T findEnum(String key) { return _enumsById.get(key); }\n```\n\n            \n```java\npublic AnnotatedMethod findMethod(String name, Class<?>[] paramTypes) { if (_memberMethods == null) { resolveMemberMethods(); } return _memberMethods.find(name, paramTypes); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        copyCurrentStructure(jp);\n    } else {\n        TokenBuffer tb = new TokenBuffer(jp.getCodec());\n        tb.writeStartObject();\n        copyCurrentStructure(jp);\n        tb.writeEndObject();\n        return tb;\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        // Simulate START_OBJECT\n        this.writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer tokenBuffer = new TokenBuffer(jp);\n    // Handle missing START_OBJECT as per the special case\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeStartObject();\n        copyCurrentStructure(jp);\n        tokenBuffer.writeEndObject();\n    } else {\n        copyCurrentStructure(jp);\n    }\n    return tokenBuffer;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer tb = new TokenBuffer(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tb.writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tb.writeEndObject();\n    }\n    return tb;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer tokenBuffer = new TokenBuffer(jp);\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeStartObject();\n        copyCurrentStructure(jp);\n        tokenBuffer.writeEndObject();\n    } else {\n        tokenBuffer.copyCurrentStructure(jp);\n    }\n    return tokenBuffer;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        jp = new TokenBuffer(jp.getCodec());\n        jp.writeStartObject();\n        copyCurrentStructure(jp);\n        jp.writeEndObject();\n        return (TokenBuffer) jp;\n    } else {\n        copyCurrentStructure(jp);\n        return this;\n    }\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {\n    TokenBuffer tokenBuffer = new TokenBuffer(jp);\n    if (jp.currentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeStartObject();\n    }\n    copyCurrentStructure(jp);\n    if (jp.currentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeEndObject();\n    }\n    return tokenBuffer;\n}\n"
+                ],
+                [
+                    "\n/**\n* Helper method used by standard deserializer.\n*\n* @since 2.3\n*/\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    TokenBuffer tokenBuffer = new TokenBuffer(jp.getCodec());\n    \n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeStartObject();\n    }\n    \n    tokenBuffer.copyCurrentStructure(jp);\n    \n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        tokenBuffer.writeEndObject();\n    }\n\n    return tokenBuffer;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        this.writeStartObject();\n        copyCurrentStructure(jp);\n        this.writeEndObject();\n    } else {\n        copyCurrentStructure(jp);\n    }\n    return this;\n}\n"
+                ],
+                [
+                    "\npublic TokenBuffer deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException\n{\n    if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {\n        copyCurrentStructure(jp); // assuming that the TokenBuffer is correctly initialized first\n    } else {\n        copyCurrentStructure(jp); // existing behavior\n    }\n    return this;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

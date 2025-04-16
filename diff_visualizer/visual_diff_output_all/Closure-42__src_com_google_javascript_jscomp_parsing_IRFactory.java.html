@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to158__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-42 - Buggy: src/com/google/javascript/jscomp/parsing/IRFactory.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-42 - Fixed: src/com/google/javascript/jscomp/parsing/IRFactory.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to158__0"></td><td class="diff_header" id="from158_565">565</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_565">565</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_566">566</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@Override</td><td class="diff_next"></td><td class="diff_header" id="to158_566">566</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;@Override</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_567">567</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;processForInLoop(ForInLoop&nbsp;loopNode)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to158_567">567</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;processForInLoop(ForInLoop&nbsp;loopNode)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to158__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to158__1">n</a></td><td class="diff_header" id="to158_568">568</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(loopNode.isForEach())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_569">569</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorReporter.error(</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_570">570</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unsupported&nbsp;language&nbsp;extension:&nbsp;for&nbsp;each",</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_571">571</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sourceName,</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to158__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_572">572</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loopNode.getLineno(),&nbsp;"",&nbsp;0);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_568">568</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_573">573</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_569">569</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Return&nbsp;the&nbsp;bare&nbsp;minimum&nbsp;to&nbsp;put&nbsp;the&nbsp;AST&nbsp;in&nbsp;a&nbsp;valid&nbsp;state.</td><td class="diff_next"></td><td class="diff_header" id="to158_574">574</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Return&nbsp;the&nbsp;bare&nbsp;minimum&nbsp;to&nbsp;put&nbsp;the&nbsp;AST&nbsp;in&nbsp;a&nbsp;valid&nbsp;state.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to158__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to158__top">t</a></td><td class="diff_header" id="to158_575">575</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;newNode(Token.EXPR_RESULT,&nbsp;Node.newNumber(0));</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to158_576">576</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_570">570</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;newNode(</td><td class="diff_next"></td><td class="diff_header" id="to158_577">577</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;newNode(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_571">571</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token.FOR,</td><td class="diff_next"></td><td class="diff_header" id="to158_578">578</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token.FOR,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from158_572">572</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform(loopNode.getIterator()),</td><td class="diff_next"></td><td class="diff_header" id="to158_579">579</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform(loopNode.getIterator()),</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

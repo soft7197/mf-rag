@@ -1,0 +1,116 @@
+{
+    "Closure-128": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* We could use addList recursively here, but sometimes we produce\n* very deeply nested operators and run out of stack space, so we\n* just unroll the recursion when possible.\n*\n* We assume nodes are left-recursive.\n*/\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0 && s.charAt(0) != '0';\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testIssue942() {\n\n    assertPrint(\"var x = {0: 1};\", \"var x={0:1}\");\n\n  }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<var x={[0]:1}> but was:<var x={[\"0\"]:1}>\n\tat com.google.javascript.jscomp.CodePrinterTest.assertPrint(CodePrinterTest.java:465)  assertEquals(expected,        parsePrint(js, false, CodePrinter.DEFAULT_LINE_LENGTH_THRESHOLD));\n\tat com.google.javascript.jscomp.CodePrinterTest.testIssue942(CodePrinterTest.java:1423)  assertPrint(\"var x = {0: 1};\", \"var x={0:1}\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 1 || s.charAt(0) != '0';\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) return false;\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len == 1 || s.charAt(0) != '0';\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len == 1 || s.charAt(0) != '0';\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0 || (len > 1 && s.charAt(0) == '0')) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0 || (len > 1 && s.charAt(0) == '0')) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0 || (len > 1 && s.charAt(0) == '0')) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* We could use addList recursively here, but sometimes we produce\n* very deeply nested operators and run out of stack space, so we\n* just unroll the recursion when possible.\n*\n* We assume nodes are left-recursive.\n*/\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0 && s.charAt(0) != '0';\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testIssue942() {\n\n    assertPrint(\"var x = {0: 1};\", \"var x={0:1}\");\n\n  }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<var x={[0]:1}> but was:<var x={[\"0\"]:1}>\n\tat com.google.javascript.jscomp.CodePrinterTest.assertPrint(CodePrinterTest.java:465)  assertEquals(expected,        parsePrint(js, false, CodePrinter.DEFAULT_LINE_LENGTH_THRESHOLD));\n\tat com.google.javascript.jscomp.CodePrinterTest.testIssue942(CodePrinterTest.java:1423)  assertPrint(\"var x = {0: 1};\", \"var x={0:1}\");\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nstatic String removeExtraneousSlashes(String s) { int lastNonSlash = NON_SLASH_MATCHER.lastIndexIn(s); if (lastNonSlash != -1) { s = s.substring(0, lastNonSlash + 1); } return SLASH_MATCHER.collapseFrom(s, '/'); }\n```\n\n            \n```java\nstatic boolean roundOff(StringBuilder buf) { int i = buf.length(); while (i != 0) { --i; char c = buf.charAt(i); if (c != '9') { buf.setCharAt(i, (char) (c + 1)); buf.setLength(i + 1); return false; } } buf.setLength(0); return true; }\n```\n\n            \n```java\nstatic boolean isCallOrNewSite(UseSite use) { Node call = use.node.getParent(); if (call == null) { return false; } return NodeUtil.isCallOrNew(call) && call.getFirstChild() == use.node; }\n```\n\n            \n```java\nstatic String toString(int[] types, int typesTop, ConstantPool pool) { StringBuilder sb = new StringBuilder(); sb.append(\\\"[\\\"); for (int i = 0; i < typesTop; i++) { if (i > 0) { sb.append(\\\", \\\"); } sb.append(toString(types[i], pool)); } sb.append(\\\"]\\\"); return sb.toString(); }\n```\n\n            \n```java\nstatic String arrayToString(Node literal) { Node first = literal.getFirstChild(); StringBuilder result = new StringBuilder(); for (Node n = first; n != null; n = n.getNext()) { String childValue = getArrayElementStringValue(n); if (childValue == null) { return null; } if (n != first) { result.append(','); } result.append(childValue); } return result.toString(); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0 || (s.charAt(0) == '0' && len > 1)) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false; // No leading zeros allowed for numbers with more than one digit.\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) return false; // Ensure input is not an empty string\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len == 1 || s.charAt(0) != '0'; // Allow single digit numbers including '0'\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0 && (len == 1 || s.charAt(0) != '0');\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) {\n    return false;\n  }\n  \n  // Single digit zero is considered a simple number\n  if (len == 1 && s.charAt(0) == '0') {\n    return true;\n  }\n  \n  // Leading zero is not allowed except for single digit zero\n  if (s.charAt(0) == '0') {\n    return false;\n  }\n  \n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false; // disallow leading zeros for non-zero simple numbers\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0 && (len == 1 || s.charAt(0) != '0');\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  // Handle empty string or the string \"0\"\n  if (len == 0 || (len == 1 && s.charAt(0) == '0')) {\n    return false;\n  }\n  \n  // If the string starts with '0' and has more digits, it's not a simple number\n  if (s.charAt(0) == '0') {\n    return false;\n  }\n\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  // Return false if the string is empty\n  if (len == 0) {\n    return false;\n  }\n  // If the length is greater than 1, ensure no leading zeros\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0 || (s.charAt(0) == '0' && len > 1)) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false; // No leading zeros allowed for numbers with more than one digit.\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) return false; // Ensure input is not an empty string\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len == 1 || s.charAt(0) != '0'; // Allow single digit numbers including '0'\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0 && (len == 1 || s.charAt(0) != '0');\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) {\n    return false;\n  }\n  \n  // Single digit zero is considered a simple number\n  if (len == 1 && s.charAt(0) == '0') {\n    return true;\n  }\n  \n  // Leading zero is not allowed except for single digit zero\n  if (s.charAt(0) == '0') {\n    return false;\n  }\n  \n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  // Return false if the string is empty\n  if (len == 0) {\n    return false;\n  }\n  // If the length is greater than 1, ensure no leading zeros\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0 || (s.charAt(0) == '0' && len > 1)) {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len > 1 && s.charAt(0) == '0') {\n    return false; // No leading zeros allowed for numbers with more than one digit.\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) return false; // Ensure input is not an empty string\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len == 1 || s.charAt(0) != '0'; // Allow single digit numbers including '0'\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return len > 0 && (len == 1 || s.charAt(0) != '0');\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  if (len == 0) {\n    return false;\n  }\n  \n  // Single digit zero is considered a simple number\n  if (len == 1 && s.charAt(0) == '0') {\n    return true;\n  }\n  \n  // Leading zero is not allowed except for single digit zero\n  if (s.charAt(0) == '0') {\n    return false;\n  }\n  \n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ],
+                [
+                    "\nstatic boolean isSimpleNumber(String s) {\n  int len = s.length();\n  // Return false if the string is empty\n  if (len == 0) {\n    return false;\n  }\n  // If the length is greater than 1, ensure no leading zeros\n  if (len > 1 && s.charAt(0) == '0') {\n    return false;\n  }\n  for (int index = 0; index < len; index++) {\n    char c = s.charAt(index);\n    if (c < '0' || c > '9') {\n      return false;\n    }\n  }\n  return true;\n}\n"
+                ]
+            ]
+        }
+    }
+}

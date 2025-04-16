@@ -1,0 +1,77 @@
+{
+    "JxPath-21": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    return ValueUtils.getLength(getBaseValue());\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testMapValueEquality() {\n\n        assertXPathValue(context, \"map/b != map/a\", Boolean.TRUE);\n\n        assertXPathValue(context, \"map/a != map/b\", Boolean.TRUE);\n\n        assertXPathValue(context, \"map/a != map/c\", Boolean.FALSE);\n\n        assertXPathValue(context, \"map/a = map/b\", Boolean.FALSE);\n\n        assertXPathValue(context, \"map/a = map/c\", Boolean.TRUE);\n\n        assertXPathValue(context, \"not(map/a = map/b)\", Boolean.TRUE);\n\n        assertXPathValue(context, \"not(map/a = map/c)\", Boolean.FALSE);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Evaluating <map/b != map/a> expected:<true> but was:<false>\n\tat org.apache.commons.jxpath.JXPathTestCase.assertXPathValue(JXPathTestCase.java:52)  assertEquals(\"Evaluating <\" + xpath + \">\", expected, actual);\n\tat org.apache.commons.jxpath.ri.model.JXPath151Test.testMapValueEquality(JXPath151Test.java:43)  assertXPathValue(context, \"map/b != map/a\", Boolean.TRUE);\n \n#Test method 2:\n```java\n    public void testNull() {\n\n\n\n        assertXPathPointerLenient(context, \"$null\", \"$null\");\n\n\n\n        assertXPathPointerLenient(context, \"$null[3]\", \"$null[3]\");\n\n\n\n        assertXPathPointerLenient(\n\n            context,\n\n            \"$testnull/nothing\",\n\n            \"$testnull/nothing\");\n\n\n\n        assertXPathPointerLenient(\n\n            context,\n\n            \"$testnull/nothing[2]\",\n\n            \"$testnull/nothing[2]\");\n\n\n\n        assertXPathPointerLenient(context, \"beans[8]/int\", \"/beans[8]/int\");\n\n\n\n        assertXPathValueIterator(\n\n            context,\n\n            \"$testnull/nothing[1]\",\n\n            list(null));\n\n\n\n        JXPathContext ctx = JXPathContext.newContext(new TestNull());\n\n        assertXPathValue(ctx, \"nothing\", null);\n\n\n\n        assertXPathValue(ctx, \"child/nothing\", null);\n\n\n\n        assertXPathValue(ctx, \"array[2]\", null);\n\n\n\n        assertXPathValueLenient(ctx, \"nothing/something\", null);\n\n\n\n        assertXPathValueLenient(ctx, \"array[2]/something\", null);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Evaluating value iterator <$testnull/nothing[1]> expected:<[null]> but was:<[]>\n\tat org.apache.commons.jxpath.JXPathTestCase.assertXPathValueIterator(JXPathTestCase.java:155)  assertEquals(\"Evaluating value iterator <\" + xpath + \">\",                expected, actual);\n\tat org.apache.commons.jxpath.ri.model.MixedModelTest.testNull(MixedModelTest.java:315)  assertXPathValueIterator(            context,            \"$testnull/nothing[1]\",            list(null));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    int length = ValueUtils.getLength(baseValue);\n    return length != -1 ? length : 0;\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise -1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object value = getBaseValue();\n    if (value == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(value);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    } else {\n        return ValueUtils.getLength(baseValue);\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "2": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    return ValueUtils.getLength(getBaseValue());\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testMapValueEquality() {\n\n        assertXPathValue(context, \"map/b != map/a\", Boolean.TRUE);\n\n        assertXPathValue(context, \"map/a != map/b\", Boolean.TRUE);\n\n        assertXPathValue(context, \"map/a != map/c\", Boolean.FALSE);\n\n        assertXPathValue(context, \"map/a = map/b\", Boolean.FALSE);\n\n        assertXPathValue(context, \"map/a = map/c\", Boolean.TRUE);\n\n        assertXPathValue(context, \"not(map/a = map/b)\", Boolean.TRUE);\n\n        assertXPathValue(context, \"not(map/a = map/c)\", Boolean.FALSE);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Evaluating <map/b != map/a> expected:<true> but was:<false>\n\tat org.apache.commons.jxpath.JXPathTestCase.assertXPathValue(JXPathTestCase.java:52)  assertEquals(\"Evaluating <\" + xpath + \">\", expected, actual);\n\tat org.apache.commons.jxpath.ri.model.JXPath151Test.testMapValueEquality(JXPath151Test.java:43)  assertXPathValue(context, \"map/b != map/a\", Boolean.TRUE);\n \n#Test method 2:\n```java\n    public void testNull() {\n\n\n\n        assertXPathPointerLenient(context, \"$null\", \"$null\");\n\n\n\n        assertXPathPointerLenient(context, \"$null[3]\", \"$null[3]\");\n\n\n\n        assertXPathPointerLenient(\n\n            context,\n\n            \"$testnull/nothing\",\n\n            \"$testnull/nothing\");\n\n\n\n        assertXPathPointerLenient(\n\n            context,\n\n            \"$testnull/nothing[2]\",\n\n            \"$testnull/nothing[2]\");\n\n\n\n        assertXPathPointerLenient(context, \"beans[8]/int\", \"/beans[8]/int\");\n\n\n\n        assertXPathValueIterator(\n\n            context,\n\n            \"$testnull/nothing[1]\",\n\n            list(null));\n\n\n\n        JXPathContext ctx = JXPathContext.newContext(new TestNull());\n\n        assertXPathValue(ctx, \"nothing\", null);\n\n\n\n        assertXPathValue(ctx, \"child/nothing\", null);\n\n\n\n        assertXPathValue(ctx, \"array[2]\", null);\n\n\n\n        assertXPathValueLenient(ctx, \"nothing/something\", null);\n\n\n\n        assertXPathValueLenient(ctx, \"array[2]/something\", null);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: Evaluating value iterator <$testnull/nothing[1]> expected:<[null]> but was:<[]>\n\tat org.apache.commons.jxpath.JXPathTestCase.assertXPathValueIterator(JXPathTestCase.java:155)  assertEquals(\"Evaluating value iterator <\" + xpath + \">\",                expected, actual);\n\tat org.apache.commons.jxpath.ri.model.MixedModelTest.testNull(MixedModelTest.java:315)  assertXPathValueIterator(            context,            \"$testnull/nothing[1]\",            list(null));\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\npublic QName getName() { return new QName(null, getPropertyName()); }\n```\n\n            \n```java\npublic String getNamespaceURI() { return getNamespaceURI(node); }\n```\n\n            \n```java\npublic String getNamespaceURI() { return getNamespaceURI(node); }\n```\n\n            \n```java\npublic NodePointer getValuePointer() { return new NullPointer(this, new QName(getPropertyName())); }\n```\n\n            \n```java\npublic NodePointer getNodePointer() { if (child == null) { if (!setPosition(1)) { return null; } position = 0; } return new JDOMNodePointer(parent, child); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object value = getBaseValue();\n    if (value == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(value);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object value = getBaseValue();\n    if (value == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(value);\n}\n"
+                ],
+                [
+                    "\npublic int getLength() {\n    Object baseValue = getBaseValue();\n    if (baseValue == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(baseValue);\n}\n"
+                ],
+                [
+                    "\n/**\n* If the property contains a collection, then the length of that\n* collection, otherwise - 1.\n* @return int length\n*/\npublic int getLength() {\n    Object value = getBaseValue();\n    if (value == null) {\n        return -1;\n    }\n    return ValueUtils.getLength(value);\n}\n"
+                ]
+            ],
+            "evaluation_done": true
+        },
+        "iteration_done": true
+    }
+}

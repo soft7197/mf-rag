@@ -1,0 +1,65 @@
+{
+    "Mockito-31": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Optional Answer that can be used with\n* {@link Mockito#mock(Class, Answer)}\n* <p>\n* This implementation can be helpful when working with legacy code. Unstubbed\n* methods often return null. If your code uses the object returned by an\n* unstubbed call you get a NullPointerException. This implementation of\n* Answer returns SmartNulls instead of nulls.\n* SmartNull gives nicer exception message than NPE because it points out the\n* line where unstubbed method was called. You just click on the stack trace.\n* <p>\n* ReturnsSmartNulls first tries to return ordinary return values (see\n* {@link ReturnsMoreEmptyValues}) then it tries to return SmartNull. If the\n* return type is not mockable (e.g. final) then ordinary null is returned.\n* <p>\n* ReturnsSmartNulls will be probably the default return values strategy in\n* Mockito 2.0\n*/\nprivate String formatMethodCall() {\n\t\t\treturn invocation.getMethod().getName() + \"()\";\n\t\t}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldPrintTheParametersWhenCallingAMethodWithArgs() throws Throwable {\n\n    \tAnswer<Object> answer = new ReturnsSmartNulls();\n\n\n\n    \tFoo smartNull = (Foo) answer.answer(invocationOf(Foo.class, \"withArgs\", \"oompa\", \"lumpa\"));\n\n\n\n    \tassertEquals(\"SmartNull returned by unstubbed withArgs(oompa, lumpa) method on mock\", smartNull + \"\");\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<... unstubbed withArgs([oompa, lumpa]) method on mock> but was:<... unstubbed withArgs([]) method on mock>\n\tat org.mockito.internal.stubbing.defaultanswers.ReturnsSmartNullsTest.shouldPrintTheParametersWhenCallingAMethodWithArgs(ReturnsSmartNullsTest.java:57)  assertEquals(\"SmartNull returned by unstubbed withArgs(oompa, lumpa) method on mock\", smartNull + \"\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    String argsString = \"\";\n    if (args != null && args.length > 0) {\n        argsString = Arrays.stream(args)\n                           .map(Object::toString)\n                           .collect(Collectors.joining(\", \"));\n    }\n    return invocation.getMethod().getName() + \"(\" + argsString + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    StringBuilder argsString = new StringBuilder();\n    for (Object arg : args) {\n        if (argsString.length() != 0) {\n            argsString.append(\", \");\n        }\n        argsString.append(arg.toString());\n    }\n    return invocation.getMethod().getName() + \"(\" + argsString + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder sb = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Object[] args = invocation.getArguments();\n    for (int i = 0; i < args.length; i++) {\n        sb.append(args[i]);\n        if (i < args.length - 1) {\n            sb.append(\", \");\n        }\n    }\n    sb.append(\")\");\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] arguments = invocation.getArguments();\n    String argsString = Arrays.stream(arguments)\n                              .map(String::valueOf)\n                              .collect(Collectors.joining(\", \"));\n    return invocation.getMethod().getName() + \"(\" + argsString + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder formatted = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Class<?>[] parameterTypes = invocation.getMethod().getParameterTypes();\n    Object[] arguments = invocation.getArguments();\n    for (int i = 0; i < arguments.length; i++) {\n        formatted.append(arguments[i]);\n        if (i < arguments.length - 1) {\n            formatted.append(\", \");\n        }\n    }\n    formatted.append(\")\");\n    return formatted.toString();\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    String argsString = Arrays.stream(args)\n                              .map(Object::toString)\n                              .collect(Collectors.joining(\", \"));\n    return invocation.getMethod().getName() + \"(\" + argsString + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] arguments = invocation.getArguments();\n    String args = Arrays.stream(arguments)\n                        .map(Object::toString)\n                        .collect(Collectors.joining(\", \"));\n    return invocation.getMethod().getName() + \"(\" + args + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    StringBuilder formattedArgs = new StringBuilder();\n    for (int i = 0; i < args.length; i++) {\n        formattedArgs.append(args[i]);\n        if (i < args.length - 1) {\n            formattedArgs.append(\", \");\n        }\n    }\n    return invocation.getMethod().getName() + \"(\" + formattedArgs + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall(InvocationOnMock invocation) {\n    Object[] arguments = invocation.getArguments();\n    String argsString = Arrays.stream(arguments)\n                              .map(Object::toString)\n                              .collect(Collectors.joining(\", \"));\n    return invocation.getMethod().getName() + \"(\" + argsString + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder methodCall = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Object[] args = invocation.getArguments();\n    for (int i = 0; i < args.length; i++) {\n        methodCall.append(args[i]);\n        if (i < args.length - 1) {\n            methodCall.append(\", \");\n        }\n    }\n    methodCall.append(\")\");\n    return methodCall.toString();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    StringBuilder argsString = new StringBuilder();\n    for (Object arg : args) {\n        if (argsString.length() != 0) {\n            argsString.append(\", \");\n        }\n        argsString.append(arg.toString());\n    }\n    return invocation.getMethod().getName() + \"(\" + argsString + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder sb = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Object[] args = invocation.getArguments();\n    for (int i = 0; i < args.length; i++) {\n        sb.append(args[i]);\n        if (i < args.length - 1) {\n            sb.append(\", \");\n        }\n    }\n    sb.append(\")\");\n    return sb.toString();\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder formatted = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Class<?>[] parameterTypes = invocation.getMethod().getParameterTypes();\n    Object[] arguments = invocation.getArguments();\n    for (int i = 0; i < arguments.length; i++) {\n        formatted.append(arguments[i]);\n        if (i < arguments.length - 1) {\n            formatted.append(\", \");\n        }\n    }\n    formatted.append(\")\");\n    return formatted.toString();\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    StringBuilder formattedArgs = new StringBuilder();\n    for (int i = 0; i < args.length; i++) {\n        formattedArgs.append(args[i]);\n        if (i < args.length - 1) {\n            formattedArgs.append(\", \");\n        }\n    }\n    return invocation.getMethod().getName() + \"(\" + formattedArgs + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder methodCall = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Object[] args = invocation.getArguments();\n    for (int i = 0; i < args.length; i++) {\n        methodCall.append(args[i]);\n        if (i < args.length - 1) {\n            methodCall.append(\", \");\n        }\n    }\n    methodCall.append(\")\");\n    return methodCall.toString();\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\nprivate String formatMethodCall() {\n    Object[] args = invocation.getArguments();\n    StringBuilder formattedArgs = new StringBuilder();\n    for (int i = 0; i < args.length; i++) {\n        formattedArgs.append(args[i]);\n        if (i < args.length - 1) {\n            formattedArgs.append(\", \");\n        }\n    }\n    return invocation.getMethod().getName() + \"(\" + formattedArgs + \")\";\n}\n"
+                ],
+                [
+                    "\nprivate String formatMethodCall() {\n    StringBuilder methodCall = new StringBuilder(invocation.getMethod().getName() + \"(\");\n    Object[] args = invocation.getArguments();\n    for (int i = 0; i < args.length; i++) {\n        methodCall.append(args[i]);\n        if (i < args.length - 1) {\n            methodCall.append(\", \");\n        }\n    }\n    methodCall.append(\")\");\n    return methodCall.toString();\n}\n"
+                ]
+            ]
+        }
+    }
+}

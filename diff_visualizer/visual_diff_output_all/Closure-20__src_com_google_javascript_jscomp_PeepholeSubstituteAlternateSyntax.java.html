@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to136__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-20 - Buggy: src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-20 - Fixed: src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to136__0"></td><td class="diff_header" id="from136_217">217</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;slightly&nbsp;different&nbsp;semantics&nbsp;than&nbsp;''&nbsp;+&nbsp;(a).&nbsp;See</td><td class="diff_next"></td><td class="diff_header" id="to136_217">217</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;slightly&nbsp;different&nbsp;semantics&nbsp;than&nbsp;''&nbsp;+&nbsp;(a).&nbsp;See</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from136_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;http://code.google.com/p/closure-compiler/issues/detail?id=759</td><td class="diff_next"></td><td class="diff_header" id="to136_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;http://code.google.com/p/closure-compiler/issues/detail?id=759</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from136_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;value&nbsp;=&nbsp;callTarget.getNext();</td><td class="diff_next"></td><td class="diff_header" id="to136_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;value&nbsp;=&nbsp;callTarget.getNext();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to136__top">t</a></td><td class="diff_header" id="from136_220">220</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(value&nbsp;!=&nbsp;null)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to136__top">t</a></td><td class="diff_header" id="to136_220">220</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(value&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;value.getNext()&nbsp;==&nbsp;null&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to136_221">221</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NodeUtil.isImmutableValue(value))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from136_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;addition&nbsp;=&nbsp;IR.add(</td><td class="diff_next"></td><td class="diff_header" id="to136_222">222</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;addition&nbsp;=&nbsp;IR.add(</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from136_222">222</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IR.string("").srcref(callTarget),</td><td class="diff_next"></td><td class="diff_header" id="to136_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IR.string("").srcref(callTarget),</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from136_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value.detachFromParent());</td><td class="diff_next"></td><td class="diff_header" id="to136_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value.detachFromParent());</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

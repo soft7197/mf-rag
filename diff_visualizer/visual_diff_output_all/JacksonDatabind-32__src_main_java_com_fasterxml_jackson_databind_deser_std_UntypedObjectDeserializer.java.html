@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to366__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-32 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/std/UntypedObjectDeserializer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-32 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/std/UntypedObjectDeserializer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;JsonTokenId.ID_FIELD_NAME:</td><td class="diff_next"></td><td class="diff_header" id="to366_218">218</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;JsonTokenId.ID_FIELD_NAME:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;28-Oct-2015,&nbsp;tatu:&nbsp;[databind#989]&nbsp;We&nbsp;may&nbsp;also&nbsp;be&nbsp;given&nbsp;END_OBJECT</td><td class="diff_next"></td><td class="diff_header" id="to366_219">219</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;28-Oct-2015,&nbsp;tatu:&nbsp;[databind#989]&nbsp;We&nbsp;may&nbsp;also&nbsp;be&nbsp;given&nbsp;END_OBJECT</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to366__0"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;(similar&nbsp;to&nbsp;FIELD_NAME),</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;(similar&nbsp;to&nbsp;FIELD_NAME),</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;caller&nbsp;has&nbsp;advanced&nbsp;to&nbsp;the&nbsp;first&nbsp;token&nbsp;of&nbsp;Object,&nbsp;but&nbsp;for&nbsp;e</td><td class="diff_next"></td><td class="diff_header" id="to366_220">220</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;caller&nbsp;has&nbsp;advanced&nbsp;to&nbsp;the&nbsp;first&nbsp;token&nbsp;of&nbsp;Object,&nbsp;but&nbsp;for&nbsp;e</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mpty&nbsp;Object</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mpty&nbsp;Object</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to366__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to366__1">n</a></td><td class="diff_header" id="to366_221">221</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;JsonTokenId.ID_END_OBJECT:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_221">221</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_mapDeserializer&nbsp;!=&nbsp;null)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to366_222">222</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_mapDeserializer&nbsp;!=&nbsp;null)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_222">222</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;_mapDeserializer.deserialize(p,&nbsp;ctxt);</td><td class="diff_next"></td><td class="diff_header" id="to366_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;_mapDeserializer.deserialize(p,&nbsp;ctxt);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_223">223</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to366_224">224</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to366__1"></td><td class="diff_header" id="from366_532">532</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;JsonTokenId.ID_NULL:&nbsp;//&nbsp;should&nbsp;not&nbsp;get&nbsp;this&nbsp;but...</td><td class="diff_next"></td><td class="diff_header" id="to366_533">533</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;JsonTokenId.ID_NULL:&nbsp;//&nbsp;should&nbsp;not&nbsp;get&nbsp;this&nbsp;but...</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_533">533</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to366_534">534</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_534">534</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to366_535">535</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to366__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to366__2">n</a></td><td class="diff_header" id="to366_536">536</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;JsonTokenId.ID_END_OBJECT:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_535">535</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;28-Oct-2015,&nbsp;tatu:&nbsp;[databind#989]&nbsp;We&nbsp;may&nbsp;also&nbsp;be&nbsp;given&nbsp;END_OB</td><td class="diff_next"></td><td class="diff_header" id="to366_537">537</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;28-Oct-2015,&nbsp;tatu:&nbsp;[databind#989]&nbsp;We&nbsp;may&nbsp;also&nbsp;be&nbsp;given&nbsp;END_OB</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to366__2"></td><td class="diff_header">></td><td nowrap="nowrap">JECT&nbsp;(similar&nbsp;to&nbsp;FIELD_NAME),</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">JECT&nbsp;(similar&nbsp;to&nbsp;FIELD_NAME),</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_536">536</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;caller&nbsp;has&nbsp;advanced&nbsp;to&nbsp;the&nbsp;first&nbsp;token&nbsp;of&nbsp;Object,&nbsp;but&nbsp;f</td><td class="diff_next"></td><td class="diff_header" id="to366_538">538</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;caller&nbsp;has&nbsp;advanced&nbsp;to&nbsp;the&nbsp;first&nbsp;token&nbsp;of&nbsp;Object,&nbsp;but&nbsp;f</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">or&nbsp;empty&nbsp;Object</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">or&nbsp;empty&nbsp;Object</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to366__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to366__top">t</a></td><td class="diff_header" id="to366_539">539</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;LinkedHashMap&lt;String,Object&gt;(2);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_537">537</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to366_540">540</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_538">538</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//case&nbsp;JsonTokenId.ID_END_ARRAY:&nbsp;//&nbsp;invalid</td><td class="diff_next"></td><td class="diff_header" id="to366_541">541</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//case&nbsp;JsonTokenId.ID_END_ARRAY:&nbsp;//&nbsp;invalid</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from366_539">539</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</td><td class="diff_next"></td><td class="diff_header" id="to366_542">542</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

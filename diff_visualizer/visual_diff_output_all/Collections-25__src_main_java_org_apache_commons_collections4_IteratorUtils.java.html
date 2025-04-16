@@ -1,0 +1,90 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to235__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Collections-25 - Buggy: src/main/java/org/apache/commons/collections4/IteratorUtils.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Collections-25 - Fixed: src/main/java/org/apache/commons/collections4/IteratorUtils.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_602">602</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;E&gt;&nbsp;Iterator&lt;E&gt;&nbsp;collatedIterator(final&nbsp;Comparator&lt;?&nbsp;super&nbsp;E&gt;&nbsp;c</td><td class="diff_next"></td><td class="diff_header" id="to235_602">602</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;E&gt;&nbsp;Iterator&lt;E&gt;&nbsp;collatedIterator(final&nbsp;Comparator&lt;?&nbsp;super&nbsp;E&gt;&nbsp;c</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">omparator,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">omparator,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_603">603</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Iterator&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;i</td><td class="diff_next"></td><td class="diff_header" id="to235_603">603</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Iterator&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;i</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to235__0"></td><td class="diff_header">></td><td nowrap="nowrap">terator1,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">terator1,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_604">604</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Iterator&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;i</td><td class="diff_next"></td><td class="diff_header" id="to235_604">604</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Iterator&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;i</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">terator2)&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">terator2)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to235__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to235__1">n</a></td><td class="diff_header" id="to235_605">605</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@SuppressWarnings("unchecked")</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to235_606">606</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Comparator&lt;E&gt;&nbsp;comp&nbsp;=&nbsp;comparator&nbsp;==&nbsp;null&nbsp;?&nbsp;ComparatorUtils.NATURAL_</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">COMPARATOR&nbsp;:&nbsp;comparator;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_605">605</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;CollatingIterator&lt;E&gt;(comp<span class="diff_sub">arator</span>,&nbsp;iterator1,&nbsp;iterator2);</td><td class="diff_next"></td><td class="diff_header" id="to235_607">607</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;CollatingIterator&lt;E&gt;(comp,&nbsp;iterator1,&nbsp;iterator2);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_606">606</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to235_608">608</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_607">607</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to235_609">609</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_608">608</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to235_610">610</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_623">623</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to235_625">625</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_624">624</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;E&gt;&nbsp;Iterator&lt;E&gt;&nbsp;collatedIterator(final&nbsp;Comparator&lt;?&nbsp;super&nbsp;E&gt;&nbsp;c</td><td class="diff_next"></td><td class="diff_header" id="to235_626">626</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;E&gt;&nbsp;Iterator&lt;E&gt;&nbsp;collatedIterator(final&nbsp;Comparator&lt;?&nbsp;super&nbsp;E&gt;&nbsp;c</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to235__1"></td><td class="diff_header">></td><td nowrap="nowrap">omparator,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">omparator,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_625">625</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Iterator&lt;?&nbsp;extends&nbsp;E&gt;..</td><td class="diff_next"></td><td class="diff_header" id="to235_627">627</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Iterator&lt;?&nbsp;extends&nbsp;E&gt;..</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.&nbsp;iterators)&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.&nbsp;iterators)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to235__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to235__2">n</a></td><td class="diff_header" id="to235_628">628</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@SuppressWarnings("unchecked")</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to235_629">629</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Comparator&lt;E&gt;&nbsp;comp&nbsp;=&nbsp;comparator&nbsp;==&nbsp;null&nbsp;?&nbsp;ComparatorUtils.NATURAL_</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">COMPARATOR&nbsp;:&nbsp;comparator;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_626">626</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;CollatingIterator&lt;E&gt;(comp<span class="diff_sub">arator</span>,&nbsp;iterators);</td><td class="diff_next"></td><td class="diff_header" id="to235_630">630</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;CollatingIterator&lt;E&gt;(comp,&nbsp;iterators);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_627">627</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to235_631">631</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_628">628</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to235_632">632</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_629">629</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to235_633">633</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_645">645</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to235_649">649</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_646">646</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;E&gt;&nbsp;Iterator&lt;E&gt;&nbsp;collatedIterator(final&nbsp;Comparator&lt;?&nbsp;super&nbsp;E&gt;&nbsp;c</td><td class="diff_next"></td><td class="diff_header" id="to235_650">650</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;E&gt;&nbsp;Iterator&lt;E&gt;&nbsp;collatedIterator(final&nbsp;Comparator&lt;?&nbsp;super&nbsp;E&gt;&nbsp;c</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to235__2"></td><td class="diff_header">></td><td nowrap="nowrap">omparator,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">omparator,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_647">647</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Collection&lt;Iterator&lt;?&nbsp;e</td><td class="diff_next"></td><td class="diff_header" id="to235_651">651</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Collection&lt;Iterator&lt;?&nbsp;e</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">xtends&nbsp;E&gt;&gt;&nbsp;iterators)&nbsp;{</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">xtends&nbsp;E&gt;&gt;&nbsp;iterators)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to235__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to235__top">t</a></td><td class="diff_header" id="to235_652">652</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@SuppressWarnings("unchecked")</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to235_653">653</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Comparator&lt;E&gt;&nbsp;comp&nbsp;=&nbsp;comparator&nbsp;==&nbsp;null&nbsp;?&nbsp;ComparatorUtils.NATURAL_</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">COMPARATOR&nbsp;:&nbsp;comparator;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_648">648</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;CollatingIterator&lt;E&gt;(comp<span class="diff_sub">arator</span>,&nbsp;iterators);</td><td class="diff_next"></td><td class="diff_header" id="to235_654">654</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;CollatingIterator&lt;E&gt;(comp,&nbsp;iterators);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_649">649</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to235_655">655</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_650">650</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to235_656">656</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from235_651">651</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Object&nbsp;Graph</td><td class="diff_next"></td><td class="diff_header" id="to235_657">657</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Object&nbsp;Graph</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

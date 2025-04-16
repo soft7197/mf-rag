@@ -1,0 +1,87 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to120__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-164 - Buggy: src/com/google/javascript/rhino/jstype/ArrowType.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-164 - Fixed: src/com/google/javascript/rhino/jstype/ArrowType.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to120__0"></td><td class="diff_header" id="from120_125">125</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_125">125</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_126">126</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;thisIsVarArgs&nbsp;=&nbsp;thisParam.isVarArgs();</td><td class="diff_next"></td><td class="diff_header" id="to120_126">126</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;thisIsVarArgs&nbsp;=&nbsp;thisParam.isVarArgs();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_127">127</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;thatIsVarArgs&nbsp;=&nbsp;thatParam.isVarArgs();</td><td class="diff_next"></td><td class="diff_header" id="to120_127">127</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;thatIsVarArgs&nbsp;=&nbsp;thatParam.isVarArgs();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to120__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to120__1">n</a></td><td class="diff_header" id="to120_128">128</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;thisIsOptional&nbsp;=&nbsp;thisIsVarArgs&nbsp;||&nbsp;thisParam.isOptionalArg();</span></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to120__1"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_129">129</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;thatIsOptional&nbsp;=&nbsp;thatIsVarArgs&nbsp;||&nbsp;thatParam.isOptionalArg();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_128">128</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_130">130</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_129">129</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"that"&nbsp;can't&nbsp;be&nbsp;a&nbsp;supertype,&nbsp;because&nbsp;it's&nbsp;missing&nbsp;a&nbsp;required&nbsp;argument.</td><td class="diff_next"></td><td class="diff_header" id="to120_131">131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"that"&nbsp;can't&nbsp;be&nbsp;a&nbsp;supertype,&nbsp;because&nbsp;it's&nbsp;missing&nbsp;a&nbsp;required&nbsp;argument.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to120__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to120__2">n</a></td><td class="diff_header" id="to120_132">132</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!thisIsOptional&nbsp;&amp;&amp;&nbsp;thatIsOptional)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_130">130</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;NOTE(nicksantos):&nbsp;In&nbsp;our&nbsp;type&nbsp;system,&nbsp;we&nbsp;use&nbsp;{function(...?)}&nbsp;and</td><td class="diff_next"></td><td class="diff_header" id="to120_133">133</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;NOTE(nicksantos):&nbsp;In&nbsp;our&nbsp;type&nbsp;system,&nbsp;we&nbsp;use&nbsp;{function(...?)}&nbsp;and</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_131">131</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;{function(...NoType)}&nbsp;to&nbsp;to&nbsp;indicate&nbsp;that&nbsp;arity&nbsp;should&nbsp;not&nbsp;be</td><td class="diff_next"></td><td class="diff_header" id="to120_134">134</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;{function(...NoType)}&nbsp;to&nbsp;to&nbsp;indicate&nbsp;that&nbsp;arity&nbsp;should&nbsp;not&nbsp;be</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to120__2"></td><td class="diff_header" id="from120_132">132</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;checked.&nbsp;Strictly&nbsp;speaking,&nbsp;this&nbsp;is&nbsp;not&nbsp;a&nbsp;correct&nbsp;formulation,</td><td class="diff_next"></td><td class="diff_header" id="to120_135">135</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;checked.&nbsp;Strictly&nbsp;speaking,&nbsp;this&nbsp;is&nbsp;not&nbsp;a&nbsp;correct&nbsp;formulation,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_133">133</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;because&nbsp;now&nbsp;a&nbsp;sub-function&nbsp;can&nbsp;required&nbsp;arguments&nbsp;that&nbsp;are&nbsp;var_args</td><td class="diff_next"></td><td class="diff_header" id="to120_136">136</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;because&nbsp;now&nbsp;a&nbsp;sub-function&nbsp;can&nbsp;required&nbsp;arguments&nbsp;that&nbsp;are&nbsp;var_args</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_134">134</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;the&nbsp;super-function.&nbsp;So&nbsp;we&nbsp;special-case&nbsp;this.</td><td class="diff_next"></td><td class="diff_header" id="to120_137">137</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;the&nbsp;super-function.&nbsp;So&nbsp;we&nbsp;special-case&nbsp;this.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to120__3">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to120__3">n</a></td><td class="diff_header" id="to120_138">138</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;isTopFunction&nbsp;=</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_139">139</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thatIsVarArgs&nbsp;&amp;&amp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_140">140</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(thatParamType&nbsp;==&nbsp;null&nbsp;||</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_141">141</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thatParamType.isUnknownType()&nbsp;||</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_142">142</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thatParamType.isNoType());</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_143">143</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isTopFunction)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_144">144</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_145">145</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_146">146</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_135">135</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_147">147</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_136">136</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;don't&nbsp;advance&nbsp;if&nbsp;we&nbsp;have&nbsp;variable&nbsp;arguments</td><td class="diff_next"></td><td class="diff_header" id="to120_148">148</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;don't&nbsp;advance&nbsp;if&nbsp;we&nbsp;have&nbsp;variable&nbsp;arguments</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_137">137</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!thisIsVarArgs)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to120_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!thisIsVarArgs)&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to120__3"></td><td class="diff_header" id="from120_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to120_161">161</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_150">150</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_162">162</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"that"&nbsp;can't&nbsp;be&nbsp;a&nbsp;supertype,&nbsp;because&nbsp;it's&nbsp;missing&nbsp;a&nbsp;required&nbsp;arguement.</td><td class="diff_next"></td><td class="diff_header" id="to120_163">163</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"that"&nbsp;can't&nbsp;be&nbsp;a&nbsp;supertype,&nbsp;because&nbsp;it's&nbsp;missing&nbsp;a&nbsp;required&nbsp;arguement.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to120__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to120__top">t</a></td><td class="diff_header" id="to120_164">164</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(thisParam&nbsp;!=&nbsp;null</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_165">165</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;!thisParam.isOptionalArg()&nbsp;&amp;&amp;&nbsp;!thisParam.isVarArgs()</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_166">166</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;thatParam&nbsp;==&nbsp;null)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_167">167</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_168">168</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_152">152</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to120_169">169</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to120_170">170</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from120_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to120_171">171</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

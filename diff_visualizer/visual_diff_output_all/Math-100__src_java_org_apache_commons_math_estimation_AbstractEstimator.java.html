@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to566__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-100 - Buggy: src/java/org/apache/commons/math/estimation/AbstractEstimator.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-100 - Fixed: src/java/org/apache/commons/math/estimation/AbstractEstimator.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to566__0"></td><td class="diff_header" id="from566_163">163</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to566_163">163</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;compute&nbsp;transpose(J).J,&nbsp;avoiding&nbsp;building&nbsp;big&nbsp;intermediate&nbsp;matrices</td><td class="diff_next"></td><td class="diff_header" id="to566_164">164</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;compute&nbsp;transpose(J).J,&nbsp;avoiding&nbsp;building&nbsp;big&nbsp;intermediate&nbsp;matrices</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_165">165</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;rows&nbsp;=&nbsp;problem.getMeasurements().length;</td><td class="diff_next"></td><td class="diff_header" id="to566_165">165</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;rows&nbsp;=&nbsp;problem.getMeasurements().length;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to566__1">n</a></td><td class="diff_header" id="from566_166">166</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;cols&nbsp;=&nbsp;problem.get<span class="diff_chg">All</span>Parameters().length;</td><td class="diff_next"><a href="#difflib_chg_to566__1">n</a></td><td class="diff_header" id="to566_166">166</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;cols&nbsp;=&nbsp;problem.get<span class="diff_chg">Unbound</span>Parameters().length;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_167">167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;max&nbsp;&nbsp;=&nbsp;cols&nbsp;*&nbsp;rows;</td><td class="diff_next"></td><td class="diff_header" id="to566_167">167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;max&nbsp;&nbsp;=&nbsp;cols&nbsp;*&nbsp;rows;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_168">168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double[][]&nbsp;jTj&nbsp;=&nbsp;new&nbsp;double[cols][cols];</td><td class="diff_next"></td><td class="diff_header" id="to566_168">168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double[][]&nbsp;jTj&nbsp;=&nbsp;new&nbsp;double[cols][cols];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_169">169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;cols;&nbsp;++i)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to566_169">169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;cols;&nbsp;++i)&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to566__1"></td><td class="diff_header" id="from566_199">199</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;double[]&nbsp;guessParametersErrors(EstimationProblem&nbsp;problem)</td><td class="diff_next"></td><td class="diff_header" id="to566_199">199</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;double[]&nbsp;guessParametersErrors(EstimationProblem&nbsp;problem)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_200">200</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;EstimationException&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to566_200">200</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;EstimationException&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_201">201</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;m&nbsp;=&nbsp;problem.getMeasurements().length;</td><td class="diff_next"></td><td class="diff_header" id="to566_201">201</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;m&nbsp;=&nbsp;problem.getMeasurements().length;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to566__2">n</a></td><td class="diff_header" id="from566_202">202</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;p&nbsp;=&nbsp;problem.get<span class="diff_chg">All</span>Parameters().length;</td><td class="diff_next"><a href="#difflib_chg_to566__2">n</a></td><td class="diff_header" id="to566_202">202</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;p&nbsp;=&nbsp;problem.get<span class="diff_chg">Unbound</span>Parameters().length;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_203">203</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;&lt;=&nbsp;p)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to566_203">203</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;&lt;=&nbsp;p)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_204">204</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;EstimationException("no&nbsp;degrees&nbsp;of&nbsp;freedom&nbsp;({0}&nbsp;measuremen</td><td class="diff_next"></td><td class="diff_header" id="to566_204">204</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;EstimationException("no&nbsp;degrees&nbsp;of&nbsp;freedom&nbsp;({0}&nbsp;measuremen</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ts,&nbsp;{1}&nbsp;parameters)",</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ts,&nbsp;{1}&nbsp;parameters)",</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to566__2"></td><td class="diff_header" id="from566_205">205</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;Object[]&nbsp;{&nbsp;new&nbsp;Integer(m),&nbsp;new&nbsp;Int</td><td class="diff_next"></td><td class="diff_header" id="to566_205">205</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;Object[]&nbsp;{&nbsp;new&nbsp;Integer(m),&nbsp;new&nbsp;Int</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eger(p)});</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eger(p)});</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to566_206">206</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to566__top">t</a></td><td class="diff_header" id="from566_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double[]&nbsp;errors&nbsp;=&nbsp;new&nbsp;double[problem.get<span class="diff_chg">All</span>Parameters().length];</td><td class="diff_next"><a href="#difflib_chg_to566__top">t</a></td><td class="diff_header" id="to566_207">207</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double[]&nbsp;errors&nbsp;=&nbsp;new&nbsp;double[problem.get<span class="diff_chg">Unbound</span>Parameters().length];</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_208">208</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;c&nbsp;=&nbsp;Math.sqrt(getChiSquare(problem)&nbsp;/&nbsp;(m&nbsp;-&nbsp;p));</td><td class="diff_next"></td><td class="diff_header" id="to566_208">208</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;double&nbsp;c&nbsp;=&nbsp;Math.sqrt(getChiSquare(problem)&nbsp;/&nbsp;(m&nbsp;-&nbsp;p));</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_209">209</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double[][]&nbsp;covar&nbsp;=&nbsp;getCovariances(problem);</td><td class="diff_next"></td><td class="diff_header" id="to566_209">209</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double[][]&nbsp;covar&nbsp;=&nbsp;getCovariances(problem);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from566_210">210</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;errors.length;&nbsp;++i)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to566_210">210</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;errors.length;&nbsp;++i)&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

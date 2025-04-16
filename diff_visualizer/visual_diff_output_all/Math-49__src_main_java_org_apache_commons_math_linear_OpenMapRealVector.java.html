@@ -1,0 +1,83 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to613__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-49 - Buggy: src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-49 - Fixed: src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to613__0"></td><td class="diff_header" id="from613_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeDivide(RealVector&nbsp;v)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeDivide(RealVector&nbsp;v)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.getDimension());</td><td class="diff_next"></td><td class="diff_header" id="to613_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.getDimension());</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_344">344</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td><td class="diff_next"></td><td class="diff_header" id="to613_344">344</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to613__1">n</a></td><td class="diff_header" id="from613_345">345</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;<span class="diff_sub">res.</span>entries.iterator();</td><td class="diff_next"><a href="#difflib_chg_to613__1">n</a></td><td class="diff_header" id="to613_345">345</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;entries.iterator();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_346">346</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_346">346</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_347">347</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td><td class="diff_next"></td><td class="diff_header" id="to613_347">347</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_348">348</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;/&nbsp;v.getEntry(iter.key()));</td><td class="diff_next"></td><td class="diff_header" id="to613_348">348</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;/&nbsp;v.getEntry(iter.key()));</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to613__1"></td><td class="diff_header" id="from613_355">355</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeDivide(double[]&nbsp;v)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_355">355</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeDivide(double[]&nbsp;v)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.length);</td><td class="diff_next"></td><td class="diff_header" id="to613_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.length);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_357">357</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td><td class="diff_next"></td><td class="diff_header" id="to613_357">357</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to613__2">n</a></td><td class="diff_header" id="from613_358">358</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;<span class="diff_sub">res.</span>entries.iterator();</td><td class="diff_next"><a href="#difflib_chg_to613__2">n</a></td><td class="diff_header" id="to613_358">358</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;entries.iterator();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_359">359</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_359">359</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_360">360</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td><td class="diff_next"></td><td class="diff_header" id="to613_360">360</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_361">361</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;/&nbsp;v[iter.key()]);</td><td class="diff_next"></td><td class="diff_header" id="to613_361">361</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;/&nbsp;v[iter.key()]);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to613__2"></td><td class="diff_header" id="from613_367">367</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeMultiply(RealVector&nbsp;v)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_367">367</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeMultiply(RealVector&nbsp;v)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.getDimension());</td><td class="diff_next"></td><td class="diff_header" id="to613_368">368</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.getDimension());</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td><td class="diff_next"></td><td class="diff_header" id="to613_369">369</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to613__3">n</a></td><td class="diff_header" id="from613_370">370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;<span class="diff_sub">res.</span>entries.iterator();</td><td class="diff_next"><a href="#difflib_chg_to613__3">n</a></td><td class="diff_header" id="to613_370">370</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;entries.iterator();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_371">371</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_371">371</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_372">372</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td><td class="diff_next"></td><td class="diff_header" id="to613_372">372</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;*&nbsp;v.getEntry(iter.key()));</td><td class="diff_next"></td><td class="diff_header" id="to613_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;*&nbsp;v.getEntry(iter.key()));</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to613__3"></td><td class="diff_header" id="from613_380">380</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeMultiply(double[]&nbsp;v)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_380">380</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;OpenMapRealVector&nbsp;ebeMultiply(double[]&nbsp;v)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.length);</td><td class="diff_next"></td><td class="diff_header" id="to613_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkVectorDimensions(v.length);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td><td class="diff_next"></td><td class="diff_header" id="to613_382">382</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenMapRealVector&nbsp;res&nbsp;=&nbsp;new&nbsp;OpenMapRealVector(this);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to613__top">t</a></td><td class="diff_header" id="from613_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;<span class="diff_sub">res.</span>entries.iterator();</td><td class="diff_next"><a href="#difflib_chg_to613__top">t</a></td><td class="diff_header" id="to613_383">383</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;iter&nbsp;=&nbsp;entries.iterator();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_384">384</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to613_384">384</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(iter.hasNext())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_385">385</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td><td class="diff_next"></td><td class="diff_header" id="to613_385">385</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter.advance();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from613_386">386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;*&nbsp;v[iter.key()]);</td><td class="diff_next"></td><td class="diff_header" id="to613_386">386</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.setEntry(iter.key(),&nbsp;iter.value()&nbsp;*&nbsp;v[iter.key()]);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

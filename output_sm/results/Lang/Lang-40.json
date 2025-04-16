@@ -1,0 +1,77 @@
+{
+    "Lang-40": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* <p>Checks if String contains a search String irrespective of case,\n* handling <code>null</code>. Case-insensitivity is defined as by\n* {@link String#equalsIgnoreCase(String)}.\n*\n* <p>A <code>null</code> String will return <code>false</code>.</p>\n*\n* <pre>\n* StringUtils.contains(null, *) = false\n* StringUtils.contains(*, null) = false\n* StringUtils.contains(\"\", \"\") = true\n* StringUtils.contains(\"abc\", \"\") = true\n* StringUtils.contains(\"abc\", \"a\") = true\n* StringUtils.contains(\"abc\", \"z\") = false\n* StringUtils.contains(\"abc\", \"A\") = true\n* StringUtils.contains(\"abc\", \"Z\") = false\n* </pre>\n*\n* @param str  the String to check, may be null\n* @param searchStr  the String to find, may be null\n* @return true if the String contains the search String irrespective of\n* case or false if not or <code>null</code> string input\n*/\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    return contains(str.toUpperCase(), searchStr.toUpperCase());\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testContainsIgnoreCase_LocaleIndependence() {\n\n        Locale orig = Locale.getDefault();\n\n\n\n        Locale[] locales = { Locale.ENGLISH, new Locale(\"tr\"), Locale.getDefault() };\n\n\n\n        String[][] tdata = { \n\n            { \"i\", \"I\" },\n\n            { \"I\", \"i\" },\n\n            { \"\\u03C2\", \"\\u03C3\" },\n\n            { \"\\u03A3\", \"\\u03C2\" },\n\n            { \"\\u03A3\", \"\\u03C3\" },\n\n        };\n\n\n\n        String[][] fdata = { \n\n            { \"\\u00DF\", \"SS\" },\n\n        };\n\n\n\n        try {\n\n            for (int i = 0; i < locales.length; i++) {\n\n                Locale.setDefault(locales[i]);\n\n                for (int j = 0; j < tdata.length; j++) {\n\n                    assertTrue(Locale.getDefault() + \": \" + j + \" \" + tdata[j][0] + \" \" + tdata[j][1], StringUtils\n\n                            .containsIgnoreCase(tdata[j][0], tdata[j][1]));\n\n                }\n\n                for (int j = 0; j < fdata.length; j++) {\n\n                    assertFalse(Locale.getDefault() + \": \" + j + \" \" + fdata[j][0] + \" \" + fdata[j][1], StringUtils\n\n                            .containsIgnoreCase(fdata[j][0], fdata[j][1]));\n\n                }\n\n            }\n\n        } finally {\n\n            Locale.setDefault(orig);\n\n        }\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: en: 0 \u00df SS\n\tat org.apache.commons.lang.StringUtilsEqualsIndexOfTest.testContainsIgnoreCase_LocaleIndependence(StringUtilsEqualsIndexOfTest.java:341)  assertFalse(Locale.getDefault() + \": \" + j + \" \" + fdata[j][0] + \" \" + fdata[j][1], StringUtils                            .containsIgnoreCase(fdata[j][0], fdata[j][1]));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    if (length == 0) {\n        return true;\n    }\n    for (int i = 0; i <= str.length() - length; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ],
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic static boolean containsIgnoreCase(String str, String searchStr) {\n    if (str == null || searchStr == null) {\n        return false;\n    }\n    final int length = searchStr.length();\n    final int max = str.length() - length;\n    for (int i = 0; i <= max; i++) {\n        if (str.regionMatches(true, i, searchStr, 0, length)) {\n            return true;\n        }\n    }\n    return false;\n}\n"
+                ]
+            ]
+        }
+    }
+}

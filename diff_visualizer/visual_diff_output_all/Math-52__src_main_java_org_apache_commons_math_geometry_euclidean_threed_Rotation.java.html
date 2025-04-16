@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to617__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-52 - Buggy: src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Math-52 - Fixed: src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to617__0"></td><td class="diff_header" id="from617_341">341</td><td nowrap="nowrap">&nbsp;&nbsp;Vector3D&nbsp;k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;v1Su1.crossProduct(v2Su2);</td><td class="diff_next"></td><td class="diff_header" id="to617_341">341</td><td nowrap="nowrap">&nbsp;&nbsp;Vector3D&nbsp;k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;v1Su1.crossProduct(v2Su2);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;Vector3D&nbsp;u3&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;u1.crossProduct(u2);</td><td class="diff_next"></td><td class="diff_header" id="to617_342">342</td><td nowrap="nowrap">&nbsp;&nbsp;Vector3D&nbsp;u3&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;u1.crossProduct(u2);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;double&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;k.dotProduct(u3);</td><td class="diff_next"></td><td class="diff_header" id="to617_343">343</td><td nowrap="nowrap">&nbsp;&nbsp;double&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;k.dotProduct(u3);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to617__1">n</a></td><td class="diff_header" id="from617_344">344</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;if&nbsp;(c&nbsp;==&nbsp;0)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to617__1">n</a></td><td class="diff_header" id="to617_344">344</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;final&nbsp;double&nbsp;inPlaneThreshold&nbsp;=&nbsp;0.001;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to617_345">345</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;if&nbsp;(c&nbsp;&lt;=&nbsp;inPlaneThreshold&nbsp;*&nbsp;k.getNorm()&nbsp;*&nbsp;u3.getNorm())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_345">345</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;(q1,&nbsp;q2,&nbsp;q3)&nbsp;vector&nbsp;is&nbsp;close&nbsp;to&nbsp;the&nbsp;(u1,&nbsp;u2)&nbsp;plane</td><td class="diff_next"></td><td class="diff_header" id="to617_346">346</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;(q1,&nbsp;q2,&nbsp;q3)&nbsp;vector&nbsp;is&nbsp;close&nbsp;to&nbsp;the&nbsp;(u1,&nbsp;u2)&nbsp;plane</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_346">346</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;try&nbsp;other&nbsp;vectors</td><td class="diff_next"></td><td class="diff_header" id="to617_347">347</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;we&nbsp;try&nbsp;other&nbsp;vectors</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_347">347</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Vector3D&nbsp;v3&nbsp;=&nbsp;Vector3D.crossProduct(v1,&nbsp;v2);</td><td class="diff_next"></td><td class="diff_header" id="to617_348">348</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Vector3D&nbsp;v3&nbsp;=&nbsp;Vector3D.crossProduct(v1,&nbsp;v2);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to617__1"></td><td class="diff_header" id="from617_350">350</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Vector3D&nbsp;u2Prime&nbsp;=&nbsp;u1.crossProduct(u3);</td><td class="diff_next"></td><td class="diff_header" id="to617_351">351</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Vector3D&nbsp;u2Prime&nbsp;=&nbsp;u1.crossProduct(u3);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_351">351</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;k.dotProduct(u2Prime);</td><td class="diff_next"></td><td class="diff_header" id="to617_352">352</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;k.dotProduct(u2Prime);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_352">352</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to617_353">353</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to617__2">n</a></td><td class="diff_header" id="from617_353">353</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c&nbsp;==&nbsp;0)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to617__2">n</a></td><td class="diff_header" id="to617_354">354</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c&nbsp;&lt;=&nbsp;inPlaneThreshold&nbsp;*&nbsp;k.getNorm()&nbsp;*&nbsp;u2Prime.getNorm())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_354">354</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;(q1,&nbsp;q2,&nbsp;q3)&nbsp;vector&nbsp;is&nbsp;also&nbsp;close&nbsp;to&nbsp;the&nbsp;(u1,&nbsp;u3)&nbsp;plane,</td><td class="diff_next"></td><td class="diff_header" id="to617_355">355</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;(q1,&nbsp;q2,&nbsp;q3)&nbsp;vector&nbsp;is&nbsp;also&nbsp;close&nbsp;to&nbsp;the&nbsp;(u1,&nbsp;u3)&nbsp;plane,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_355">355</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;it&nbsp;is&nbsp;almost&nbsp;aligned&nbsp;with&nbsp;u1:&nbsp;we&nbsp;try&nbsp;(u2,&nbsp;u3)&nbsp;and&nbsp;(v2,&nbsp;v3)</td><td class="diff_next"></td><td class="diff_header" id="to617_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;it&nbsp;is&nbsp;almost&nbsp;aligned&nbsp;with&nbsp;u1:&nbsp;we&nbsp;try&nbsp;(u2,&nbsp;u3)&nbsp;and&nbsp;(v2,&nbsp;v3)</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to617__2"></td><td class="diff_header" id="from617_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;=&nbsp;v2Su2.crossProduct(v3Su3);;</td><td class="diff_next"></td><td class="diff_header" id="to617_357">357</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;=&nbsp;v2Su2.crossProduct(v3Su3);;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_357">357</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;k.dotProduct(u2.crossProduct(u3));;</td><td class="diff_next"></td><td class="diff_header" id="to617_358">358</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;k.dotProduct(u2.crossProduct(u3));;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_358">358</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to617_359">359</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to617__top">t</a></td><td class="diff_header" id="from617_359">359</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c&nbsp;=<span class="diff_sub">=</span>&nbsp;0)&nbsp;{</td><td class="diff_next"><a href="#difflib_chg_to617__top">t</a></td><td class="diff_header" id="to617_360">360</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c&nbsp;<span class="diff_add">&lt;</span>=&nbsp;0)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_360">360</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;(q1,&nbsp;q2,&nbsp;q3)&nbsp;vector&nbsp;is&nbsp;aligned&nbsp;with&nbsp;everything</td><td class="diff_next"></td><td class="diff_header" id="to617_361">361</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;(q1,&nbsp;q2,&nbsp;q3)&nbsp;vector&nbsp;is&nbsp;aligned&nbsp;with&nbsp;everything</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_361">361</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;this&nbsp;is&nbsp;really&nbsp;the&nbsp;identity&nbsp;rotation</td><td class="diff_next"></td><td class="diff_header" id="to617_362">362</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;this&nbsp;is&nbsp;really&nbsp;the&nbsp;identity&nbsp;rotation</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from617_362">362</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q0&nbsp;=&nbsp;1.0;</td><td class="diff_next"></td><td class="diff_header" id="to617_363">363</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q0&nbsp;=&nbsp;1.0;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

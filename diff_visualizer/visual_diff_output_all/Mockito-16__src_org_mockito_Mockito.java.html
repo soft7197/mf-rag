@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to683__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-16 - Buggy: src/org/mockito/Mockito.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Mockito-16 - Fixed: src/org/mockito/Mockito.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to683__0"></td><td class="diff_header" id="from683_824">824</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;mock&nbsp;object</td><td class="diff_next"></td><td class="diff_header" id="to683_824">824</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;mock&nbsp;object</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_825">825</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to683_825">825</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_826">826</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;mock(Class&lt;T&gt;&nbsp;classToMock,&nbsp;MockSettings&nbsp;mockSettings)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to683_826">826</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;mock(Class&lt;T&gt;&nbsp;classToMock,&nbsp;MockSettings&nbsp;mockSettings)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to683__1">n</a></td><td class="diff_header" id="from683_827">827</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;MOCKITO_CORE.mock(classToMock,&nbsp;mockSettings);</td><td class="diff_next"><a href="#difflib_chg_to683__1">n</a></td><td class="diff_header" id="to683_827">827</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;MOCKITO_CORE.mock(classToMock,&nbsp;mockSettings<span class="diff_add">,&nbsp;true</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_828">828</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to683_828">828</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_829">829</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to683_829">829</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_830">830</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to683_830">830</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to683__1"></td><td class="diff_header" id="from683_896">896</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;spy(T&nbsp;object)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to683_896">896</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;&lt;T&gt;&nbsp;T&nbsp;spy(T&nbsp;object)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_897">897</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;MOCKITO_CORE.mock((Class&lt;T&gt;)&nbsp;object.getClass(),&nbsp;withSettings()</td><td class="diff_next"></td><td class="diff_header" id="to683_897">897</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;MOCKITO_CORE.mock((Class&lt;T&gt;)&nbsp;object.getClass(),&nbsp;withSettings()</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_898">898</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.spiedInstance(object)</td><td class="diff_next"></td><td class="diff_header" id="to683_898">898</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.spiedInstance(object)</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to683__top">t</a></td><td class="diff_header" id="from683_899">899</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.defaultAnswer(CALLS_REAL_METHODS));&nbsp;</td><td class="diff_next"><a href="#difflib_chg_to683__top">t</a></td><td class="diff_header" id="to683_899">899</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.defaultAnswer(CALLS_REAL_METHODS)<span class="diff_add">,&nbsp;true</span>);&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_900">900</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to683_900">900</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_901">901</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to683_901">901</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from683_902">902</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td><td class="diff_next"></td><td class="diff_header" id="to683_902">902</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/**</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

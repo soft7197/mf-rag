@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to214__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-94 - Buggy: src/com/google/javascript/jscomp/NodeUtil.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-94 - Fixed: src/com/google/javascript/jscomp/NodeUtil.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to214__0"></td><td class="diff_header" id="from214_326">326</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td><td class="diff_next"></td><td class="diff_header" id="to214_326">326</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_327">327</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_327">327</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_328">328</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Binary&nbsp;operators&nbsp;are&nbsp;only&nbsp;valid&nbsp;if&nbsp;both&nbsp;children&nbsp;are&nbsp;valid.</td><td class="diff_next"></td><td class="diff_header" id="to214_328">328</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Binary&nbsp;operators&nbsp;are&nbsp;only&nbsp;valid&nbsp;if&nbsp;both&nbsp;children&nbsp;are&nbsp;valid.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to214__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to214__1">n</a></td><td class="diff_header" id="to214_329">329</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.ADD:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_329">329</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITAND:</td><td class="diff_next"></td><td class="diff_header" id="to214_330">330</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITAND:</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to214__1"></td><td class="diff_header" id="from214_330">330</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITNOT:</td><td class="diff_next"></td><td class="diff_header" id="to214_331">331</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITNOT:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_331">331</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITOR:</td><td class="diff_next"></td><td class="diff_header" id="to214_332">332</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITOR:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_332">332</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITXOR:</td><td class="diff_next"></td><td class="diff_header" id="to214_333">333</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BITXOR:</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to214__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to214__2">n</a></td><td class="diff_header" id="to214_334">334</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.DIV:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_335">335</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.EQ:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_336">336</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.GE:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_337">337</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.GT:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_338">338</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.LE:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_339">339</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.LSH:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_340">340</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.LT:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_341">341</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.MOD:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_342">342</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.MUL:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_343">343</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NE:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_344">344</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.RSH:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_345">345</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.SHEQ:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_346">346</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.SHNE:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_347">347</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.SUB:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_348">348</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.URSH:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_349">349</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isValidDefineValue(val.getFirstChild(),&nbsp;defines)</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_350">350</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;isValidDefineValue(val.getLastChild(),&nbsp;defines);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_333">333</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_351">351</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to214__2"></td><td class="diff_header" id="from214_334">334</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Uniary&nbsp;operators&nbsp;are&nbsp;valid&nbsp;if&nbsp;the&nbsp;child&nbsp;is&nbsp;valid.</td><td class="diff_next"></td><td class="diff_header" id="to214_352">352</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Uniary&nbsp;operators&nbsp;are&nbsp;valid&nbsp;if&nbsp;the&nbsp;child&nbsp;is&nbsp;valid.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_335">335</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NOT:</td><td class="diff_next"></td><td class="diff_header" id="to214_353">353</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NOT:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_336">336</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NEG:</td><td class="diff_next"></td><td class="diff_header" id="to214_354">354</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.NEG:</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to214__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to214__top">t</a></td><td class="diff_header" id="to214_355">355</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.POS:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_337">337</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isValidDefineValue(val.getFirstChild(),&nbsp;defines);</td><td class="diff_next"></td><td class="diff_header" id="to214_356">356</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isValidDefineValue(val.getFirstChild(),&nbsp;defines);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_338">338</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to214_357">357</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from214_339">339</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Names&nbsp;are&nbsp;valid&nbsp;if&nbsp;and&nbsp;only&nbsp;if&nbsp;they&nbsp;are&nbsp;defines&nbsp;themselves.</td><td class="diff_next"></td><td class="diff_header" id="to214_358">358</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Names&nbsp;are&nbsp;valid&nbsp;if&nbsp;and&nbsp;only&nbsp;if&nbsp;they&nbsp;are&nbsp;defines&nbsp;themselves.</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

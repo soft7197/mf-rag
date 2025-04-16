@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to302__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-4 - Buggy: gson/src/main/java/com/google/gson/stream/JsonReader.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-4 - Fixed: gson/src/main/java/com/google/gson/stream/JsonReader.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to302__0"></td><td class="diff_header" id="from302_571">571</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkLenient();</td><td class="diff_next"></td><td class="diff_header" id="to302_571">571</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkLenient();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_572">572</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_SINGLE_QUOTED;</td><td class="diff_next"></td><td class="diff_header" id="to302_572">572</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_SINGLE_QUOTED;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_573">573</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'"':</td><td class="diff_next"></td><td class="diff_header" id="to302_573">573</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'"':</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to302__1">n</a></td><td class="diff_header" id="from302_574">574</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stackSize&nbsp;==&nbsp;1)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to302__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_575">575</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkLenient();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_576">576</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_577">577</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_DOUBLE_QUOTED;</td><td class="diff_next"></td><td class="diff_header" id="to302_574">574</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_DOUBLE_QUOTED;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_578">578</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'[':</td><td class="diff_next"></td><td class="diff_header" id="to302_575">575</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'[':</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_579">579</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_BEGIN_ARRAY;</td><td class="diff_next"></td><td class="diff_header" id="to302_576">576</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_BEGIN_ARRAY;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to302__1"></td><td class="diff_header" id="from302_581">581</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_BEGIN_OBJECT;</td><td class="diff_next"></td><td class="diff_header" id="to302_578">578</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;peeked&nbsp;=&nbsp;PEEKED_BEGIN_OBJECT;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_582">582</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;default:</td><td class="diff_next"></td><td class="diff_header" id="to302_579">579</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;default:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_583">583</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos--;&nbsp;//&nbsp;Don't&nbsp;consume&nbsp;the&nbsp;first&nbsp;character&nbsp;in&nbsp;a&nbsp;literal&nbsp;value.</td><td class="diff_next"></td><td class="diff_header" id="to302_580">580</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos--;&nbsp;//&nbsp;Don't&nbsp;consume&nbsp;the&nbsp;first&nbsp;character&nbsp;in&nbsp;a&nbsp;literal&nbsp;value.</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to302__top">t</a></td><td class="diff_header" id="from302_584">584</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"><a href="#difflib_chg_to302__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_585">585</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stackSize&nbsp;==&nbsp;1)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_586">586</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkLenient();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_587">587</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to302_581">581</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_588">588</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to302_582">582</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from302_589">589</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;result&nbsp;=&nbsp;peekKeyword();</td><td class="diff_next"></td><td class="diff_header" id="to302_583">583</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;result&nbsp;=&nbsp;peekKeyword();</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to337__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-110 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/impl/JavaUtilCollectionsDeserializers.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-110 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/impl/JavaUtilCollectionsDeserializers.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_44">44</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;02-Mar-2019,&nbsp;tatu:&nbsp;for&nbsp;[databind#2265],&nbsp;need&nbsp;to&nbsp;consider&nbsp;possible&nbsp;alterna</td><td class="diff_next"></td><td class="diff_header" id="to337_44">44</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;02-Mar-2019,&nbsp;tatu:&nbsp;for&nbsp;[databind#2265],&nbsp;need&nbsp;to&nbsp;consider&nbsp;possible&nbsp;alterna</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to337__0"></td><td class="diff_header">></td><td nowrap="nowrap">te&nbsp;type...</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">te&nbsp;type...</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_45">45</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;we&nbsp;essentially&nbsp;coerce&nbsp;into&nbsp;the&nbsp;other&nbsp;one</td><td class="diff_next"></td><td class="diff_header" id="to337_45">45</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;we&nbsp;essentially&nbsp;coerce&nbsp;into&nbsp;the&nbsp;other&nbsp;one</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_46">46</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to337_46">46</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to337__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to337__1">n</a></td><td class="diff_header" id="to337_47">47</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;static&nbsp;Class&lt;?&gt;&nbsp;CLASS_UNMODIFIABLE_LIST_ALIAS;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;static&nbsp;Class&lt;?&gt;&nbsp;CLASS_UNMODIFIABLE_MAP;</td><td class="diff_next"></td><td class="diff_header" id="to337_48">48</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;static&nbsp;Class&lt;?&gt;&nbsp;CLASS_UNMODIFIABLE_MAP;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_48">48</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to337_49">49</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_49">49</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to337_50">50</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;{</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to337__1"></td><td class="diff_header" id="from337_55">55</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_SINGLETON_LIST&nbsp;=&nbsp;list.getClass();</td><td class="diff_next"></td><td class="diff_header" id="to337_56">56</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_SINGLETON_LIST&nbsp;=&nbsp;list.getClass();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_56">56</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_UNMODIFIABLE_LIST&nbsp;=&nbsp;Collections.unmodifiableList(list).getClass();</td><td class="diff_next"></td><td class="diff_header" id="to337_57">57</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_UNMODIFIABLE_LIST&nbsp;=&nbsp;Collections.unmodifiableList(list).getClass();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_57">57</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;for&nbsp;[databind#2265]</td><td class="diff_next"></td><td class="diff_header" id="to337_58">58</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;for&nbsp;[databind#2265]</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to337__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to337__2">n</a></td><td class="diff_header" id="to337_59">59</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_UNMODIFIABLE_LIST_ALIAS&nbsp;=&nbsp;Collections.unmodifiableList(new&nbsp;LinkedL</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ist&lt;Object&gt;()).getClass();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_58">58</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to337_60">60</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_59">59</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;?,?&gt;&nbsp;map&nbsp;=&nbsp;Collections.singletonMap("a",&nbsp;"b");</td><td class="diff_next"></td><td class="diff_header" id="to337_61">61</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;?,?&gt;&nbsp;map&nbsp;=&nbsp;Collections.singletonMap("a",&nbsp;"b");</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_60">60</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_SINGLETON_MAP&nbsp;=&nbsp;map.getClass();</td><td class="diff_next"></td><td class="diff_header" id="to337_62">62</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS_SINGLETON_MAP&nbsp;=&nbsp;map.getClass();</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_75">75</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(type.hasRawClass(CLASS_SINGLETON_SET))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to337_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(type.hasRawClass(CLASS_SINGLETON_SET))&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to337__2"></td><td class="diff_header" id="from337_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conv&nbsp;=&nbsp;converter(TYPE_SINGLETON_SET,&nbsp;type,&nbsp;Set.class);</td><td class="diff_next"></td><td class="diff_header" id="to337_78">78</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conv&nbsp;=&nbsp;converter(TYPE_SINGLETON_SET,&nbsp;type,&nbsp;Set.class);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_77">77</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[databind#2265]:&nbsp;we&nbsp;may&nbsp;have&nbsp;another&nbsp;impl&nbsp;type&nbsp;for&nbsp;unmodifiable&nbsp;Lists</td><td class="diff_next"></td><td class="diff_header" id="to337_79">79</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[databind#2265]:&nbsp;we&nbsp;may&nbsp;have&nbsp;another&nbsp;impl&nbsp;type&nbsp;for&nbsp;unmodifiable&nbsp;Lists</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">,&nbsp;check&nbsp;both</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">,&nbsp;check&nbsp;both</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to337__top">t</a></td><td class="diff_header" id="from337_78">78</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(type.hasRawClass(CLASS_UNMODIFIABLE_LIST))&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to337__top">t</a></td><td class="diff_header" id="to337_80">80</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(type.hasRawClass(CLASS_UNMODIFIABLE_LIST)&nbsp;||&nbsp;type.hasRawClass</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">(CLASS_UNMODIFIABLE_LIST_ALIAS))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_79">79</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conv&nbsp;=&nbsp;converter(TYPE_UNMODIFIABLE_LIST,&nbsp;type,&nbsp;List.class);</td><td class="diff_next"></td><td class="diff_header" id="to337_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conv&nbsp;=&nbsp;converter(TYPE_UNMODIFIABLE_LIST,&nbsp;type,&nbsp;List.class);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_80">80</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(type.hasRawClass(CLASS_UNMODIFIABLE_SET))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to337_82">82</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(type.hasRawClass(CLASS_UNMODIFIABLE_SET))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from337_81">81</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conv&nbsp;=&nbsp;converter(TYPE_UNMODIFIABLE_SET,&nbsp;type,&nbsp;Set.class);</td><td class="diff_next"></td><td class="diff_header" id="to337_83">83</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conv&nbsp;=&nbsp;converter(TYPE_UNMODIFIABLE_SET,&nbsp;type,&nbsp;Set.class);</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

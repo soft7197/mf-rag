@@ -1,0 +1,57 @@
+{
+    "Mockito-22": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n//stolen from hamcrest because I didn't want to have more dependency than Matcher class\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        return o1.equals(o2);\n    }\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldKnowIfObjectsAreEqual() throws Exception {\n\n        int[] arr = new int[] {1, 2};\n\n        assertTrue(areEqual(arr, arr));\n\n        assertTrue(areEqual(new int[] {1, 2}, new int[] {1, 2}));\n\n        assertTrue(areEqual(new Double[] {1.0}, new Double[] {1.0}));\n\n        assertTrue(areEqual(new String[0], new String[0]));\n\n        assertTrue(areEqual(new Object[10], new Object[10]));\n\n        assertTrue(areEqual(new int[] {1}, new Integer[] {1}));\n\n        assertTrue(areEqual(new Object[] {\"1\"}, new String[] {\"1\"}));\n\n\tObject badequals=new BadEquals();\n\n\tassertTrue(areEqual(badequals,badequals));\n\n\n\n        assertFalse(areEqual(new Object[9], new Object[10]));\n\n        assertFalse(areEqual(new int[] {1, 2}, new int[] {1}));\n\n        assertFalse(areEqual(new int[] {1}, new double[] {1.0}));\n\n    }\n\n```\n#Error message: java.lang.RuntimeException\n\tat org.mockito.internal.matchers.Equality.areEqual(Equality.java:18)  return o1.equals(o2);\n\tat org.mockito.internal.matchers.EqualityTest.shouldKnowIfObjectsAreEqual(EqualityTest.java:24)  assertTrue(areEqual(badequals,badequals));\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else if (o1.getClass() != o2.getClass()) {\n        return false;\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else if (isArray(o1) || isArray(o2)) {\n        return false;\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        return o1 == o2 || o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else if (isArray(o1) || isArray(o2)) {\n        return false;\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else if (o1.getClass().isArray() || o2.getClass().isArray()) {\n        return false;\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        try {\n            return o1.equals(o2);\n        } catch (Exception e) {\n            return o1 == o2;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else if (o1 instanceof Number && o2 instanceof Number) {\n        return ((Number) o1).doubleValue() == ((Number) o2).doubleValue();\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1) && isArray(o2)) {\n        return areArraysEqual(o1, o2);\n    } else if (o1 instanceof Number && o2 instanceof Number) {\n        return ((Number) o1).doubleValue() == ((Number) o2).doubleValue();\n    } else {\n        return o1.equals(o2);\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        return o1 == o2 || o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        try {\n            return o1.equals(o2);\n        } catch (Exception e) {\n            return o1 == o2;\n        }\n    }\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        return o1 == o2 || o1.equals(o2);\n    }\n}\n"
+                ],
+                [
+                    "\npublic static boolean areEqual(Object o1, Object o2) {\n    if (o1 == null || o2 == null) {\n        return o1 == null && o2 == null;\n    } else if (isArray(o1)) {\n        return isArray(o2) && areArraysEqual(o1, o2);\n    } else {\n        try {\n            return o1.equals(o2);\n        } catch (Exception e) {\n            return o1 == o2;\n        }\n    }\n}\n"
+                ]
+            ]
+        }
+    }
+}

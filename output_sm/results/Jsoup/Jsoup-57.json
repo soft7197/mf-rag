@@ -1,0 +1,86 @@
+{
+    "Jsoup-57": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\nRemove an attribute by key. <b>Case insensitive.</b>\n@param key attribute key to remove\n*/\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            attributes.remove(attrKey);\n    }\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testChainedRemoveAttributes() {\n\n        String html = \"<a one two three four>Text</a>\";\n\n        Document doc = Jsoup.parse(html);\n\n        Element a = doc.select(\"a\").first();\n\n        a\n\n            .removeAttr(\"zero\")\n\n            .removeAttr(\"one\")\n\n            .removeAttr(\"two\")\n\n            .removeAttr(\"three\")\n\n            .removeAttr(\"four\")\n\n            .removeAttr(\"five\");\n\n        assertEquals(\"<a>Text</a>\", a.outerHtml());\n\n    }\n\n```\n#Error message: java.util.ConcurrentModificationException\n\tat org.jsoup.nodes.Attributes.removeIgnoreCase(Attributes.java:123)  String attrKey = it.next();\n\tat org.jsoup.nodes.Node.removeAttr(Node.java:128)  attributes.removeIgnoreCase(attributeKey);\n\tat org.jsoup.nodes.ElementTest.testChainedRemoveAttributes(ElementTest.java:966)  a\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            return;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove(); // Use iterator's remove method to avoid ConcurrentModificationException\n            break; // Exit after removing the first matching attribute\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            return;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            return;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove(); // Use iterator's remove method to avoid ConcurrentModificationException\n            break; // Exit after removing the first matching attribute\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            return;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key))\n            it.remove();\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            return;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    for (Iterator<String> it = attributes.keySet().iterator(); it.hasNext(); ) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ],
+                [
+                    "\npublic void removeIgnoreCase(String key) {\n    Validate.notEmpty(key);\n    if (attributes == null)\n        return;\n    Iterator<String> it = attributes.keySet().iterator();\n    while (it.hasNext()) {\n        String attrKey = it.next();\n        if (attrKey.equalsIgnoreCase(key)) {\n            it.remove();\n            break;\n        }\n    }\n}\n"
+                ]
+            ]
+        }
+    }
+}

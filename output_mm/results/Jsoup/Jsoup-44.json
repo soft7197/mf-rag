@@ -1,0 +1,195 @@
+{
+    "Jsoup-44": {
+        "function_num": 3,
+        "functions": [
+            {
+                "path": "src/main/java/org/jsoup/parser/TreeBuilder.java",
+                "start_loc": 60,
+                "end_loc": 62,
+                "buggy_function": "    protected boolean processStartTag(String name) {\n        return process(start.reset().name(name));\n    }\n",
+                "fixed_function": "    protected boolean processStartTag(String name) {\n        if (currentToken == start) { // don't recycle an in-use token\n            return process(new Token.StartTag().name(name));\n        }\n        return process(start.reset().name(name));\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "protected boolean processStartTag(String name) { return process(start.reset().name(name)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "protected boolean processStartTag(String name) { return process(start.reset().name(name)); }"
+                    ],
+                    [
+                        0.9989041686058044,
+                        "protected boolean processEndTag(String name) { return process(end.reset().name(name)); }"
+                    ],
+                    [
+                        0.9723064303398132,
+                        "public Connection.Response execute() throws IOException { res = Response.execute(req); return res; }"
+                    ],
+                    [
+                        0.972261905670166,
+                        "public Connection postDataCharset(String charset) { req.postDataCharset(charset); return this; }"
+                    ],
+                    [
+                        0.9717459082603455,
+                        "public Elements not(String query) { Elements out = Selector.select(query, this); return Selector.filterOut(this, out); }"
+                    ],
+                    [
+                        0.9706813097000122,
+                        "protected boolean isSafeTag(String tag) { return tagNames.contains(TagName.valueOf(tag)); }"
+                    ],
+                    [
+                        0.9705523252487183,
+                        "public void addFirst(Character c) { addFirst(c.toString()); }"
+                    ],
+                    [
+                        0.9682314395904541,
+                        "public Element last() { return isEmpty() ? null : get(size() - 1); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true
+            },
+            {
+                "path": "src/main/java/org/jsoup/parser/TreeBuilder.java",
+                "start_loc": 64,
+                "end_loc": 68,
+                "buggy_function": "    public boolean processStartTag(String name, Attributes attrs) {\n        start.reset();\n        start.nameAttr(name, attrs);\n        return process(start);\n    }\n",
+                "fixed_function": "    public boolean processStartTag(String name, Attributes attrs) {\n        if (currentToken == start) { // don't recycle an in-use token\n            return process(new Token.StartTag().nameAttr(name, attrs));\n        }\n        start.reset();\n        start.nameAttr(name, attrs);\n        return process(start);\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "public boolean processStartTag(String name, Attributes attrs) { start.reset(); start.nameAttr(name, attrs); return process(start); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0,
+                        "public boolean processStartTag(String name, Attributes attrs) { start.reset(); start.nameAttr(name, attrs); return process(start); }"
+                    ],
+                    [
+                        0.9824814200401306,
+                        "public Element appendElement(String tagName) { Element child = new Element(Tag.valueOf(tagName), baseUri()); appendChild(child); return child; }"
+                    ],
+                    [
+                        0.9797093868255615,
+                        "public boolean matches(Element root, Element element) { if (root == element) return false; Element parent = element.parent(); return parent != null && evaluator.matches(root, parent); }"
+                    ],
+                    [
+                        0.979434072971344,
+                        "public void head(Node node, int depth) { if (node instanceof Element) { Element el = (Element) node; if (eval.matches(root, el)) elements.add(el); } }"
+                    ],
+                    [
+                        0.9761927723884583,
+                        "public void put(String key, String value) { Attribute attr = new Attribute(key, value); put(attr); }"
+                    ],
+                    [
+                        0.976018488407135,
+                        "public boolean matches(Element root, Element element) { if (root == element) return false; Element prev = element.previousElementSibling(); return prev != null && evaluator.matches(root, prev); }"
+                    ],
+                    [
+                        0.9758780598640442,
+                        "public Element prependElement(String tagName) { Element child = new Element(Tag.valueOf(tagName), baseUri()); prependChild(child); return child; }"
+                    ],
+                    [
+                        0.9743898510932922,
+                        "public Elements not(String query) { Elements out = Selector.select(query, this); return Selector.filterOut(this, out); }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true
+            },
+            {
+                "path": "src/main/java/org/jsoup/parser/TreeBuilder.java",
+                "start_loc": 70,
+                "end_loc": 72,
+                "buggy_function": "    protected boolean processEndTag(String name) {\n        return process(end.reset().name(name));\n    }\n",
+                "fixed_function": "    protected boolean processEndTag(String name) {\n        if (currentToken == end) { // don't recycle an in-use token\n            return process(new Token.EndTag().name(name));\n        }\n        return process(end.reset().name(name));\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "protected boolean processEndTag(String name) { return process(end.reset().name(name)); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.000000238418579,
+                        "protected boolean processEndTag(String name) { return process(end.reset().name(name)); }"
+                    ],
+                    [
+                        0.9989043474197388,
+                        "protected boolean processStartTag(String name) { return process(start.reset().name(name)); }"
+                    ],
+                    [
+                        0.9733821153640747,
+                        "public Connection.Response execute() throws IOException { res = Response.execute(req); return res; }"
+                    ],
+                    [
+                        0.9724185466766357,
+                        "public Connection postDataCharset(String charset) { req.postDataCharset(charset); return this; }"
+                    ],
+                    [
+                        0.9716649651527405,
+                        "public void addFirst(Character c) { addFirst(c.toString()); }"
+                    ],
+                    [
+                        0.9713128805160522,
+                        "public Elements not(String query) { Elements out = Selector.select(query, this); return Selector.filterOut(this, out); }"
+                    ],
+                    [
+                        0.9699820280075073,
+                        "public Elements select(String cssQuery) { return Selector.select(cssQuery, this); }"
+                    ],
+                    [
+                        0.9690344929695129,
+                        "protected boolean isSafeTag(String tag) { return tagNames.contains(TagName.valueOf(tag)); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "org.jsoup.parser.HtmlParserTest::testInvalidTableContents"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    protected boolean processEndTag(String name) {\n        return process(end.reset().name(name));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testInvalidTableContents() throws IOException {\n        File in = ParseTest.getFile(\"/htmltests/table-invalid-elements.html\");\n        Document doc = Jsoup.parse(in, \"UTF-8\");\n        doc.outputSettings().prettyPrint(true);\n        String rendered = doc.toString();\n        int endOfEmail = rendered.indexOf(\"Comment\");\n        int guarantee = rendered.indexOf(\"Why am I here?\");\n        assertTrue(\"Comment not found\", endOfEmail > -1);\n        assertTrue(\"Search text not found\", guarantee > -1);\n        assertTrue(\"Search text did not come after comment\", guarantee > endOfEmail);\n    }\n```\n#Error message: junit.framework.AssertionFailedError: Search text did not come after comment\n\tat org.jsoup.parser.HtmlParserTest.testInvalidTableContents(HtmlParserTest.java:864)  assertTrue(\"Search text did not come after comment\", guarantee > endOfEmail);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\nprotected boolean processEndTag(String name) {\n    end.reset().name(name);\n    return process(end);\n}\n",
+                            "\n    protected boolean processEndTag(String name) {\n        return process(end.reset().name(name).type(Token.Type.EndTag));\n    }\n",
+                            "\nprotected boolean processEndTag(String name) {\n    // If the end tag is processed, ensure that the processing is dependent on the tag being an end tag and valid.\n    if (end.reset().name(name).isEndTag()) {\n        return process(end);\n    }\n    return false;\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).type(Token.Type.EndTag));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).resetAttributes());\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    end.reset().name(name);\n    return process(end);\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).ensureEndTag());\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).type(Token.TokenType.EndTag));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).type(Token.TokenType.EndTag));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).endTag(true));\n}\n"
+                        ],
+                        "evaluation_done": true
+                    },
+                    "2": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) and relevant context to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    protected boolean processEndTag(String name) {\n        return process(end.reset().name(name));\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testInvalidTableContents() throws IOException {\n        File in = ParseTest.getFile(\"/htmltests/table-invalid-elements.html\");\n        Document doc = Jsoup.parse(in, \"UTF-8\");\n        doc.outputSettings().prettyPrint(true);\n        String rendered = doc.toString();\n        int endOfEmail = rendered.indexOf(\"Comment\");\n        int guarantee = rendered.indexOf(\"Why am I here?\");\n        assertTrue(\"Comment not found\", endOfEmail > -1);\n        assertTrue(\"Search text not found\", guarantee > -1);\n        assertTrue(\"Search text did not come after comment\", guarantee > endOfEmail);\n    }\n```\n#Error message: junit.framework.AssertionFailedError: Search text did not come after comment\n\tat org.jsoup.parser.HtmlParserTest.testInvalidTableContents(HtmlParserTest.java:864)  assertTrue(\"Search text did not come after comment\", guarantee > endOfEmail);\n\n\n## \ud83d\udca1 Context from Project\n\n            \n```java\nprotected boolean processStartTag(String name) { return process(start.reset().name(name)); }\n```\n\n            \n```java\npublic Connection.Response execute() throws IOException { res = Response.execute(req); return res; }\n```\n\n            \n```java\npublic Connection postDataCharset(String charset) { req.postDataCharset(charset); return this; }\n```\n\n            \n```java\npublic void addFirst(Character c) { addFirst(c.toString()); }\n```\n\n            \n```java\npublic Elements not(String query) { Elements out = Selector.select(query, this); return Selector.filterOut(this, out); }\n```\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).type(Token.Type.EndTag));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).end(true));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).ensureSyntax());\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).type(TokenType.END_TAG));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    if (name == null || name.isEmpty()) {\n        return false;\n    }\n    return process(end.reset().name(name));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).isEnd(true));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).setSelfClosing(false));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    end.reset();\n    end.name(name);\n    return process(end);\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).isSelfClosing(false));\n}\n",
+                            "\nprotected boolean processEndTag(String name) {\n    return process(end.reset().name(name).isEndTag(true));\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "org.jsoup.parser.HtmlParserTest::testInvalidTableContents": {
+                "path": "src/test/java/org/jsoup/parser/HtmlParserTest.java",
+                "function_name": "testInvalidTableContents",
+                "src": "    public void testInvalidTableContents() throws IOException {\n        File in = ParseTest.getFile(\"/htmltests/table-invalid-elements.html\");\n        Document doc = Jsoup.parse(in, \"UTF-8\");\n        doc.outputSettings().prettyPrint(true);\n        String rendered = doc.toString();\n        int endOfEmail = rendered.indexOf(\"Comment\");\n        int guarantee = rendered.indexOf(\"Why am I here?\");\n        assertTrue(\"Comment not found\", endOfEmail > -1);\n        assertTrue(\"Search text not found\", guarantee > -1);\n        assertTrue(\"Search text did not come after comment\", guarantee > endOfEmail);\n    }",
+                "error_msg": "junit.framework.AssertionFailedError: Search text did not come after comment\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat org.jsoup.parser.HtmlParserTest.testInvalidTableContents(HtmlParserTest.java:864)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:309)\n\tat junit.framework.JUnit4TestAdapter.run(JUnit4TestAdapter.java:38)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.AssertionFailedError: Search text did not come after comment\n\tat org.jsoup.parser.HtmlParserTest.testInvalidTableContents(HtmlParserTest.java:864)  assertTrue(\"Search text did not come after comment\", guarantee > endOfEmail);"
+            }
+        },
+        "evaluation_done": true,
+        "context_generation_done": true,
+        "evaluation_done2": true
+    }
+}

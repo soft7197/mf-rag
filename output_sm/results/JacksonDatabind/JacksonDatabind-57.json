@@ -1,0 +1,81 @@
+{
+    "JacksonDatabind-57": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Overloaded version of {@link #readValue(InputStream)}.\n*/\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src), \n            true));\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testRootBeans() throws Exception\n\n    {\n\n        for (Source src : Source.values()) {\n\n            _testRootBeans(src);\n\n        }\n\n    }\n\n    private void _testRootBeans(Source srcType) throws Exception\n\n```\n#Error message: \tat com.fasterxml.jackson.databind.ObjectReader._bindAndReadValues(ObjectReader.java:1630)  p.nextToken();\n\tat com.fasterxml.jackson.databind.ObjectReader.readValues(ObjectReader.java:1441)  return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src),                true));\n\tat com.fasterxml.jackson.databind.seq.ReadValuesTest._iterator(ReadValuesTest.java:71)  return r.readValues(b, 3, b.length-6);\n\tat com.fasterxml.jackson.databind.seq.ReadValuesTest._testRootBeans(ReadValuesTest.java:87)  MappingIterator<Bean> it = _iterator(MAPPER.readerFor(Bean.class),                JSON, srcType);\n\tat com.fasterxml.jackson.databind.seq.ReadValuesTest.testRootBeans(ReadValuesTest.java:49)  _testRootBeans(src);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    JsonParser parser = _parserFactory.createParser(src, offset, length);\n    return _bindAndReadValues(_considerFilter(parser, true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    JsonParser parser = _parserFactory.createParser(src, offset, length);\n    return _bindAndReadValues(_considerFilter(parser, true));\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    JsonParser parser = _parserFactory.createParser(src, offset, length);\n    return _bindAndReadValues(_considerFilter(parser, true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    JsonParser parser = _parserFactory.createParser(src, offset, length);\n    return _bindAndReadValues(_considerFilter(parser, true));\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    return _bindAndReadValues(_considerFilter(_parserFactory.createParser(src, offset, length), \n            true));\n}\n"
+                ],
+                [
+                    "\npublic <T> MappingIterator<T> readValues(byte[] src, int offset, int length)\n    throws IOException, JsonProcessingException\n{\n    if (_dataFormatReaders != null) {\n        return _detectBindAndReadValues(_dataFormatReaders.findFormat(src, offset, length), false);\n    }\n    JsonParser parser = _parserFactory.createParser(src, offset, length);\n    return _bindAndReadValues(_considerFilter(parser, true));\n}\n"
+                ]
+            ]
+        }
+    }
+}

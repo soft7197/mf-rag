@@ -1,0 +1,152 @@
+{
+    "JacksonDatabind-2": {
+        "function_num": 2,
+        "functions": [
+            {
+                "path": "src/main/java/com/fasterxml/jackson/databind/util/TokenBuffer.java",
+                "start_loc": 780,
+                "end_loc": 788,
+                "buggy_function": "    @Override\n    public void writeObject(Object value) throws IOException\n    {\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n            /* 28-May-2014, tatu: Tricky choice here; if no codec, should we\n             *   err out, or just embed? For now, do latter.\n             */\n//          throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n",
+                "fixed_function": "    @Override\n    public void writeObject(Object value) throws IOException\n    {\n        if (value == null) {\n            writeNull();\n            return;\n        }\n        Class<?> raw = value.getClass();\n        if (raw == byte[].class) {\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n            return;\n        } else if (_objectCodec == null) {\n            /* 28-May-2014, tatu: Tricky choice here; if no codec, should we\n             *   err out, or just embed? For now, do latter.\n             */\n//          throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n        } else {\n            _objectCodec.writeValue(this, value);\n        }\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "@Override public void writeObject(Object value) throws IOException { _append(JsonToken.VALUE_EMBEDDED_OBJECT, value); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "@Override public void writeObject(Object value) throws IOException { _append(JsonToken.VALUE_EMBEDDED_OBJECT, value); }"
+                    ],
+                    [
+                        0.987454891204834,
+                        "@Override public void writeNumber(String encodedValue) throws IOException, JsonGenerationException { _append(JsonToken.VALUE_NUMBER_FLOAT, encodedValue); }"
+                    ],
+                    [
+                        0.9815430045127869,
+                        "@Override public void writeTree(TreeNode node) throws IOException { _append(JsonToken.VALUE_EMBEDDED_OBJECT, node); }"
+                    ],
+                    [
+                        0.9692991375923157,
+                        "@Override protected BeanSerializerBase withFilterId(Object filterId) { return new BeanAsArraySerializer(this, _objectIdWriter, filterId); }"
+                    ],
+                    [
+                        0.9691855311393738,
+                        "@Override public void writeNumber(long l) throws IOException, JsonGenerationException { _append(JsonToken.VALUE_NUMBER_INT, Long.valueOf(l)); }"
+                    ],
+                    [
+                        0.968948483467102,
+                        "@Override public int writeBinary(Base64Variant b64variant, InputStream data, int dataLength) { return -1; }"
+                    ],
+                    [
+                        0.9676525592803955,
+                        "@Override public CreatorProperty withValueDeserializer(JsonDeserializer<?> deser) { return new CreatorProperty(this, deser); }"
+                    ]
+                ],
+                "directly_related_tests": [
+                    "com.fasterxml.jackson.databind.node.TestConversions::testConversionOfPojos"
+                ],
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n\n    @Override\n    public void writeObject(Object value) throws IOException\n    {\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n            /* 28-May-2014, tatu: Tricky choice here; if no codec, should we\n             *   err out, or just embed? For now, do latter.\n             */\n//          throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testConversionOfPojos() throws Exception\n    {\n        final Issue467Bean input = new Issue467Bean(13);\n        final String EXP = \"{\\\"x\\\":13}\";\n        \n        // first, sanity check\n        String json = MAPPER.writeValueAsString(input);\n        assertEquals(EXP, json);\n\n        // then via conversions: should become JSON Object\n        JsonNode tree = MAPPER.valueToTree(input);\n        assertTrue(\"Expected Object, got \"+tree.getNodeType(), tree.isObject());\n        assertEquals(EXP, MAPPER.writeValueAsString(tree));\n    }\n```\n#Error message: junit.framework.AssertionFailedError: Expected Object, got POJO\n\tat com.fasterxml.jackson.databind.node.TestConversions.testConversionOfPojos(TestConversions.java:263)  assertTrue(\"Expected Object, got \"+tree.getNodeType(), tree.isObject());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+                        "patches": [
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value instanceof JsonNode) {\n        _append(((JsonNode) value).asToken(), value);\n    } else {\n        ObjectCodec codec = getCodec();\n        if (codec != null) {\n            codec.writeValue(this, value);\n        } else {\n            throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n        }\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value == null) {\n        _append(JsonToken.VALUE_NULL, null);\n    } else if (_objectCodec != null) {\n        _objectCodec.writeValue(_generator, value);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value == null) {\n        _append(JsonToken.VALUE_NULL);\n        return;\n    }\n    ObjectCodec codec = null;\n    if (_generator != null) {\n        codec = _generator.getCodec();\n    }\n    if (codec != null) {\n        codec.writeValue(_generator, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec == null) {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n    _objectCodec.writeValue(this, value);\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value instanceof JsonNode) {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    } else {\n        if (_objectCodec == null) {\n            throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n        }\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, _objectCodec.valueToTree(value));\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value == null) {\n        _append(JsonToken.VALUE_NULL);\n    } else if (value instanceof JsonNode) {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException {\n    if (value == null) {\n        _append(JsonToken.VALUE_NULL, null);\n    } else if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec == null) {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n    _append(JsonToken.START_OBJECT, null);\n    _objectCodec.writeValue(this, value);\n    _append(JsonToken.END_OBJECT, null);\n}\n"
+                        ],
+                        "plausible_patches": [
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value instanceof JsonNode) {\n        _append(((JsonNode) value).asToken(), value);\n    } else {\n        ObjectCodec codec = getCodec();\n        if (codec != null) {\n            codec.writeValue(this, value);\n        } else {\n            throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n        }\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec == null) {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n    _objectCodec.writeValue(this, value);\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException {\n    if (value == null) {\n        _append(JsonToken.VALUE_NULL, null);\n    } else if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value instanceof JsonNode) {\n        _append(((JsonNode) value).asToken(), value);\n    } else {\n        ObjectCodec codec = getCodec();\n        if (codec != null) {\n            codec.writeValue(this, value);\n        } else {\n            throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n        }\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec == null) {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n    _objectCodec.writeValue(this, value);\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException {\n    if (value == null) {\n        _append(JsonToken.VALUE_NULL, null);\n    } else if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n",
+                            "\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (_objectCodec != null) {\n        _objectCodec.writeValue(this, value);\n    } else {\n        _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n    }\n}\n"
+                        ],
+                        "evaluation_done": true
+                    }
+                }
+            },
+            {
+                "path": "src/main/java/com/fasterxml/jackson/databind/util/TokenBuffer.java",
+                "start_loc": 790,
+                "end_loc": 796,
+                "buggy_function": "    @Override\n    public void writeTree(TreeNode node) throws IOException\n    {\n\n            // as with 'writeObject()', is codec optional?\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, node);\n    }\n",
+                "fixed_function": "    @Override\n    public void writeTree(TreeNode node) throws IOException\n    {\n        if (node == null) {\n            writeNull();\n            return;\n        }\n\n        if (_objectCodec == null) {\n            // as with 'writeObject()', is codec optional?\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, node);\n        } else {\n            _objectCodec.writeTree(this, node);\n        }\n    }\n",
+                "comment": "",
+                "normalized_body": [
+                    "@Override public void writeTree(TreeNode node) throws IOException { _append(JsonToken.VALUE_EMBEDDED_OBJECT, node); }"
+                ],
+                "top_similar_methods": [
+                    [
+                        1.0000001192092896,
+                        "@Override public void writeTree(TreeNode node) throws IOException { _append(JsonToken.VALUE_EMBEDDED_OBJECT, node); }"
+                    ],
+                    [
+                        0.9847971200942993,
+                        "@Override public void writeNumber(String encodedValue) throws IOException, JsonGenerationException { _append(JsonToken.VALUE_NUMBER_FLOAT, encodedValue); }"
+                    ],
+                    [
+                        0.9815430045127869,
+                        "@Override public void writeObject(Object value) throws IOException { _append(JsonToken.VALUE_EMBEDDED_OBJECT, value); }"
+                    ],
+                    [
+                        0.9742814302444458,
+                        "@Override public void writeNumber(short i) throws IOException, JsonGenerationException { _append(JsonToken.VALUE_NUMBER_INT, Short.valueOf(i)); }"
+                    ],
+                    [
+                        0.9735708832740784,
+                        "@Override public void writeNumber(long l) throws IOException, JsonGenerationException { _append(JsonToken.VALUE_NUMBER_INT, Long.valueOf(l)); }"
+                    ],
+                    [
+                        0.9727349281311035,
+                        "@Override public void writeNumber(int i) throws IOException, JsonGenerationException { _append(JsonToken.VALUE_NUMBER_INT, Integer.valueOf(i)); }"
+                    ],
+                    [
+                        0.972317636013031,
+                        "@Override public JavaType getDelegateType(DeserializationConfig config) { return _delegateType; }"
+                    ]
+                ],
+                "non_directly_related_tests": [],
+                "no_relatable_failing_tests": true,
+                "generation": {
+                    "1": {
+                        "prompt": "You are an expert Java developer. Below are several buggy methods from a large Java project.\nAlthough these methods are not directly linked to any failing test cases, we suspect they may contain bugs.\nYour task is to fix these methods using your reasoning and by learning from the few-shot examples provided below.\n\n---\n\n## Few-shot Examples\n\n\n### Example 1 - Buggy:\n```java\n    @Override\n    public void writeObject(Object value) throws IOException\n    {\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);\n            /* 28-May-2014, tatu: Tricky choice here; if no codec, should we\n             *   err out, or just embed? For now, do latter.\n             */\n//          throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n    }\n\n```\n\n### Example 1 - Fixed:\n```java\n\n@Override\npublic void writeObject(Object value) throws IOException\n{\n    if (value instanceof JsonNode) {\n        _append(((JsonNode) value).asToken(), value);\n    } else {\n        ObjectCodec codec = getCodec();\n        if (codec != null) {\n            codec.writeValue(this, value);\n        } else {\n            throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeObject() called\");\n        }\n    }\n}\n\n```\n\n\n---\n\n## Buggy Methods to Fix\n\nBelow are the methods suspected to be buggy. Apply your best judgment to fix them based on patterns from the examples.\n\n\n### Method 1:\n```java\n    @Override\n    public void writeTree(TreeNode node) throws IOException\n    {\n\n            // as with 'writeObject()', is codec optional?\n            _append(JsonToken.VALUE_EMBEDDED_OBJECT, node);\n    }\n\n```\n\n\n---\n\n## \ud83c\udf1f Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations, comments, or extra text.\n",
+                        "patches": [
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    if (node instanceof JsonNode) {\n        _append(((JsonNode) node).asToken(), node);\n    } else {\n        ObjectCodec codec = getCodec();\n        if (codec != null) {\n            codec.writeTree(this, node);\n        } else {\n            throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n        }\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n",
+                            "\n@Override\npublic void writeTree(TreeNode node) throws IOException\n{\n    ObjectCodec codec = getCodec();\n    if (codec != null) {\n        codec.writeTree(this, node);\n    } else {\n        throw new JsonMappingException(\"No ObjectCodec configured for TokenBuffer, writeTree() called\");\n    }\n}\n"
+                        ]
+                    }
+                }
+            }
+        ],
+        "trigger_test": {
+            "com.fasterxml.jackson.databind.node.TestConversions::testConversionOfPojos": {
+                "path": "src/test/java/com/fasterxml/jackson/databind/node/TestConversions.java",
+                "function_name": "testConversionOfPojos",
+                "src": "    public void testConversionOfPojos() throws Exception\n    {\n        final Issue467Bean input = new Issue467Bean(13);\n        final String EXP = \"{\\\"x\\\":13}\";\n        \n        // first, sanity check\n        String json = MAPPER.writeValueAsString(input);\n        assertEquals(EXP, json);\n\n        // then via conversions: should become JSON Object\n        JsonNode tree = MAPPER.valueToTree(input);\n        assertTrue(\"Expected Object, got \"+tree.getNodeType(), tree.isObject());\n        assertEquals(EXP, MAPPER.writeValueAsString(tree));\n    }",
+                "error_msg": "junit.framework.AssertionFailedError: Expected Object, got POJO\n\tat junit.framework.Assert.fail(Assert.java:57)\n\tat junit.framework.Assert.assertTrue(Assert.java:22)\n\tat junit.framework.TestCase.assertTrue(TestCase.java:192)\n\tat com.fasterxml.jackson.databind.node.TestConversions.testConversionOfPojos(TestConversions.java:263)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat junit.framework.TestCase.runTest(TestCase.java:176)\n\tat junit.framework.TestCase.runBare(TestCase.java:141)\n\tat junit.framework.TestResult$1.protect(TestResult.java:122)\n\tat junit.framework.TestResult.runProtected(TestResult.java:142)\n\tat junit.framework.TestResult.run(TestResult.java:125)\n\tat junit.framework.TestCase.run(TestCase.java:129)\n\tat junit.framework.TestSuite.runTest(TestSuite.java:255)\n\tat junit.framework.TestSuite.run(TestSuite.java:250)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:520)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1484)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:872)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1972)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute1(JUnitTask.java:824)\n\tat org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:2277)\n\tat org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)\n\tat sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)\n\tat org.apache.tools.ant.Task.perform(Task.java:348)\n\tat org.apache.tools.ant.Target.execute(Target.java:392)\n\tat org.apache.tools.ant.Target.performTasks(Target.java:413)\n\tat org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)\n\tat org.apache.tools.ant.Project.executeTarget(Project.java:1368)\n\tat org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)\n\tat org.apache.tools.ant.Project.executeTargets(Project.java:1251)\n\tat org.apache.tools.ant.Main.runBuild(Main.java:811)\n\tat org.apache.tools.ant.Main.startAnt(Main.java:217)\n\tat org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)\n\tat org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)",
+                "clean_error_msg": "junit.framework.AssertionFailedError: Expected Object, got POJO\n\tat com.fasterxml.jackson.databind.node.TestConversions.testConversionOfPojos(TestConversions.java:263)  assertTrue(\"Expected Object, got \"+tree.getNodeType(), tree.isObject());"
+            }
+        },
+        "evaluation_done": true,
+        "generation_done_for_notest_methods": true
+    }
+}

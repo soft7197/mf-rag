@@ -1,0 +1,56 @@
+{
+    "Cli-33": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Print the specified text to the specified PrintWriter.\n*\n* @param pw The printWriter to write the help to\n* @param width The number of characters to display per line\n* @param nextLineTabStop The position on the next line for the first tab.\n* @param text The text to be written to the PrintWriter\n*/\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n    {\n        StringBuffer sb = new StringBuffer(text.length());\n\n        renderWrappedText(sb, width, nextLineTabStop, text);\n        pw.println(sb.toString());\n    }\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testIndentedHeaderAndFooter()\n\n    {\n\n        // related to CLI-207\n\n        Options options = new Options();\n\n        HelpFormatter formatter = new HelpFormatter();\n\n        String header = \"  Header1\\n  Header2\";\n\n        String footer = \"  Footer1\\n  Footer2\";\n\n        StringWriter out = new StringWriter();\n\n        formatter.printHelp(new PrintWriter(out), 80, \"foobar\", header, options, 2, 2, footer, true);\n\n\n\n        assertEquals(\n\n                \"usage: foobar\" + EOL +\n\n                \"  Header1\" + EOL +\n\n                \"  Header2\" + EOL +\n\n                \"\" + EOL +\n\n                \"  Footer1\" + EOL +\n\n                \"  Footer2\" + EOL\n\n                , out.toString());\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<...e: foobar\n  Header1\n[  Header2\n\n  Footer1\n  ]Footer2\n> but was:<...e: foobar\n  Header1\n[Header2\n\n  Footer1\n]Footer2\n>\n\tat org.apache.commons.cli.HelpFormatterTest.testIndentedHeaderAndFooter(HelpFormatterTest.java:441)  assertEquals(                \"usage: foobar\" + EOL +                \"  Header1\" + EOL +                \"  Header2\" + EOL +                \"\" + EOL +                \"  Footer1\" + EOL +                \"  Footer2\" + EOL                , out.toString());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n{\n    StringBuffer sb = new StringBuffer(text.length());\n\n    // Split the input text by lines\n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        // Render each line individually\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        // Append a newline character after each line\n        sb.append(System.lineSeparator());\n    }\n    pw.print(sb.toString());\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text) {\n    StringBuffer sb = new StringBuffer(text.length());\n\n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        if (!sb.isEmpty()) {\n            sb.append(System.lineSeparator());\n        }\n        renderWrappedText(sb, width, nextLineTabStop, line);\n    }\n    pw.println(sb.toString());\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n{\n    StringBuffer sb = new StringBuffer(text.length());\n    \n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        sb.append(System.lineSeparator());\n    }\n    \n    pw.print(sb.toString());\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n    {\n        StringBuffer sb = new StringBuffer(text.length());\n\n        renderWrappedText(sb, width, nextLineTabStop, text);\n        \n        // Split the lines by new line and ensure proper indentation\n        String[] lines = sb.toString().split(\"\\n\");\n        for (int i = 0; i < lines.length; i++) {\n            if (i > 0) {\n                pw.print(\" \".repeat(nextLineTabStop));\n            }\n            pw.println(lines[i]);\n        }\n    }\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n    {\n        StringBuffer sb = new StringBuffer(text.length());\n\n        renderWrappedText(sb, width, nextLineTabStop, text);\n        pw.print(sb.toString());\n    }\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text) {\n    StringBuffer sb = new StringBuffer(text.length());\n\n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        sb.append(System.lineSeparator());\n    }\n\n    pw.print(sb.toString());\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n    {\n        StringBuffer sb = new StringBuffer(text.length());\n\n        renderWrappedText(sb, width, nextLineTabStop, text);\n\n        // Split the result into lines and add leading spaces for each line\n        String[] lines = sb.toString().split(\"\\n\");\n        for (int i = 0; i < lines.length; i++) {\n            if (i > 0) {\n                pw.print(\" \".repeat(nextLineTabStop));\n            }\n            pw.println(lines[i]);\n        }\n    }\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n{\n    StringBuffer sb = new StringBuffer(text.length());\n\n    renderWrappedText(sb, width, nextLineTabStop, text);\n\n    // Ensure that each line starts with a space if it was indented\n    String[] lines = sb.toString().split(\"\\n\");\n    for (int i = 0; i < lines.length; i++) {\n        if (!lines[i].isEmpty() && lines[i].charAt(0) != ' ') {\n            lines[i] = \" \" + lines[i];\n        }\n    }\n    \n    pw.println(String.join(\"\\n\", lines));\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n    {\n        StringBuffer sb = new StringBuffer(text.length());\n\n        renderWrappedText(sb, width, nextLineTabStop, text);\n        pw.println(sb.toString().replaceAll(\"(?m)^\", \" \"));\n    }\n"
+                ],
+                [
+                    "\n/**\n* Print the specified text to the specified PrintWriter.\n*\n* @param pw The printWriter to write the help to\n* @param width The number of characters to display per line\n* @param nextLineTabStop The position on the next line for the first tab.\n* @param text The text to be written to the PrintWriter\n*/\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n    {\n        StringBuffer sb = new StringBuffer(text.length());\n\n        renderWrappedText(sb, width, nextLineTabStop, text);\n\n        // Fix: Add a space after each new line for indentation\n        String[] lines = sb.toString().split(\"\\n\");\n        for (int i = 0; i < lines.length; i++) {\n            if (i > 0) {\n                pw.print(\" \");\n            }\n            pw.println(lines[i]);\n        }\n    }\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n{\n    StringBuffer sb = new StringBuffer(text.length());\n\n    // Split the input text by lines\n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        // Render each line individually\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        // Append a newline character after each line\n        sb.append(System.lineSeparator());\n    }\n    pw.print(sb.toString());\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n{\n    StringBuffer sb = new StringBuffer(text.length());\n    \n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        sb.append(System.lineSeparator());\n    }\n    \n    pw.print(sb.toString());\n}\n"
+                ],
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text) {\n    StringBuffer sb = new StringBuffer(text.length());\n\n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        sb.append(System.lineSeparator());\n    }\n\n    pw.print(sb.toString());\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic void printWrapped(PrintWriter pw, int width, int nextLineTabStop, String text)\n{\n    StringBuffer sb = new StringBuffer(text.length());\n\n    // Split the input text by lines\n    String[] lines = text.split(\"\\n\");\n    for (String line : lines) {\n        // Render each line individually\n        renderWrappedText(sb, width, nextLineTabStop, line);\n        // Append a newline character after each line\n        sb.append(System.lineSeparator());\n    }\n    pw.print(sb.toString());\n}\n"
+                ]
+            ]
+        }
+    }
+}

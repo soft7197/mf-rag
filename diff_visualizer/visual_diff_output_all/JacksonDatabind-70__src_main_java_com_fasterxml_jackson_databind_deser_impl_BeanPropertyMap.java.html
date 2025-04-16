@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to403__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-70 - Buggy: src/main/java/com/fasterxml/jackson/databind/deser/impl/BeanPropertyMap.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonDatabind-70 - Fixed: src/main/java/com/fasterxml/jackson/databind/deser/impl/BeanPropertyMap.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from403_437">437</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!found)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to403_437">437</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!found)&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to403__0"></td><td class="diff_header" id="from403_438">438</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;09-Jan-2017,&nbsp;tatu:&nbsp;Important:&nbsp;must&nbsp;check&nbsp;name&nbsp;slot&nbsp;and&nbsp;NOT&nbsp;pr</td><td class="diff_next"></td><td class="diff_header" id="to403_438">438</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;09-Jan-2017,&nbsp;tatu:&nbsp;Important:&nbsp;must&nbsp;check&nbsp;name&nbsp;slot&nbsp;and&nbsp;NOT&nbsp;pr</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">operty&nbsp;name,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">operty&nbsp;name,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from403_439">439</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;as&nbsp;only&nbsp;former&nbsp;is&nbsp;lower-case&nbsp;in&nbsp;case-insensitive&nbsp;case</td><td class="diff_next"></td><td class="diff_header" id="to403_439">439</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;as&nbsp;only&nbsp;former&nbsp;is&nbsp;lower-case&nbsp;in&nbsp;case-insensitive&nbsp;case</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to403__top">t</a></td><td class="diff_header" id="from403_440">440</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found&nbsp;=&nbsp;key.equals(<span class="diff_chg">p</span>r<span class="diff_sub">op.g</span>e<span class="diff_sub">tN</span>a<span class="diff_chg">me()</span>);</td><td class="diff_next"><a href="#difflib_chg_to403__top">t</a></td><td class="diff_header" id="to403_440">440</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found&nbsp;=&nbsp;key.equals(<span class="diff_chg">_hashA</span>rea<span class="diff_chg">[i-1]</span>);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from403_441">441</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(found)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to403_441">441</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(found)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from403_442">442</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;need&nbsp;to&nbsp;leave&nbsp;a&nbsp;hole&nbsp;here</td><td class="diff_next"></td><td class="diff_header" id="to403_442">442</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;need&nbsp;to&nbsp;leave&nbsp;a&nbsp;hole&nbsp;here</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from403_443">443</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_propsInOrder[_findFromOrdered(prop)]&nbsp;=&nbsp;null;</td><td class="diff_next"></td><td class="diff_header" id="to403_443">443</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_propsInOrder[_findFromOrdered(prop)]&nbsp;=&nbsp;null;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

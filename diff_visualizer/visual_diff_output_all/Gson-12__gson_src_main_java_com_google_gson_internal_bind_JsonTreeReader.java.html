@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to294__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-12 - Buggy: gson/src/main/java/com/google/gson/internal/bind/JsonTreeReader.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Gson-12 - Fixed: gson/src/main/java/com/google/gson/internal/bind/JsonTreeReader.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to294__0"></td><td class="diff_header" id="from294_259">259</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathNames[stackSize&nbsp;-&nbsp;2]&nbsp;=&nbsp;"null";</td><td class="diff_next"></td><td class="diff_header" id="to294_259">259</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathNames[stackSize&nbsp;-&nbsp;2]&nbsp;=&nbsp;"null";</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from294_260">260</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to294_260">260</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to294__1"></td><td class="diff_header" id="from294_261">261</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popStack();</td><td class="diff_next"></td><td class="diff_header" id="to294_261">261</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popStack();</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to294__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to294__1">n</a></td><td class="diff_header" id="to294_262">262</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stackSize&nbsp;&gt;&nbsp;0)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from294_262">262</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathNames[stackSize&nbsp;-&nbsp;1]&nbsp;=&nbsp;"null";</td><td class="diff_next"></td><td class="diff_header" id="to294_263">263</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathNames[stackSize&nbsp;-&nbsp;1]&nbsp;=&nbsp;"null";</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to294__2">n</a></td><td class="diff_header" id="from294_263">263</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"><a href="#difflib_chg_to294__2">n</a></td><td class="diff_header" id="to294_264">264</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to294__2"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to294_265">265</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to294_266">266</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stackSize&nbsp;&gt;&nbsp;0)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from294_264">264</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathIndices[stackSize&nbsp;-&nbsp;1]++;</td><td class="diff_next"></td><td class="diff_header" id="to294_267">267</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathIndices[stackSize&nbsp;-&nbsp;1]++;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to294__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to294__top">t</a></td><td class="diff_header" id="to294_268">268</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from294_265">265</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to294_269">269</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from294_266">266</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to294_270">270</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from294_267">267</td><td nowrap="nowrap">&nbsp;&nbsp;@Override&nbsp;public&nbsp;String&nbsp;toString()&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to294_271">271</td><td nowrap="nowrap">&nbsp;&nbsp;@Override&nbsp;public&nbsp;String&nbsp;toString()&nbsp;{</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

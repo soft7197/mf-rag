@@ -1,0 +1,78 @@
+{
+    "Mockito-29": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/*\n* Copyright (c) 2007 Mockito contributors\n* This program is made available under the terms of the MIT License.\n*/\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void shouldNotThrowNPEWhenNullPassedToSame() {\n\n        mock.objectArgMethod(\"not null\");\n\n\n\n        verify(mock).objectArgMethod(same(null));\n\n    }\n\n```\n#Error message: java.lang.Exception: Unexpected exception, expected<java.lang.AssertionError> but was<java.lang.NullPointerException>\nCaused by: java.lang.NullPointerException\n\tat org.mockito.internal.matchers.Same.describeTo(Same.java:29)  description.appendText(wanted.toString());\n\tat org.mockito.internal.matchers.LocalizedMatcher.describeTo(LocalizedMatcher.java:33)  actualMatcher.describeTo(description);\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingTool.toStringEquals(ArgumentMatchingTool.java:48)  return StringDescription.toString(m).equals(arg == null? \"null\" : arg.toString());\n\tat org.mockito.internal.verification.argumentmatching.ArgumentMatchingTool.getSuspiciouslyNotMatchingArgsIndexes(ArgumentMatchingTool.java:30)  && toStringEquals(m, arguments[i])\n\tat org.mockito.internal.verification.checkers.MissingInvocationChecker.check(MissingInvocationChecker.java:37)  Integer[] indexesOfSuspiciousArgs = argumentMatchingTool.getSuspiciouslyNotMatchingArgsIndexes(wanted.getMatchers(), similar.getArguments());\n\tat org.mockito.internal.verification.Times.verify(Times.java:35)  missingInvocation.check(data.getAllInvocations(), data.getWanted());\n\tat org.mockito.internal.verification.MockAwareVerificationMode.verify(MockAwareVerificationMode.java:21)  mode.verify(data);\n\tat org.mockito.internal.MockHandler.handle(MockHandler.java:80)  verificationMode.verify(data);\n\tat org.mockito.internal.creation.MethodInterceptorFilter.intercept(MethodInterceptorFilter.java:47)  return handler.handle(invocation);\n\tat org.mockitousage.bugs.NPEWithCertainMatchersTest.shouldNotThrowNPEWhenNullPassedToSame(NPEWithCertainMatchersTest.java:65)  verify(mock).objectArgMethod(same(null));\n\t... 33 more\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ],
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ]
+            ],
+            "compiler_error_or_timeout": true,
+            "plausible_patches": [
+                [
+                    "\npublic void describeTo(Description description) {\n    description.appendText(\"same(\");\n    appendQuoting(description);\n    description.appendText(wanted == null ? \"null\" : wanted.toString());\n    appendQuoting(description);\n    description.appendText(\")\");\n}\n"
+                ]
+            ]
+        }
+    }
+}

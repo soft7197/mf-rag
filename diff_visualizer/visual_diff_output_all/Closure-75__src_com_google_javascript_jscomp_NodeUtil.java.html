@@ -1,0 +1,68 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to193__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-75 - Buggy: src/com/google/javascript/jscomp/NodeUtil.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-75 - Fixed: src/com/google/javascript/jscomp/NodeUtil.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to193__0"></td><td class="diff_header" id="from193_310">310</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to193_310">310</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_311">311</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to193_311">311</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to193__1"></td><td class="diff_header" id="from193_312">312</td><td nowrap="nowrap">&nbsp;&nbsp;static&nbsp;Double&nbsp;getStringNumberValue(String&nbsp;rawJsString)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to193_312">312</td><td nowrap="nowrap">&nbsp;&nbsp;static&nbsp;Double&nbsp;getStringNumberValue(String&nbsp;rawJsString)&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to193__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to193__1">n</a></td><td class="diff_header" id="to193_313">313</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(rawJsString.contains("\u000b"))&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_313">313</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;vertical&nbsp;tab&nbsp;is&nbsp;not&nbsp;always&nbsp;whitespace</td><td class="diff_next"></td><td class="diff_header" id="to193_314">314</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;vertical&nbsp;tab&nbsp;is&nbsp;not&nbsp;always&nbsp;whitespace</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to193__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to193__2">n</a></td><td class="diff_header" id="to193_315">315</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to193_316">316</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_314">314</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to193_317">317</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_315">315</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;s&nbsp;=&nbsp;trimJsWhiteSpace(rawJsString);</td><td class="diff_next"></td><td class="diff_header" id="to193_318">318</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;s&nbsp;=&nbsp;trimJsWhiteSpace(rawJsString);</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_316">316</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;return&nbsp;ScriptRuntime.toNumber(s);</td><td class="diff_next"></td><td class="diff_header" id="to193_319">319</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;return&nbsp;ScriptRuntime.toNumber(s);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to193__2"></td><td class="diff_header" id="from193_372">372</td><td nowrap="nowrap">&nbsp;&nbsp;static&nbsp;TernaryValue&nbsp;isStrWhiteSpaceChar(int&nbsp;c)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to193_375">375</td><td nowrap="nowrap">&nbsp;&nbsp;static&nbsp;TernaryValue&nbsp;isStrWhiteSpaceChar(int&nbsp;c)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_373">373</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(c)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to193_376">376</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(c)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_374">374</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'\u000B':&nbsp;//&nbsp;&lt;VT&gt;</td><td class="diff_next"></td><td class="diff_header" id="to193_377">377</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'\u000B':&nbsp;//&nbsp;&lt;VT&gt;</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to193__top">t</a></td><td class="diff_header" id="from193_375">375</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;TernaryValue.TRUE;</span></td><td class="diff_next"><a href="#difflib_chg_to193__top">t</a></td><td class="diff_header" id="to193_378">378</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;TernaryValue.UNKNOWN;&nbsp;&nbsp;//&nbsp;IE&nbsp;says&nbsp;"no",&nbsp;EcmaScript&nbsp;says&nbsp;"yes"</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_376">376</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'&nbsp;':&nbsp;//&nbsp;&lt;SP&gt;</td><td class="diff_next"></td><td class="diff_header" id="to193_379">379</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'&nbsp;':&nbsp;//&nbsp;&lt;SP&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_377">377</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'\n':&nbsp;//&nbsp;&lt;LF&gt;</td><td class="diff_next"></td><td class="diff_header" id="to193_380">380</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'\n':&nbsp;//&nbsp;&lt;LF&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from193_378">378</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'\r':&nbsp;//&nbsp;&lt;CR&gt;</td><td class="diff_next"></td><td class="diff_header" id="to193_381">381</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;'\r':&nbsp;//&nbsp;&lt;CR&gt;</td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

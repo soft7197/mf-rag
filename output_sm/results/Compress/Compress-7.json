@@ -1,0 +1,65 @@
+{
+    "Compress-7": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Parse an entry name from a buffer.\n* Parsing stops when a NUL is found\n* or the buffer length is reached.\n*\n* @param buffer The buffer from which to parse.\n* @param offset The offset into the buffer from which to parse.\n* @param length The maximum number of bytes to parse.\n* @return The entry name.\n*/\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuffer result = new StringBuffer(length);\n    int          end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) buffer[i]);\n    }\n\n    return result.toString();\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testRoundTripNames(){\n\n        checkName(\"\");\n\n        checkName(\"The quick brown fox\\n\");\n\n        checkName(\"\\177\");\n\n        // checkName(\"\\0\"); // does not work, because NUL is ignored\n\n        // COMPRESS-114\n\n        checkName(\"0302-0601-3\u00b1\u00b1\u00b1F06\u00b1W220\u00b1ZB\u00b1LALALA\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1CAN\u00b1\u00b1DC\u00b1\u00b1\u00b104\u00b1060302\u00b1MOE.model\");\n\n    }\n\n```\n#Error message: junit.framework.ComparisonFailure: expected:<0302-0601-3[\u00b1\u00b1\u00b1F06\u00b1W220\u00b1ZB\u00b1LALALA\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1CAN\u00b1\u00b1DC\u00b1\u00b1\u00b104\u00b1060302\u00b1]MOE.model> but was:<0302-0601-3[\uffb1\uffb1\uffb1F06\uffb1W220\uffb1ZB\uffb1LALALA\uffb1\uffb1\uffb1\uffb1\uffb1\uffb1\uffb1\uffb1\uffb1\uffb1CAN\uffb1\uffb1DC\uffb1\uffb1\uffb104\uffb1060302\uffb1]MOE.model>\n\tat org.apache.commons.compress.archivers.tar.TarUtilsTest.checkName(TarUtilsTest.java:132)  assertEquals(string, TarUtils.parseName(buff, 0, len));\n\tat org.apache.commons.compress.archivers.tar.TarUtilsTest.testRoundTripNames(TarUtilsTest.java:126)  checkName(\"0302-0601-3\u00b1\u00b1\u00b1F06\u00b1W220\u00b1ZB\u00b1LALALA\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1\u00b1CAN\u00b1\u00b1DC\u00b1\u00b1\u00b104\u00b1060302\u00b1MOE.model\");\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    String result = new String(buffer, offset, length);\n    int nulIndex = result.indexOf('\\0');\n    if (nulIndex != -1) {\n        result = result.substring(0, nulIndex);\n    }\n    return result;\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    String result = new String(buffer, offset, length);\n    int nullIndex = result.indexOf('\\0');\n    if (nullIndex != -1) {\n        result = result.substring(0, nullIndex);\n    }\n    return result;\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append(new String(buffer, i, 1, java.nio.charset.StandardCharsets.ISO_8859_1));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    String result = new String(buffer, offset, length);\n    int nullIndex = result.indexOf('\\0');\n    if (nullIndex != -1) {\n        result = result.substring(0, nullIndex);\n    }\n    return result;\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    String result;\n    try {\n        result = new String(buffer, offset, length, \"ISO-8859-1\");\n    } catch (UnsupportedEncodingException e) {\n        result = new String(buffer, offset, length);\n    }\n    int nulIndex = result.indexOf('\\0');\n    if (nulIndex != -1) {\n        result = result.substring(0, nulIndex);\n    }\n    return result;\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    String result = new String(buffer, offset, length);\n    int nulIndex = result.indexOf('\\0');\n    if (nulIndex != -1) {\n        return result.substring(0, nulIndex);\n    }\n    return result;\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append(new String(buffer, i, 1, java.nio.charset.StandardCharsets.ISO_8859_1));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append(new String(buffer, i, 1, java.nio.charset.StandardCharsets.ISO_8859_1));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append(new String(buffer, i, 1, java.nio.charset.StandardCharsets.ISO_8859_1));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append((char) (buffer[i] & 0xFF));\n    }\n\n    return result.toString();\n}\n"
+                ],
+                [
+                    "\npublic static String parseName(byte[] buffer, final int offset, final int length) {\n    StringBuilder result = new StringBuilder(length);\n    int end = offset + length;\n\n    for (int i = offset; i < end; ++i) {\n        if (buffer[i] == 0) {\n            break;\n        }\n        result.append(new String(buffer, i, 1, java.nio.charset.StandardCharsets.ISO_8859_1));\n    }\n\n    return result.toString();\n}\n"
+                ]
+            ]
+        }
+    }
+}

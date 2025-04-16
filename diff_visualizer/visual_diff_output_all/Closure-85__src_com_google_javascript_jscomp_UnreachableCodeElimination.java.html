@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to203__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-85 - Buggy: src/com/google/javascript/jscomp/UnreachableCodeElimination.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Closure-85 - Fixed: src/com/google/javascript/jscomp/UnreachableCodeElimination.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to203__0"></td><td class="diff_header" id="from203_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;n;</td><td class="diff_next"></td><td class="diff_header" id="to203_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;n;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to203_151">151</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_152">152</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_152">152</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to203__1">n</a></td><td class="diff_header" id="from203_153">153</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.getParent()&nbsp;==&nbsp;null)&nbsp;{</span></td><td class="diff_next"><a href="#difflib_chg_to203__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_154">154</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;DiGraphEdge&lt;Node,Branch&gt;&gt;&nbsp;outEdges&nbsp;=&nbsp;gNode.getOutEdges();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_155">155</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(outEdges.size()&nbsp;==&nbsp;1)&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_156">156</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;tryRemoveUnconditionalBranching(outEdges.get(0).getDestination().</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">getValue());</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to203__1"></td><td class="diff_header" id="from203_157">157</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_158">158</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_159">159</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(n.getType())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to203_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(n.getType())&nbsp;{</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to203__2">n</a></td><td class="diff_header" id="from203_160">160</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.BLOCK:</span></td><td class="diff_next"><a href="#difflib_chg_to203__2">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_161">161</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.hasChildren())&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_162">162</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;first&nbsp;=&nbsp;n.getFirstChild();</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_163">163</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;tryRemoveUnconditionalBranching(first);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_164">164</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_165">165</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;tryRemoveUnconditionalBranching(ControlFlowAnalysis.computeFoll</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">owNode(n));</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_166">166</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_167">167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.RETURN:</td><td class="diff_next"></td><td class="diff_header" id="to203_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Token.RETURN:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_168">168</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.hasChildren())&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to203_155">155</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(n.hasChildren())&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_169">169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td><td class="diff_next"></td><td class="diff_header" id="to203_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to203__2"></td><td class="diff_header" id="from203_180">180</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(n.getNext()&nbsp;==&nbsp;null&nbsp;||&nbsp;n.getNext().getType()&nbsp;==&nbsp;Token.FUNCTION))&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to203_167">167</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(n.getNext()&nbsp;==&nbsp;null&nbsp;||&nbsp;n.getNext().getType()&nbsp;==&nbsp;Token.FUNCTION))&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_181">181</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_168">168</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_182">182</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preconditions.checkState(outEdges.get(0).getValue()&nbsp;==&nbsp;Branch.UNCOND);</td><td class="diff_next"></td><td class="diff_header" id="to203_169">169</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preconditions.checkState(outEdges.get(0).getValue()&nbsp;==&nbsp;Branch.UNCOND);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to203__3">n</a></td><td class="diff_header" id="from203_183">183</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;fallThrough&nbsp;=&nbsp;tryRemoveUnconditionalBranching(computeFollowing(n)</span></td><td class="diff_next"><a href="#difflib_chg_to203__3">n</a></td><td class="diff_header" id="to203_170">170</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;fallThrough&nbsp;=&nbsp;computeFollowing(n);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">);</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_184">184</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;nextCfgNode&nbsp;=&nbsp;outEdges.get(0).getDestination().getValue();</td><td class="diff_next"></td><td class="diff_header" id="to203_171">171</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;nextCfgNode&nbsp;=&nbsp;outEdges.get(0).getDestination().getValue();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_185">185</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(nextCfgNode&nbsp;==&nbsp;fallThrough)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to203_172">172</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(nextCfgNode&nbsp;==&nbsp;fallThrough)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_186">186</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removeDeadExprStatementSafely(n);</td><td class="diff_next"></td><td class="diff_header" id="to203_173">173</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removeDeadExprStatementSafely(n);</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to203__3"></td><td class="diff_header" id="from203_193">193</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_180">180</td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_194">194</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;Node&nbsp;computeFollowing(Node&nbsp;n)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to203_181">181</td><td nowrap="nowrap">&nbsp;&nbsp;private&nbsp;Node&nbsp;computeFollowing(Node&nbsp;n)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_195">195</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;next&nbsp;=&nbsp;ControlFlowAnalysis.computeFollowNode(n);</td><td class="diff_next"></td><td class="diff_header" id="to203_182">182</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;next&nbsp;=&nbsp;ControlFlowAnalysis.computeFollowNode(n);</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to203__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to203__top">t</a></td><td class="diff_header" id="to203_183">183</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(next&nbsp;!=&nbsp;null&nbsp;&amp;&amp;&nbsp;next.getType()&nbsp;==&nbsp;Token.BLOCK)&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_184">184</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(next.hasChildren())&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_185">185</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next&nbsp;=&nbsp;next.getFirstChild();</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_186">186</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_187">187</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next&nbsp;=&nbsp;computeFollowing(next);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_188">188</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_189">189</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_196">196</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;next;</td><td class="diff_next"></td><td class="diff_header" id="to203_190">190</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;next;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_197">197</td><td nowrap="nowrap">&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to203_191">191</td><td nowrap="nowrap">&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from203_198">198</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to203_192">192</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>

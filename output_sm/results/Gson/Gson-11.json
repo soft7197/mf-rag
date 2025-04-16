@@ -1,0 +1,80 @@
+{
+    "Gson-11": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Writes a boolean as a string. Useful for map keys, where booleans aren't\n* otherwise permitted.\n*/\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n  public void testNumberAsStringDeserialization() {\n\n    Number value = gson.fromJson(\"\\\"18\\\"\", Number.class);\n\n    assertEquals(18, value.intValue());\n\n  }\n\n```\n#Error message: com.google.gson.JsonSyntaxException: Expecting number, got: STRING\n\tat com.google.gson.Gson.fromJson(Gson.java:887)  T object = typeAdapter.read(reader);\n\tat com.google.gson.Gson.fromJson(Gson.java:852)  T object = (T) fromJson(jsonReader, typeOfT);\n\tat com.google.gson.Gson.fromJson(Gson.java:801)  T target = (T) fromJson(reader, typeOfT);\n\tat com.google.gson.Gson.fromJson(Gson.java:773)  Object object = fromJson(json, (Type) classOfT);\n\tat com.google.gson.functional.PrimitiveTest.testNumberAsStringDeserialization(PrimitiveTest.java:162)  Number value = gson.fromJson(\"\\\"18\\\"\", Number.class);\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING: // Allow numbers represented as strings\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number or number as string, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING: // Allow numbers represented as strings\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number or number as string, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number, got: \" + jsonToken);\n  }\n}\n"
+                ],
+                [
+                    "\npublic Number read(JsonReader in) throws IOException {\n  JsonToken jsonToken = in.peek();\n  switch (jsonToken) {\n  case NULL:\n    in.nextNull();\n    return null;\n  case NUMBER:\n  case STRING:\n    return new LazilyParsedNumber(in.nextString());\n  default:\n    throw new JsonSyntaxException(\"Expecting number or number as string, got: \" + jsonToken);\n  }\n}\n"
+                ]
+            ]
+        }
+    }
+}

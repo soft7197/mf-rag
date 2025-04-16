@@ -1,0 +1,65 @@
+{
+    "Chart-8": {
+        "1": {
+            "prompt": "You are an expert Java developer. Below is a buggy method from a large Java project. This method causes one or more test failures.\nYour task is to fix the bug in this method. Use the provided test failure(s) to guide your reasoning.\n\n---\n\n## Buggy Method\n\n```java\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, RegularTimePeriod.DEFAULT_TIME_ZONE, Locale.getDefault());\n}\n```\n---\n\n## Failing Test Case(s)\n\n \n#Test method 1:\n```java\n    public void testConstructor() {\n\n        Locale savedLocale = Locale.getDefault();\n\n        TimeZone savedZone = TimeZone.getDefault();\n\n        Locale.setDefault(new Locale(\"da\", \"DK\"));\n\n        TimeZone.setDefault(TimeZone.getTimeZone(\"Europe/Copenhagen\"));\n\n        GregorianCalendar cal = (GregorianCalendar) Calendar.getInstance(\n\n                TimeZone.getDefault(), Locale.getDefault());\n\n\n\n        // first day of week is monday\n\n        assertEquals(Calendar.MONDAY, cal.getFirstDayOfWeek());\n\n        cal.set(2007, Calendar.AUGUST, 26, 1, 0, 0);\n\n        cal.set(Calendar.MILLISECOND, 0);\n\n        Date t = cal.getTime();\n\n        Week w = new Week(t, TimeZone.getTimeZone(\"Europe/Copenhagen\"));\n\n        assertEquals(34, w.getWeek());\n\n\n\n        Locale.setDefault(Locale.US);\n\n        TimeZone.setDefault(TimeZone.getTimeZone(\"US/Detroit\"));\n\n        cal = (GregorianCalendar) Calendar.getInstance(TimeZone.getDefault());\n\n        // first day of week is Sunday\n\n        assertEquals(Calendar.SUNDAY, cal.getFirstDayOfWeek());\n\n        cal.set(2007, Calendar.AUGUST, 26, 1, 0, 0);\n\n        cal.set(Calendar.MILLISECOND, 0);\n\n\n\n        t = cal.getTime();\n\n        w = new Week(t, TimeZone.getTimeZone(\"Europe/Copenhagen\"));\n\n        assertEquals(35, w.getWeek());\n\n        w = new Week(t, TimeZone.getTimeZone(\"Europe/Copenhagen\"),\n\n                new Locale(\"da\", \"DK\"));\n\n        assertEquals(34, w.getWeek());\n\n\n\n        Locale.setDefault(savedLocale);\n\n        TimeZone.setDefault(savedZone);\n\n    }\n\n```\n#Error message: junit.framework.AssertionFailedError: expected:<35> but was:<34>\n\tat org.jfree.data.time.junit.WeekTests.testConstructor(WeekTests.java:530)  assertEquals(35, w.getWeek());\n\n---\n\n## Your Goal\n\nFix the buggy method. Return only the fixed Java method. Do not include explanations or other text.\n",
+            "patches": [
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // Use the provided time zone instead of the default time zone\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    // check that arguments are not null\n    if (time == null || zone == null) {\n        throw new IllegalArgumentException(\"Null 'time' or 'zone' argument.\");\n    }\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // Correctly pass the provided time zone and default locale\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // check arguments\n    if (time == null) {\n        throw new IllegalArgumentException(\"Null 'time' argument.\");\n    }\n    if (zone == null) {\n        throw new IllegalArgumentException(\"Null 'zone' argument.\");\n    }\n    // use provided time zone\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    if (time == null) {\n        throw new IllegalArgumentException(\"Null 'time' argument.\");\n    }\n    if (zone == null) {\n        throw new IllegalArgumentException(\"Null 'zone' argument.\");\n    }\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    // fixed to use the provided time zone\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // check arguments and use the correct constructor\n    if (time == null) {\n        throw new IllegalArgumentException(\"Null 'time' argument.\");\n    }\n    if (zone == null) {\n        throw new IllegalArgumentException(\"Null 'zone' argument.\");\n    }\n    this(time, zone, Locale.getDefault());\n}\n"
+                ]
+            ],
+            "evaluation_done": true,
+            "old_plausible_patches": [
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // Use the provided time zone instead of the default time zone\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // Correctly pass the provided time zone and default locale\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\n/**\n* Creates a time period for the week in which the specified date/time\n* falls, calculated relative to the specified time zone.\n*\n* @param time  the date/time (<code>null</code> not permitted).\n* @param zone  the time zone (<code>null</code> not permitted).\n*\n* @deprecated As of 1.0.7, use {@link #Week(Date, TimeZone, Locale)}.\n*/\npublic Week(Date time, TimeZone zone) {\n    // fixed to use the provided time zone\n    this(time, zone, Locale.getDefault());\n}\n"
+                ],
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // defer argument checking...\n    this(time, zone, Locale.getDefault());\n}\n"
+                ]
+            ],
+            "plausible_patches": [
+                [
+                    "\npublic Week(Date time, TimeZone zone) {\n    // Use the provided time zone instead of the default time zone\n    this(time, zone, Locale.getDefault());\n}\n"
+                ]
+            ]
+        }
+    }
+}

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        table.diff {font-family:Courier; border:medium;}
+        .diff_header {background-color:#e0e0e0}
+        td.diff_header {text-align:right}
+        .diff_next {background-color:#c0c0c0}
+        .diff_add {background-color:#aaffaa}
+        .diff_chg {background-color:#ffff77}
+        .diff_sub {background-color:#ffaaaa}
+    </style>
+</head>
+
+<body>
+    
+    <table class="diff" id="difflib_chg_to306__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonCore-10 - Buggy: src/main/java/com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">JacksonCore-10 - Fixed: src/main/java/com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_922">922</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;31-Jul-2015,&nbsp;tatu:&nbsp;Note&nbsp;that&nbsp;spillover&nbsp;area&nbsp;does&nbsp;NOT&nbsp;end&nbsp;at&nbsp;end&nbsp;of&nbsp;ar</td><td class="diff_next"></td><td class="diff_header" id="to306_922">922</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;31-Jul-2015,&nbsp;tatu:&nbsp;Note&nbsp;that&nbsp;spillover&nbsp;area&nbsp;does&nbsp;NOT&nbsp;end&nbsp;at&nbsp;end&nbsp;of&nbsp;ar</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ray,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ray,</td></tr>
+            <tr><td class="diff_next" id="difflib_chg_to306__0"></td><td class="diff_header" id="from306_923">923</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;since&nbsp;"long&nbsp;names"&nbsp;area&nbsp;follows.&nbsp;Instead,&nbsp;need&nbsp;to&nbsp;calculate&nbsp;from&nbsp;ha</td><td class="diff_next"></td><td class="diff_header" id="to306_923">923</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;since&nbsp;"long&nbsp;names"&nbsp;area&nbsp;follows.&nbsp;Instead,&nbsp;need&nbsp;to&nbsp;calculate&nbsp;from&nbsp;ha</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sh&nbsp;size.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sh&nbsp;size.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_924">924</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to306_924">924</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to306__1">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to306__1">n</a></td><td class="diff_header" id="to306_925">925</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;int&nbsp;end&nbsp;=&nbsp;(_hashSize&nbsp;&lt;&lt;&nbsp;3);</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_925">925</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_spilloverEnd&nbsp;&gt;=&nbsp;<span class="diff_sub">hashArea.l</span>en<span class="diff_chg">gth</span>)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to306_926">926</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_spilloverEnd&nbsp;&gt;=&nbsp;en<span class="diff_chg">d</span>)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_926">926</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_failOnDoS)&nbsp;{</td><td class="diff_next"></td><td class="diff_header" id="to306_927">927</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(_failOnDoS)&nbsp;{</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_927">927</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_reportTooManyCollisions();</td><td class="diff_next"></td><td class="diff_header" id="to306_928">928</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_reportTooManyCollisions();</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_928">928</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to306_929">929</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to306__1"></td><td class="diff_header" id="from306_981">981</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;work&nbsp;it&nbsp;out,&nbsp;but&nbsp;this&nbsp;is&nbsp;the&nbsp;simplest,&nbsp;fast&nbsp;and&nbsp;seems&nbsp;to&nbsp;do&nbsp;ok.</td><td class="diff_next"></td><td class="diff_header" id="to306_982">982</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;work&nbsp;it&nbsp;out,&nbsp;but&nbsp;this&nbsp;is&nbsp;the&nbsp;simplest,&nbsp;fast&nbsp;and&nbsp;seems&nbsp;to&nbsp;do&nbsp;ok.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_982">982</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td><td class="diff_next"></td><td class="diff_header" id="to306_983">983</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_983">983</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash&nbsp;+=&nbsp;(hash&nbsp;&gt;&gt;&gt;&nbsp;16);&nbsp;//&nbsp;to&nbsp;xor&nbsp;hi-&nbsp;and&nbsp;low-&nbsp;16-bits</td><td class="diff_next"></td><td class="diff_header" id="to306_984">984</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash&nbsp;+=&nbsp;(hash&nbsp;&gt;&gt;&gt;&nbsp;16);&nbsp;//&nbsp;to&nbsp;xor&nbsp;hi-&nbsp;and&nbsp;low-&nbsp;16-bits</td></tr>
+            <tr><td class="diff_next"><a href="#difflib_chg_to306__top">t</a></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"><a href="#difflib_chg_to306__top">t</a></td><td class="diff_header" id="to306_985">985</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash&nbsp;^=&nbsp;(hash&nbsp;&lt;&lt;&nbsp;3);&nbsp;//&nbsp;shuffle&nbsp;back&nbsp;a&nbsp;bit</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_984">984</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash&nbsp;<span class="diff_chg">^</span>=&nbsp;(hash&nbsp;&gt;&gt;&gt;&nbsp;12);</td><td class="diff_next"></td><td class="diff_header" id="to306_986">986</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash&nbsp;<span class="diff_chg">+</span>=&nbsp;(hash&nbsp;&gt;&gt;&gt;&nbsp;12);<span class="diff_add">&nbsp;//&nbsp;and&nbsp;bit&nbsp;more</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_985">985</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;hash;</td><td class="diff_next"></td><td class="diff_header" id="to306_987">987</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;hash;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_986">986</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="diff_next"></td><td class="diff_header" id="to306_988">988</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from306_987">987</td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to306_989">989</td><td nowrap="nowrap"></td></tr>
+        </tbody>
+    </table>
+    <table class="diff" summary="Legends">
+        <tr> <th colspan="2"> Legends </th> </tr>
+        <tr> <td> <table border="" summary="Colors">
+                      <tr><th> Colors </th> </tr>
+                      <tr><td class="diff_add">&nbsp;Added&nbsp;</td></tr>
+                      <tr><td class="diff_chg">Changed</td> </tr>
+                      <tr><td class="diff_sub">Deleted</td> </tr>
+                  </table></td>
+             <td> <table border="" summary="Links">
+                      <tr><th colspan="2"> Links </th> </tr>
+                      <tr><td>(f)irst change</td> </tr>
+                      <tr><td>(n)ext change</td> </tr>
+                      <tr><td>(t)op</td> </tr>
+                  </table></td> </tr>
+    </table>
+</body>
+
+</html>
